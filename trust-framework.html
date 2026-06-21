@@ -398,6 +398,143 @@ section:last-of-type { border-bottom: none; }
   .opp-card { opacity: 1 !important; transform: none !important; transition: none !important; }
 }
 
+
+/* ═══════════════════════════════════════════════════════════════
+   MOBILE REFINEMENT LAYER
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── HAMBURGER BUTTON ────────────────────────────────────────── */
+.mob-btn {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 36px; height: 36px;
+  cursor: pointer;
+  background: none; border: none; padding: 6px;
+  flex-shrink: 0; -webkit-tap-highlight-color: transparent;
+}
+.mob-btn span {
+  display: block;
+  width: 20px; height: 1.5px;
+  background: var(--t2);
+  border-radius: 1px;
+  transition: transform 0.28s ease, opacity 0.2s ease, background 0.2s;
+  transform-origin: center;
+}
+.mob-btn[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(6.5px) rotate(45deg); background: var(--t1);
+}
+.mob-btn[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0; transform: scaleX(0);
+}
+.mob-btn[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-6.5px) rotate(-45deg); background: var(--t1);
+}
+@media (max-width: 720px) { .mob-btn { display: flex; } }
+
+/* ── MOBILE SLIDE-DOWN MENU ──────────────────────────────────── */
+.mob-menu {
+  position: fixed;
+  top: 54px; left: 0; right: 0;
+  background: rgba(0,0,0,0.97);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  z-index: 98;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.36s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.mob-menu.mob-open { max-height: 340px; }
+.mob-menu-inner {
+  padding: 20px 24px 28px;
+  display: flex; flex-direction: column;
+}
+.mob-menu-link {
+  display: block;
+  padding: 13px 2px;
+  font-size: 15px; letter-spacing: 0.01em;
+  color: var(--t2); text-decoration: none;
+  border-bottom: 1px solid var(--border2);
+  transition: color 0.2s;
+  -webkit-tap-highlight-color: transparent;
+}
+.mob-menu-link:hover { color: var(--t1); }
+.mob-menu-link.mob-active { color: var(--amber); }
+.mob-menu-link:last-of-type { border-bottom: none; }
+.mob-menu-cta-wrap {
+  padding-top: 18px;
+}
+.mob-menu-cta-btn {
+  display: block;
+  padding: 13px 20px;
+  background: var(--amber); color: #000;
+  font-size: 14px; font-weight: 600;
+  text-align: center; border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.2s;
+  -webkit-tap-highlight-color: transparent;
+}
+.mob-menu-cta-btn:hover { background: var(--amber2); }
+
+/* ── MOBILE SPACING ──────────────────────────────────────────── */
+@media (max-width: 720px) {
+  /* Hero: dramatically less top padding — nav is 54px, so 86px leaves 32px breathing room */
+  .tf-hero { padding: 86px 16px 48px; }
+  /* Section vertical rhythm — tighter on mobile */
+  section { padding: 44px 0; }
+  .sec-sub { margin-bottom: 24px; font-size: 14px; }
+  /* CTA block */
+  .cta-sec { padding: 52px 16px; }
+  /* Graph/closing section */
+  .graph-close { padding: 36px 0 24px; }
+  /* Inline closing-statement text */
+  .closing-statement { font-size: 14px; }
+  /* CTA buttons — full-width tap target */
+  .btn-primary { display: block; padding: 14px 20px; font-size: 14px; }
+  .btn-ghost { margin-top: 12px; font-size: 13px; }
+}
+
+/* ── MOBILE SVG ECOSYSTEM ────────────────────────────────────── */
+/* At ≤520px the hub-spoke SVG renders its text too small to read.
+   The four signal-grid cards below carry all the content. */
+@media (max-width: 520px) {
+  .sig-eco-svg { display: none; }
+  .sig-eco-caption { display: none; }
+  .sig-eco-wrap { margin-bottom: 16px; }
+}
+
+/* ── MOBILE JOURNEY ──────────────────────────────────────────── */
+@media (max-width: 720px) {
+  .rj-track { margin-top: 24px; }
+  .rj-step { padding: 11px 0 11px 38px; }
+  .rj-stage { font-size: 13px; }
+  .rj-detail { font-size: 11px; line-height: 1.5; }
+  .rj-dot { width: 12px; height: 12px; top: 17px; }
+  .rj-particle { width: 10px; height: 10px; left: 4px; }
+  .rj-spine { left: 10px; }
+}
+
+/* ── MOBILE COMPOUND TRUST ───────────────────────────────────── */
+@media (max-width: 760px) {
+  .cmpd-card { padding: 20px 16px; }
+  .cmpd-name { font-size: clamp(17px, 5vw, 22px); }
+}
+
+/* ── MOBILE OPPORTUNITY GRID ─────────────────────────────────── */
+/* Override existing 400px breakpoint: go single-column earlier */
+@media (max-width: 480px) {
+  .opp-grid { grid-template-columns: 1fr; gap: 10px; }
+}
+
+/* ── REDUCED MOTION — ensure mobile coverage ─────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .mob-btn span { transition: none; }
+  .mob-menu { transition: none; }
+}
+
 </style>
 </head>
 <body>
@@ -407,8 +544,24 @@ section:last-of-type { border-bottom: none; }
   <div class="nav-right">
     <div class="nav-ghost"><a href="index-production.html">Homepage</a><a href="index-production.html#demo">Platform</a><a href="index-production.html#signals">Signals</a><a href="trust-framework.html" style="color:var(--amber)">Trust Framework</a></div>
     <a href="index-production.html#waitlist" class="nav-cta">Join waitlist</a>
+    <button class="mob-btn" id="mobBtn" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+
+<!-- MOBILE SLIDE-DOWN MENU -->
+<div class="mob-menu" id="mobMenu" aria-hidden="true">
+  <div class="mob-menu-inner">
+    <a class="mob-menu-link" href="index-production.html">Homepage</a>
+    <a class="mob-menu-link" href="index-production.html#demo">Platform</a>
+    <a class="mob-menu-link" href="index-production.html#signals">Signals</a>
+    <a class="mob-menu-link mob-active" href="trust-framework.html">Trust Framework</a>
+    <div class="mob-menu-cta-wrap">
+      <a class="mob-menu-cta-btn" href="index-production.html#waitlist">Join Waitlist</a>
+    </div>
+  </div>
+</div>
 
 <!-- HERO -->
 <div class="tf-hero">
@@ -843,6 +996,7 @@ section:last-of-type { border-bottom: none; }
 <script>
 (function () {
   'use strict';
+  var isMobile = window.innerWidth < 721;
 
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -914,7 +1068,7 @@ section:last-of-type { border-bottom: none; }
             step.classList.add('rj-in');
           }
         /* threshold 0.5 = step is half-visible; rootMargin shifts trigger point up slightly */
-        }, { threshold: 0.5, rootMargin: '0px 0px -20px 0px' });
+        }, { threshold: isMobile ? 0.25 : 0.5, rootMargin: '0px 0px -20px 0px' });
         io.observe(step);
       });
     }
@@ -932,7 +1086,7 @@ section:last-of-type { border-bottom: none; }
           ecoDone = true; ecoIO.disconnect();
           sigEco.classList.add('eco-go');
         }
-      }, { threshold: 0.18 });
+      }, { threshold: isMobile ? 0.1 : 0.18 });
       ecoIO.observe(sigEco);
     }
   }
@@ -956,7 +1110,7 @@ section:last-of-type { border-bottom: none; }
             setTimeout(function () { a.classList.add('cmpd-in'); }, 100 + i * 200);
           });
         }
-      }, { threshold: 0.22, rootMargin: '0px 0px -30px 0px' });
+      }, { threshold: isMobile ? 0.12 : 0.22, rootMargin: '0px 0px -30px 0px' });
       cmpdIO.observe(cmpd);
     }
   }
@@ -980,6 +1134,43 @@ section:last-of-type { border-bottom: none; }
     }
   }
 
+})();
+</script>
+<script>
+(function () {
+  var btn  = document.getElementById('mobBtn');
+  var menu = document.getElementById('mobMenu');
+  if (!btn || !menu) return;
+
+  function open() {
+    menu.classList.add('mob-open');
+    btn.setAttribute('aria-expanded', 'true');
+    menu.setAttribute('aria-hidden', 'false');
+  }
+  function close() {
+    menu.classList.remove('mob-open');
+    btn.setAttribute('aria-expanded', 'false');
+    menu.setAttribute('aria-hidden', 'true');
+  }
+
+  btn.addEventListener('click', function () {
+    menu.classList.contains('mob-open') ? close() : open();
+  });
+
+  /* Close when a link is tapped */
+  menu.querySelectorAll('a').forEach(function (a) {
+    a.addEventListener('click', close);
+  });
+
+  /* Close on outside tap */
+  document.addEventListener('click', function (e) {
+    if (!btn.contains(e.target) && !menu.contains(e.target)) close();
+  });
+
+  /* Close on Escape */
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') close();
+  });
 })();
 </script>
 </body>
