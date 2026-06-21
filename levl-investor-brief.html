@@ -244,6 +244,23 @@ p:last-child{margin-bottom:0;}
 .assumption-disclaimer-title{font-size:11px;font-weight:600;color:var(--t2);margin-bottom:6px;letter-spacing:.02em;}
 .assumption-disclaimer-body{font-size:12px;color:var(--t3);line-height:1.65;}
 
+/* ── PROVE LIST ── */
+.prove-list{display:flex;flex-direction:column;gap:0;}
+.prove-row{display:flex;align-items:flex-start;gap:16px;padding:18px 0;border-bottom:1px solid var(--border2);}
+.prove-row:last-child{border-bottom:none;}
+.prove-num{font-family:var(--mono);font-size:11px;color:var(--amber);font-weight:600;flex-shrink:0;padding-top:2px;min-width:22px;}
+.prove-body{flex:1;}
+.prove-title{font-size:14px;font-weight:500;color:var(--t1);margin-bottom:4px;}
+.prove-desc{font-size:13px;color:var(--t3);line-height:1.65;}
+
+/* ── VALIDATION ITEMS ── */
+.val-grid{display:flex;flex-direction:column;gap:10px;margin-bottom:20px;}
+.val-row{display:flex;align-items:flex-start;gap:12px;padding:14px 16px;background:var(--surface2);border:1px solid var(--border2);border-radius:var(--r);}
+.val-icon{font-size:14px;flex-shrink:0;margin-top:1px;}
+.val-body{flex:1;}
+.val-label{font-size:10px;font-family:var(--mono);color:var(--amber);text-transform:uppercase;letter-spacing:.07em;margin-bottom:3px;}
+.val-text{font-size:13px;color:var(--t2);line-height:1.6;}
+
 /* ── NOTE ── */
 .note{font-size:11px;color:var(--t3);line-height:1.6;margin-top:8px;}
 
@@ -339,6 +356,46 @@ p:last-child{margin-bottom:0;}
     </div>
   </div>
 
+  <!-- CURRENT VALIDATION -->
+  <div class="section">
+    <div class="sec-eyebrow">Current Validation</div>
+    <h2 class="sec-title">What exists <em>today</em></h2>
+    <p class="sec-body">The following represents early-stage validation ahead of a formal seed raise. Numbers are small — intentionally. The goal at this stage is signal, not scale.</p>
+    <div class="val-grid">
+      <div class="val-row">
+        <div class="val-icon" style="color:var(--amber)">◉</div>
+        <div class="val-body">
+          <div class="val-label">Product</div>
+          <div class="val-text">Website live. Trust framework published and documented publicly. Waitlist active and collecting registrations. Core brand identity, positioning, and commercial model established.</div>
+        </div>
+      </div>
+      <div class="val-row">
+        <div class="val-icon" style="color:var(--amber)">◉</div>
+        <div class="val-body">
+          <div class="val-label">Research — Creators</div>
+          <div class="val-text">Direct conversations with creators have confirmed the core problem: no portable, verified professional record exists. Pain around starting from scratch with every new brand relationship is consistent across creator types and niches.</div>
+        </div>
+      </div>
+      <div class="val-row">
+        <div class="val-icon" style="color:var(--amber)">◉</div>
+        <div class="val-body">
+          <div class="val-label">Research — Managers</div>
+          <div class="val-text">Talent manager conversations have confirmed the manual nature of roster verification and pitch preparation. Recurring feedback: <em>"We already do this — we'd pay for a tool that does it properly."</em></div>
+        </div>
+      </div>
+      <div class="val-row">
+        <div class="val-icon" style="color:var(--t3)">○</div>
+        <div class="val-body">
+          <div class="val-label">Demand — Sponsors</div>
+          <div class="val-text">Early conversations with brand and sponsor contacts underway to test demand for verified creator discovery. No signed agreements at this stage. No rejections of the core proposition either.</div>
+        </div>
+      </div>
+    </div>
+    <div class="callout note">
+      <strong>Honest position:</strong> LEVL is pre-revenue and pre-product at this stage. The validation above is qualitative and directional. It confirms the problem is real, target users can articulate it clearly, and willingness to pay is plausible — not proven. That is the appropriate standard at pre-seed. Investors should weigh all projections in this context.
+    </div>
+  </div>
+
   <!-- WHY NOW -->
   <div class="section">
     <div class="sec-eyebrow">Why Now</div>
@@ -415,10 +472,10 @@ p:last-child{margin-bottom:0;}
     <h2 class="sec-title">What this looks like<br><em>if it works</em></h2>
     <p style="font-size:12px;color:var(--t3);margin-bottom:16px">All figures below are modelled projections. See the 36-Month Plan tab for full quarterly breakdown and assumptions.</p>
     <div class="metric-grid">
-      <div class="metric-card">
-        <div class="metric-label">Projected ARR</div>
+      <div class="metric-card" style="border-color:var(--border)">
+        <div class="metric-label">ARR — Base-Case Model</div>
         <div class="metric-val">£5.84M</div>
-        <div class="metric-note">From £0 · 36 months</div>
+        <div class="metric-note">Bear: ~£2M · Bull: £11M+</div>
       </div>
       <div class="metric-card">
         <div class="metric-label">Total Subscribers</div>
@@ -428,7 +485,7 @@ p:last-child{margin-bottom:0;}
       <div class="metric-card">
         <div class="metric-label">Team Size</div>
         <div class="metric-val violet">22</div>
-        <div class="metric-note">Lean, no bloat</div>
+        <div class="metric-note">Indicative · lean structure</div>
       </div>
       <div class="metric-card">
         <div class="metric-label">EBITDA</div>
@@ -450,11 +507,9 @@ p:last-child{margin-bottom:0;}
         <div class="metric-val">~78%</div>
         <div class="metric-note">SaaS + marketplace blended</div>
       </div>
-      <div class="metric-card">
-        <div class="metric-label">Valuation Range</div>
-        <div class="metric-val">£29–47M</div>
-        <div class="metric-note">5–8× ARR at M36 (projected)</div>
-      </div>
+    </div>
+    <div class="callout note" style="margin-top:8px">
+      <strong>On precision:</strong> £5.84M is the base-case model output, not a predicted outcome. Bear case (slower B2B adoption) projects £2M–£3M ARR. Bull case (major institutional partnership) projects £8M–£11M+. See the Risks &amp; Scenarios tab for full scenario breakdown. Real outcomes will differ from any of these — that is the honest position at this stage.
     </div>
   </div>
 
@@ -904,16 +959,16 @@ p:last-child{margin-bottom:0;}
         <div class="milestone-item">2,000 deals/month through marketplace</div>
         <div class="milestone-item">EBITDA positive — from approximately M34</div>
         <div class="milestone-item">22-person team, sub-£150K burn on £487K revenue</div>
-        <div class="milestone-item">Acquisition conversations realistic at 5–8× ARR</div>
+        <div class="milestone-item">Multiple growth paths viable: Series B, strategic partnership, or revenue-funded</div>
       </div>
     </div>
   </div>
 
   <!-- TEAM -->
   <div class="section">
-    <div class="sec-eyebrow">Team Build</div>
-    <h2 class="sec-title">Hires, timing, <em>and cost</em></h2>
-    <p class="sec-body">Revenue-generating and product-critical roles are hired first. Support functions (finance, operations, legal) are deferred until growth requires them. All salaries are fully-loaded UK market rates.</p>
+    <div class="sec-eyebrow">Indicative Hiring Plan</div>
+    <h2 class="sec-title">Planned capability expansion —<br><em>not a fixed roadmap</em></h2>
+    <p class="sec-body">This is an indicative hiring plan based on expected capability requirements at each phase. Role descriptions, timing, and seniority will adapt to revenue growth, product priorities, and market conditions. Revenue-generating and product-critical roles are sequenced first. Support functions (finance, operations, legal) are deferred until growth requires them. All salaries are fully-loaded UK market rates.</p>
 
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px">
       <div>
@@ -1067,12 +1122,12 @@ p:last-child{margin-bottom:0;}
       </div>
       <div class="success-card">
         <div class="success-eyebrow">Investor Position</div>
-        <div class="success-title">Multiple exit or growth paths</div>
-        <div class="success-stat">At 5× ARR: company valued at ~£29M projected</div>
-        <div class="success-stat">At 8× ARR (network effect premium): ~£47M projected</div>
-        <div class="success-stat">Series B: raise from strength into international, not survival</div>
+        <div class="success-title">Multiple growth paths available</div>
+        <div class="success-stat">Series B: raise from strength into international expansion, not survival</div>
         <div class="success-stat">Strategic acquirer interest: talent agencies, MCNs, platforms, LinkedIn</div>
-        <div class="success-stat">Revenue-funded path: profitable without further dilution</div>
+        <div class="success-stat">Revenue-funded path: EBITDA positive, no further dilution required</div>
+        <div class="success-stat">Reputation dataset predates any competitor by 3 years — acquisition value compounds</div>
+        <div class="success-stat">Valuation is a consequence of execution — not a projection we make</div>
       </div>
     </div>
   </div>
@@ -1192,6 +1247,50 @@ p:last-child{margin-bottom:0;}
         <div class="risk-desc">GDPR and evolving data regulations around professional identity and behavioural tracking require careful architecture. <strong style="color:var(--t1)">Mitigation:</strong> legal review from M1; signals tied to verified professional identity only; clear data processing agreements with all counterparties; opt-in architecture for all signals.</div>
         <div><span class="risk-badge risk-l">Low</span></div>
         <div><span class="risk-badge risk-h">High</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHAT WE NEED TO PROVE -->
+  <div class="section">
+    <div class="sec-eyebrow">Founder Realism</div>
+    <h2 class="sec-title">What we still need <em>to prove</em></h2>
+    <p class="sec-body">This plan is built on assumptions. Over the next 12–18 months, the following questions must be answered with evidence — not projections. A founder who cannot name what they still need to prove has not thought hard enough about the risks.</p>
+    <div class="prove-list">
+      <div class="prove-row">
+        <div class="prove-num">01</div>
+        <div class="prove-body">
+          <div class="prove-title">Creators will build and sustain portable reputation profiles</div>
+          <div class="prove-desc">The model depends on creators actively completing verification and maintaining their profile over time. If creators treat LEVL as a one-time signup rather than an ongoing professional record, the data depth that creates the moat never materialises.</div>
+        </div>
+      </div>
+      <div class="prove-row">
+        <div class="prove-num">02</div>
+        <div class="prove-body">
+          <div class="prove-title">Managers will onboard their full talent portfolios</div>
+          <div class="prove-desc">The cold-start solution depends on managers bringing 10–30 creators on signup. If managers onboard individually rather than as a portfolio, supply-side density takes significantly longer to build. This is the most critical unvalidated assumption in the go-to-market plan.</div>
+        </div>
+      </div>
+      <div class="prove-row">
+        <div class="prove-num">03</div>
+        <div class="prove-body">
+          <div class="prove-title">Sponsors actively use trust signals during creator discovery</div>
+          <div class="prove-desc">The brand tier only works if sponsors change how they evaluate creators — replacing gut instinct and follower count with verified signal history. Behaviour change is a high bar. The ROI case must be evident from the first search session.</div>
+        </div>
+      </div>
+      <div class="prove-row">
+        <div class="prove-num">04</div>
+        <div class="prove-body">
+          <div class="prove-title">Verification creates measurable, demonstrable value</div>
+          <div class="prove-desc">LEVL's model assumes verified reputation data is worth paying for independently. This requires demonstrated outcomes: faster deals, better retention, fewer bad hires. We need case studies and measurable impact data — not just testimonials about the concept.</div>
+        </div>
+      </div>
+      <div class="prove-row">
+        <div class="prove-num">05</div>
+        <div class="prove-body">
+          <div class="prove-title">Reputation signals improve conversion between creators and sponsors</div>
+          <div class="prove-desc">The network effect assumption — that more verified reputation data makes the platform more valuable — only holds if the data actively influences deal outcomes. If verified signals are referenced but don't change hiring decisions, the differentiation is cosmetic rather than structural.</div>
+        </div>
       </div>
     </div>
   </div>
