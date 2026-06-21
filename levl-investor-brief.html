@@ -244,6 +244,43 @@ p:last-child{margin-bottom:0;}
 .assumption-disclaimer-title{font-size:11px;font-weight:600;color:var(--t2);margin-bottom:6px;letter-spacing:.02em;}
 .assumption-disclaimer-body{font-size:12px;color:var(--t3);line-height:1.65;}
 
+/* ── STAGE TRACK ── */
+.stage-track{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin:32px 0;position:relative;}
+.stage-track::before{content:'';position:absolute;top:13px;left:calc(12.5%);width:75%;height:1px;background:var(--border2);z-index:0;}
+.stage-step{display:flex;flex-direction:column;align-items:center;position:relative;z-index:1;}
+.stage-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;font-family:var(--mono);margin-bottom:8px;}
+.stage-dot.done{background:rgba(16,185,129,0.15);border:2px solid rgba(16,185,129,0.5);color:var(--green);}
+.stage-dot.current{background:rgba(245,158,11,0.15);border:2px solid rgba(245,158,11,0.6);color:var(--amber);}
+.stage-dot.future{background:var(--surface2);border:1px solid var(--border2);color:var(--t3);}
+.stage-label{font-size:11px;font-weight:600;text-align:center;}
+.stage-label.done{color:var(--green);}
+.stage-label.current{color:var(--amber);}
+.stage-label.future{color:var(--t3);}
+.stage-sub{font-size:10px;color:var(--t3);font-family:var(--mono);text-align:center;margin-top:2px;}
+@media(max-width:600px){.stage-track{grid-template-columns:1fr 1fr;gap:16px;}.stage-track::before{display:none;}}
+
+/* ── FUNDING BLOCKS ── */
+.funding-block{background:var(--surface2);border:1px solid var(--border2);border-radius:var(--r);overflow:hidden;margin-bottom:16px;}
+.funding-block.active{border-color:rgba(245,158,11,0.3);}
+.funding-block-hdr{padding:14px 20px;border-bottom:1px solid var(--border2);display:flex;align-items:center;justify-content:space-between;gap:12px;}
+.funding-block.active .funding-block-hdr{background:rgba(245,158,11,0.04);}
+.funding-block-name{font-size:14px;font-weight:600;color:var(--t1);}
+.funding-tag{font-family:var(--mono);font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;padding:3px 10px;border-radius:4px;}
+.funding-tag.current{background:rgba(245,158,11,0.12);color:var(--amber);border:1px solid rgba(245,158,11,0.25);}
+.funding-tag.next{background:var(--surface);border:1px solid var(--border2);color:var(--t3);}
+.funding-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;padding:16px 20px;border-bottom:1px solid var(--border2);}
+@media(max-width:600px){.funding-stats{grid-template-columns:1fr 1fr;}}
+.funding-stat-label{font-size:10px;font-family:var(--mono);color:var(--t3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:4px;}
+.funding-stat-val{font-size:18px;font-weight:600;font-family:var(--mono);}
+.funding-stat-val.amber{color:var(--amber);}
+.funding-stat-val.dim{color:var(--t2);}
+.funding-stat-desc{font-size:13px;font-weight:500;color:var(--t1);line-height:1.4;}
+.funding-cols{display:grid;grid-template-columns:1fr 1fr;gap:0;padding:16px 20px;}
+@media(max-width:600px){.funding-cols{grid-template-columns:1fr;gap:12px;}}
+.funding-col-head{font-size:10px;font-family:var(--mono);color:var(--t3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px;}
+.funding-li{font-size:12px;color:var(--t2);padding:4px 0;display:flex;gap:8px;line-height:1.5;}
+.funding-li::before{content:'—';color:var(--amber);flex-shrink:0;}
+
 /* ── PROVE LIST ── */
 .prove-list{display:flex;flex-direction:column;gap:0;}
 .prove-row{display:flex;align-items:flex-start;gap:16px;padding:18px 0;border-bottom:1px solid var(--border2);}
@@ -331,6 +368,175 @@ p:last-child{margin-bottom:0;}
     <h2 class="sec-title">Verified reputation infrastructure<br>for the <em>creator economy</em></h2>
     <p class="sec-body">LEVL is a verified reputation platform for professional creators, talent managers, and brand sponsors. It gives creators a portable, verified professional record — built from confirmed campaign history, platform data, and counterparty endorsements — and gives managers and brands the tools to discover, evaluate, and work with creators based on evidence rather than follower counts.</p>
     <p class="sec-body">The creator economy has an audience graph. It does not have a reputation graph. LEVL is building one.</p>
+  </div>
+
+  <!-- CURRENT STAGE & FUNDING STRATEGY -->
+  <div class="section">
+    <div class="sec-eyebrow">Current Stage &amp; Funding Strategy</div>
+    <h2 class="sec-title">Where LEVL is today —<br>and <em>what comes next</em></h2>
+
+    <div class="stage-track">
+      <div class="stage-step">
+        <div class="stage-dot done">✓</div>
+        <div class="stage-label done">Self-Funded</div>
+        <div class="stage-sub">Complete</div>
+      </div>
+      <div class="stage-step">
+        <div class="stage-dot current">▸</div>
+        <div class="stage-label current">Validation</div>
+        <div class="stage-sub">Current stage</div>
+      </div>
+      <div class="stage-step">
+        <div class="stage-dot future">○</div>
+        <div class="stage-label future">Seed Round</div>
+        <div class="stage-sub">If validation passes</div>
+      </div>
+      <div class="stage-step">
+        <div class="stage-dot future">○</div>
+        <div class="stage-label future">Series A</div>
+        <div class="stage-sub">Growth capital</div>
+      </div>
+    </div>
+
+    <div class="callout" style="margin-bottom:16px">
+      <strong>The founder has personally funded LEVL to this point.</strong> The concept, positioning, commercial model, trust framework, and investor thesis have all been developed and refined without external capital. What exists today — this brief, the website, the framework, the validation materials — represents meaningful pre-revenue work done at founder cost. The next challenge is not defining the idea. The next challenge is proving people want it.
+    </div>
+    <div class="callout note" style="margin-bottom:32px">
+      <strong>Transparent position:</strong> LEVL has no paying users and no live product. Creator conversations, manager interviews, and sponsor discussions are underway — but demand is unproven. The seed round described later in this document will only be pursued after the validation stage produces sufficient evidence. Investors should evaluate this document as a rigorous plan for something that still needs market proof — not as evidence that market proof already exists.
+    </div>
+
+    <div class="section-rule">Stage 2 — Validation Round</div>
+    <div class="funding-block active">
+      <div class="funding-block-hdr">
+        <div class="funding-block-name">Validation Round</div>
+        <div class="funding-tag current">Current Stage</div>
+      </div>
+      <div class="funding-stats">
+        <div>
+          <div class="funding-stat-label">Target Raise</div>
+          <div class="funding-stat-val amber">£5K–£15K</div>
+        </div>
+        <div>
+          <div class="funding-stat-label">Purpose</div>
+          <div class="funding-stat-desc">Prove demand before committing to platform development</div>
+        </div>
+        <div>
+          <div class="funding-stat-label">Stage Gate</div>
+          <div class="funding-stat-desc">Unlocks seed round if validation metrics are met</div>
+        </div>
+      </div>
+      <div class="funding-cols">
+        <div>
+          <div class="funding-col-head">Use of Funds</div>
+          <div class="funding-li">Creator content production</div>
+          <div class="funding-li">Sponsor content production</div>
+          <div class="funding-li">Video creation</div>
+          <div class="funding-li">Paid social campaigns</div>
+          <div class="funding-li">Google Ads testing</div>
+          <div class="funding-li">Waitlist acquisition</div>
+        </div>
+        <div>
+          <div class="funding-col-head">Also Covers</div>
+          <div class="funding-li">Creator, manager &amp; sponsor interviews</div>
+          <div class="funding-li">Acquisition channel testing</div>
+          <div class="funding-li">Conversion rate analysis</div>
+          <div class="funding-li">Feature prioritisation</div>
+          <div class="funding-li">Product requirement validation</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout green" style="margin-bottom:28px">
+      <strong>The validation round answers four questions:</strong> Will creators join? Will managers onboard their full rosters? Will sponsors pay for verified discovery? Can any of these users be acquired at efficient cost?
+    </div>
+
+    <div class="section-rule">Validation Success Metrics</div>
+    <div class="metric-grid" style="margin-bottom:20px">
+      <div class="metric-card">
+        <div class="metric-label">Target Creators</div>
+        <div class="metric-val">500+</div>
+        <div class="metric-note">Waitlist signups</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Target Managers</div>
+        <div class="metric-val">50+</div>
+        <div class="metric-note">Confirmed interest</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Target Sponsors</div>
+        <div class="metric-val">20+</div>
+        <div class="metric-note">Verified engagement</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Critical also</div>
+        <div class="metric-val white" style="font-size:14px;font-weight:600;line-height:1.2;">CAC data</div>
+        <div class="metric-note">Measured acquisition cost per segment</div>
+      </div>
+    </div>
+
+    <div class="section-rule">Participation Structure</div>
+    <p style="font-size:14px;color:var(--t2);line-height:1.75;margin-bottom:16px">A validation round at this stage would most likely be structured as one of the following, depending on investor preference and valuation discussions. No fixed equity or valuation is committed here — terms are subject to discussion.</p>
+    <div class="card-grid" style="margin-bottom:8px">
+      <div class="card">
+        <div class="card-title">Founder / Friends &amp; Family</div>
+        <div class="card-body">Close-circle capital from those who know the founder and believe in the thesis. Simplest structure at this stage — minimal legal overhead.</div>
+      </div>
+      <div class="card">
+        <div class="card-title">SAFE Agreement</div>
+        <div class="card-body">Simple Agreement for Future Equity. Converts to equity at the seed round at a pre-agreed discount or valuation cap. Standard for early angel participation.</div>
+      </div>
+      <div class="card">
+        <div class="card-title">Convertible Note</div>
+        <div class="card-body">Short-term loan that converts to equity at the next priced round. Defers valuation to seed stage when there is more evidence to price against.</div>
+      </div>
+      <div class="card">
+        <div class="card-title">Early Equity</div>
+        <div class="card-body">Direct equity stake at an agreed valuation. Appropriate for investors who prefer a clean cap table from day one. Valuation subject to mutual agreement.</div>
+      </div>
+    </div>
+    <p class="note" style="margin-bottom:32px">The purpose of this section is to introduce how participation may work — not to commit to specific terms. Structure will be agreed in conversation.</p>
+
+    <div class="section-rule">Stage 3 — Seed Round (Conditional on Validation)</div>
+    <div class="funding-block">
+      <div class="funding-block-hdr">
+        <div class="funding-block-name">Seed Round — Build the platform</div>
+        <div class="funding-tag next">Conditional on Validation</div>
+      </div>
+      <div class="funding-stats">
+        <div>
+          <div class="funding-stat-label">Target Raise</div>
+          <div class="funding-stat-val dim">£800K</div>
+        </div>
+        <div>
+          <div class="funding-stat-label">Purpose</div>
+          <div class="funding-stat-desc">Build the platform once demand is proven — not before</div>
+        </div>
+        <div>
+          <div class="funding-stat-label">Runway</div>
+          <div class="funding-stat-desc">18+ months to Series A milestone</div>
+        </div>
+      </div>
+      <div class="funding-cols">
+        <div>
+          <div class="funding-col-head">Use of Funds</div>
+          <div class="funding-li">Engineering &amp; product development</div>
+          <div class="funding-li">Verification system build</div>
+          <div class="funding-li">Infrastructure &amp; API integrations</div>
+          <div class="funding-li">Initial team (4–6 people)</div>
+        </div>
+        <div>
+          <div class="funding-col-head">Also Covers</div>
+          <div class="funding-li">Creator onboarding &amp; retention</div>
+          <div class="funding-li">Manager and brand sales</div>
+          <div class="funding-li">Legal, compliance, GDPR</div>
+          <div class="funding-li">Series A preparation</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout violet">
+      <strong>Why this staged approach matters to investors:</strong> Many startups raise significant capital before validating demand. LEVL intentionally keeps validation and development as separate stages. Validation capital proves the market exists. Seed capital builds the product for a market already proven to want it. This reduces risk at every stage — larger rounds are only pursued after the assumptions they depend on have been tested with real evidence.
+    </div>
   </div>
 
   <!-- PROBLEM -->
