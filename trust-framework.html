@@ -149,6 +149,28 @@ section:last-of-type { border-bottom: none; }
 .btn-ghost { display: inline-block; color: var(--t2); font-size: 13px; text-decoration: none; margin-top: 16px; transition: color .2s; }
 .btn-ghost:hover { color: var(--t1); }
 
+/* VERIFICATION HIERARCHY */
+.vh-intro { font-size: 15px; color: var(--t2); line-height: 1.7; max-width: 560px; margin-bottom: 40px; }
+.vh-grid { display: flex; flex-direction: column; gap: 0; }
+.vh-level { display: grid; grid-template-columns: 44px 1fr auto; gap: 0 20px; padding: 22px 0; border-bottom: 1px solid var(--border2); align-items: start; }
+.vh-level:last-child { border-bottom: none; }
+.vh-level-num { font-family: var(--mono); font-size: 11px; font-weight: 500; color: var(--t3); padding-top: 3px; }
+.vh-level-tag { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 5px; }
+.vh-level-title { font-size: 14px; font-weight: 500; color: var(--t1); margin-bottom: 10px; }
+.vh-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.vh-chip { font-size: 11px; color: var(--t3); background: rgba(245,243,238,0.04); border: 1px solid var(--border2); border-radius: 4px; padding: 3px 9px; line-height: 1.5; }
+.vh-trust { text-align: right; font-size: 10px; font-weight: 600; letter-spacing: .07em; text-transform: uppercase; padding-top: 3px; white-space: nowrap; }
+.vh-l1 .vh-level-tag, .vh-l1 .vh-trust { color: var(--t3); }
+.vh-l2 .vh-level-tag, .vh-l2 .vh-trust { color: rgba(245,158,11,0.65); }
+.vh-l3 .vh-level-tag, .vh-l3 .vh-trust { color: var(--amber); }
+.vh-l4 .vh-level-tag, .vh-l4 .vh-trust { color: rgba(16,185,129,0.7); }
+.vh-l5 .vh-level-tag, .vh-l5 .vh-trust { color: var(--green); }
+.vh-l5 .vh-level-title { color: var(--t1); }
+.vh-moat { margin-top: 32px; padding: 20px 24px; background: rgba(245,158,11,0.04); border: 1px solid rgba(245,158,11,0.14); border-radius: var(--r); }
+.vh-moat-text { font-size: 13px; color: var(--t2); line-height: 1.7; }
+.vh-moat-text strong { color: var(--amber); font-weight: 500; }
+@media (max-width: 600px) { .vh-level { grid-template-columns: 36px 1fr; } .vh-trust { display: none; } }
+
 /* ═══════════════════════════════════════════════════════════════
    LEVL TRUST FRAMEWORK — ANIMATION LAYER v3
    Premium scroll-driven motion. prefers-reduced-motion respected.
@@ -638,6 +660,95 @@ section:last-of-type { border-bottom: none; }
     </div>
   </div>
   <p style="font-size:14px;color:var(--t3);margin-top:24px;line-height:1.7;max-width:560px">Verification is the foundation. <strong style="color:var(--t2);font-weight:500">Reputation is what you build on top of it.</strong> Every signal LEVL records is anchored to a verified identity — making reputation evidence rather than claim.</p>
+</div>
+</section>
+
+<!-- SECTION — VERIFICATION HIERARCHY -->
+<section>
+<div class="page-inner">
+  <div class="sec-eyebrow">Verification Hierarchy</div>
+  <h2 class="sec-title">Not all signals carry<br><em>equal trust.</em></h2>
+  <p class="vh-intro">LEVL records evidence from multiple independent sources. Every signal is linked to its source and weighted according to how it was verified. The stronger the evidence, the stronger the contribution to reputation.</p>
+  <div class="vh-grid">
+
+    <div class="vh-level vh-l1">
+      <div class="vh-level-num">01</div>
+      <div class="vh-level-body">
+        <div class="vh-level-tag">Self Reported</div>
+        <div class="vh-level-title">Submitted by the creator</div>
+        <div class="vh-chips">
+          <span class="vh-chip">Creator submission</span>
+          <span class="vh-chip">Screenshots</span>
+          <span class="vh-chip">Invoices</span>
+          <span class="vh-chip">Contracts</span>
+        </div>
+      </div>
+      <div class="vh-trust">Foundational</div>
+    </div>
+
+    <div class="vh-level vh-l2">
+      <div class="vh-level-num">02</div>
+      <div class="vh-level-body">
+        <div class="vh-level-tag">Counterparty Confirmed</div>
+        <div class="vh-level-title">Acknowledged by a second party</div>
+        <div class="vh-chips">
+          <span class="vh-chip">Sponsor confirmation</span>
+          <span class="vh-chip">Brand acknowledgement</span>
+          <span class="vh-chip">Campaign validation</span>
+        </div>
+      </div>
+      <div class="vh-trust">Verified</div>
+    </div>
+
+    <div class="vh-level vh-l3">
+      <div class="vh-level-num">03</div>
+      <div class="vh-level-body">
+        <div class="vh-level-tag">Platform Verified</div>
+        <div class="vh-level-title">Pulled directly from the source</div>
+        <div class="vh-chips">
+          <span class="vh-chip">YouTube</span>
+          <span class="vh-chip">Twitch</span>
+          <span class="vh-chip">Discord</span>
+          <span class="vh-chip">Patreon</span>
+          <span class="vh-chip">API integrations</span>
+        </div>
+      </div>
+      <div class="vh-trust">High Confidence</div>
+    </div>
+
+    <div class="vh-level vh-l4">
+      <div class="vh-level-num">04</div>
+      <div class="vh-level-body">
+        <div class="vh-level-tag">Network Verified</div>
+        <div class="vh-level-title">Confirmed by multiple independent parties</div>
+        <div class="vh-chips">
+          <span class="vh-chip">Manager endorsements</span>
+          <span class="vh-chip">Sponsor confirmations</span>
+          <span class="vh-chip">Agency validation</span>
+        </div>
+      </div>
+      <div class="vh-trust">Very High Confidence</div>
+    </div>
+
+    <div class="vh-level vh-l5">
+      <div class="vh-level-num">05</div>
+      <div class="vh-level-body">
+        <div class="vh-level-tag">Reputation Derived</div>
+        <div class="vh-level-title">Earned through consistent behaviour over time</div>
+        <div class="vh-chips">
+          <span class="vh-chip">Repeat partnerships</span>
+          <span class="vh-chip">Campaign renewals</span>
+          <span class="vh-chip">Long-term consistency</span>
+          <span class="vh-chip">Behavioural history</span>
+        </div>
+      </div>
+      <div class="vh-trust">Highest Confidence</div>
+    </div>
+
+  </div>
+  <div class="vh-moat">
+    <p class="vh-moat-text">LEVL does not decide who is trustworthy. <strong>LEVL records what happened.</strong> Trust emerges from accumulated evidence — and that evidence history, built signal by signal over time, is what becomes increasingly difficult to replicate.</p>
+  </div>
 </div>
 </section>
 
