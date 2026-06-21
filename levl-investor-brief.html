@@ -1,0 +1,1323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LEVL — Investor Briefing Pack</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --amber:   #F59E0B;
+  --amber2:  #FBBF24;
+  --green:   #10B981;
+  --violet:  #7C3AED;
+  --red:     #EF4444;
+  --blue:    #3B82F6;
+  --t1:      #F5F3EE;
+  --t2:      rgba(245,243,238,0.62);
+  --t3:      rgba(245,243,238,0.30);
+  --t4:      rgba(245,243,238,0.12);
+  --surface: #0C0C1A;
+  --surface2:#101020;
+  --surface3:#14142a;
+  --border:  rgba(245,158,11,0.14);
+  --border2: rgba(245,243,238,0.07);
+  --sans:    'Inter', system-ui, sans-serif;
+  --mono:    'DM Mono', monospace;
+  --r:       10px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{font-size:15px;scroll-behavior:smooth;}
+body{background:var(--surface);color:var(--t1);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased;}
+
+/* ── DOCUMENT HEADER ── */
+.doc-header{padding:32px 0 0;border-bottom:1px solid var(--border);}
+.doc-inner{max-width:940px;margin:0 auto;padding:0 28px;}
+.doc-badge{display:inline-block;font-family:var(--mono);font-size:10px;color:var(--amber);background:rgba(245,158,11,0.08);border:1px solid var(--border);border-radius:4px;padding:3px 10px;text-transform:uppercase;letter-spacing:.1em;margin-bottom:14px;}
+.doc-title{font-size:30px;font-weight:700;color:var(--t1);letter-spacing:-.02em;line-height:1.15;margin-bottom:8px;}
+.doc-title em{color:var(--amber);font-style:normal;}
+.doc-sub{font-size:13px;color:var(--t3);margin-bottom:20px;max-width:580px;line-height:1.65;}
+.doc-meta{display:flex;gap:24px;flex-wrap:wrap;padding-bottom:20px;}
+.doc-meta-item{font-family:var(--mono);font-size:10px;color:var(--t3);letter-spacing:.04em;}
+.doc-meta-item span{color:var(--t2);}
+
+/* ── TAB NAVIGATION ── */
+.tab-nav{position:sticky;top:0;z-index:100;background:rgba(12,12,26,0.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--border2);}
+.tab-nav-inner{max-width:940px;margin:0 auto;padding:0 28px;display:flex;gap:0;overflow-x:auto;scrollbar-width:none;}
+.tab-nav-inner::-webkit-scrollbar{display:none;}
+.tab-btn{flex-shrink:0;padding:14px 20px;font-family:var(--sans);font-size:12px;font-weight:500;color:var(--t3);background:none;border:none;border-bottom:2px solid transparent;cursor:pointer;letter-spacing:.01em;transition:color .18s,border-color .18s;white-space:nowrap;}
+.tab-btn:hover{color:var(--t2);}
+.tab-btn.active{color:var(--amber);border-bottom-color:var(--amber);}
+
+/* ── TAB PANELS ── */
+.tab-panel{display:none;padding:48px 0 80px;}
+.tab-panel.active{display:block;}
+
+/* ── SECTION ── */
+.section{margin-bottom:52px;}
+.sec-eyebrow{font-family:var(--mono);font-size:10px;font-weight:500;color:var(--amber);text-transform:uppercase;letter-spacing:.12em;margin-bottom:8px;}
+.sec-title{font-size:22px;font-weight:700;color:var(--t1);letter-spacing:-.01em;margin-bottom:14px;line-height:1.25;}
+.sec-title em{color:var(--amber);font-style:normal;}
+.sec-body{font-size:14px;color:var(--t2);line-height:1.75;max-width:680px;margin-bottom:22px;}
+.section-rule{font-size:11px;font-weight:600;color:var(--amber);letter-spacing:.09em;text-transform:uppercase;margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--border);}
+
+/* ── PROSE ── */
+p{font-size:14px;color:var(--t2);line-height:1.75;margin-bottom:12px;}
+p strong{color:var(--t1);font-weight:500;}
+p:last-child{margin-bottom:0;}
+
+/* ── CALLOUTS ── */
+.callout{background:rgba(245,158,11,0.06);border:1px solid rgba(245,158,11,0.2);border-radius:var(--r);padding:16px 20px;margin-bottom:20px;font-size:13px;color:var(--t2);line-height:1.7;}
+.callout strong{color:var(--amber);font-weight:500;}
+.callout.green{background:rgba(16,185,129,0.05);border-color:rgba(16,185,129,0.18);}
+.callout.green strong{color:var(--green);}
+.callout.violet{background:rgba(124,58,237,0.07);border-color:rgba(124,58,237,0.2);}
+.callout.violet strong{color:#a78bfa;}
+.callout.note{background:rgba(245,243,238,0.03);border-color:var(--border2);}
+.callout.note strong{color:var(--t2);}
+.callout.warning{background:rgba(239,68,68,0.05);border-color:rgba(239,68,68,0.15);}
+.callout.warning strong{color:#f87171;}
+
+/* ── METRIC CARDS ── */
+.metric-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:20px;}
+.metric-card{background:var(--surface2);border:1px solid var(--border2);border-radius:var(--r);padding:16px;}
+.metric-label{font-size:10px;color:var(--t3);font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px;font-family:var(--mono);}
+.metric-val{font-family:var(--mono);font-size:22px;font-weight:500;color:var(--amber);margin-bottom:3px;}
+.metric-val.green{color:var(--green);}
+.metric-val.violet{color:#a78bfa;}
+.metric-val.white{color:var(--t1);}
+.metric-note{font-size:10px;color:var(--t3);}
+
+/* ── PHASE CARDS ── */
+.phases{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:8px;}
+.phase-card{background:var(--surface2);border:1px solid var(--border2);border-radius:var(--r);padding:20px;}
+.phase-card.hl{border-color:var(--border);}
+.phase-num{font-family:var(--mono);font-size:10px;color:var(--t3);letter-spacing:.08em;margin-bottom:6px;}
+.phase-name{font-size:14px;font-weight:600;color:var(--t1);margin-bottom:4px;}
+.phase-period{font-size:11px;color:var(--amber);font-family:var(--mono);margin-bottom:12px;}
+.phase-mrr{font-size:22px;font-weight:700;color:var(--green);font-family:var(--mono);letter-spacing:-.02em;margin-bottom:2px;}
+.phase-mrr-label{font-size:10px;color:var(--t3);font-family:var(--mono);letter-spacing:.06em;margin-bottom:10px;}
+.phase-stat{font-size:12px;color:var(--t2);margin-bottom:4px;}
+.phase-stat strong{color:var(--t1);}
+
+/* ── HIGHLIGHT CARDS ── */
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-bottom:20px;}
+.card{background:var(--surface2);border:1px solid var(--border2);border-radius:var(--r);padding:20px;}
+.card.hl{border-color:var(--border);}
+.card-eyebrow{font-size:10px;font-family:var(--mono);color:var(--amber);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px;}
+.card-title{font-size:13px;font-weight:600;color:var(--t1);margin-bottom:8px;}
+.card-body{font-size:12px;color:var(--t3);line-height:1.65;}
+.card-val{font-family:var(--mono);font-size:24px;font-weight:500;color:var(--amber);margin-bottom:4px;}
+.card-val.violet{color:#a78bfa;}
+.card-val.green{color:var(--green);}
+.card-sub{font-size:11px;color:var(--t3);}
+
+/* ── USER TYPE BADGES ── */
+.user-type-hdr{display:flex;align-items:center;gap:10px;margin-bottom:12px;}
+.user-type-badge{font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;font-family:var(--mono);letter-spacing:.04em;}
+.badge-creator{background:rgba(245,158,11,0.12);color:var(--amber);border:1px solid rgba(245,158,11,0.25);}
+.badge-manager{background:rgba(124,58,237,0.12);color:#a78bfa;border:1px solid rgba(124,58,237,0.25);}
+.badge-brand{background:rgba(16,185,129,0.10);color:var(--green);border:1px solid rgba(16,185,129,0.22);}
+
+/* ── TABLES ── */
+.tbl-wrap{overflow-x:auto;margin-bottom:18px;}
+.tbl-wrap table,.tbl-header table{width:100%;border-collapse:collapse;font-size:13px;}
+.tbl-wrap thead tr,.tbl-header thead tr{border-bottom:1px solid var(--border);}
+.tbl-wrap thead th,.tbl-header thead th{font-size:10px;font-weight:600;color:var(--t3);letter-spacing:.07em;text-transform:uppercase;padding:8px 12px;text-align:left;font-family:var(--mono);}
+.tbl-wrap tbody tr,.tbl-header tbody tr{border-bottom:1px solid var(--border2);}
+.tbl-wrap tbody tr:last-child,.tbl-header tbody tr:last-child{border-bottom:none;}
+.tbl-wrap tbody td,.tbl-header tbody td{padding:10px 12px;color:var(--t2);font-size:13px;vertical-align:top;}
+.tbl-wrap tbody td:first-child,.tbl-header tbody td:first-child{color:var(--t1);font-weight:500;}
+.tbl-header{background:var(--surface2);border:1px solid var(--border2);border-radius:var(--r);overflow:hidden;margin-bottom:12px;}
+.tbl-header-inner{padding:14px 20px;}
+.tbl-title{font-size:13px;font-weight:600;color:var(--t1);margin-bottom:2px;}
+.tbl-desc{font-size:11px;color:var(--t3);font-family:var(--mono);}
+.tbl-wrap thead th.r,.tbl-header thead th.r,.tbl-wrap tbody td.r,.tbl-header tbody td.r{text-align:right;}
+.mono{font-family:var(--mono);font-size:12px;}
+.green{color:var(--green);}
+.amber{color:var(--amber);}
+.violet{color:#a78bfa;}
+.dim{color:var(--t3);}
+.total-row td{color:var(--amber)!important;font-weight:600!important;border-top:1px solid var(--border)!important;}
+.row-phase td{color:var(--amber);font-weight:600;font-size:10px;text-transform:uppercase;letter-spacing:.07em;padding-top:14px;border-bottom:1px solid var(--border);background:rgba(245,158,11,0.03);}
+.row-sub td{color:var(--green)!important;font-weight:600!important;}
+
+/* ── TEAM TIMELINE ── */
+.team-timeline{position:relative;padding-left:24px;}
+.team-timeline::before{content:'';position:absolute;left:6px;top:8px;bottom:8px;width:1px;background:var(--border2);}
+.team-hire{position:relative;margin-bottom:18px;}
+.team-hire::before{content:'';position:absolute;left:-21px;top:6px;width:6px;height:6px;border-radius:50%;background:var(--amber);}
+.team-hire.green::before{background:var(--green);}
+.team-hire.violet::before{background:#a78bfa;}
+.hire-month{font-family:var(--mono);font-size:10px;color:var(--amber);letter-spacing:.07em;margin-bottom:3px;}
+.hire-month.green{color:var(--green);}
+.hire-month.violet{color:#a78bfa;}
+.hire-role{font-size:13px;font-weight:600;color:var(--t1);margin-bottom:2px;}
+.hire-detail{font-size:12px;color:var(--t2);}
+.hire-cost{font-family:var(--mono);font-size:11px;color:var(--t3);}
+
+/* ── BUDGET CARDS ── */
+.budget-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.budget-card{background:var(--surface2);border:1px solid var(--border2);border-radius:var(--r);padding:20px;}
+.budget-phase-label{font-size:10px;font-family:var(--mono);color:var(--amber);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px;}
+.budget-phase-name{font-size:13px;font-weight:600;color:var(--t1);margin-bottom:14px;}
+.budget-row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px;font-size:12px;}
+.budget-row-label{color:var(--t2);}
+.budget-row-val{font-family:var(--mono);color:var(--t1);font-size:12px;}
+.budget-total{border-top:1px solid var(--border2);margin-top:10px;padding-top:10px;display:flex;justify-content:space-between;font-size:13px;font-weight:600;}
+.budget-total-label{color:var(--t1);}
+.budget-total-val{font-family:var(--mono);color:var(--amber);}
+.budget-funding{margin-top:10px;padding:8px 12px;background:rgba(124,58,237,0.1);border:1px solid rgba(124,58,237,0.2);border-radius:6px;font-size:11px;color:#a78bfa;font-family:var(--mono);}
+
+/* ── MILESTONES ── */
+.milestones{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.milestone-card{background:var(--surface2);border:1px solid var(--border2);border-radius:var(--r);padding:20px;}
+.milestone-period{font-family:var(--mono);font-size:10px;color:var(--amber);letter-spacing:.07em;margin-bottom:8px;}
+.milestone-title{font-size:14px;font-weight:600;color:var(--t1);margin-bottom:10px;}
+.milestone-item{display:flex;gap:8px;font-size:12px;color:var(--t2);margin-bottom:6px;line-height:1.5;}
+.milestone-item::before{content:'—';color:var(--amber);flex-shrink:0;}
+
+/* ── SCENARIOS ── */
+.scenario-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.scenario-card{background:var(--surface2);border:1px solid var(--border2);border-radius:var(--r);padding:20px;}
+.scenario-card.hl{border-color:var(--border);}
+.scenario-label{font-size:10px;font-family:var(--mono);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px;}
+.scenario-label.bear{color:var(--t3);}
+.scenario-label.base{color:var(--amber);}
+.scenario-label.bull{color:var(--green);}
+.scenario-name{font-size:13px;font-weight:600;color:var(--t1);margin-bottom:12px;}
+.scenario-arr{font-size:26px;font-weight:700;font-family:var(--mono);letter-spacing:-.02em;margin-bottom:4px;}
+.scenario-arr.bear{color:var(--t2);}
+.scenario-arr.base{color:var(--amber);}
+.scenario-arr.bull{color:var(--green);}
+.scenario-arr-label{font-size:10px;color:var(--t3);font-family:var(--mono);margin-bottom:12px;}
+.scenario-metric{font-size:12px;color:var(--t2);margin-bottom:5px;}
+.scenario-metric strong{color:var(--t1);}
+
+/* ── RISK GRID ── */
+.risk-grid{display:grid;gap:10px;}
+.risk-row{display:grid;grid-template-columns:160px 1fr 90px 90px;gap:14px;padding:14px 16px;background:var(--surface2);border-radius:8px;border:1px solid var(--border2);align-items:start;}
+.risk-label{font-size:13px;font-weight:500;color:var(--t1);}
+.risk-desc{font-size:12px;color:var(--t2);line-height:1.5;}
+.risk-badge{font-size:10px;font-family:var(--mono);font-weight:500;text-transform:uppercase;letter-spacing:.06em;padding:3px 8px;border-radius:4px;text-align:center;}
+.risk-h{background:rgba(239,68,68,0.12);color:#f87171;border:1px solid rgba(239,68,68,0.2);}
+.risk-m{background:rgba(245,158,11,0.1);color:var(--amber);border:1px solid var(--border);}
+.risk-l{background:rgba(16,185,129,0.08);color:var(--green);border:1px solid rgba(16,185,129,0.15);}
+.risk-header{display:grid;grid-template-columns:160px 1fr 90px 90px;gap:14px;padding:6px 16px;margin-bottom:4px;}
+.risk-col-head{font-size:10px;font-family:var(--mono);color:var(--t3);text-transform:uppercase;letter-spacing:.07em;}
+
+/* ── Q&A ── */
+.qa-list{display:flex;flex-direction:column;gap:14px;}
+.qa-item{background:var(--surface2);border:1px solid var(--border2);border-radius:var(--r);padding:20px;}
+.qa-q{font-size:13px;font-weight:600;color:var(--t1);margin-bottom:8px;padding-left:22px;position:relative;}
+.qa-q::before{content:'Q';position:absolute;left:0;font-family:var(--mono);font-size:10px;font-weight:700;color:var(--amber);top:2px;}
+.qa-a{font-size:13px;color:var(--t2);line-height:1.7;padding-left:22px;position:relative;}
+.qa-a::before{content:'A';position:absolute;left:0;font-family:var(--mono);font-size:10px;font-weight:700;color:var(--green);top:2px;}
+
+/* ── SUCCESS CARDS ── */
+.success-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.success-card{background:var(--surface2);border:1px solid var(--border);border-radius:var(--r);padding:20px;}
+.success-eyebrow{font-size:10px;font-family:var(--mono);color:var(--amber);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;}
+.success-title{font-size:14px;font-weight:600;color:var(--t1);margin-bottom:12px;line-height:1.35;}
+.success-stat{font-size:12px;color:var(--t2);margin-bottom:5px;display:flex;gap:8px;line-height:1.5;}
+.success-stat::before{content:'◆';color:var(--green);flex-shrink:0;font-size:8px;margin-top:4px;}
+.success-headline{grid-column:1/-1;background:linear-gradient(135deg,rgba(245,158,11,0.08),rgba(16,185,129,0.05));border:1px solid var(--border);border-radius:var(--r);padding:28px;text-align:center;}
+.success-hl-label{font-size:10px;font-family:var(--mono);color:var(--amber);text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px;}
+.success-hl-title{font-size:26px;font-weight:700;color:var(--t1);letter-spacing:-.02em;margin-bottom:8px;line-height:1.2;}
+.success-hl-title em{color:var(--amber);font-style:normal;}
+.success-hl-sub{font-size:13px;color:var(--t2);line-height:1.65;max-width:520px;margin:0 auto;}
+
+/* ── DIVIDER ── */
+.divider{border:none;border-top:1px solid var(--border2);margin:36px 0;}
+
+/* ── WEDGE CARDS ── */
+.wedge-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:20px;}
+.wedge-card{background:var(--surface2);border:1px solid var(--border2);border-radius:var(--r);padding:20px;}
+.wedge-role{font-size:10px;font-family:var(--mono);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px;}
+.wedge-title{font-size:14px;font-weight:600;color:var(--t1);margin-bottom:8px;}
+.wedge-body{font-size:12px;color:var(--t3);line-height:1.65;}
+
+/* ── ASSUMPTION DISCLAIMER ── */
+.assumption-disclaimer{background:rgba(245,243,238,0.03);border:1px solid rgba(245,243,238,0.1);border-radius:var(--r);padding:16px 20px;margin-bottom:28px;}
+.assumption-disclaimer-title{font-size:11px;font-weight:600;color:var(--t2);margin-bottom:6px;letter-spacing:.02em;}
+.assumption-disclaimer-body{font-size:12px;color:var(--t3);line-height:1.65;}
+
+/* ── NOTE ── */
+.note{font-size:11px;color:var(--t3);line-height:1.6;margin-top:8px;}
+
+/* ── FOOTER ── */
+.doc-footer{border-top:1px solid var(--border2);padding-top:24px;margin-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+.footer-brand{font-size:13px;font-weight:600;color:var(--t1);letter-spacing:-.01em;}
+.footer-meta{font-size:11px;color:var(--t3);font-family:var(--mono);text-align:right;line-height:1.6;}
+
+/* ── MOBILE ── */
+@media(max-width:680px){
+  .phases,.budget-grid,.scenario-grid,.wedge-grid{grid-template-columns:1fr;}
+  .metric-grid{grid-template-columns:1fr 1fr;}
+  .milestones,.success-grid{grid-template-columns:1fr;}
+  .risk-row{grid-template-columns:1fr;}
+  .risk-header{display:none;}
+  .doc-title{font-size:22px;}
+  .tab-btn{padding:12px 14px;font-size:11px;}
+}
+
+/* ── PRINT ── */
+@media print{
+  .tab-nav{display:none;}
+  .tab-panel{display:block!important;page-break-before:always;}
+  .tab-panel:first-child{page-break-before:auto;}
+  body{background:#fff;color:#111;}
+  :root{--t1:#111;--t2:#333;--t3:#555;--surface:#fff;--surface2:#f5f5f5;--border2:#ddd;--border:#ccc;--amber:#B45309;--green:#047857;}
+}
+</style>
+</head>
+<body>
+
+<!-- DOCUMENT HEADER -->
+<div class="doc-header">
+  <div class="doc-inner">
+    <div class="doc-badge">Confidential — Investor Briefing Pack</div>
+    <div class="doc-title">LEVL — Commercial <em>Briefing</em></div>
+    <div class="doc-sub">Business model · unit economics · 36-month plan · risks · Q&amp;A &nbsp;·&nbsp; All financial figures are modelled projections, not validated actuals.</div>
+    <div class="doc-meta">
+      <div class="doc-meta-item">Prepared <span>June 2026</span></div>
+      <div class="doc-meta-item">Currency <span>GBP (£)</span></div>
+      <div class="doc-meta-item">Model <span>SaaS + Marketplace</span></div>
+      <div class="doc-meta-item">Horizon <span>M1 → M36</span></div>
+      <div class="doc-meta-item">Stage <span>Pre-seed / Seed</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- TAB NAVIGATION -->
+<div class="tab-nav">
+  <div class="tab-nav-inner">
+    <button class="tab-btn active" data-tab="overview">Overview</button>
+    <button class="tab-btn" data-tab="economics">Business Model &amp; Economics</button>
+    <button class="tab-btn" data-tab="plan">36-Month Plan</button>
+    <button class="tab-btn" data-tab="risks">Risks &amp; Scenarios</button>
+    <button class="tab-btn" data-tab="qa">Investor Q&amp;A</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- TAB 1: OVERVIEW                                             -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<div id="tab-overview" class="tab-panel active">
+<div class="doc-inner">
+
+  <!-- WHAT IS LEVL -->
+  <div class="section">
+    <div class="sec-eyebrow">What LEVL Is</div>
+    <h2 class="sec-title">Verified reputation infrastructure<br>for the <em>creator economy</em></h2>
+    <p class="sec-body">LEVL is a verified reputation platform for professional creators, talent managers, and brand sponsors. It gives creators a portable, verified professional record — built from confirmed campaign history, platform data, and counterparty endorsements — and gives managers and brands the tools to discover, evaluate, and work with creators based on evidence rather than follower counts.</p>
+    <p class="sec-body">The creator economy has an audience graph. It does not have a reputation graph. LEVL is building one.</p>
+  </div>
+
+  <!-- PROBLEM -->
+  <div class="section">
+    <div class="sec-eyebrow">The Problem</div>
+    <h2 class="sec-title">The market runs on <em>claims.</em> Not evidence.</h2>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-eyebrow">For Creators</div>
+        <div class="card-title">No portable professional record</div>
+        <div class="card-body">Every new brand relationship starts from scratch. There is no verified history of past deals, delivery, or renewal rates. Creators cannot prove reliability — only reach.</div>
+      </div>
+      <div class="card">
+        <div class="card-eyebrow">For Managers</div>
+        <div class="card-title">Roster value is invisible to the outside</div>
+        <div class="card-body">Talent managers carry deep knowledge of their roster but have no standardised way to present verified creator credentials to sponsors. Every pitch deck is bespoke and manual.</div>
+      </div>
+      <div class="card">
+        <div class="card-eyebrow">For Brands</div>
+        <div class="card-title">Hiring decisions made on vanity metrics</div>
+        <div class="card-body">Brands spend thousands on influencer agencies without verified data. Follower count, engagement rate, and self-reported past campaigns are easily manipulated and not independently confirmed.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHY NOW -->
+  <div class="section">
+    <div class="sec-eyebrow">Why Now</div>
+    <h2 class="sec-title">The market is ready for<br><em>professional infrastructure</em></h2>
+    <div class="callout">
+      <strong>The creator economy is professionalising.</strong> The first wave was about audience growth. The second wave — happening now — is about professional accountability, repeat commercial relationships, and career longevity. LEVL is infrastructure for the second wave.
+    </div>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-title">Platform data is now accessible</div>
+        <div class="card-body">YouTube, Twitch, TikTok, and other major platforms expose API-level data that makes independent verification technically feasible at scale — without self-reporting.</div>
+      </div>
+      <div class="card">
+        <div class="card-title">Brand accountability pressure is increasing</div>
+        <div class="card-body">High-profile influencer fraud cases and increased scrutiny on marketing ROI are pushing brands toward evidence-based talent selection. The appetite for verified credentials is growing.</div>
+      </div>
+      <div class="card">
+        <div class="card-title">Managers need tooling</div>
+        <div class="card-body">Talent management in the creator space is still largely manual — spreadsheets, email, and PDFs. There is no dominant CRM or verification layer. The category is open.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- THREE-SIDED MODEL -->
+  <div class="section">
+    <div class="sec-eyebrow">Commercial Structure</div>
+    <h2 class="sec-title">Three user types. One <em>compounding network.</em></h2>
+    <p class="sec-body">Each user type plays a distinct role in the model. The commercial priority of each segment is different from its network importance.</p>
+
+    <div class="wedge-grid">
+      <div class="wedge-card" style="border-color:rgba(124,58,237,0.25);">
+        <div class="wedge-role" style="color:#a78bfa;">Primary Commercial Wedge</div>
+        <div class="wedge-title">Managers &amp; Agencies</div>
+        <div class="wedge-body">The anchor segment for early revenue. Managers pay the highest ARPU, have the clearest ROI case, and bring entire creator rosters on signup — one Agency account can onboard 10–30 creators immediately. They are the fastest path to both revenue and supply-side density.</div>
+      </div>
+      <div class="wedge-card">
+        <div class="wedge-role" style="color:var(--amber);">Network Supply</div>
+        <div class="wedge-title">Creators</div>
+        <div class="wedge-body">Creators are the product, not the primary revenue driver at launch. Creator volume builds the reputation dataset that makes LEVL valuable to managers and brands. The £12/month Pro subscription validates intent and covers infrastructure cost — but creator growth is an adoption metric first, a revenue metric second.</div>
+      </div>
+      <div class="wedge-card" style="border-color:rgba(16,185,129,0.2);">
+        <div class="wedge-role" style="color:var(--green);">Demand-Side Validation</div>
+        <div class="wedge-title">Brands &amp; Sponsors</div>
+        <div class="wedge-body">Brands prove the platform has commercial value. Their willingness to pay for verified creator discovery signals that the data is worth something. Early brand accounts are as important as a proof point as they are as a revenue line.</div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>Go-to-market priority order:</strong> Managers first (supply + revenue simultaneously). Creators second (build the graph). Brands third (prove demand). Marketplace last (when deal flow exists to facilitate).
+    </div>
+  </div>
+
+  <!-- WHY SAAS FIRST -->
+  <div class="section">
+    <div class="sec-eyebrow">Model Philosophy</div>
+    <h2 class="sec-title">SaaS is the floor.<br><em>Marketplace is the ceiling.</em></h2>
+    <div class="card-grid">
+      <div class="card hl">
+        <div class="card-eyebrow">Phase 1–2 · SaaS First</div>
+        <div class="card-title">Subscriptions before transactions</div>
+        <div class="card-body">Transaction fees at launch create friction at the worst possible moment — when adoption is the only thing that matters. Subscriptions deliver predictable, recurring revenue that scales with the team budget. They also validate that users find genuine ongoing value, not just one-time utility.</div>
+      </div>
+      <div class="card">
+        <div class="card-eyebrow">Phase 2–3 · Marketplace Layer</div>
+        <div class="card-title">Facilitation fees when liquidity exists</div>
+        <div class="card-body">Once deal flow is happening through LEVL — creators being discovered, deals being negotiated, campaigns being confirmed — a 5% facilitation fee becomes natural and expected. Introduced too early, it discourages the behaviour that creates the data. Introduced at the right moment, it adds a high-margin revenue layer with zero incremental infrastructure cost.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- M36 SNAPSHOT -->
+  <div class="section">
+    <div class="sec-eyebrow">Month 36 — Base Case Projection</div>
+    <h2 class="sec-title">What this looks like<br><em>if it works</em></h2>
+    <p style="font-size:12px;color:var(--t3);margin-bottom:16px">All figures below are modelled projections. See the 36-Month Plan tab for full quarterly breakdown and assumptions.</p>
+    <div class="metric-grid">
+      <div class="metric-card">
+        <div class="metric-label">Projected ARR</div>
+        <div class="metric-val">£5.84M</div>
+        <div class="metric-note">From £0 · 36 months</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Total Subscribers</div>
+        <div class="metric-val green">9,935</div>
+        <div class="metric-note">Creator + Manager + Brand</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Team Size</div>
+        <div class="metric-val violet">22</div>
+        <div class="metric-note">Lean, no bloat</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">EBITDA</div>
+        <div class="metric-val">+ve</div>
+        <div class="metric-note">From approximately M34</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Capital Required</div>
+        <div class="metric-val violet">£4.3M</div>
+        <div class="metric-note">Seed + Series A</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Marketplace GMV</div>
+        <div class="metric-val">£2M/mo</div>
+        <div class="metric-note">Projected at M36</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Gross Margin</div>
+        <div class="metric-val">~78%</div>
+        <div class="metric-note">SaaS + marketplace blended</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Valuation Range</div>
+        <div class="metric-val">£29–47M</div>
+        <div class="metric-note">5–8× ARR at M36 (projected)</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-footer">
+    <div class="footer-brand">LEVL</div>
+    <div class="footer-meta">Confidential &amp; Commercially Sensitive · Not for distribution<br>Investor Briefing Pack · June 2026</div>
+  </div>
+
+</div>
+</div><!-- /tab-overview -->
+
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- TAB 2: BUSINESS MODEL & ECONOMICS                          -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<div id="tab-economics" class="tab-panel">
+<div class="doc-inner">
+
+  <div class="assumption-disclaimer">
+    <div class="assumption-disclaimer-title">Modelled Projections — Not Validated Actuals</div>
+    <div class="assumption-disclaimer-body">All LTV, CAC, churn, and margin figures in this section are early-stage estimates modelled from comparable B2B SaaS and marketplace businesses. No operating history exists to confirm these figures. They should be treated as directional targets and base-case assumptions, not proven performance data. Treat them accordingly.</div>
+  </div>
+
+  <!-- PRICING -->
+  <div class="section">
+    <div class="sec-eyebrow">Pricing by User Type</div>
+    <h2 class="sec-title">Three tiers. Three distinct<br><em>value propositions.</em></h2>
+
+    <div class="user-type-hdr">
+      <span class="user-type-badge badge-creator">Creator</span>
+      <span style="font-size:13px;color:var(--t3)">Freemium — adoption and network density</span>
+    </div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Plan</th><th>Price</th><th>What they get</th></tr></thead>
+        <tbody>
+          <tr><td>Free</td><td class="mono dim">£0</td><td>Profile, 2 platform connections, basic signals visible to verified viewers</td></tr>
+          <tr><td>Pro</td><td class="mono amber">£12–15/mo</td><td>All platform connections, full signal history, opportunity matching, verified badge, shareable Passport link, priority in sponsor discovery</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">Annual plan (~£120) reduces churn. Creators are price-sensitive but status-sensitive. One inbound sponsor deal — average deal exceeds £500 — pays 3–4 years of Pro. The subscription validates intent, not budget.</p>
+
+    <hr class="divider">
+
+    <div class="user-type-hdr">
+      <span class="user-type-badge badge-manager">Manager</span>
+      <span style="font-size:13px;color:var(--t3)">B2B SaaS — primary commercial wedge, highest assumed LTV</span>
+    </div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Plan</th><th>Price</th><th>What they get</th></tr></thead>
+        <tbody>
+          <tr><td>Starter</td><td class="mono amber">£79/mo</td><td>Up to 10 creators, roster dashboard, pitch pack export</td></tr>
+          <tr><td>Agency</td><td class="mono amber">£199/mo</td><td>Up to 50 creators, pipeline CRM, brand matching, priority support</td></tr>
+          <tr><td>Enterprise</td><td class="mono amber">£499+/mo</td><td>Unlimited roster, API access, white-label pitch packs, dedicated account manager</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">Managers have the clearest ROI: one deal closed through LEVL pays for a year of the tool. 200 Agency subscribers alone = £478K ARR. Each manager signup brings an immediate roster of 10–30 creators — making this the most efficient supply-side acquisition channel available.</p>
+
+    <hr class="divider">
+
+    <div class="user-type-hdr">
+      <span class="user-type-badge badge-brand">Sponsor / Brand</span>
+      <span style="font-size:13px;color:var(--t3)">Annual contracts — demand-side validation and margin</span>
+    </div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Plan</th><th>Price</th><th>What they get</th></tr></thead>
+        <tbody>
+          <tr><td>Discovery</td><td class="mono amber">£299/mo</td><td>Search verified creators, view full reputation profiles, signal breakdowns</td></tr>
+          <tr><td>Partner</td><td class="mono amber">£799/mo</td><td>Advanced filters, direct contact, signal analytics, deal tracking</td></tr>
+          <tr><td>Enterprise</td><td class="mono amber">£2,500–10,000/mo</td><td>API access, custom creator matching, dedicated account manager, white-glove onboarding</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">Brands already spend thousands per month on influencer agencies with worse data. A £3,600/year Discovery subscription is a rounding error if it avoids one bad hire or surfaces one reliable repeat partner. Sell annually — reduces churn and improves cash flow.</p>
+  </div>
+
+  <!-- UNIT ECONOMICS -->
+  <div class="section">
+    <div class="sec-eyebrow">Unit Economics</div>
+    <h2 class="sec-title">Modelled LTV:CAC — <em>targets, not actuals</em></h2>
+    <p class="sec-body">The ratios below are projections based on assumed acquisition channels, average retention, and early-stage market comparables. They are illustrative of the model's structure, not validated performance.</p>
+
+    <div class="card-grid">
+      <div class="card">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px"><span class="user-type-badge badge-creator">Creator Pro</span></div>
+        <div class="card-val">~18:1</div>
+        <div class="card-sub">Projected LTV:CAC · early-stage estimate</div>
+        <hr class="divider" style="margin:12px 0">
+        <div class="card-body">
+          Assumed CAC: £15–25 (content-led, organic, waitlist)<br>
+          Assumed LTV: £144/yr × 2.5yr avg retention = ~£360<br>
+          Target gross margin: ~85%<br><br>
+          <span style="color:var(--t3);font-size:11px">CAC is achievable at launch given organic demand from a curated waitlist. Retention assumption (2.5yr) is the most sensitive variable — if creators churn at 6%/month, LTV drops to ~£200.</span>
+        </div>
+      </div>
+      <div class="card">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px"><span class="user-type-badge badge-manager">Manager Agency</span></div>
+        <div class="card-val violet">~30:1</div>
+        <div class="card-sub">Target LTV:CAC · modelled assumption</div>
+        <hr class="divider" style="margin:12px 0">
+        <div class="card-body">
+          Assumed CAC: £150–300 (outbound, LinkedIn, events)<br>
+          Assumed LTV: £2,388/yr × 3yr avg retention = ~£7,164<br>
+          Target gross margin: ~80%<br><br>
+          <span style="color:var(--t3);font-size:11px">The strongest modelled ratio in the stack. Manager retention is assumed to be high because the tool becomes embedded in their workflow and their roster data creates switching cost. This assumption has not been validated.</span>
+        </div>
+      </div>
+      <div class="card">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px"><span class="user-type-badge badge-brand">Brand Discovery</span></div>
+        <div class="card-val green">~7:1</div>
+        <div class="card-sub">Conservative assumed LTV:CAC at seed stage</div>
+        <hr class="divider" style="margin:12px 0">
+        <div class="card-body">
+          Assumed CAC: £500–1,500 (sales-assisted, outbound)<br>
+          Assumed LTV: £3,588/yr × 2yr avg retention = ~£7,176<br>
+          Target gross margin: ~75%<br><br>
+          <span style="color:var(--t3);font-size:11px">7:1 is the weakest ratio at entry tier but acceptable at seed stage. Improves significantly with upsell to Partner (£799) or Enterprise. Brand CAC is higher because it requires direct sales engagement.</span>
+        </div>
+      </div>
+    </div>
+    <p class="note">Early sales effort should be focused on the manager segment — highest modelled ratio, fastest to close, and each manager brings their full creator roster as a secondary benefit. This is the commercial entry point that makes the whole model more efficient.</p>
+  </div>
+
+  <!-- COST STRUCTURE -->
+  <div class="section">
+    <div class="sec-eyebrow">Cost Structure</div>
+    <h2 class="sec-title">What the business <em>actually costs</em></h2>
+
+    <p style="margin-bottom:12px;font-size:13px;font-weight:500;color:var(--t1)">Infrastructure (variable — scales with users)</p>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Item</th><th>Seed stage</th><th>At 10K+ users</th></tr></thead>
+        <tbody>
+          <tr><td>Hosting (AWS / GCP)</td><td class="mono">£500–2,000/mo</td><td class="mono">£5,000–15,000/mo</td></tr>
+          <tr><td>Platform APIs (YouTube, Twitch, TikTok)</td><td class="mono">£0–200/mo</td><td class="mono">£500–2,000/mo</td></tr>
+          <tr><td>Storage / CDN</td><td class="mono">£200–500/mo</td><td class="mono">£1,000–3,000/mo</td></tr>
+          <tr><td>Email / comms</td><td class="mono">£100–300/mo</td><td class="mono">£500–1,500/mo</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note" style="margin-bottom:20px">Instagram/Meta API is restricted at launch. Plan: creator-verified screenshots + counterparty confirmation, clearly flagged as "counterparty-confirmed" not "API-verified." This preserves verification integrity with slightly lower confidence for Instagram signals. Meta partnership conversation targeted at Series A.</p>
+
+    <p style="margin-bottom:12px;font-size:13px;font-weight:500;color:var(--t1)">Team (the dominant fixed cost)</p>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Role</th><th>Annual cost</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>Founders × 3 (CEO, CTO, Growth)</td><td class="mono dim">£85–90K total draw</td><td class="dim">Deferred pre-revenue; minimal salary pre-seed</td></tr>
+          <tr><td>Full Stack Engineer (M3 hire)</td><td class="mono amber">£55,000</td><td class="dim">First external hire — product velocity</td></tr>
+          <tr><td>Customer Success Manager (M7)</td><td class="mono amber">£36,000</td><td class="dim">Creator onboarding, churn reduction</td></tr>
+          <tr><td>Sales / Partnerships Exec (M10)</td><td class="mono amber">£42,000 + OTE</td><td class="dim">First dedicated revenue role</td></tr>
+          <tr class="total-row"><td>Phase 1 peak payroll</td><td class="mono">~£160–190K/yr</td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="metric-grid" style="margin-top:16px">
+      <div class="metric-card">
+        <div class="metric-label">Phase 1 monthly burn</div>
+        <div class="metric-val">£24–30K</div>
+        <div class="metric-note">Lean team, no office required</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Marketing budget (Phase 1)</div>
+        <div class="metric-val">£3–8K/mo</div>
+        <div class="metric-note">Content + targeted outbound</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Seed runway (£800K raise)</div>
+        <div class="metric-val">18+ mo</div>
+        <div class="metric-note">Before revenue contribution</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BREAKEVEN -->
+  <div class="section">
+    <div class="sec-eyebrow">Path to Breakeven</div>
+    <h2 class="sec-title">The gap, and <em>how it closes</em></h2>
+    <p class="sec-body">Breakeven is modelled at approximately £35,000/month in operating costs for a lean Phase 1 team. The table below shows what subscriber volume is required and why entry-tier pricing alone does not get there.</p>
+
+    <div class="tbl-header">
+      <div class="tbl-header-inner">
+        <div class="tbl-title">Base recurring revenue — entry-tier pricing only</div>
+        <div class="tbl-desc">All subscribers at minimum plan price · not accounting for B2B tier upgrades</div>
+      </div>
+      <div class="tbl-wrap" style="margin-bottom:0">
+        <table>
+          <thead><tr><th>Segment</th><th class="r">Count</th><th class="r">Price</th><th class="r">Monthly revenue</th></tr></thead>
+          <tbody>
+            <tr><td>Creator Pro</td><td class="mono r">500</td><td class="mono r">£12/mo</td><td class="mono r green">£6,000</td></tr>
+            <tr><td>Manager Agency</td><td class="mono r">80</td><td class="mono r">£199/mo</td><td class="mono r green">£15,920</td></tr>
+            <tr><td>Brand Discovery (entry tier)</td><td class="mono r">15</td><td class="mono r">£299/mo</td><td class="mono r green">£4,485</td></tr>
+            <tr class="total-row"><td>Subtotal — base recurring</td><td class="mono r">595 paying</td><td></td><td class="mono r">£26,405/mo</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="callout warning" style="margin-top:8px">
+      <strong>Gap: £8,595/month.</strong> At entry-tier pricing, 595 paying subscribers generates £26,405/month against a £35,000 operating budget. This shortfall is intentional in the model — it is not covered by adding more Discovery-tier brand subscribers. It is covered by B2B tier upgrades among the brand segment, as shown below.
+    </div>
+
+    <div class="tbl-header" style="margin-top:16px">
+      <div class="tbl-header-inner">
+        <div class="tbl-title">With B2B tier upgrades — path to operational breakeven</div>
+        <div class="tbl-desc">Same subscriber count · realistic tier distribution among brand segment</div>
+      </div>
+      <div class="tbl-wrap" style="margin-bottom:0">
+        <table>
+          <thead><tr><th>Segment</th><th class="r">Count</th><th class="r">Price</th><th class="r">Monthly revenue</th></tr></thead>
+          <tbody>
+            <tr><td>Creator Pro</td><td class="mono r">500</td><td class="mono r">£12/mo</td><td class="mono r">£6,000</td></tr>
+            <tr><td>Manager Agency</td><td class="mono r">80</td><td class="mono r">£199/mo</td><td class="mono r">£15,920</td></tr>
+            <tr><td>Brand Discovery (entry)</td><td class="mono r">5</td><td class="mono r">£299/mo</td><td class="mono r">£1,495</td></tr>
+            <tr><td>Brand Partner (upgrade)</td><td class="mono r">7</td><td class="mono r">£799/mo</td><td class="mono r">£5,593</td></tr>
+            <tr><td>Brand Enterprise</td><td class="mono r">3</td><td class="mono r">£2,500/mo</td><td class="mono r">£7,500</td></tr>
+            <tr class="total-row"><td>Total — operational breakeven</td><td class="mono r">595 paying</td><td></td><td class="mono r">£36,508/mo</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="callout green" style="margin-top:8px">
+      <strong>With realistic B2B tier distribution, the same 595 subscribers generate £36,508/month — covering operating costs with a small buffer.</strong> The manager segment does the heavy lifting (£15,920 alone). Three enterprise brand accounts close the remaining gap. Manager-led onboarding makes this achievable within 12–15 months: each Agency manager signup brings 10–30 creators, compressing the supply-side timeline significantly.
+    </div>
+  </div>
+
+  <!-- 18-MONTH ARR TARGET -->
+  <div class="section">
+    <div class="sec-eyebrow">18-Month ARR Target</div>
+    <h2 class="sec-title">Approaching <em>Series A range</em></h2>
+    <p class="sec-body">Modelled target for M18, assuming seed close in Q3 2026, 6-person team, and manager-led creator onboarding at scale. Marketplace revenue excluded — any deal flow is upside on these projections.</p>
+    <div class="metric-grid">
+      <div class="metric-card">
+        <div class="metric-label">Creator Pro (projected)</div>
+        <div class="metric-val">2,000</div>
+        <div class="metric-note">Target · £288K ARR</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Manager Agency (projected)</div>
+        <div class="metric-val">200</div>
+        <div class="metric-note">Target · £478K ARR</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Brand Discovery (projected)</div>
+        <div class="metric-val">50</div>
+        <div class="metric-note">Target · £180K ARR</div>
+      </div>
+      <div class="metric-card" style="border-color:var(--border)">
+        <div class="metric-label">Total projected ARR</div>
+        <div class="metric-val">~£946K</div>
+        <div class="metric-note">Approaching £1M · Series A territory</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MARKETPLACE LAYER -->
+  <div class="section">
+    <div class="sec-eyebrow">Marketplace Layer — Year 2+</div>
+    <h2 class="sec-title">The model's upside —<br><em>not the launch model</em></h2>
+    <div class="callout">
+      <strong>Marketplace revenue is not baked into Phase 1 projections.</strong> It is the additional revenue layer that becomes available once deal flow between creators and brands is happening through LEVL. Introducing a facilitation fee before liquidity exists would kill adoption. The sequence matters.
+    </div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Variable</th><th>Assumption</th><th class="r">Projected monthly revenue</th></tr></thead>
+        <tbody>
+          <tr><td>Average creator–brand deal value</td><td class="mono">£500–5,000</td><td class="mono r dim">—</td></tr>
+          <tr><td>Facilitation fee</td><td class="mono">3–8% of deal value</td><td class="mono r dim">—</td></tr>
+          <tr><td>Target scale (Year 2–3)</td><td class="mono">500 deals/month</td><td class="mono r dim">—</td></tr>
+          <tr><td>At 5% on average £2,000 deal</td><td class="mono">£100/deal</td><td class="mono r green">£50,000/mo</td></tr>
+          <tr><td>At M36 (2,000 deals at £1,000 avg)</td><td class="mono">5% fee</td><td class="mono r green">£100,000/mo</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">£100K/month in facilitation revenue at M36 is an additional £1.2M ARR on top of subscription revenue — at near-zero incremental cost. The key unlock is becoming the place where deals are initiated, not just where creators are discovered. This requires patience with the sequencing: SaaS first, marketplace when liquidity warrants it.</p>
+  </div>
+
+  <div class="doc-footer">
+    <div class="footer-brand">LEVL</div>
+    <div class="footer-meta">Confidential &amp; Commercially Sensitive · Not for distribution<br>Business Model &amp; Economics · June 2026 · Modelled projections only</div>
+  </div>
+
+</div>
+</div><!-- /tab-economics -->
+
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- TAB 3: 36-MONTH PLAN                                       -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<div id="tab-plan" class="tab-panel">
+<div class="doc-inner">
+
+  <!-- PHASE OVERVIEW -->
+  <div class="section">
+    <div class="sec-eyebrow">36-Month Commercial Plan</div>
+    <h2 class="sec-title">Three phases. One compounding <em>asset.</em></h2>
+    <p class="sec-body">LEVL builds in one direction: verified reputation data accumulates, trust compounds, and the dataset becomes harder to replicate. All MRR and subscriber figures are projected base-case targets, not commitments.</p>
+    <div class="phases">
+      <div class="phase-card">
+        <div class="phase-num">PHASE 01</div>
+        <div class="phase-name">Foundation</div>
+        <div class="phase-period">Months 1–12</div>
+        <div class="phase-mrr">£20K</div>
+        <div class="phase-mrr-label">TARGET MRR AT M12</div>
+        <div class="phase-stat"><strong>~560</strong> projected paying subscribers</div>
+        <div class="phase-stat"><strong>4–6</strong> person team</div>
+        <div class="phase-stat"><strong>£800K</strong> seed raise</div>
+        <div class="phase-stat">Approaching breakeven</div>
+      </div>
+      <div class="phase-card hl">
+        <div class="phase-num">PHASE 02</div>
+        <div class="phase-name">Growth</div>
+        <div class="phase-period">Months 13–24</div>
+        <div class="phase-mrr">£125K</div>
+        <div class="phase-mrr-label">TARGET MRR AT M24</div>
+        <div class="phase-stat"><strong>~2,940</strong> projected paying subscribers</div>
+        <div class="phase-stat"><strong>10–14</strong> person team</div>
+        <div class="phase-stat"><strong>£3.5M</strong> Series A</div>
+        <div class="phase-stat">Marketplace goes live</div>
+      </div>
+      <div class="phase-card">
+        <div class="phase-num">PHASE 03</div>
+        <div class="phase-name">Scale</div>
+        <div class="phase-period">Months 25–36</div>
+        <div class="phase-mrr">£487K</div>
+        <div class="phase-mrr-label">TARGET MRR AT M36</div>
+        <div class="phase-stat"><strong>~9,935</strong> projected paying subscribers</div>
+        <div class="phase-stat"><strong>18–22</strong> person team</div>
+        <div class="phase-stat"><strong>£5.84M</strong> projected ARR</div>
+        <div class="phase-stat">EBITDA positive</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REVENUE TABLES -->
+  <div class="section">
+    <div class="sec-eyebrow">Revenue Projections</div>
+    <h2 class="sec-title">Quarterly MRR — all streams <em>+ marketplace</em></h2>
+
+    <div class="tbl-header">
+      <div class="tbl-header-inner">
+        <div class="tbl-title">Projected MRR by Revenue Stream — Quarterly</div>
+        <div class="tbl-desc">End-of-quarter base-case targets · amounts in £ · all figures modelled</div>
+      </div>
+      <div class="tbl-wrap" style="margin-bottom:0">
+        <table>
+          <thead><tr><th>Period</th><th class="r">Creators</th><th class="r">Managers</th><th class="r">Brands</th><th class="r">Marketplace</th><th class="r">Total MRR</th><th class="r">ARR Run Rate</th></tr></thead>
+          <tbody>
+            <tr class="row-phase"><td colspan="7">PHASE 1 — FOUNDATION · target burn: £24–30K/mo</td></tr>
+            <tr><td>Q1 (M3)</td><td class="r">1,200</td><td class="r">1,000</td><td class="r">—</td><td class="r">—</td><td class="r">2,200</td><td class="r">26,400</td></tr>
+            <tr><td>Q2 (M6)</td><td class="r">3,000</td><td class="r">3,970</td><td class="r">—</td><td class="r">—</td><td class="r">6,970</td><td class="r">83,640</td></tr>
+            <tr><td>Q3 (M9)</td><td class="r">4,800</td><td class="r">5,970</td><td class="r">800</td><td class="r">—</td><td class="r">11,570</td><td class="r">138,840</td></tr>
+            <tr class="row-sub"><td>Q4 (M12) — Phase 1 close</td><td class="r">6,000</td><td class="r">9,950</td><td class="r">2,495</td><td class="r">—</td><td class="r">18,445</td><td class="r">221,340</td></tr>
+            <tr class="row-phase"><td colspan="7">PHASE 2 — GROWTH · target burn: £60–90K/mo</td></tr>
+            <tr><td>Q5 (M15)</td><td class="r">9,600</td><td class="r">15,920</td><td class="r">5,985</td><td class="r">2,500</td><td class="r">34,005</td><td class="r">408,060</td></tr>
+            <tr><td>Q6 (M18)</td><td class="r">14,400</td><td class="r">21,890</td><td class="r">10,475</td><td class="r">8,000</td><td class="r">54,765</td><td class="r">657,180</td></tr>
+            <tr><td>Q7 (M21)</td><td class="r">22,800</td><td class="r">29,850</td><td class="r">17,465</td><td class="r">18,000</td><td class="r">88,115</td><td class="r">1,057,380</td></tr>
+            <tr class="row-sub"><td>Q8 (M24) — Phase 2 close</td><td class="r">32,400</td><td class="r">37,810</td><td class="r">24,950</td><td class="r">30,000</td><td class="r">125,160</td><td class="r">1,501,920</td></tr>
+            <tr class="row-phase"><td colspan="7">PHASE 3 — SCALE · target burn: £110–150K/mo</td></tr>
+            <tr><td>Q9 (M27)</td><td class="r">54,000</td><td class="r">57,710</td><td class="r">44,910</td><td class="r">52,000</td><td class="r">208,620</td><td class="r">2,503,440</td></tr>
+            <tr><td>Q10 (M30)</td><td class="r">72,000</td><td class="r">74,625</td><td class="r">64,870</td><td class="r">75,000</td><td class="r">286,495</td><td class="r">3,437,940</td></tr>
+            <tr><td>Q11 (M33)</td><td class="r">96,000</td><td class="r">99,500</td><td class="r">89,820</td><td class="r">95,000</td><td class="r">380,320</td><td class="r">4,563,840</td></tr>
+            <tr class="row-sub"><td>Q12 (M36) — Plan close</td><td class="r">108,000</td><td class="r">124,375</td><td class="r">154,690</td><td class="r">100,000</td><td class="r">487,065</td><td class="r">5,844,780</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="tbl-header" style="margin-top:14px">
+      <div class="tbl-header-inner">
+        <div class="tbl-title">Projected Subscriber Count by Tier — End of Period</div>
+        <div class="tbl-desc">Assumed churn: Creators 5%/mo · Managers 2.5%/mo · Brands 1.5%/mo · all modelled</div>
+      </div>
+      <div class="tbl-wrap" style="margin-bottom:0">
+        <table>
+          <thead><tr><th>Period</th><th class="r">Creators</th><th class="r">Managers</th><th class="r">Brands</th><th class="r">Total</th><th class="r">Marketplace Deals/mo</th></tr></thead>
+          <tbody>
+            <tr class="row-phase"><td colspan="6">PHASE 1 — FOUNDATION</td></tr>
+            <tr><td>Q1 (M3)</td><td class="r">100</td><td class="r">5</td><td class="r">—</td><td class="r">105</td><td class="r">—</td></tr>
+            <tr><td>Q2 (M6)</td><td class="r">250</td><td class="r">20</td><td class="r">—</td><td class="r">270</td><td class="r">—</td></tr>
+            <tr><td>Q3 (M9)</td><td class="r">400</td><td class="r">30</td><td class="r">2</td><td class="r">432</td><td class="r">—</td></tr>
+            <tr class="row-sub"><td>Q4 (M12)</td><td class="r">500</td><td class="r">50</td><td class="r">5</td><td class="r">555</td><td class="r">—</td></tr>
+            <tr class="row-phase"><td colspan="6">PHASE 2 — GROWTH</td></tr>
+            <tr><td>Q5 (M15)</td><td class="r">800</td><td class="r">80</td><td class="r">12</td><td class="r">892</td><td class="r">50</td></tr>
+            <tr><td>Q6 (M18)</td><td class="r">1,200</td><td class="r">110</td><td class="r">21</td><td class="r">1,331</td><td class="r">160</td></tr>
+            <tr><td>Q7 (M21)</td><td class="r">1,900</td><td class="r">150</td><td class="r">35</td><td class="r">2,085</td><td class="r">360</td></tr>
+            <tr class="row-sub"><td>Q8 (M24)</td><td class="r">2,700</td><td class="r">190</td><td class="r">50</td><td class="r">2,940</td><td class="r">600</td></tr>
+            <tr class="row-phase"><td colspan="6">PHASE 3 — SCALE</td></tr>
+            <tr><td>Q9 (M27)</td><td class="r">4,500</td><td class="r">290</td><td class="r">90</td><td class="r">4,880</td><td class="r">1,040</td></tr>
+            <tr><td>Q10 (M30)</td><td class="r">6,000</td><td class="r">375</td><td class="r">130</td><td class="r">6,505</td><td class="r">1,500</td></tr>
+            <tr><td>Q11 (M33)</td><td class="r">8,000</td><td class="r">500</td><td class="r">180</td><td class="r">8,680</td><td class="r">1,900</td></tr>
+            <tr class="row-sub"><td>Q12 (M36)</td><td class="r">9,000</td><td class="r">625</td><td class="r">310</td><td class="r">9,935</td><td class="r">2,000</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- MILESTONES -->
+  <div class="section">
+    <div class="sec-eyebrow">Phase Gate Milestones</div>
+    <h2 class="sec-title">What each phase <em>must prove</em></h2>
+    <div class="milestones">
+      <div class="milestone-card">
+        <div class="milestone-period">MONTH 12 — PHASE 1 CLOSE</div>
+        <div class="milestone-title">Product-market fit confirmed</div>
+        <div class="milestone-item">500+ paying creators — not gifted, not discounted</div>
+        <div class="milestone-item">50+ manager accounts — supply-side is using it</div>
+        <div class="milestone-item">Net Revenue Retention >95% across all tiers</div>
+        <div class="milestone-item">Creator monthly churn below 6%</div>
+        <div class="milestone-item">First brand accounts active and paying</div>
+        <div class="milestone-item">MRR approaching £18–22K</div>
+        <div class="milestone-item">Series A narrative ready — growth rate + retention story</div>
+      </div>
+      <div class="milestone-card">
+        <div class="milestone-period">MONTH 24 — PHASE 2 CLOSE</div>
+        <div class="milestone-title">Growth engine validated</div>
+        <div class="milestone-item">2,700+ creators, 190+ managers, 50+ brands</div>
+        <div class="milestone-item">Marketplace GMV >£600K/month — facilitation launched</div>
+        <div class="milestone-item">£125K MRR — £1.5M ARR run rate</div>
+        <div class="milestone-item">CAC payback below 9 months across all tiers</div>
+        <div class="milestone-item">Series A deployed, 12–14 person team in place</div>
+        <div class="milestone-item">One non-UK market live (US or EU)</div>
+        <div class="milestone-item">10+ enterprise brand accounts at £2K+/mo</div>
+      </div>
+      <div class="milestone-card">
+        <div class="milestone-period">MONTH 30 — MID PHASE 3</div>
+        <div class="milestone-title">Network effects visible</div>
+        <div class="milestone-item">LEVL reputation signals referenced in press or by brands publicly</div>
+        <div class="milestone-item">At least one major brand using LEVL for talent discovery at scale</div>
+        <div class="milestone-item">£286K MRR — £3.4M ARR</div>
+        <div class="milestone-item">Organic creator signups exceed paid acquisition volume</div>
+        <div class="milestone-item">16–18 person team, cost-efficient structure</div>
+        <div class="milestone-item">Series B scoping or revenue-funded path viable</div>
+      </div>
+      <div class="milestone-card">
+        <div class="milestone-period">MONTH 36 — PLAN CLOSE</div>
+        <div class="milestone-title">Category leadership established</div>
+        <div class="milestone-item">9,000+ creators, 625+ managers, 310+ brands</div>
+        <div class="milestone-item">£487K MRR — £5.84M projected ARR</div>
+        <div class="milestone-item">2,000 deals/month through marketplace</div>
+        <div class="milestone-item">EBITDA positive — from approximately M34</div>
+        <div class="milestone-item">22-person team, sub-£150K burn on £487K revenue</div>
+        <div class="milestone-item">Acquisition conversations realistic at 5–8× ARR</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TEAM -->
+  <div class="section">
+    <div class="sec-eyebrow">Team Build</div>
+    <h2 class="sec-title">Hires, timing, <em>and cost</em></h2>
+    <p class="sec-body">Revenue-generating and product-critical roles are hired first. Support functions (finance, operations, legal) are deferred until growth requires them. All salaries are fully-loaded UK market rates.</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px">
+      <div>
+        <div style="font-size:11px;font-family:var(--mono);color:var(--amber);text-transform:uppercase;letter-spacing:.08em;margin-bottom:18px">Phase 1 · Months 1–12</div>
+        <div class="team-timeline">
+          <div class="team-hire"><div class="hire-month">M0 — Founding Team</div><div class="hire-role">CEO / Product Lead</div><div class="hire-detail">Founder · minimal draw</div><div class="hire-cost">£25–30K draw (deferred pre-revenue)</div></div>
+          <div class="team-hire"><div class="hire-month">M0 — Founding Team</div><div class="hire-role">CTO / Engineering Lead</div><div class="hire-detail">Founder · builds core platform</div><div class="hire-cost">£25–30K draw (deferred pre-revenue)</div></div>
+          <div class="team-hire"><div class="hire-month">M0 — Founding Team</div><div class="hire-role">Head of Growth</div><div class="hire-detail">Founder or senior hire · creator acquisition, waitlist</div><div class="hire-cost">£25K draw / £55K if external</div></div>
+          <div class="team-hire"><div class="hire-month">M3 — First Hire</div><div class="hire-role">Full Stack Engineer</div><div class="hire-detail">Product velocity — features and API integrations</div><div class="hire-cost">£55,000/yr</div></div>
+          <div class="team-hire"><div class="hire-month">M7</div><div class="hire-role">Customer Success Manager</div><div class="hire-detail">Creator onboarding, churn reduction, manager relationships</div><div class="hire-cost">£36,000/yr</div></div>
+          <div class="team-hire"><div class="hire-month">M10</div><div class="hire-role">Sales / Partnerships Exec</div><div class="hire-detail">Manager and brand outbound — first dedicated revenue role</div><div class="hire-cost">£42,000 + OTE £15K</div></div>
+        </div>
+        <div style="padding:12px 16px;background:var(--surface2);border:1px solid var(--border2);border-radius:8px;font-size:12px;color:var(--t2);margin-top:14px">
+          <strong style="color:var(--t1)">Phase 1 peak payroll:</strong> £140–190K/year. With deferred founder draws, holds below £110K.
+        </div>
+      </div>
+      <div>
+        <div style="font-size:11px;font-family:var(--mono);color:var(--green);text-transform:uppercase;letter-spacing:.08em;margin-bottom:18px">Phase 2 · Months 13–24</div>
+        <div class="team-timeline">
+          <div class="team-hire green"><div class="hire-month green">M13</div><div class="hire-role">Backend / Infrastructure Engineer</div><div class="hire-detail">Scale API, verification pipeline, data integrity</div><div class="hire-cost">£62,000/yr</div></div>
+          <div class="team-hire green"><div class="hire-month green">M15</div><div class="hire-role">Brand Partnerships Manager</div><div class="hire-detail">Own the brand tier — enterprise relationships and deal flow</div><div class="hire-cost">£52,000 + OTE £20K</div></div>
+          <div class="team-hire green"><div class="hire-month green">M17</div><div class="hire-role">Data / ML Engineer</div><div class="hire-detail">Reputation scoring, signal weighting, marketplace matching</div><div class="hire-cost">£68,000/yr</div></div>
+          <div class="team-hire green"><div class="hire-month green">M19</div><div class="hire-role">Head of Marketing</div><div class="hire-detail">Brand, creator community, PR — category narrative</div><div class="hire-cost">£72,000/yr</div></div>
+          <div class="team-hire green"><div class="hire-month green">M21</div><div class="hire-role">Account Executive × 2</div><div class="hire-detail">Manager and brand outbound — quota-carrying</div><div class="hire-cost">£48,000 each + OTE £25K</div></div>
+          <div class="team-hire green"><div class="hire-month green">M23</div><div class="hire-role">Head of Partnerships</div><div class="hire-detail">Platform integrations — YouTube, Twitch, TikTok, agencies</div><div class="hire-cost">£88,000/yr</div></div>
+        </div>
+        <div style="padding:12px 16px;background:var(--surface2);border:1px solid var(--border2);border-radius:8px;font-size:12px;color:var(--t2);margin-top:14px">
+          <strong style="color:var(--t1)">Phase 2 peak payroll:</strong> £500–650K/year. Series A funds this. Revenue covers payroll from approximately M20–22.
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:28px">
+      <div style="font-size:11px;font-family:var(--mono);color:#a78bfa;text-transform:uppercase;letter-spacing:.08em;margin-bottom:18px">Phase 3 · Months 25–36</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px">
+        <div class="team-timeline">
+          <div class="team-hire violet"><div class="hire-month violet">M25</div><div class="hire-role">Engineer × 2</div><div class="hire-detail">Product scale — mobile app, API, creator tools</div><div class="hire-cost">£62,000/yr each</div></div>
+          <div class="team-hire violet"><div class="hire-month violet">M27</div><div class="hire-role">Head of Sales</div><div class="hire-detail">Owns full commercial function — manages AEs, sets targets</div><div class="hire-cost">£95,000 + OTE £40K</div></div>
+          <div class="team-hire violet"><div class="hire-month violet">M28</div><div class="hire-role">Account Executive × 2 (expansion)</div><div class="hire-detail">International market — US or EU primary</div><div class="hire-cost">£50,000 + OTE £30K each</div></div>
+          <div class="team-hire violet"><div class="hire-month violet">M30</div><div class="hire-role">Operations Manager</div><div class="hire-detail">Internal process, onboarding, compliance</div><div class="hire-cost">£46,000/yr</div></div>
+        </div>
+        <div class="team-timeline">
+          <div class="team-hire violet"><div class="hire-month violet">M30</div><div class="hire-role">Marketing Executive</div><div class="hire-detail">Content, creator community, events</div><div class="hire-cost">£40,000/yr</div></div>
+          <div class="team-hire violet"><div class="hire-month violet">M32</div><div class="hire-role">Finance Director</div><div class="hire-detail">FP&amp;A, investor reporting, fundraise prep</div><div class="hire-cost">£82,000/yr</div></div>
+          <div class="team-hire violet"><div class="hire-month violet">M33</div><div class="hire-role">Country Manager</div><div class="hire-detail">Lead international territory — US or Europe</div><div class="hire-cost">£75,000/yr + equity</div></div>
+          <div class="team-hire violet"><div class="hire-month violet">M35</div><div class="hire-role">VP Customer Success</div><div class="hire-detail">Enterprise retention and expansion revenue</div><div class="hire-cost">£78,000/yr</div></div>
+        </div>
+      </div>
+      <div style="padding:12px 16px;background:var(--surface2);border:1px solid var(--border2);border-radius:8px;font-size:12px;color:var(--t2);margin-top:14px">
+        <strong style="color:var(--t1)">Phase 3 peak payroll:</strong> £900K–£1.1M/year at M36. Against £487K MRR (£5.84M ARR), this is a 19% headcount-to-revenue ratio — efficient for a SaaS business at this stage.
+      </div>
+    </div>
+  </div>
+
+  <!-- BUDGET & FUNDING -->
+  <div class="section">
+    <div class="sec-eyebrow">Budget &amp; Funding</div>
+    <h2 class="sec-title">What it costs — and <em>where the money comes from</em></h2>
+    <p class="sec-body">Two funding events required: Seed to reach product-market fit; Series A to capitalise growth. Phase 3 is revenue-funded. Series B is positioned as an offensive international raise — not a survival move.</p>
+
+    <div class="budget-grid">
+      <div class="budget-card">
+        <div class="budget-phase-label">Phase 1 · M1–M12</div>
+        <div class="budget-phase-name">Foundation Budget</div>
+        <div class="budget-row"><span class="budget-row-label">Payroll (team of 6)</span><span class="budget-row-val">£160K</span></div>
+        <div class="budget-row"><span class="budget-row-label">Infrastructure &amp; APIs</span><span class="budget-row-val">£24K</span></div>
+        <div class="budget-row"><span class="budget-row-label">Creator acquisition</span><span class="budget-row-val">£40K</span></div>
+        <div class="budget-row"><span class="budget-row-label">Legal, compliance</span><span class="budget-row-val">£25K</span></div>
+        <div class="budget-row"><span class="budget-row-label">Office / ops / tools</span><span class="budget-row-val">£18K</span></div>
+        <div class="budget-row"><span class="budget-row-label">Contingency (10%)</span><span class="budget-row-val">£27K</span></div>
+        <div class="budget-total"><span class="budget-total-label">Total projected burn</span><span class="budget-total-val">~£294K</span></div>
+        <div class="budget-row" style="margin-top:10px"><span class="budget-row-label">Revenue offset</span><span class="budget-row-val">~£70K</span></div>
+        <div class="budget-total"><span class="budget-total-label">Net cash required</span><span class="budget-total-val">~£224K</span></div>
+        <div class="budget-funding">Seed: £800K target · 18+ months runway</div>
+      </div>
+      <div class="budget-card">
+        <div class="budget-phase-label">Phase 2 · M13–M24</div>
+        <div class="budget-phase-name">Growth Budget</div>
+        <div class="budget-row"><span class="budget-row-label">Payroll (team of 14)</span><span class="budget-row-val">£580K</span></div>
+        <div class="budget-row"><span class="budget-row-label">Infrastructure scale-up</span><span class="budget-row-val">£72K</span></div>
+        <div class="budget-row"><span class="budget-row-label">Sales &amp; marketing</span><span class="budget-row-val">£180K</span></div>
+        <div class="budget-row"><span class="budget-row-label">Platform partnerships</span><span class="budget-row-val">£60K</span></div>
+        <div class="budget-row"><span class="budget-row-label">Legal / international</span><span class="budget-row-val">£45K</span></div>
+        <div class="budget-row"><span class="budget-row-label">Contingency (10%)</span><span class="budget-row-val">£94K</span></div>
+        <div class="budget-total"><span class="budget-total-label">Total projected burn</span><span class="budget-total-val">~£1.03M</span></div>
+        <div class="budget-row" style="margin-top:10px"><span class="budget-row-label">Revenue offset</span><span class="budget-row-val">~£680K</span></div>
+        <div class="budget-total"><span class="budget-total-label">Net cash required</span><span class="budget-total-val">~£350K</span></div>
+        <div class="budget-funding">Series A: £3.5M target · growth capital + 2yr runway</div>
+      </div>
+      <div class="budget-card">
+        <div class="budget-phase-label">Phase 3 · M25–M36</div>
+        <div class="budget-phase-name">Scale Budget</div>
+        <div class="budget-row"><span class="budget-row-label">Payroll (team of 22)</span><span class="budget-row-val">£980K</span></div>
+        <div class="budget-row"><span class="budget-row-label">Infrastructure</span><span class="budget-row-val">£120K</span></div>
+        <div class="budget-row"><span class="budget-row-label">Sales &amp; marketing</span><span class="budget-row-val">£240K</span></div>
+        <div class="budget-row"><span class="budget-row-label">International expansion</span><span class="budget-row-val">£150K</span></div>
+        <div class="budget-row"><span class="budget-row-label">G&amp;A / Finance / Legal</span><span class="budget-row-val">£80K</span></div>
+        <div class="budget-row"><span class="budget-row-label">Contingency (8%)</span><span class="budget-row-val">£125K</span></div>
+        <div class="budget-total"><span class="budget-total-label">Total projected burn</span><span class="budget-total-val">~£1.70M</span></div>
+        <div class="budget-row" style="margin-top:10px"><span class="budget-row-label">Revenue (projected)</span><span class="budget-row-val">~£2.85M</span></div>
+        <div class="budget-total"><span class="budget-total-label">Net projected surplus</span><span class="budget-total-val">+£1.15M</span></div>
+        <div class="budget-funding">Revenue-funded · Series B optional</div>
+      </div>
+    </div>
+
+    <div class="tbl-header" style="margin-top:16px">
+      <div class="tbl-header-inner">
+        <div class="tbl-title">Projected Burn vs Revenue — Monthly Average by Phase</div>
+        <div class="tbl-desc">Phase averages · net burn = total spend minus revenue collected · all modelled</div>
+      </div>
+      <div class="tbl-wrap" style="margin-bottom:0">
+        <table>
+          <thead><tr><th>Phase</th><th class="r">Avg Monthly Burn</th><th class="r">Avg Monthly Revenue</th><th class="r">Net Monthly Burn</th><th class="r">Peak Headcount</th><th>Funding Source</th></tr></thead>
+          <tbody>
+            <tr><td>Phase 1 (M1–M12)</td><td class="r mono">£24,500</td><td class="r mono">£5,800</td><td class="r mono">£18,700</td><td class="r">6</td><td>Seed (£800K)</td></tr>
+            <tr><td>Phase 2 (M13–M24)</td><td class="r mono">£85,800</td><td class="r mono">£56,600</td><td class="r mono">£29,200</td><td class="r">14</td><td>Series A (£3.5M)</td></tr>
+            <tr class="row-sub"><td>Phase 3 (M25–M36)</td><td class="r mono">£141,700</td><td class="r mono">£237,500</td><td class="r mono green">−£95,800</td><td class="r">22</td><td>Revenue-funded</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- M36 OUTCOME -->
+  <div class="section">
+    <div class="sec-eyebrow">Month 36 — Projected Outcome</div>
+    <h2 class="sec-title">What <em>it worked</em> actually means</h2>
+    <div class="success-grid">
+      <div class="success-headline">
+        <div class="success-hl-label">Month 36 — Base Case Projection</div>
+        <div class="success-hl-title">£5.84M ARR · 9,935 subscribers<br><em>EBITDA positive</em></div>
+        <div class="success-hl-sub">A 22-person team has built verified reputation infrastructure for the UK creator economy — with a dataset no competitor can instantly replicate and a marketplace layer generating £2M+ in projected monthly deal GMV.</div>
+      </div>
+      <div class="success-card">
+        <div class="success-eyebrow">Product</div>
+        <div class="success-title">Reputation graph is real and growing</div>
+        <div class="success-stat">9,000+ creators with verified signal histories</div>
+        <div class="success-stat">625+ manager accounts using LEVL as primary talent CRM</div>
+        <div class="success-stat">310+ brand accounts running discovery through verified signals</div>
+        <div class="success-stat">2,000+ deals/month facilitated through marketplace</div>
+        <div class="success-stat">Reputation dataset that predates any competitor by 3 years</div>
+      </div>
+      <div class="success-card">
+        <div class="success-eyebrow">Commercial</div>
+        <div class="success-title">Revenue is diversified</div>
+        <div class="success-stat">Creator tier: £108K MRR — high volume, low concentration risk</div>
+        <div class="success-stat">Manager tier: £124K MRR — sticky B2B, 97%+ target retention</div>
+        <div class="success-stat">Brand tier: £154K MRR — enterprise relationships, expanding ARPU</div>
+        <div class="success-stat">Marketplace: £100K MRR — non-dilutive, improves with liquidity</div>
+        <div class="success-stat">Projected NRR above 110% — expansion revenue compounds</div>
+      </div>
+      <div class="success-card">
+        <div class="success-eyebrow">Investor Position</div>
+        <div class="success-title">Multiple exit or growth paths</div>
+        <div class="success-stat">At 5× ARR: company valued at ~£29M projected</div>
+        <div class="success-stat">At 8× ARR (network effect premium): ~£47M projected</div>
+        <div class="success-stat">Series B: raise from strength into international, not survival</div>
+        <div class="success-stat">Strategic acquirer interest: talent agencies, MCNs, platforms, LinkedIn</div>
+        <div class="success-stat">Revenue-funded path: profitable without further dilution</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-footer">
+    <div class="footer-brand">LEVL</div>
+    <div class="footer-meta">Confidential &amp; Commercially Sensitive · Not for distribution<br>36-Month Plan · June 2026 · Base case projections</div>
+  </div>
+
+</div>
+</div><!-- /tab-plan -->
+
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- TAB 4: RISKS & SCENARIOS                                   -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<div id="tab-risks" class="tab-panel">
+<div class="doc-inner">
+
+  <!-- SCENARIOS -->
+  <div class="section">
+    <div class="sec-eyebrow">Scenario Analysis</div>
+    <h2 class="sec-title">Bear, base, and bull —<br>projected at <em>month 36</em></h2>
+    <p class="sec-body">Base case is what the 36-month plan models. Bear case assumes B2B adoption is slower than projected — creators sign up but the manager and brand side takes longer to close. Bull case assumes a major institutional partnership (agency group, MCN, or platform) drives accelerated adoption.</p>
+    <div class="scenario-grid">
+      <div class="scenario-card">
+        <div class="scenario-label bear">Bear Case</div>
+        <div class="scenario-name">B2B Adoption Slower Than Projected</div>
+        <div class="scenario-arr bear">£2.1M</div>
+        <div class="scenario-arr-label">Projected ARR at M36</div>
+        <div class="scenario-metric">Creators: <strong>6,000</strong></div>
+        <div class="scenario-metric">Managers: <strong>200</strong></div>
+        <div class="scenario-metric">Brands: <strong>80</strong></div>
+        <div class="scenario-metric">Marketplace: <strong>Minimal / not launched</strong></div>
+        <div class="scenario-metric">Team: <strong>12 people</strong></div>
+        <div class="scenario-metric">Status: <strong>Viable — raise more or reduce burn</strong></div>
+        <div style="margin-top:12px;font-size:11px;color:var(--t3);line-height:1.6">Creator-led growth works but without manager adoption, the supply-side onboarding advantage doesn't compound. Brand deals and marketplace revenue don't follow. Focus shifts to creator-direct monetisation and revised Series A narrative.</div>
+      </div>
+      <div class="scenario-card hl">
+        <div class="scenario-label base">Base Case</div>
+        <div class="scenario-name">Steady Two-Sided Growth</div>
+        <div class="scenario-arr base">£5.84M</div>
+        <div class="scenario-arr-label">Projected ARR at M36</div>
+        <div class="scenario-metric">Creators: <strong>9,000</strong></div>
+        <div class="scenario-metric">Managers: <strong>625</strong></div>
+        <div class="scenario-metric">Brands: <strong>310</strong></div>
+        <div class="scenario-metric">Marketplace: <strong>£100K MRR projected</strong></div>
+        <div class="scenario-metric">Team: <strong>22 people</strong></div>
+        <div class="scenario-metric">Status: <strong>EBITDA positive · Series B optional</strong></div>
+        <div style="margin-top:12px;font-size:11px;color:var(--t3);line-height:1.6">Both sides of the marketplace grow steadily. Network effects begin to compound from M24+. Reputation dataset becomes a genuine moat. This is what the 36-month plan models.</div>
+      </div>
+      <div class="scenario-card">
+        <div class="scenario-label bull">Bull Case</div>
+        <div class="scenario-name">Platform Partnership Unlocks Scale</div>
+        <div class="scenario-arr bull">£11M+</div>
+        <div class="scenario-arr-label">Projected ARR at M36</div>
+        <div class="scenario-metric">Creators: <strong>18,000+</strong></div>
+        <div class="scenario-metric">Managers: <strong>1,200+</strong></div>
+        <div class="scenario-metric">Brands: <strong>600+</strong></div>
+        <div class="scenario-metric">Marketplace: <strong>£250K+ MRR projected</strong></div>
+        <div class="scenario-metric">Team: <strong>30–35 people</strong></div>
+        <div class="scenario-metric">Status: <strong>Category-defining · Series B active</strong></div>
+        <div style="margin-top:12px;font-size:11px;color:var(--t3);line-height:1.6">A major agency group, MCN, or platform (YouTube, TikTok) formally endorses or integrates LEVL verification. Creator adoption driven by institutional demand for verified talent at scale.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RISK REGISTER -->
+  <div class="section">
+    <div class="sec-eyebrow">Risk Register</div>
+    <h2 class="sec-title">Known risks and <em>mitigations</em></h2>
+    <div class="risk-header">
+      <div class="risk-col-head">Risk</div>
+      <div class="risk-col-head">Description &amp; Mitigation</div>
+      <div class="risk-col-head">Likelihood</div>
+      <div class="risk-col-head">Impact</div>
+    </div>
+    <div class="risk-grid">
+      <div class="risk-row">
+        <div class="risk-label">Creator churn too high</div>
+        <div class="risk-desc">Creators join but don't sustain subscription if deal flow doesn't materialise. At 8%+ monthly churn, LTV assumptions collapse. <strong style="color:var(--t1)">Mitigation:</strong> manager-side adoption drives brand demand, which is the visible creator value. Onboarding must show verified signal progress within week 1. Annual billing reduces churn by 30–40% in comparable tools.</div>
+        <div><span class="risk-badge risk-m">Medium</span></div>
+        <div><span class="risk-badge risk-h">High</span></div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">Manager onboarding slower than modelled</div>
+        <div class="risk-desc">Manager-led onboarding is the supply-side strategy. If managers are harder to acquire than assumed, creator supply growth is slower and brand adoption is delayed. <strong style="color:var(--t1)">Mitigation:</strong> direct creator outreach as parallel channel; founding cohort programme locks in early supply independently of manager adoption.</div>
+        <div><span class="risk-badge risk-m">Medium</span></div>
+        <div><span class="risk-badge risk-h">High</span></div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">Brand tier slow to adopt</div>
+        <div class="risk-desc">Brands have existing workflows (agencies, spreadsheets, internal teams) and procurement friction. <strong style="color:var(--t1)">Mitigation:</strong> target mid-market brands without full agency support first — shorter cycles, more open to new tooling. ROI story is discovery speed + risk reduction, not replacing agency relationships.</div>
+        <div><span class="risk-badge risk-m">Medium</span></div>
+        <div><span class="risk-badge risk-m">Medium</span></div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">Platform API dependency</div>
+        <div class="risk-desc">YouTube, TikTok, and Instagram could restrict or change API access (precedent exists — Meta already restricts Instagram). <strong style="color:var(--t1)">Mitigation:</strong> diversify verification sources across counterparty confirmation, behavioural data, and manager endorsements. None of these require platform API access. Build proprietary data layer early. Meta partnership conversation at Series A.</div>
+        <div><span class="risk-badge risk-m">Medium</span></div>
+        <div><span class="risk-badge risk-h">High</span></div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">Competitor replication</div>
+        <div class="risk-desc">Large MCNs, LinkedIn, or influencer marketing platforms (AspireIQ, Creator.co) could add verification features. <strong style="color:var(--t1)">Mitigation:</strong> moat is the historical dataset — a competitor launching 18 months late builds an empty version of the same product. Data depth and temporal coverage cannot be bought or shortcut.</div>
+        <div><span class="risk-badge risk-h">High</span></div>
+        <div><span class="risk-badge risk-m">Medium</span></div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">B2B sales cycle too long</div>
+        <div class="risk-desc">Enterprise brands have 3–6 month procurement cycles that compress cash flow assumptions in Phase 2. <strong style="color:var(--t1)">Mitigation:</strong> focus Phase 2 on SMB brands at £299/mo self-serve — no procurement involvement. Let enterprise close later when the product is proven. Monthly contracts with no lock-in lower the entry barrier.</div>
+        <div><span class="risk-badge risk-l">Low</span></div>
+        <div><span class="risk-badge risk-m">Medium</span></div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-label">Regulatory / data privacy</div>
+        <div class="risk-desc">GDPR and evolving data regulations around professional identity and behavioural tracking require careful architecture. <strong style="color:var(--t1)">Mitigation:</strong> legal review from M1; signals tied to verified professional identity only; clear data processing agreements with all counterparties; opt-in architecture for all signals.</div>
+        <div><span class="risk-badge risk-l">Low</span></div>
+        <div><span class="risk-badge risk-h">High</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- KEY ASSUMPTIONS -->
+  <div class="section">
+    <div class="sec-eyebrow">Model Assumptions</div>
+    <h2 class="sec-title">What the projections <em>depend on</em></h2>
+    <div class="tbl-header">
+      <div class="tbl-header-inner">
+        <div class="tbl-title">Key Model Assumptions — Sensitivity and Downside</div>
+        <div class="tbl-desc">All values are assumed targets · none are validated actuals</div>
+      </div>
+      <div class="tbl-wrap" style="margin-bottom:0">
+        <table>
+          <thead><tr><th>Assumption</th><th>Value assumed</th><th>Sensitivity</th><th>If wrong</th></tr></thead>
+          <tbody>
+            <tr><td>Creator monthly churn</td><td class="mono">5.0%</td><td class="amber">High</td><td>Each +1% churn ≈ −£8–12K ARR at scale. Most sensitive variable in the model.</td></tr>
+            <tr><td>Manager monthly churn</td><td class="mono">2.5%</td><td class="amber">High</td><td>Low retention is the plan's anchor assumption. If managers churn like creators, the LTV:CAC story collapses.</td></tr>
+            <tr><td>Brand monthly churn</td><td class="mono">1.5%</td><td class="amber">Medium</td><td>Annual contracts naturally reduce this. Discovery-tier brands with no ROI proof point are most at risk.</td></tr>
+            <tr><td>Creator CAC at M12</td><td class="mono">£22</td><td class="amber">Medium</td><td>If CAC holds at £30 through Phase 2, payback extends but unit economics remain viable.</td></tr>
+            <tr><td>Manager-led creator supply</td><td class="mono">10–30 creators/signup</td><td class="amber">High</td><td>If managers average 5 creators per signup, supply-side acquisition timeline doubles.</td></tr>
+            <tr><td>Marketplace deal avg value</td><td class="mono">£1,000</td><td class="amber">High</td><td>If avg deal is £500, marketplace MRR halves. Subscriptions remain primary throughout.</td></tr>
+            <tr><td>Manager ARPU</td><td class="mono">£199/mo avg</td><td class="amber">Medium</td><td>Blended avg — agencies on Enterprise offset solo managers on Starter. Mix is unvalidated.</td></tr>
+            <tr><td>Brand ARPU</td><td class="mono">£499/mo avg</td><td class="amber">Medium</td><td>Assumes realistic Partner/Enterprise tier uptake. If all brands stay at Discovery, breakeven requires more subscribers.</td></tr>
+            <tr><td>Series A close (M14–16)</td><td class="mono">£3.5M at ~£14M pre</td><td class="amber">High</td><td>Seed runway is 18 months — delay is survivable but Phase 2 hiring must be deferred. Valuation is assumed, not negotiated.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-footer">
+    <div class="footer-brand">LEVL</div>
+    <div class="footer-meta">Confidential &amp; Commercially Sensitive · Not for distribution<br>Risks &amp; Scenarios · June 2026</div>
+  </div>
+
+</div>
+</div><!-- /tab-risks -->
+
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- TAB 5: INVESTOR Q&A                                        -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<div id="tab-qa" class="tab-panel">
+<div class="doc-inner">
+
+  <div class="section">
+    <div class="sec-eyebrow">Investor Q&amp;A</div>
+    <h2 class="sec-title">The questions investors ask —<br><em>answered directly</em></h2>
+    <p class="sec-body">These are the questions a commercially experienced investor will raise in a first or second meeting. The answers below are prepared to be honest and specific, not evasive. Where the answer is uncertain, we say so.</p>
+
+    <div class="qa-list">
+
+      <div class="qa-item">
+        <div class="qa-q">How do you solve the cold start problem?</div>
+        <div class="qa-a">The two-sided cold start is solved by manager-led onboarding. Managers sign up and bring their entire roster — one Agency account brings 10–30 creator profiles immediately. This collapses the supply-side timeline. For demand, we start with mid-market brands and independent agencies where sales cycles are short and willingness to try new tooling is higher. We do not need enterprise brands to launch. We need 5–10 brands willing to pay £299/month to search a verified creator pool — that is a much lower barrier. The founding creator cohort (waitlist converts) provides initial supply while manager onboarding scales.</div>
+      </div>
+
+      <div class="qa-item">
+        <div class="qa-q">What stops YouTube, LinkedIn, or TikTok from building this themselves?</div>
+        <div class="qa-a">Platform risk is real and we acknowledge it honestly. The structural answer is that LEVL is cross-platform by design — YouTube verifying reputation only on YouTube helps no one who needs a creator active across YouTube, Twitch, and Instagram. The value is aggregation and portability across platform relationships, which no single platform has an incentive to provide because it would benefit competitors. LinkedIn is the closest comparable risk — but LinkedIn's creator economy coverage is thin and their model is professional network, not creator commerce. LEVL's moat is the dataset, not the feature set. A platform replicating the feature set in 12 months still has zero historical verified data.</div>
+      </div>
+
+      <div class="qa-item">
+        <div class="qa-q">What is the defensibility? Why can't someone just copy this?</div>
+        <div class="qa-a">The data moat. Once a creator's 2–3 year verified history is recorded in LEVL, rebuilding it elsewhere requires starting from scratch. Verified signals compound over time — a creator with a 4-year record is more valuable on LEVL than the same creator on any new entrant without that history. The reputation graph also becomes more valuable with every participant added — each manager who brings 20 creators is building the dataset that makes the next brand more willing to pay. A well-funded competitor entering 18 months late builds an empty version of the same product. They would need to either acquire us or wait 3–4 years to catch up on historical depth.</div>
+      </div>
+
+      <div class="qa-item">
+        <div class="qa-q">Your LTV:CAC ratios look high. Are they validated?</div>
+        <div class="qa-a">No — and we want to be clear about that. The 18:1 (Creator), 30:1 (Manager), and 7:1 (Brand) figures are modelled projections based on comparable early-stage SaaS and marketplace businesses. They are targets, not actuals. The most sensitive variable is manager retention — if managers churn at 5%/month instead of 2.5%, the LTV:CAC ratio halves. The creator ratio is achievable if CAC stays organic/content-led, but could compress quickly if paid acquisition is needed to hit subscriber targets. We flag these as assumptions throughout the model, and we expect to have real retention data within 6–9 months of launch to validate or revise them.</div>
+      </div>
+
+      <div class="qa-item">
+        <div class="qa-q">What does the Instagram API restriction do to your model?</div>
+        <div class="qa-a">It is a real constraint, acknowledged from day one. At launch: creator-verified screenshots plus counterparty confirmation, clearly flagged as "counterparty-confirmed" rather than "API-verified." This preserves verification integrity without overstating signal quality — the trust framework is explicit about what each verification source means and its confidence level. The plan is to open a Meta partnership conversation at Series A, when we have meaningful user numbers to justify their attention. TikTok has similar API restrictions and the same approach applies. The key point is that counterparty-confirmed signals are still significantly more valuable than self-reported data, which is what the market currently runs on.</div>
+      </div>
+
+      <div class="qa-item">
+        <div class="qa-q">Why is the creator tier priced so low at £12/month?</div>
+        <div class="qa-a">Because creator volume is the product, not the primary revenue. Creators being on the platform is what makes the platform valuable to managers and brands. Charging creators £30–50/month would slow adoption and damage the network effect at the exact moment when network density is the only thing that matters. £12/month is a rounding error relative to a single brand deal — but it validates intent, creates skin in the game, and covers infrastructure cost at scale. We are not trying to build a creator-tier revenue business. We are trying to build a reputation dataset that makes the manager and brand tiers commercially compelling.</div>
+      </div>
+
+      <div class="qa-item">
+        <div class="qa-q">What is your 18-month ARR target, and what does it prove?</div>
+        <div class="qa-a">Approximately £946K ARR: 2,000 Creator Pro at £144/year, 200 Manager Agency at £2,388/year, 50 Brand Discovery at £3,588/year. This assumes seed close in Q3 2026, a 6-person team by month 9, and manager-led onboarding producing at least 10 creator signups per manager account. At that ARR level, the business is approaching Series A range with a retention story to tell. The figure excludes marketplace facilitation revenue — any deal flow at M18 is upside on this projection. The £946K target proves that both sides of the market are willing to pay for verified reputation data, and that manager-led onboarding is a credible supply-side strategy.</div>
+      </div>
+
+      <div class="qa-item">
+        <div class="qa-q">What is the long-term take rate and ceiling?</div>
+        <div class="qa-a">SaaS subscriptions as the stable base; marketplace facilitation as the growth ceiling. At scale, subscription ARR in the £3–6M range with facilitation revenue potentially matching or exceeding subscription revenue as deal volume compounds. We will not charge both a subscription and a transaction fee for the same user action in the early stages — that creates friction at the wrong moment. The sequencing is: prove the subscription model first, then introduce facilitation when deal flow is organic and users expect it. By M36, the base case projects £100K/month in facilitation revenue — an additional £1.2M ARR at near-zero incremental cost.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="doc-footer">
+    <div class="footer-brand">LEVL</div>
+    <div class="footer-meta">Confidential &amp; Commercially Sensitive · Not for distribution<br>Investor Q&amp;A · June 2026</div>
+  </div>
+
+</div>
+</div><!-- /tab-qa -->
+
+
+<script>
+(function(){
+  var btns = document.querySelectorAll('.tab-btn');
+  var panels = document.querySelectorAll('.tab-panel');
+
+  function activate(id){
+    btns.forEach(function(b){ b.classList.toggle('active', b.dataset.tab === id); });
+    panels.forEach(function(p){ p.classList.toggle('active', p.id === 'tab-' + id); });
+    window.scrollTo({top: 0, behavior: 'instant'});
+  }
+
+  btns.forEach(function(btn){
+    btn.addEventListener('click', function(){ activate(btn.dataset.tab); });
+  });
+
+  // Support URL hash navigation: #economics, #plan, #risks, #qa
+  var hash = location.hash.replace('#','');
+  var valid = ['overview','economics','plan','risks','qa'];
+  if(valid.indexOf(hash) !== -1){ activate(hash); }
+})();
+</script>
+</body>
+</html>
