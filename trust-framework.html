@@ -148,6 +148,90 @@ section:last-of-type { border-bottom: none; }
 .btn-primary:hover { background: var(--amber2); }
 .btn-ghost { display: inline-block; color: var(--t2); font-size: 13px; text-decoration: none; margin-top: 16px; transition: color .2s; }
 .btn-ghost:hover { color: var(--t1); }
+
+/* ── ANIMATED JOURNEY ───────────────────────────────────────── */
+.rj-track { position: relative; padding: 32px 0 8px; margin-top: 40px; }
+.rj-spine { position: absolute; left: 11px; top: 0; width: 1px; height: 0;
+  background: linear-gradient(to bottom, var(--amber), rgba(245,158,11,0.06));
+  transition: height 2.6s cubic-bezier(0.25,0.46,0.45,0.94); }
+.rj-track.rj-go .rj-spine { height: 100%; }
+.rj-step { display: flex; gap: 24px; padding: 14px 0 14px 44px; position: relative;
+  opacity: 0; transform: translateX(-14px);
+  transition: opacity 0.55s ease, transform 0.55s ease; }
+.rj-step.rj-in { opacity: 1; transform: translateX(0); }
+.rj-dot { position: absolute; left: 4px; top: 20px; width: 14px; height: 14px;
+  border-radius: 50%; background: var(--bg); border: 1.5px solid rgba(245,243,238,0.1);
+  transition: background 0.4s, border-color 0.4s, box-shadow 0.4s; }
+.rj-step.rj-in .rj-dot { border-color: rgba(245,158,11,0.35); }
+.rj-step-final.rj-in .rj-dot {
+  background: rgba(245,158,11,0.12); border-color: var(--amber);
+  box-shadow: 0 0 16px rgba(245,158,11,0.5), 0 0 40px rgba(245,158,11,0.15); }
+.rj-stage { font-size: 14px; font-weight: 500; color: var(--t1); margin-bottom: 3px; line-height: 1.3; }
+.rj-step-final .rj-stage { color: var(--amber); }
+.rj-detail { font-size: 12px; color: var(--t3); line-height: 1.55; }
+
+/* ── SIGNAL ECOSYSTEM SVG ───────────────────────────────────── */
+.sig-eco-wrap { margin: 8px 0 44px; }
+.sig-eco-svg { width: 100%; max-width: 680px; display: block; margin: 0 auto 12px; overflow: visible; }
+.eco-line { stroke: rgba(245,158,11,0.25); stroke-width: 1; fill: none;
+  stroke-dasharray: 300; stroke-dashoffset: 300;
+  transition: stroke-dashoffset 0.95s ease; }
+.eco-line-0 { transition-delay: 0.05s; }
+.eco-line-1 { transition-delay: 0.18s; }
+.eco-line-2 { transition-delay: 0.31s; }
+.eco-line-3 { transition-delay: 0.11s; }
+.eco-line-4 { transition-delay: 0.24s; }
+.eco-line-5 { transition-delay: 0.37s; }
+.sig-eco-wrap.eco-go .eco-line { stroke-dashoffset: 0; }
+.eco-center-text { font-family: var(--sans); font-size: 12px; font-weight: 600;
+  fill: var(--amber); letter-spacing: 0.02em; }
+.eco-center-sub { font-family: var(--sans); font-size: 9px;
+  fill: rgba(245,243,238,0.3); letter-spacing: 0.03em; }
+.eco-node { fill: rgba(12,12,26,0.95); stroke: rgba(245,243,238,0.09); stroke-width: 1; }
+.eco-node-text { font-family: var(--sans); font-size: 10px; font-weight: 500;
+  fill: rgba(245,243,238,0.5); letter-spacing: 0.02em; }
+.eco-pulse-ring { fill: none; stroke: rgba(245,158,11,0.18); stroke-width: 1;
+  animation: eco-ring 3.2s ease-in-out infinite; }
+@keyframes eco-ring { 0%,100% { opacity:0.6; } 50% { opacity:0.1; } }
+.sig-eco-caption { font-size: 12px; color: var(--t3); text-align: center; letter-spacing: 0.01em; }
+
+/* ── COMPOUNDING TRUST ──────────────────────────────────────── */
+.cmpd-track { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+  align-items: center; margin-top: 44px; }
+@media (max-width: 760px) { .cmpd-track { grid-template-columns: 1fr; gap: 2px; }
+  .cmpd-arrow { display: none; } }
+.cmpd-card { background: var(--surface2); border: 1px solid var(--border2);
+  border-radius: var(--r); padding: 24px 18px; text-align: center;
+  opacity: 0; transform: translateY(18px);
+  transition: opacity 0.6s ease, transform 0.6s ease; }
+.cmpd-card.cmpd-in { opacity: 1; transform: translateY(0); }
+.cmpd-card-final { border-color: rgba(245,158,11,0.28); background: rgba(245,158,11,0.04); }
+.cmpd-arrow { text-align: center; padding: 0 4px; opacity: 0; transition: opacity 0.5s ease; }
+.cmpd-arrow.cmpd-in { opacity: 0.4; }
+.cmpd-arrow-icon { color: var(--amber); font-size: 16px; }
+.cmpd-tier { font-family: var(--mono); font-size: 9px; color: var(--amber);
+  letter-spacing: .12em; text-transform: uppercase; margin-bottom: 10px; opacity: 0.65; }
+.cmpd-name { font-family: var(--display); font-size: clamp(17px,2.6vw,22px);
+  font-weight: 300; color: var(--t1); line-height: 1.1; margin-bottom: 8px; letter-spacing: -.01em; }
+.cmpd-card-final .cmpd-name { color: var(--amber); }
+.cmpd-role { font-size: 9px; color: var(--t3); text-transform: uppercase;
+  letter-spacing: .08em; margin-bottom: 12px; }
+.cmpd-desc { font-size: 12px; color: var(--t2); line-height: 1.65; }
+
+/* ── OPPORTUNITY OUTCOMES ───────────────────────────────────── */
+.opp-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin-top: 40px; }
+@media (max-width: 640px) { .opp-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 400px) { .opp-grid { grid-template-columns: 1fr; } }
+.opp-card { background: var(--surface2); border: 1px solid var(--border2);
+  border-radius: var(--r); padding: 20px 18px;
+  opacity: 0; transform: translateY(14px);
+  transition: opacity 0.5s ease, transform 0.5s ease; }
+.opp-card.opp-in { opacity: 1; transform: translateY(0); }
+.opp-card:hover { border-color: var(--border); }
+.opp-icon { font-size: 17px; margin-bottom: 10px; color: var(--amber); opacity: 0.7; }
+.opp-title { font-size: 13px; font-weight: 600; color: var(--t1); margin-bottom: 6px; }
+.opp-desc { font-size: 12px; color: var(--t3); line-height: 1.6; }
+
 </style>
 </head>
 <body>
@@ -166,6 +250,50 @@ section:last-of-type { border-bottom: none; }
   <h1 class="tf-h1">Trust Needs More<br>Than <em>Followers</em></h1>
   <p class="tf-sub">LEVL is built around verified reputation signals that help creators, managers and sponsors build trust over time.<br><br>Reputation is earned through actions, not claimed through profiles.</p>
 </div>
+
+<!-- ANIMATED REPUTATION JOURNEY -->
+<section>
+<div class="page-inner">
+  <div class="sec-eyebrow">00 — The Journey</div>
+  <h2 class="sec-title">Reputation is not given.<br><em>It is accumulated.</em></h2>
+  <p class="sec-sub">Every verified action adds permanently to the public record. The journey looks like this.</p>
+  <div class="rj-track" id="rjTrack">
+    <div class="rj-spine"></div>
+    <div class="rj-step" data-step="0">
+      <div class="rj-dot"></div>
+      <div class="rj-content"><div class="rj-stage">Creator joins LEVL</div><div class="rj-detail">Professional identity established. Public record created.</div></div>
+    </div>
+    <div class="rj-step" data-step="1">
+      <div class="rj-dot"></div>
+      <div class="rj-content"><div class="rj-stage">Verifies identity and platforms</div><div class="rj-detail">Connected platforms confirmed. Foundation signals established.</div></div>
+    </div>
+    <div class="rj-step" data-step="2">
+      <div class="rj-dot"></div>
+      <div class="rj-content"><div class="rj-stage">Completes first campaign</div><div class="rj-detail">First professional signal added to the public record.</div></div>
+    </div>
+    <div class="rj-step" data-step="3">
+      <div class="rj-dot"></div>
+      <div class="rj-content"><div class="rj-stage">Campaign verified</div><div class="rj-detail">Delivery confirmed. Signal becomes immutable and permanently on record.</div></div>
+    </div>
+    <div class="rj-step" data-step="4">
+      <div class="rj-dot"></div>
+      <div class="rj-content"><div class="rj-stage">Sponsor endorsement added</div><div class="rj-detail">Third-party validation strengthens the professional record.</div></div>
+    </div>
+    <div class="rj-step" data-step="5">
+      <div class="rj-dot"></div>
+      <div class="rj-content"><div class="rj-stage">Trust signals accumulate</div><div class="rj-detail">Each signal compounds the next. Reputation builds momentum.</div></div>
+    </div>
+    <div class="rj-step" data-step="6">
+      <div class="rj-dot"></div>
+      <div class="rj-content"><div class="rj-stage">Reputation strengthens</div><div class="rj-detail">Track record becomes undeniable. Trust becomes the asset.</div></div>
+    </div>
+    <div class="rj-step rj-step-final" data-step="7">
+      <div class="rj-dot"></div>
+      <div class="rj-content"><div class="rj-stage">New opportunities unlocked</div><div class="rj-detail">Better partnerships. Faster decisions. Higher value relationships.</div></div>
+    </div>
+  </div>
+</div>
+</section>
 
 <!-- SECTION 1 — VERIFICATION IS THE FOUNDATION -->
 <section>
@@ -199,7 +327,39 @@ section:last-of-type { border-bottom: none; }
   <div class="sec-eyebrow">02 — Signals</div>
   <h2 class="sec-title">Reputation is built<br>from many signals.</h2>
   <p class="sec-sub">No single metric tells the whole story. LEVL accumulates reputation from multiple independent sources — each one a small piece of evidence that, together, forms a credible professional record.</p>
-  <div class="signal-grid">
+<div class="sig-eco-wrap" id="sigEco">
+  <svg class="sig-eco-svg" viewBox="0 0 700 240" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+    <!-- Connecting lines — drawn before nodes so nodes appear on top -->
+    <line class="eco-line eco-line-0" x1="72"  y1="48"  x2="350" y2="120"/>
+    <line class="eco-line eco-line-1" x1="72"  y1="120" x2="350" y2="120"/>
+    <line class="eco-line eco-line-2" x1="72"  y1="192" x2="350" y2="120"/>
+    <line class="eco-line eco-line-3" x1="628" y1="48"  x2="350" y2="120"/>
+    <line class="eco-line eco-line-4" x1="628" y1="120" x2="350" y2="120"/>
+    <line class="eco-line eco-line-5" x1="628" y1="192" x2="350" y2="120"/>
+    <!-- Pulsing outer ring -->
+    <circle class="eco-pulse-ring" cx="350" cy="120" r="66"/>
+    <!-- Center orb -->
+    <circle cx="350" cy="120" r="58" fill="rgba(245,158,11,0.055)" stroke="rgba(245,158,11,0.28)" stroke-width="1.5"/>
+    <text x="350" y="116" text-anchor="middle" class="eco-center-text">Reputation</text>
+    <text x="350" y="132" text-anchor="middle" class="eco-center-sub">accumulates here</text>
+    <!-- Left satellite nodes: Identity, Platform, Professional -->
+    <circle cx="72"  cy="48"  r="36" class="eco-node"/>
+    <text   x="72"  y="52"  text-anchor="middle" class="eco-node-text">Identity</text>
+    <circle cx="72"  cy="120" r="36" class="eco-node"/>
+    <text   x="72"  y="124" text-anchor="middle" class="eco-node-text">Platform</text>
+    <circle cx="72"  cy="192" r="36" class="eco-node"/>
+    <text   x="72"  y="196" text-anchor="middle" class="eco-node-text">Professional</text>
+    <!-- Right satellite nodes: Sponsor, Manager, Network -->
+    <circle cx="628" cy="48"  r="36" class="eco-node"/>
+    <text   x="628" y="52"  text-anchor="middle" class="eco-node-text">Sponsor</text>
+    <circle cx="628" cy="120" r="36" class="eco-node"/>
+    <text   x="628" y="124" text-anchor="middle" class="eco-node-text">Manager</text>
+    <circle cx="628" cy="192" r="36" class="eco-node"/>
+    <text   x="628" y="196" text-anchor="middle" class="eco-node-text">Network</text>
+  </svg>
+  <p class="sig-eco-caption">Every source contributes independently. Together they form a credible professional record.</p>
+</div>
+    <div class="signal-grid">
     <div class="sig-card">
       <div class="sig-card-icon amber">◉</div>
       <div class="sig-card-title">Platform Signals</div>
@@ -263,6 +423,44 @@ section:last-of-type { border-bottom: none; }
     </div>
   </div>
   <p style="font-size:14px;color:var(--t3);margin-top:8px;line-height:1.7;max-width:560px">LEVL records every renewal as a distinct signal. A creator who has renewed GearX three times carries that history on their public record — permanently, portably, and verifiably. No media kit required.</p>
+</div>
+</section>
+
+<!-- COMPOUNDING TRUST -->
+<section>
+<div class="page-inner">
+  <div class="sec-eyebrow">The Mechanism</div>
+  <h2 class="sec-title">How verification becomes<br><em>opportunity.</em></h2>
+  <p class="sec-sub">Each stage builds on the last. Trust is not a single moment — it is an accumulation. And accumulation compounds.</p>
+  <div class="cmpd-track" id="cmpdTrack">
+    <div class="cmpd-card" data-cmpd="0">
+      <div class="cmpd-tier">01</div>
+      <div class="cmpd-name">Verification</div>
+      <div class="cmpd-role">The Foundation</div>
+      <div class="cmpd-desc">Identity confirmed. Platforms connected. The record begins with proof, not claims.</div>
+    </div>
+    <div class="cmpd-arrow" data-cmpd-arrow="0"><div class="cmpd-arrow-icon">→</div></div>
+    <div class="cmpd-card" data-cmpd="1">
+      <div class="cmpd-tier">02</div>
+      <div class="cmpd-name">Reputation</div>
+      <div class="cmpd-role">The Outcome</div>
+      <div class="cmpd-desc">Campaigns delivered. Deals renewed. Endorsements earned. Each action adds permanently to the record.</div>
+    </div>
+    <div class="cmpd-arrow" data-cmpd-arrow="1"><div class="cmpd-arrow-icon">→</div></div>
+    <div class="cmpd-card" data-cmpd="2">
+      <div class="cmpd-tier">03</div>
+      <div class="cmpd-name">Trust</div>
+      <div class="cmpd-role">The Asset</div>
+      <div class="cmpd-desc">Credibility that compounds over time. Portable across every platform, relationship and deal.</div>
+    </div>
+    <div class="cmpd-arrow" data-cmpd-arrow="2"><div class="cmpd-arrow-icon">→</div></div>
+    <div class="cmpd-card cmpd-card-final" data-cmpd="3">
+      <div class="cmpd-tier">04</div>
+      <div class="cmpd-name">Opportunity</div>
+      <div class="cmpd-role">The Result</div>
+      <div class="cmpd-desc">Better partnerships. Faster decisions. Higher value relationships. Trust is not the destination — opportunity is.</div>
+    </div>
+  </div>
 </div>
 </section>
 
@@ -384,6 +582,47 @@ section:last-of-type { border-bottom: none; }
 </div>
 </section>
 
+<!-- OPPORTUNITY OUTCOMES -->
+<section>
+<div class="page-inner">
+  <div class="sec-eyebrow">What Trust Unlocks</div>
+  <h2 class="sec-title">Trust is not the destination.<br><em>Opportunity is.</em></h2>
+  <p class="sec-sub">Stronger reputation changes how creators, managers and sponsors experience every deal.</p>
+  <div class="opp-grid" id="oppGrid">
+    <div class="opp-card" data-opp="0">
+      <div class="opp-icon">◈</div>
+      <div class="opp-title">Better Partnerships</div>
+      <div class="opp-desc">Higher-trust creators attract sponsors who value long-term relationships over one-off deals.</div>
+    </div>
+    <div class="opp-card" data-opp="1">
+      <div class="opp-icon">⚡</div>
+      <div class="opp-title">Faster Decisions</div>
+      <div class="opp-desc">Verified records replace weeks of due diligence. Sponsors say yes faster when the evidence is already there.</div>
+    </div>
+    <div class="opp-card" data-opp="2">
+      <div class="opp-icon">◎</div>
+      <div class="opp-title">Trusted Introductions</div>
+      <div class="opp-desc">Manager and peer endorsements open doors that follower counts never could.</div>
+    </div>
+    <div class="opp-card" data-opp="3">
+      <div class="opp-icon">↗</div>
+      <div class="opp-title">Manager Confidence</div>
+      <div class="opp-desc">Managers pitch with live verified data. Every deal is backed by a record, not a media kit.</div>
+    </div>
+    <div class="opp-card" data-opp="4">
+      <div class="opp-icon">◇</div>
+      <div class="opp-title">Higher Value Deals</div>
+      <div class="opp-desc">Documented reliability and repeat partnerships command premium rates. Reputation justifies the ask.</div>
+    </div>
+    <div class="opp-card" data-opp="5">
+      <div class="opp-icon">∞</div>
+      <div class="opp-title">Career Longevity</div>
+      <div class="opp-desc">A reputation that travels with you. Platform shifts do not reset it. Ecosystems change — the record stays.</div>
+    </div>
+  </div>
+</div>
+</section>
+
 <!-- SECTION 7 — THE REPUTATION GRAPH -->
 <section style="border-bottom:none">
 <div class="page-inner">
@@ -414,5 +653,48 @@ section:last-of-type { border-bottom: none; }
   <a href="index-production.html" class="btn-ghost">← Back to homepage</a>
 </div>
 
+<script>
+(function () {
+  function observe(id, threshold, fn) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    var done = false;
+    new IntersectionObserver(function (entries) {
+      if (entries[0].isIntersecting && !done) { done = true; fn(el); }
+    }, { threshold: threshold }).observe(el);
+  }
+
+  // Animated Journey
+  observe('rjTrack', 0.12, function (track) {
+    track.classList.add('rj-go');
+    var steps = track.querySelectorAll('.rj-step');
+    steps.forEach(function (s, i) {
+      setTimeout(function () { s.classList.add('rj-in'); }, 180 + i * 260);
+    });
+  });
+
+  // Signal Ecosystem
+  observe('sigEco', 0.2, function (eco) {
+    eco.classList.add('eco-go');
+  });
+
+  // Compounding Trust
+  observe('cmpdTrack', 0.2, function (track) {
+    track.querySelectorAll('.cmpd-card').forEach(function (c, i) {
+      setTimeout(function () { c.classList.add('cmpd-in'); }, i * 190);
+    });
+    track.querySelectorAll('.cmpd-arrow').forEach(function (a, i) {
+      setTimeout(function () { a.classList.add('cmpd-in'); }, 95 + i * 190);
+    });
+  });
+
+  // Opportunity Outcomes
+  observe('oppGrid', 0.15, function (grid) {
+    grid.querySelectorAll('.opp-card').forEach(function (c, i) {
+      setTimeout(function () { c.classList.add('opp-in'); }, i * 85);
+    });
+  });
+})();
+</script>
 </body>
 </html>
