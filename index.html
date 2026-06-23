@@ -973,7 +973,11 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
 /* ─── EXPLORE LEVL ─── */
 .explore-sec { padding: 52px 0; background: var(--surface2); border-top: 1px solid var(--border2); border-bottom: 1px solid var(--border2); }
 .explore-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin-top: 24px; }
-@media (max-width: 720px) { .explore-grid { grid-template-columns: 1fr; } }
+@media (max-width: 720px) {
+  .explore-grid { grid-template-columns: 1fr; }
+  .explore-card { text-align: center; align-items: center; }
+  .explore-card-body { text-align: center; }
+}
 .explore-card { background: var(--surface); border: 1px solid var(--border2); border-top: 2px solid rgba(245,158,11,0.22); border-radius: var(--r); padding: 22px; display: flex; flex-direction: column; gap: 10px; transition: border-color .25s, border-top-color .25s; }
 .explore-card:hover { border-color: rgba(245,158,11,0.28); border-top-color: var(--amber); }
 .explore-card-eyebrow { font-size: 9px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--amber); opacity: .7; }
@@ -1133,9 +1137,9 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
 <!-- EXPLORE LEVL -->
 <section class="explore-sec">
   <div class="section-inner">
-    <div class="r"><div class="section-eyebrow">Explore LEVL</div></div>
-    <div class="r d1"><h2 class="section-title" style="font-size:clamp(20px,3.5vw,34px)">Three areas.<br><em>One ecosystem.</em></h2></div>
-    <p style="font-size:13px;color:var(--t3);margin:0">LEVL has three separate areas depending on what you're looking for.</p>
+    <div class="r" style="text-align:center"><div class="section-eyebrow">Explore LEVL</div></div>
+    <div class="r d1" style="text-align:center"><h2 class="section-title" style="font-size:clamp(20px,3.5vw,34px)">Three areas.<br><em>One ecosystem.</em></h2></div>
+    <p style="font-size:13px;color:var(--t3);margin:0;text-align:center">LEVL has three separate areas depending on what you're looking for.</p>
     <div class="explore-grid">
       <div class="explore-card r d1">
         <div class="explore-card-eyebrow">Product</div>
