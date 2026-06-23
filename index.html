@@ -412,7 +412,11 @@ section { position: relative; z-index: 1; }
 /* ─── SIGNALS SECTION ─── */
 .signals-sec { padding: 72px 0; }
 .signals-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
-@media (max-width: 720px) { .signals-cols { grid-template-columns: 1fr; } }
+@media (max-width: 720px) {
+  .signals-cols { grid-template-columns: 1fr; }
+  .signals-cols > div:first-child { text-align: center; }
+  .signals-cols > div:first-child .section-sub { max-width: 100%; }
+}
 .signal-demo { display: flex; flex-direction: column; gap: 9px; }
 .sdemo-card { background: var(--surface); border: 1px solid var(--border2); border-radius: var(--r2); padding: 12px; display: flex; align-items: center; gap: 11px; opacity: 0; transform: translateY(8px); transition: opacity .5s, transform .5s; }
 .sdemo-card.in { opacity: 1; transform: none; }
@@ -1095,41 +1099,6 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
         <div class="problem-who">Sponsors</div>
         <div class="problem-text">Commit campaign budgets with no way to verify a creator's reliability, consistency, or actual delivery record. Follower counts are all that's on offer.</div>
       </div>
-    </div>
-  </div>
-</div>
-
-<!-- QUICK HOW IT WORKS -->
-<div class="qhiw">
-  <div class="section-inner">
-    <div class="qhiw-label">How LEVL works</div>
-    <div class="qhiw-steps">
-      <div class="qhiw-step">
-        <div class="qhiw-num">01</div>
-        <div class="qhiw-title">Connect platforms</div>
-        <div class="qhiw-desc">LEVL verifies your campaign history, brand deals, and professional record directly from the source — no self-reporting.</div>
-      </div>
-      <div class="qhiw-arrow">&rsaquo;</div>
-      <div class="qhiw-step">
-        <div class="qhiw-num">02</div>
-        <div class="qhiw-title">Earn your record</div>
-        <div class="qhiw-desc">Every campaign completed and deal renewed adds permanently to your public record. Reputation is earned, not claimed.</div>
-      </div>
-      <div class="qhiw-arrow">&rsaquo;</div>
-      <div class="qhiw-step">
-        <div class="qhiw-num">03</div>
-        <div class="qhiw-title">Build reputation</div>
-        <div class="qhiw-desc">Trust compounds with every verified signal. Reputation tiers unlock better opportunities.</div>
-      </div>
-      <div class="qhiw-arrow">&rsaquo;</div>
-      <div class="qhiw-step">
-        <div class="qhiw-num">04</div>
-        <div class="qhiw-title">Unlock opportunities</div>
-        <div class="qhiw-desc">Sponsors discover verified creators. Managers pitch with evidence. Creators access better deals at every tier.</div>
-      </div>
-    </div>
-    <div class="qhiw-summary">
-      <strong>Creators</strong> build trust over time &nbsp;&middot;&nbsp; <strong>Managers</strong> pitch with evidence &nbsp;&middot;&nbsp; <strong>Sponsors</strong> discover creators worth trusting
     </div>
   </div>
 </div>
