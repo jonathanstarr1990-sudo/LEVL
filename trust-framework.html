@@ -556,6 +556,11 @@ section:last-of-type { border-bottom: none; }
   .mob-btn span { transition: none; }
   .mob-menu { transition: none; }
 }
+.tf-footer { border-top: 1px solid var(--border2); margin-top: 64px; padding: 28px 20px 32px; }
+.tf-footer-inner { max-width: 1000px; margin: 0 auto; }
+.tf-footer-disclosure { font-size: 10px; color: var(--t3); line-height: 1.9; }
+.tf-footer-co-link { color: var(--t3); text-decoration: underline; text-decoration-color: rgba(245,243,238,0.18); transition: color .2s; }
+.tf-footer-co-link:hover { color: var(--t2); }
 
 </style>
 </head>
@@ -1325,5 +1330,15 @@ section:last-of-type { border-bottom: none; }
   });
 })();
 </script>
+
+<footer class="tf-footer">
+  <div class="tf-footer-inner">
+    <div class="tf-footer-disclosure">
+      LEVL is a product of <strong style="color:var(--t2);font-weight:500">Nexum Growth Labs Ltd</strong> &middot; Company No. <a class="tf-footer-co-link" href="https://find-and-update.company-information.service.gov.uk/company/16967326" target="_blank" rel="noopener">16967326</a> &middot; <a class="tf-footer-co-link" href="https://find-and-update.company-information.service.gov.uk/company/16967326" target="_blank" rel="noopener">View company details</a><br>
+      &copy; 2026 Nexum Growth Labs Ltd. All rights reserved. LEVL, the LEVL Trust Framework and associated materials are proprietary intellectual property of Nexum Growth Labs Ltd.<br>
+      LEVL is currently in validation. Product features, pricing, commercial models and roadmap remain subject to change.
+    </div>
+  </div>
+</footer>
 </body>
 </html>
