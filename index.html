@@ -125,13 +125,14 @@ nav {
 .btn-ghost:hover { border-color: var(--gold); color: var(--amber); }
 
 /* ─── TICKER ─── */
+.ticker-outer { max-width: 1000px; margin: 0 auto; padding: 0 16px 8px; }
+@media (max-width: 680px) { .ticker-outer { padding: 0 12px 8px; } }
 .ticker-wrap {
   position: relative; z-index: 1;
-  border-top: 1px solid var(--border2);
-  border-bottom: 1px solid var(--border2);
+  border: 1px solid var(--border2);
+  border-radius: var(--r2);
   padding: 11px 0;
   overflow: hidden;
-  margin-bottom: 0;
   background: rgba(245,158,11,0.025);
 }
 .ticker-track {
@@ -975,7 +976,9 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
 }
 
 /* ─── EXPLORE LEVL ─── */
-.explore-sec { padding: 52px 0; background: var(--surface2); border-top: 1px solid var(--border2); border-bottom: 1px solid var(--border2); }
+.explore-sec { padding: 40px 0; }
+.explore-sec .section-inner { background: var(--surface2); border: 1px solid var(--border2); border-radius: var(--r); padding: 32px 28px; }
+@media (max-width: 680px) { .explore-sec .section-inner { padding: 24px 16px; } }
 .explore-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin-top: 24px; }
 @media (max-width: 720px) {
   .explore-grid { grid-template-columns: 1fr; }
@@ -1133,6 +1136,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
 </section>
 
 <!-- TICKER -->
+<div class="ticker-outer">
 <div class="ticker-wrap">
   <div class="ticker-track">
     <span class="ticker-item"><span class="ticker-dot"></span>Platform verified · Jordan K. · YouTube, Twitch, Discord connected</span>
@@ -1153,6 +1157,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
     <span class="ticker-item"><span class="ticker-dot"></span>Deal closed · £2,400 · FitFuel × Maya Liu · Q4 campaign</span>
     <span class="ticker-item"><span class="ticker-dot"></span>Reputation Signal added · GearX renewed · trust record updated</span>
   </div>
+</div>
 </div>
 
 <!-- PRODUCT WINDOW -->
