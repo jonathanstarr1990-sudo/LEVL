@@ -1751,6 +1751,12 @@ p:last-child{margin-bottom:0;}
   var valid = ['overview','economics','plan','risks','qa'];
   if(valid.indexOf(hash) !== -1){ activate(hash); }
 })();
+
+// ── LOGO: go home ──
+document.querySelectorAll('.nav-logo').forEach(function(el) {
+  el.style.cursor = 'pointer';
+  el.addEventListener('click', function() { window.location.href = 'index.html'; });
+});
 </script>
 
 <footer class="page-footer">
