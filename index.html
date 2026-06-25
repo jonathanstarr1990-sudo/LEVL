@@ -1202,6 +1202,48 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
   .opp-deadline { display: none; }
 }
 
+
+/* ── WORKSPACE SELECTOR ── */
+.ws-selector-wrap { max-width: 1120px; margin: 0 auto; padding: 52px 16px 0; }
+.ws-intro { text-align: center; margin-bottom: 28px; }
+.ws-selector { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
+.ws-card { background: var(--surface2); border: 1px solid var(--border2); border-radius: 12px; overflow: hidden; cursor: pointer; transition: border-color .22s, box-shadow .22s, transform .2s; }
+.ws-card:hover { border-color: rgba(245,243,238,.16); transform: translateY(-2px); }
+#ws-creator.active { border-color: rgba(245,158,11,.42); box-shadow: 0 0 32px rgba(245,158,11,.10); }
+#ws-manager.active { border-color: rgba(16,185,129,.42); box-shadow: 0 0 32px rgba(16,185,129,.10); }
+#ws-sponsor.active { border-color: rgba(124,58,237,.42); box-shadow: 0 0 32px rgba(124,58,237,.10); }
+.ws-card-accent { height: 3px; width: 100%; flex-shrink: 0; }
+.ws-accent-creator { background: linear-gradient(90deg,var(--amber),var(--amber2)); }
+.ws-accent-manager { background: linear-gradient(90deg,#10B981,#34D399); }
+.ws-accent-sponsor { background: linear-gradient(90deg,var(--violet),var(--violet2)); }
+.ws-card-inner { padding: 16px 16px 14px; }
+.ws-card-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 10px; }
+.ws-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.ws-icon-creator { background: rgba(245,158,11,.12); color: var(--amber); }
+.ws-icon-manager { background: rgba(16,185,129,.12); color: #10B981; }
+.ws-icon-sponsor { background: rgba(124,58,237,.12); color: var(--violet2); }
+.ws-live-badge { display: flex; align-items: center; gap: 4px; font-size: 9px; color: var(--green); font-family: var(--mono); background: rgba(16,185,129,.08); border: 1px solid rgba(16,185,129,.2); border-radius: 10px; padding: 2px 8px; }
+.ws-live-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--green); animation: livePulse 2s ease-in-out infinite; }
+.ws-card-name { font-size: 15px; font-weight: 700; color: var(--t1); margin-bottom: 6px; letter-spacing: -.01em; }
+.ws-card-desc { font-size: 11px; color: var(--t3); line-height: 1.65; margin-bottom: 14px; min-height: 36px; }
+.ws-card-user { display: flex; align-items: center; gap: 8px; padding: 8px 10px; background: rgba(255,255,255,.03); border: 1px solid var(--border2); border-radius: 7px; }
+.ws-user-av { width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 700; color: white; flex-shrink: 0; }
+.ws-user-info { flex: 1; min-width: 0; }
+.ws-user-name { font-size: 11px; font-weight: 600; color: var(--t1); }
+.ws-user-meta { font-size: 9px; color: var(--t3); margin-top: 1px; }
+.ws-enter-arrow { font-size: 13px; color: var(--t3); transition: color .18s, transform .18s; flex-shrink: 0; }
+.ws-card:hover .ws-enter-arrow { color: var(--t2); transform: translateX(3px); }
+#ws-creator.active .ws-enter-arrow { color: var(--amber); }
+#ws-manager.active .ws-enter-arrow { color: #10B981; }
+#ws-sponsor.active .ws-enter-arrow { color: var(--violet2); }
+@media (max-width: 760px) { .ws-selector { grid-template-columns: 1fr; } }
+@media (max-width: 620px) { .ws-selector-wrap { display: none; } }
+
+/* Hero proof inline */
+.hero-proof-inline { display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; font-size: 12px; color: var(--t3); margin-top: 18px; letter-spacing: .01em; }
+.hero-proof-inline strong { color: var(--amber); font-family: var(--mono); }
+.hero-proof-dot { opacity: .35; }
+
 /* ── QUICK HOW IT WORKS STRIP ── */
 .qhiw { padding: 26px 0; border-top: 1px solid var(--border2); border-bottom: 1px solid var(--border2); background: rgba(245,158,11,0.014); }
 .qhiw-steps { display: flex; align-items: flex-start; gap: 6px; }
@@ -1684,49 +1726,26 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
     <div class="hero-eyebrow-dot"></div>
     Trust Infrastructure · Private Beta
   </div>
-  <div class="hero-category">Creator Passport &middot; Manager Workspace &middot; Sponsor Discovery</div>
   <h1 class="hero-tagline">
     A verified reputation network<br>
     for the <em>creator economy.</em>
   </h1>
-  <p style="font-size:17px;color:var(--amber);text-align:center;letter-spacing:-.01em;margin-bottom:20px;font-weight:500">Followers show reach. Reputation shows trust.</p>
-  <p class="hero-what">LEVL turns a creator’s professional record into verified trust signals — a shared reputation layer for the creator economy.</p>
-  <p style="font-size:12px;color:var(--t3);text-align:center;margin:-4px 0 16px;letter-spacing:.01em">Built for Creators, Managers and Sponsors who rely on trust, reputation and long-term relationships.</p>
-  <div class="hero-roles">
-    <span class="hero-role-pill">Creators &amp; talent: build your Passport</span>
-    <span class="hero-role-pill">Managers: represent with evidence</span>
-    <span class="hero-role-pill">Sponsors &amp; brands: discover with confidence</span>
-  </div>
-  <p class="hero-sub">Creators build a verified reputation that travels with them. Managers stop rebuilding trust from scratch for every deal. Sponsors find creators worth trusting — before the first message.</p>
+  <p style="font-size:17px;color:var(--amber);text-align:center;letter-spacing:-.01em;margin-bottom:28px;font-weight:500">Followers show reach. Reputation shows trust.</p>
   <div class="hero-ctas">
     <a href="#waitlist" class="btn-primary">Join the waitlist</a>
-    <a href="#demo" class="btn-ghost">See the Platform ↓</a>
+    <a href="#demo" class="btn-ghost">Explore the platform ↓</a>
   </div>
-  <p style="font-size:11px;color:var(--t3);text-align:center;margin-top:10px;letter-spacing:.01em">Explore the platform concept across Creator, Manager and Sponsor views.</p>
+  <div class="hero-proof-inline">
+    <span><strong>143</strong> creators</span>
+    <span class="hero-proof-dot">&middot;</span>
+    <span><strong>31</strong> managers</span>
+    <span class="hero-proof-dot">&middot;</span>
+    <span><strong>12</strong> sponsors</span>
+    <span class="hero-proof-dot">&middot;</span>
+    <span>Founding cohort</span>
+  </div>
 </section>
 
-<!-- SOCIAL PROOF -->
-<div class="proof-strip">
-  <div class="section-inner">
-    <div class="proof-stats">
-      <div class="proof-stat">
-        <div class="proof-num" id="proof-creators">143</div>
-        <div class="proof-label">Creators on waitlist</div>
-      </div>
-      <div class="proof-divider"></div>
-      <div class="proof-stat">
-        <div class="proof-num">31</div>
-        <div class="proof-label">Managers registered</div>
-      </div>
-      <div class="proof-divider"></div>
-      <div class="proof-stat">
-        <div class="proof-num">12</div>
-        <div class="proof-label">Sponsors in discussion</div>
-      </div>
-    </div>
-    <div class="proof-note">Founding cohort &middot; Numbers grow with the community</div>
-  </div>
-</div>
 
 <!-- PROBLEM FRAMING -->
 <div class="problem-strip">
@@ -1752,34 +1771,6 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
   </div>
 </div>
 
-<!-- EXPLORE LEVL -->
-<section class="explore-sec">
-  <div class="section-inner">
-    <div class="r" style="text-align:center"><div class="section-eyebrow">Explore LEVL</div></div>
-    <div class="r d1" style="text-align:center"><h2 class="section-title" style="font-size:clamp(20px,3.5vw,34px)">Three areas.<br><em>One ecosystem.</em></h2></div>
-    <p style="font-size:13px;color:var(--t3);margin:0;text-align:center">LEVL has three separate areas depending on what you're looking for.</p>
-    <div class="explore-grid">
-      <div class="explore-card r d1">
-        <div class="explore-card-eyebrow">Product</div>
-        <div class="explore-card-title">See the Platform</div>
-        <div class="explore-card-body">Preview the Creator, Manager and Sponsor experience through the current platform concept.</div>
-        <a href="#demo" class="explore-card-cta">View Platform Preview →</a>
-      </div>
-      <div class="explore-card r d2">
-        <div class="explore-card-eyebrow">Mechanism</div>
-        <div class="explore-card-title">Understand the Trust Framework</div>
-        <div class="explore-card-body">Learn how reputation is verified, measured and protected. The evidence hierarchy behind every trust signal on LEVL.</div>
-        <a href="trust-framework.html" class="explore-card-cta">Learn How It Works →</a>
-      </div>
-      <div class="explore-card r d3">
-        <div class="explore-card-eyebrow">Commercial</div>
-        <div class="explore-card-title">Investor Brief</div>
-        <div class="explore-card-body">Commercial model, validation roadmap, economics and investment opportunity. For those who want to understand the full picture.</div>
-        <a href="levl-investor-brief.html" class="explore-card-cta">View Investor Brief →</a>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- TICKER -->
 <div class="ticker-outer">
@@ -1806,14 +1797,86 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
 </div>
 </div>
 
-<!-- PLATFORM PREVIEW -->
-<div class="plat-intro">
-  <div class="section-eyebrow">Platform Preview</div>
-  <h2 class="section-title">Built for every side of the deal.</h2>
-  <p class="section-sub">Three distinct workspaces. One verified reputation layer powering every interaction.</p>
+<!-- WORKSPACE SELECTOR -->
+<div class="ws-selector-wrap" id="demo">
+  <div class="ws-intro">
+    <div class="section-eyebrow r">Platform Preview</div>
+    <h2 class="section-title r d1" style="font-size:clamp(22px,3.5vw,34px);margin-bottom:10px">Three workspaces.<br><em>One reputation layer.</em></h2>
+    <p class="section-sub r d2" style="font-size:13px;max-width:520px;margin:0 auto">Select a workspace below. Each is a distinct application — explore them all.</p>
+  </div>
+  <div class="ws-selector">
+
+    <!-- Creator OS -->
+    <div class="ws-card active" id="ws-creator" onclick="switchWs('creator')">
+      <div class="ws-card-accent ws-accent-creator"></div>
+      <div class="ws-card-inner">
+        <div class="ws-card-header">
+          <div class="ws-icon ws-icon-creator">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="8" height="8" rx="2" stroke="currentColor" stroke-width="1.6"/><rect x="13" y="3" width="8" height="8" rx="2" stroke="currentColor" stroke-width="1.6"/><rect x="3" y="13" width="8" height="8" rx="2" stroke="currentColor" stroke-width="1.6"/><rect x="13" y="13" width="8" height="8" rx="2" stroke="currentColor" stroke-width="1.6"/></svg>
+          </div>
+          <div class="ws-live-badge"><div class="ws-live-dot"></div>active</div>
+        </div>
+        <div class="ws-card-name">Creator OS</div>
+        <div class="ws-card-desc">Passport, campaign history, opportunities and platform connections — your verified career layer.</div>
+        <div class="ws-card-user">
+          <div class="ws-user-av" style="background:linear-gradient(135deg,#F59E0B,#7C3AED)">J</div>
+          <div class="ws-user-info">
+            <div class="ws-user-name">Jordan K.</div>
+            <div class="ws-user-meta">L3 Established &middot; Trust Score 82</div>
+          </div>
+          <div class="ws-enter-arrow">&#8594;</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Manager Workspace -->
+    <div class="ws-card" id="ws-manager" onclick="switchWs('manager')">
+      <div class="ws-card-accent ws-accent-manager"></div>
+      <div class="ws-card-inner">
+        <div class="ws-card-header">
+          <div class="ws-icon ws-icon-manager">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="8" cy="7" r="3" stroke="currentColor" stroke-width="1.6"/><path d="M3 20c0-2.76 2.24-5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="16" cy="7" r="3" stroke="currentColor" stroke-width="1.6"/><path d="M11 20c0-2.76 2.24-5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          </div>
+        </div>
+        <div class="ws-card-name">Manager Workspace</div>
+        <div class="ws-card-desc">Roster management, deal pipeline, pitch pack builder and revenue analytics for your talent operation.</div>
+        <div class="ws-card-user">
+          <div class="ws-user-av" style="background:linear-gradient(135deg,#10B981,#7C3AED)">S</div>
+          <div class="ws-user-info">
+            <div class="ws-user-name">Sam Rivera</div>
+            <div class="ws-user-meta">9 creators &middot; £94K pipeline</div>
+          </div>
+          <div class="ws-enter-arrow">&#8594;</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sponsor Discovery -->
+    <div class="ws-card" id="ws-sponsor" onclick="switchWs('sponsor')">
+      <div class="ws-card-accent ws-accent-sponsor"></div>
+      <div class="ws-card-inner">
+        <div class="ws-card-header">
+          <div class="ws-icon ws-icon-sponsor">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="10.5" cy="10.5" r="6.5" stroke="currentColor" stroke-width="1.6"/><path d="M15.5 15.5l5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          </div>
+        </div>
+        <div class="ws-card-name">Sponsor Discovery</div>
+        <div class="ws-card-desc">Search and verify creators by reputation data, manage shortlists, active deals and review evidence.</div>
+        <div class="ws-card-user">
+          <div class="ws-user-av" style="background:linear-gradient(135deg,#7C3AED,#F59E0B);font-size:8px">TB</div>
+          <div class="ws-user-info">
+            <div class="ws-user-name">TechBrand Ltd</div>
+            <div class="ws-user-meta">4 active deals &middot; £12.4K remaining</div>
+          </div>
+          <div class="ws-enter-arrow">&#8594;</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </div>
 
-<div id="demo" class="pw" style="margin-top:0;padding-top:0;">
+<div class="pw" style="margin-top:0;padding-top:0;">
   <div class="pw-frame pw-sidebar-mode">
     <div class="pw-titlebar">
       <div class="pw-dot r"></div><div class="pw-dot y"></div><div class="pw-dot g"></div>
@@ -3690,77 +3753,15 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
   </div>
 </section>
 
-<!-- HOW IT WORKS -->
-<section class="how" id="how">
-  <div class="section-inner">
-    <div class="r"><div class="section-eyebrow">How it works</div></div>
-    <div class="r d1"><h2 class="section-title">How the ecosystem connects.</h2></div>
-    <div class="r d2"><p class="section-sub">Verification is the foundation. Reputation is the outcome. Trust is the asset.</p></div>
-    <div class="how-grid">
-      <div class="how-card r d1"><div class="how-num">01</div><div class="how-title">Build your Passport</div><div class="how-desc">Connect your platforms. LEVL verifies your campaign history, brand deals, and professional record into one trusted profile.</div></div>
-      <div class="how-card r d2"><div class="how-num">02</div><div class="how-title">Earn Reputation Signals</div><div class="how-desc">Every campaign completed and deal renewed adds permanently to your public record. Signals are earned, immutable, and yours forever.</div></div>
-      <div class="how-card r d3"><div class="how-num">03</div><div class="how-title">Discover and get matched</div><div class="how-desc">Sponsors assess a creator’s reliability, consistency, and delivery history — not just reach. Managers pitch with live verified data. Reputation tiers unlock better opportunities.</div></div>
-      <div class="how-card r" style="animation-delay:.35s"><div class="how-num">04</div><div class="how-title">Build your network</div><div class="how-desc">Invite creators you trust. Earn 20% platform revenue share (Tier 1) and 5% from their referrals (Tier 2). Reputation and network compound together.</div></div>
-    </div>
-  </div>
-</section>
 
-<!-- SIGNALS SECTION -->
-<section class="signals-sec" id="signals">
-  <div class="section-inner">
-    <div class="signals-cols">
-      <div>
-        <div class="r"><div class="section-eyebrow">Verified Signals</div></div>
-        <div class="r d1"><h2 class="section-title">Signals every side<br>of the deal can trust.</h2></div>
-        <div class="r d2"><p class="section-sub">Reputation Signals capture what matters — reliability, consistency, and campaign delivery. One campaign is a data point. Three renewals are a reputation. Earned, not claimed. Verified across every platform and relationship. Once on record, always verifiable.</p></div>
-      </div>
-      <div class="signal-demo" id="signalDemo">
-        <div class="sdemo-card"><div class="sdemo-icon g">✓</div><div class="sdemo-body"><div class="sdemo-title">Platform verified</div><div class="sdemo-sub">YouTube, Twitch, Discord · API-connected</div></div><div class="pulse-ring g"></div><div class="sdemo-val g">+Signal</div></div>
-        <div class="sdemo-card"><div class="sdemo-icon g">↗</div><div class="sdemo-body"><div class="sdemo-title">Deal renewed</div><div class="sdemo-sub">GearX × Jordan K. · ×3 — public record</div></div><div class="pulse-ring g"></div><div class="sdemo-val g">+Signal</div></div>
-        <div class="sdemo-card"><div class="sdemo-icon a">🔥</div><div class="sdemo-body"><div class="sdemo-title">Consistency verified</div><div class="sdemo-sub">6-week publishing record · platform-confirmed</div></div><div class="pulse-ring a"></div><div class="sdemo-val a">6w</div></div>
-        <div class="sdemo-card"><div class="sdemo-icon g">◈</div><div class="sdemo-body"><div class="sdemo-title">Manager endorsement</div><div class="sdemo-sub">Sam Rivera · Verified</div></div><div class="pulse-ring g"></div><div class="sdemo-val g">+Trust</div></div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- ROLES -->
-<section class="roles-sec" id="roles">
-  <div class="section-inner">
-    <div class="r"><div class="section-eyebrow">Creators. Managers. Sponsors.</div></div>
-    <div class="r d1"><h2 class="section-title">Creator Passport.<br>Manager Workspace.<br>Sponsor Discovery.</h2></div>
-    <div class="roles-tabs r d2">
-      <button class="role-tab active" onclick="switchRole('creator',this)">Creators</button>
-      <button class="role-tab" onclick="switchRole('manager',this)">Managers</button>
-      <button class="role-tab" onclick="switchRole('sponsor',this)">Sponsors</button>
-    </div>
-
-    <div class="role-panel active" id="role-creator">
-      <div><p class="role-desc">Your Creator Passport — one verified profile that travels with you. Campaign history, deal renewals, and endorsements, all in one portable record.</p>
-      <div class="role-benefits"><div class="role-benefit">Switch platforms or agencies without starting over — your record moves with you</div><div class="role-benefit">Signals earned from campaigns, endorsements, and repeat partnerships</div><div class="role-benefit">Get matched to sponsorship deals based on your verified record</div><div class="role-benefit">Reputation tiers — every renewal and endorsement strengthens credibility and unlocks better opportunities</div></div></div>
-      <div class="role-visual"><div class="role-visual-hdr">Live reputation activity</div><div class="role-row"><span style="color:var(--t2)"><span class="status-dot green"></span>Opportunity unlocked · Kick Creator</span><span style="color:var(--amber)">91% match</span></div><div class="role-row"><span style="color:var(--t2)"><span class="status-dot green"></span>Deal renewed · GearX</span><span style="color:var(--green)">×3 — public record</span></div><div class="role-row"><span style="color:var(--t2)"><span class="status-dot amber"></span>Manager endorsement pending</span><span style="color:var(--t3)">Sam Rivera</span></div><div class="role-row"><span style="color:var(--t2)"><span class="status-dot green"></span>LEVL Network · NeonFrost900</span><span style="color:var(--green)">Tier 1 active</span></div></div>
-    </div>
-
-    <div class="role-panel" id="role-manager">
-      <div><p class="role-desc">Your whole roster. One verified record of trust. Managers don’t just manage talent — they manage credibility, deal history, and professional reputation. LEVL makes that record visible and ready for every pitch.</p>
-      <div class="role-benefits"><div class="role-benefit">Verified roster profiles — no media kits, no screenshots, no chasing proof</div><div class="role-benefit">Auto-generate pitch packs from live verified data — always current, always credible</div><div class="role-benefit">Deal pipeline with verified Campaign Fit scoring per opportunity</div><div class="role-benefit">Your reputation travels too — Manager Passport verified across every brand</div></div></div>
-      <div class="role-visual"><div class="role-visual-hdr">Roster overview</div><div class="role-row"><span style="color:var(--t2)">Jordan K. · L3 Established</span><span style="color:var(--amber);font-family:var(--mono)">GearX ×3 · verified active</span></div><div class="role-row"><span style="color:var(--t2)">Maya Liu · L4 Partner</span><span style="color:var(--green);font-family:var(--mono)">FitFuel · 14-week publishing record</span></div><div class="role-row"><span style="color:var(--t2)">Tom Keane · L3 Established</span><span style="color:var(--amber);font-family:var(--mono)">NordVPN · pending review</span></div></div>
-    </div>
-
-    <div class="role-panel" id="role-sponsor">
-      <div><p class="role-desc">Audience size explains reach. Reputation reduces risk. Make budget decisions based on verified reliability, consistency, and campaign delivery — not follower counts.</p>
-      <div class="role-benefits"><div class="role-benefit">Filter by verified level, niche, campaign history, and delivery record</div><div class="role-benefit">See a creator's full delivery record and consistency signals before committing a budget</div><div class="role-benefit">Know which creators are worth a conversation before making contact</div><div class="role-benefit">Repeat partnerships are the strongest signal — GearX ×3 is on the public record</div></div></div>
-      <div class="role-visual"><div class="role-visual-hdr">Campaign Fit results</div><div class="role-row"><span style="color:var(--t2)">Jordan K. · L3 Established · Verified</span><span style="color:var(--green);font-family:var(--mono)">91% fit</span></div><div class="role-row"><span style="color:var(--t2)">Aria S. · L4 Partner · Verified</span><span style="color:var(--green);font-family:var(--mono)">88% fit</span></div><div class="role-row"><span style="color:var(--t2)">Marcus R. · L2 Building</span><span style="color:var(--amber);font-family:var(--mono)">76% fit</span></div></div>
-    </div>
-  </div>
-</section>
 
 <!-- LEVL NETWORK -->
 <section class="network-sec" id="network">
   <div class="section-inner">
     <div class="r"><div class="section-eyebrow">LEVL Network</div></div>
     <div class="r d1"><h2 class="section-title">The creator economy<br>runs on relationships.<br><em>LEVL rewards those who help build them.</em></h2></div>
-    <div class="r d2"><p class="section-sub">When you introduce a creator to LEVL, they pay the same price as everyone else — no markups, no hidden fees. LEVL shares a portion of its platform revenue with the people who help grow trusted networks.</p></div>
+    <div class="r d2"><p class="section-sub">LEVL shares platform revenue with creators who help build the ecosystem — 20% from your direct network, 5% from theirs, compounding monthly with no cap or expiry.</p></div>
 
     <div class="network-grid r d3">
 
@@ -3841,28 +3842,6 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
       <!-- Right: mechanism + tier breakdown + compound note -->
       <div class="network-explain-col">
 
-        <div class="network-how-box">
-          <div class="network-how-label">How ecosystem rewards work</div>
-          <div class="network-how-steps">
-            <div class="network-step">
-              <div class="nstep-num">1</div>
-              <div class="nstep-text">Share your Network Link with creators you know and trust — you're growing a network that meets your reputation standards.</div>
-            </div>
-            <div class="network-step">
-              <div class="nstep-num">2</div>
-              <div class="nstep-text">Every creator in your network builds their own verified reputation on LEVL. A stronger network raises the value for everyone in it.</div>
-            </div>
-            <div class="network-step">
-              <div class="nstep-num">3</div>
-              <div class="nstep-text">LEVL shares a portion of its platform revenue as a reward for growing the ecosystem: 20% from your direct network, 5% from theirs.</div>
-            </div>
-            <div class="network-step">
-              <div class="nstep-num">4</div>
-              <div class="nstep-text">Ecosystem rewards compound monthly for as long as your network stays active. They don't reset, cap, or expire.</div>
-            </div>
-          </div>
-        </div>
-
         <div class="network-tiers">
           <div class="network-tier amber-tier">
             <div class="tier-label">Tier 1 · Direct</div>
@@ -3878,12 +3857,6 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
           </div>
         </div>
 
-        <div class="network-compound-note">
-          <div class="compound-title">Built on shared success</div>
-          <div class="compound-body">The model starts with creator introductions. As LEVL grows, it will expand to managers, agencies, and ecosystem partners.</div>
-        </div>
-
-        <div class="network-incl-note">LEVL Network is included with every Creator membership. No upgrade required.</div>
 
       </div>
     </div>
@@ -4141,6 +4114,35 @@ var VIEW_CRUMBS = {
 };
 var PANEL_DEFAULTS = { creator:'dashboard', manager:'roster', sponsor:'discover' };
 
+
+function switchWs(id) {
+  document.querySelectorAll('.ws-card').forEach(function(el) { el.classList.remove('active'); });
+  var card = document.getElementById('ws-' + id);
+  if (card) card.classList.add('active');
+  var main = document.querySelector('.pw-main');
+  if (!main) { _doWsSwitch(id); return; }
+  main.style.transition = 'opacity 0.18s ease';
+  main.style.opacity = '0';
+  setTimeout(function() {
+    _doWsSwitch(id);
+    main.style.opacity = '1';
+    setTimeout(function() { main.style.transition = ''; }, 200);
+  }, 180);
+}
+
+function _doWsSwitch(id) {
+  document.querySelectorAll('.pw-panel').forEach(function(el) { el.classList.remove('active'); });
+  document.querySelectorAll('.pw-tab, .pw-nav-item[data-view]').forEach(function(el) { el.classList.remove('active'); });
+  document.querySelectorAll('.pw-sb-state').forEach(function(el) { el.classList.remove('active'); });
+  var panel = document.getElementById('panel-' + id);
+  if (panel) panel.classList.add('active');
+  document.querySelectorAll('[data-view="' + id + '"]').forEach(function(el) { el.classList.add('active'); });
+  var sb = document.getElementById('sb-' + id);
+  if (sb) sb.classList.add('active');
+  document.querySelectorAll('.mob-subnav-btn').forEach(function(el) { el.classList.remove('active'); });
+  _setView(id, PANEL_DEFAULTS[id] || 'dashboard');
+}
+
 function _setView(panelId, viewId) {
   var panel = document.getElementById('panel-' + panelId);
   if (!panel) return;
@@ -4176,6 +4178,10 @@ function switchMainTab(id, btn) {
   var sb = document.getElementById('sb-' + id);
   if (sb) sb.classList.add('active');
   btn.classList.add('active');
+  // Sync ws-card active state
+  document.querySelectorAll('.ws-card').forEach(function(el) { el.classList.remove('active'); });
+  var wsCard = document.getElementById('ws-' + id);
+  if (wsCard) wsCard.classList.add('active');
   // Reset all mob-subnavs; _setView will re-activate the correct one
   document.querySelectorAll('.mob-subnav-btn').forEach(function(el) { el.classList.remove('active'); });
   _setView(id, PANEL_DEFAULTS[id] || 'dashboard');
