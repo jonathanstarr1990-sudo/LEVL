@@ -177,7 +177,7 @@ nav {
 }
 .pw-tab.active { color: var(--amber); border-bottom-color: var(--amber); }
 .pw-tab:hover:not(.active) { color: var(--t2); }
-.pw-panel { display: none; } .pw-panel.active { display: block; }
+.pw-panel { display: none; flex-direction: column; } .pw-panel.active { display: flex; flex: 1; min-height: 0; }
 .pw-subtabs {
   display: flex; padding: 10px 14px; gap: 4px;
   background: #07070f; border-bottom: 1px solid var(--border2);
@@ -565,8 +565,8 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
 .plat-intro .section-sub { margin: 0 auto; font-size: 14px; }
 
 /* ── SIDEBAR APP SHELL ── */
-.pw-body { display: flex; }
-.pw-sidebar { width: 172px; border-right: 1px solid var(--border2); padding: 14px 10px; display: flex; flex-direction: column; flex-shrink: 0; background: rgba(0,0,0,0.2); }
+.pw-body { display: flex; height: 700px; overflow: hidden; }
+.pw-sidebar { width: 172px; border-right: 1px solid var(--border2); padding: 14px 10px; display: flex; flex-direction: column; flex-shrink: 0; background: rgba(0,0,0,0.2); overflow-y: auto; scrollbar-width: thin; scrollbar-color: rgba(245,243,238,.06) transparent; }
 .pw-sb-user { display: flex; align-items: center; gap: 9px; padding-bottom: 13px; border-bottom: 1px solid var(--border2); margin-bottom: 12px; }
 .pw-sb-av { width: 32px; height: 32px; border-radius: 50%; background: linear-gradient(135deg,#F59E0B,#7C3AED); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: #fff; flex-shrink: 0; }
 .pw-sb-name { font-size: 11px; font-weight: 600; color: var(--t2); line-height: 1.3; }
@@ -577,7 +577,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
 .pw-nav-item.active { background: rgba(245,158,11,0.09); border-color: rgba(245,158,11,0.22); color: var(--amber); font-weight: 500; }
 .pw-nav-icon { width: 15px; height: 15px; flex-shrink: 0; }
 .pw-sb-divider { height: 1px; background: var(--border2); margin: 10px 0; }
-.pw-main { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.pw-main { flex: 1; min-width: 0; display: flex; flex-direction: column; overflow: hidden; }
 @media (min-width: 621px) { .pw-sidebar-mode .pw-tabs { display: none; } }
 @media (max-width: 620px) {
   .pw-sidebar { display: none; }
@@ -618,198 +618,273 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
 .pipeline-footer-val { font-family: var(--mono); font-size: 14px; color: var(--green); font-weight: 500; }
 
 /* ── SIDEBAR STATES ── */
-.pw-sb-state { display: none; flex-direction: column; flex: 1; min-height: 0; }
+.pw-sb-state { display: none; flex-direction: column; }
 .pw-sb-state.active { display: flex; }
 
-/* ── PANEL LAYOUT (main + aside) ── */
-.panel-layout { display: grid; grid-template-columns: 1fr 264px; }
-.panel-main { padding: 18px; overflow-y: auto; max-height: 560px; border-right: 1px solid var(--border2); }
-.panel-aside { padding: 13px 12px; overflow-y: auto; max-height: 560px; }
-.panel-full { padding: 18px; overflow-y: auto; max-height: 560px; }
-@media (max-width: 860px) { .panel-layout { grid-template-columns: 1fr; } .panel-aside { display: none; } }
-@media (max-width: 620px) { .panel-main, .panel-full { max-height: none; } }
+/* ── PANEL ARCHITECTURE ── */
+.pw-panel.active { height: 700px; }
+@media (max-width: 620px) { .pw-panel.active { height: auto; } }
 
-/* ── CREATOR HERO BANNER ── */
-.c-hero { background: linear-gradient(135deg,rgba(245,158,11,.08),rgba(245,158,11,.02)); border: 1px solid rgba(245,158,11,.2); border-radius: var(--r2); padding: 14px 16px; margin-bottom: 14px; display: flex; gap: 12px; }
-.c-hero-title { font-size: 17px; font-weight: 700; color: var(--t1); margin-bottom: 5px; line-height: 1.25; }
-.c-hero-sub { font-size: 11px; color: var(--t2); line-height: 1.55; margin-bottom: 10px; }
-.c-hero-chip { display: inline-flex; align-items: center; gap: 7px; background: rgba(245,158,11,.1); border: 1px solid rgba(245,158,11,.26); border-radius: 5px; padding: 4px 10px; font-size: 10px; font-weight: 600; color: var(--amber); }
+/* ── APP BAR ── */
+.app-bar { display: flex; align-items: center; gap: 10px; padding: 8px 14px; border-bottom: 1px solid var(--border2); background: rgba(0,0,0,.4); flex-shrink: 0; }
+.app-crumb { display: flex; align-items: center; gap: 5px; font-size: 11px; }
+.app-crumb-root { color: var(--t3); }
+.app-crumb-sep { color: var(--t3); opacity: .35; }
+.app-crumb-current { color: var(--t1); font-weight: 600; }
+.app-search-hint { display: flex; align-items: center; gap: 6px; background: rgba(255,255,255,.04); border: 1px solid var(--border2); border-radius: 6px; padding: 4px 10px; font-size: 10px; color: var(--t3); margin-left: auto; width: 150px; cursor: text; }
+.app-search-hint kbd { font-size: 8px; background: rgba(255,255,255,.06); border: 1px solid var(--border2); border-radius: 3px; padding: 1px 4px; }
+.app-bar-right { display: flex; align-items: center; gap: 7px; margin-left: 10px; }
+.notif-btn { position: relative; width: 26px; height: 26px; border-radius: 5px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--border2); cursor: pointer; color: var(--t3); font-size: 13px; transition: background .15s; }
+.notif-btn:hover { background: var(--surface2); }
+.notif-badge { position: absolute; top: -5px; right: -5px; background: var(--amber); color: #000; font-size: 7px; font-weight: 800; min-width: 14px; height: 14px; border-radius: 7px; display: flex; align-items: center; justify-content: center; padding: 0 3px; }
+.app-av { width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 700; flex-shrink: 0; }
 
-/* ── LEVEL SECTION ── */
-.c-level-section { display: grid; grid-template-columns: auto 1fr auto; gap: 16px; align-items: start; background: var(--surface2); border: 1px solid var(--border2); border-radius: var(--r2); padding: 16px; margin-bottom: 12px; }
-.c-level-num { font-family: var(--display); font-size: 52px; font-weight: 400; color: var(--amber); line-height: 1; }
-.c-level-eyebrow { font-size: 10px; font-weight: 700; color: var(--t3); letter-spacing: .08em; text-transform: uppercase; margin-bottom: 5px; }
-.c-level-badge { display: inline-block; background: rgba(16,185,129,.1); border: 1px solid rgba(16,185,129,.24); color: var(--green); font-size: 9px; font-weight: 700; padding: 2px 7px; border-radius: 4px; letter-spacing: .04em; margin-bottom: 8px; }
-.c-level-desc { font-size: 11px; color: var(--t2); line-height: 1.55; }
-.c-level-unlock { font-size: 10px; color: var(--t3); margin-top: 8px; }
-.c-level-pct { font-family: var(--mono); font-size: 26px; font-weight: 600; color: var(--amber); text-align: right; }
-.c-level-pct-lbl { font-size: 9px; color: var(--t3); text-align: right; }
+/* ── DASH LAYOUT ── */
+.dash-body { display: grid; grid-template-columns: 1fr 222px; flex: 1; min-height: 0; overflow: hidden; }
+.dash-body.wide { grid-template-columns: 1fr 196px; }
+.dash-main { padding: 14px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; scrollbar-width: thin; scrollbar-color: rgba(245,243,238,.06) transparent; }
+.dash-side { padding: 12px; overflow-y: auto; border-left: 1px solid var(--border2); display: flex; flex-direction: column; gap: 10px; scrollbar-width: thin; scrollbar-color: rgba(245,243,238,.06) transparent; }
+@media (max-width: 860px) { .dash-body { grid-template-columns: 1fr; } .dash-side { display: none; } }
+@media (max-width: 620px) { .dash-body { display: block; } .dash-main { overflow-y: visible; } }
+
+/* ── GREETING ── */
+.greeting { display: flex; align-items: center; justify-content: space-between; padding: 11px 14px; background: linear-gradient(135deg,rgba(245,158,11,.06),rgba(124,58,237,.03)); border: 1px solid rgba(245,158,11,.14); border-radius: var(--r2); flex-shrink: 0; }
+.greeting-hi { font-size: 13px; font-weight: 700; color: var(--t1); }
+.greeting-date { font-size: 10px; color: var(--t3); margin-top: 2px; }
+.greeting-right { text-align: right; }
+.greeting-streak { font-size: 12px; color: var(--amber); font-weight: 600; }
+.greeting-sub { font-size: 9px; color: var(--t3); margin-top: 1px; }
+
+/* ── DASHBOARD SECTION CARDS ── */
+.ds { background: var(--surface2); border: 1px solid var(--border2); border-radius: var(--r2); overflow: hidden; flex-shrink: 0; }
+.ds-hdr { display: flex; align-items: center; justify-content: space-between; padding: 9px 13px; border-bottom: 1px solid var(--border2); }
+.ds-title { font-size: 10px; font-weight: 700; color: var(--t1); letter-spacing: .03em; }
+.ds-meta { font-size: 9px; color: var(--t3); }
+.ds-badge { font-size: 8px; font-weight: 700; padding: 2px 8px; border-radius: 10px; }
+.ds-badge.amber { background: rgba(245,158,11,.12); border: 1px solid rgba(245,158,11,.22); color: var(--amber); }
+.ds-badge.green { background: rgba(16,185,129,.1); border: 1px solid rgba(16,185,129,.2); color: var(--green); }
+.ds-badge.violet { background: rgba(124,58,237,.1); border: 1px solid rgba(124,58,237,.2); color: var(--violet2); }
+.ds-link { font-size: 10px; color: var(--amber); cursor: pointer; transition: opacity .15s; }
+.ds-link:hover { opacity: .8; }
+
+/* ── ACTION ROWS ── */
+.action-row { display: flex; align-items: flex-start; gap: 10px; padding: 10px 13px; border-bottom: 1px solid var(--border2); }
+.action-row:last-child { border-bottom: none; }
+.action-cb { width: 15px; height: 15px; border-radius: 3px; border: 1.5px solid var(--border2); flex-shrink: 0; margin-top: 1px; }
+.action-txt { font-size: 12px; font-weight: 500; color: var(--t1); margin-bottom: 3px; }
+.action-why { font-size: 10px; color: var(--t3); line-height: 1.45; }
+.action-pills { display: flex; align-items: center; gap: 5px; flex-shrink: 0; }
+.pill { font-size: 9px; padding: 2px 7px; border-radius: 4px; font-weight: 700; }
+.pill-easy { background: rgba(16,185,129,.1); border: 1px solid rgba(16,185,129,.2); color: var(--green); }
+.pill-med { background: rgba(245,158,11,.1); border: 1px solid rgba(245,158,11,.2); color: var(--amber); }
+.pill-xp { background: rgba(124,58,237,.12); border: 1px solid rgba(124,58,237,.22); color: var(--violet2); font-family: var(--mono); }
+
+/* ── WEEK GRID ── */
+.week-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: var(--border2); }
+.week-cell { background: var(--surface2); padding: 12px 10px; text-align: center; }
+.week-cell-icon { font-size: 14px; margin-bottom: 3px; }
+.week-cell-val { font-family: var(--mono); font-size: 17px; font-weight: 600; line-height: 1.2; }
+.week-cell-lbl { font-size: 8px; color: var(--t3); text-transform: uppercase; letter-spacing: .04em; margin-top: 2px; }
+.week-cell-sub { font-size: 8px; color: var(--t3); margin-top: 1px; }
+
+/* ── CAMPAIGN CARD ── */
+.campaign-live { display: inline-flex; align-items: center; gap: 5px; font-size: 9px; font-weight: 700; color: var(--green); text-transform: uppercase; letter-spacing: .07em; }
+.campaign-live-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--green); animation: livePulse 2s infinite; display: inline-block; }
+.camp-body { padding: 12px 13px; }
+.camp-title { font-size: 12px; font-weight: 700; color: var(--t1); display: flex; align-items: center; gap: 8px; margin-bottom: 5px; }
+.camp-meta { font-size: 10px; color: var(--t3); line-height: 1.65; margin-bottom: 9px; }
+.camp-prog { height: 3px; background: rgba(255,255,255,.05); border-radius: 2px; overflow: hidden; margin-bottom: 5px; }
+.camp-prog-fill { height: 100%; border-radius: 2px; background: linear-gradient(90deg,var(--green),var(--amber)); }
+.camp-prog-lbl { font-size: 9px; color: var(--t3); margin-bottom: 9px; }
+.camp-btns { display: flex; gap: 6px; }
+.camp-btn { font-size: 10px; font-weight: 500; padding: 5px 11px; border-radius: 5px; border: 1px solid var(--border2); color: var(--t2); background: transparent; cursor: pointer; }
+.camp-btn.primary { background: rgba(245,158,11,.1); border-color: rgba(245,158,11,.26); color: var(--amber); font-weight: 700; }
+
+/* ── ACTIVITY FEED ── */
+.act-item { display: flex; align-items: flex-start; gap: 9px; padding: 9px 13px; border-bottom: 1px solid var(--border2); }
+.act-item:last-child { border-bottom: none; }
+.act-icon { width: 24px; height: 24px; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 11px; margin-top: 1px; }
+.act-icon.g { background: rgba(16,185,129,.1); color: var(--green); }
+.act-icon.a { background: rgba(245,158,11,.1); color: var(--amber); }
+.act-icon.v { background: rgba(124,58,237,.1); color: var(--violet2); }
+.act-icon.r { background: rgba(244,63,94,.1); color: #F87171; }
+.act-body { flex: 1; min-width: 0; }
+.act-title { font-size: 11px; color: var(--t1); font-weight: 500; margin-bottom: 2px; }
+.act-sub { font-size: 10px; color: var(--t3); line-height: 1.4; }
+.act-time { font-size: 9px; color: var(--t3); white-space: nowrap; font-family: var(--mono); padding-top: 2px; }
+
+/* ── REP SCORE ── */
+.rep-score-big { font-family: var(--mono); font-size: 36px; font-weight: 600; color: var(--amber); line-height: 1; }
+.rep-score-sub { font-size: 10px; color: var(--t3); margin: 4px 0 11px; }
+.rep-bar-row { display: flex; align-items: center; gap: 6px; margin-bottom: 5px; }
+.rep-bar-lbl { font-size: 9px; color: var(--t3); width: 82px; flex-shrink: 0; }
+.rep-bar-bg { flex: 1; height: 3px; background: rgba(255,255,255,.05); border-radius: 2px; overflow: hidden; }
+.rep-bar-fill { height: 100%; border-radius: 2px; }
+.rep-bar-val { font-size: 9px; font-family: var(--mono); color: var(--t2); width: 22px; text-align: right; flex-shrink: 0; }
+
+/* ── BADGES ── */
+.badge-row { display: flex; gap: 4px; flex-wrap: wrap; }
+.bdg { font-size: 9px; font-weight: 700; padding: 2px 7px; border-radius: 4px; }
+.bdg.g { background: rgba(16,185,129,.1); border: 1px solid rgba(16,185,129,.2); color: var(--green); }
+.bdg.a { background: rgba(245,158,11,.1); border: 1px solid rgba(245,158,11,.2); color: var(--amber); }
+.bdg.v { background: rgba(124,58,237,.1); border: 1px solid rgba(124,58,237,.2); color: var(--violet2); }
+.bdg.i { background: rgba(99,102,241,.1); border: 1px solid rgba(99,102,241,.2); color: #818CF8; }
+
+/* ── LEVEL JOURNEY ── */
+.lvl-journey { padding: 12px 13px; }
+.lvl-journey-num { font-family: var(--display); font-size: 40px; color: var(--amber); line-height: 1; font-weight: 400; }
+.lvl-journey-label { font-size: 9px; color: var(--t3); text-transform: uppercase; letter-spacing: .07em; margin-top: 2px; }
+.lvl-journey-bar { height: 3px; background: rgba(255,255,255,.05); border-radius: 2px; overflow: hidden; margin: 7px 0 4px; }
+.lvl-journey-fill { height: 100%; background: linear-gradient(90deg,var(--violet2),var(--amber)); border-radius: 2px; }
+.lvl-journey-pct { font-size: 9px; color: var(--t3); }
 
 /* ── PROGRESS ROAD ── */
-.prog-road { display: flex; align-items: center; background: var(--surface2); border: 1px solid var(--border2); border-radius: var(--r2); padding: 10px 14px; margin-bottom: 14px; overflow-x: auto; scrollbar-width: none; }
+.prog-road { display: flex; align-items: center; padding: 10px 14px; overflow-x: auto; scrollbar-width: none; }
 .prog-road::-webkit-scrollbar { display: none; }
-.prog-step { display: flex; flex-direction: column; align-items: center; flex: 1; min-width: 52px; position: relative; }
+.prog-step { display: flex; flex-direction: column; align-items: center; flex: 1; min-width: 50px; position: relative; }
 .prog-step + .prog-step::before { content:''; position:absolute; top:14px; left:-50%; right:50%; height:2px; background:var(--border2); z-index:0; }
 .prog-step.done + .prog-step::before { background: var(--green); }
 .prog-step.curr + .prog-step::before { background: linear-gradient(90deg,var(--amber),var(--border2)); }
-.prog-node { width:28px; height:28px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; z-index:1; position:relative; margin-bottom:5px; }
+.prog-node { width:28px; height:28px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:700; z-index:1; position:relative; margin-bottom:5px; }
 .prog-step.done .prog-node { background: var(--green); color: #000; }
 .prog-step.curr .prog-node { background: var(--amber); color: #000; box-shadow: 0 0 14px rgba(245,158,11,.45); }
 .prog-step:not(.done):not(.curr) .prog-node { background: var(--surface); border: 2px solid var(--border2); color: var(--t3); }
 .prog-label { font-size: 9px; color: var(--t3); text-align: center; }
 .prog-step.done .prog-label { color: var(--green); }
-.prog-step.curr .prog-label { color: var(--amber); font-weight: 600; }
+.prog-step.curr .prog-label { color: var(--amber); font-weight: 700; }
 
-/* ── THIS WEEK STATS ── */
-.this-week { display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; margin-bottom: 12px; }
-.tw-stat { background: var(--surface); border: 1px solid var(--border2); border-radius: var(--r2); padding: 11px 10px; text-align: center; transition: border-color .18s; }
-.tw-stat:hover { border-color: var(--border); }
-.tw-icon { font-size: 14px; margin-bottom: 3px; }
-.tw-val { font-family: var(--mono); font-size: 18px; font-weight: 600; color: var(--t1); }
-.tw-lbl { font-size: 9px; color: var(--t3); margin-top: 2px; text-transform: uppercase; letter-spacing: .04em; }
-@media (max-width: 600px) { .this-week { grid-template-columns: 1fr 1fr; } }
+/* ── OPP ROWS ── */
+.opp-row { display: flex; align-items: center; gap: 8px; padding: 8px 13px; border-bottom: 1px solid var(--border2); }
+.opp-row:last-child { border-bottom: none; }
+.opp-row-logo { width: 24px; height: 24px; border-radius: 5px; display: flex; align-items: center; justify-content: center; font-size: 8px; font-weight: 700; flex-shrink: 0; }
+.opp-row-name { flex: 1; font-size: 11px; color: var(--t2); }
+.opp-row-match { font-size: 11px; font-family: var(--mono); font-weight: 700; }
 
-/* ── XP STRIP ── */
-.xp-strip { display: flex; align-items: center; justify-content: space-between; background: rgba(124,58,237,.08); border: 1px solid rgba(124,58,237,.2); border-radius: var(--r2); padding: 9px 13px; margin-bottom: 12px; }
-.xp-strip-val { font-family: var(--mono); font-size: 15px; font-weight: 600; color: var(--violet2); }
-.xp-strip-delta { font-size: 10px; color: var(--green); }
+/* ── NETWORK MINI ── */
+.net-mini { padding: 12px 13px; }
+.net-mini-val { font-family: var(--mono); font-size: 20px; font-weight: 600; color: var(--green); }
+.net-mini-sub { font-size: 10px; color: var(--t3); margin-bottom: 9px; }
+.net-mini-row { display: flex; align-items: center; gap: 7px; padding: 6px 0; border-bottom: 1px solid var(--border2); }
+.net-mini-row:last-child { border-bottom: none; padding-bottom: 0; }
+.net-mini-av { width: 22px; height: 22px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 700; }
+.net-mini-name { flex: 1; font-size: 10px; color: var(--t2); }
+.net-mini-earn { font-size: 10px; color: var(--green); font-family: var(--mono); }
 
-/* ── TODAY'S ACTIONS ── */
-.today-actions-hdr { font-size: 10px; font-weight: 700; color: var(--t3); text-transform: uppercase; letter-spacing: .07em; margin-bottom: 10px; }
-.action-item { display: flex; align-items: flex-start; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--border2); }
-.action-item:last-child { border-bottom: none; padding-bottom: 0; }
-.action-check { width: 16px; height: 16px; border-radius: 4px; border: 1.5px solid var(--border2); flex-shrink: 0; margin-top: 1px; }
-.action-title { font-size: 12px; font-weight: 500; color: var(--t1); margin-bottom: 3px; }
-.action-why { font-size: 10px; color: var(--t3); line-height: 1.4; margin-bottom: 5px; }
-.action-tag { font-size: 9px; padding: 2px 6px; border-radius: 4px; font-weight: 600; }
-.action-tag.easy { background: rgba(16,185,129,.1); border: 1px solid rgba(16,185,129,.2); color: var(--green); }
-.action-tag.med { background: rgba(245,158,11,.1); border: 1px solid rgba(245,158,11,.2); color: var(--amber); }
-.action-xp { font-size: 10px; color: var(--violet2); font-family: var(--mono); font-weight: 600; flex-shrink: 0; background: rgba(124,58,237,.1); border: 1px solid rgba(124,58,237,.2); padding: 3px 7px; border-radius: 4px; white-space: nowrap; }
-
-/* ── ASIDE: REP RATING ── */
-.aside-rep-box { background: linear-gradient(135deg,rgba(245,158,11,.07),rgba(124,58,237,.04)); border: 1px solid rgba(245,158,11,.18); border-radius: var(--r2); padding: 13px; margin-bottom: 9px; }
-.aside-rep-num { font-family: var(--mono); font-size: 34px; font-weight: 500; color: var(--amber); line-height: 1; }
-.aside-rep-label { font-size: 9px; font-weight: 700; color: var(--t3); text-transform: uppercase; letter-spacing: .07em; margin-bottom: 2px; }
-.rep-comp { display: flex; align-items: center; gap: 7px; margin-bottom: 5px; }
-.rep-comp-name { font-size: 9px; color: var(--t3); width: 90px; flex-shrink: 0; }
-.rep-comp-bg { flex: 1; height: 3px; background: rgba(255,255,255,.05); border-radius: 2px; overflow: hidden; }
-.rep-comp-fill { height: 100%; border-radius: 2px; }
-.rep-comp-val { font-size: 9px; font-family: var(--mono); color: var(--t2); width: 22px; text-align: right; flex-shrink: 0; }
-
-/* ── TRUST BADGES ── */
-.trust-badges { display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 9px; }
-.tb { font-size: 9px; font-weight: 700; padding: 3px 8px; border-radius: 4px; }
-.tb.v { background: rgba(16,185,129,.1); border: 1px solid rgba(16,185,129,.22); color: var(--green); }
-.tb.c { background: rgba(245,158,11,.1); border: 1px solid rgba(245,158,11,.2); color: var(--amber); }
-.tb.t { background: rgba(124,58,237,.1); border: 1px solid rgba(124,58,237,.2); color: var(--violet2); }
-
-/* ── ASIDE LABELS + OPPS ── */
-.aside-lbl { font-size: 9px; font-weight: 700; color: var(--t3); text-transform: uppercase; letter-spacing: .07em; margin-bottom: 7px; }
-.aside-opp-row { display: flex; align-items: center; gap: 8px; padding: 7px 0; border-bottom: 1px solid var(--border2); }
-.aside-opp-row:last-child { border-bottom: none; }
-.aside-opp-logo { width: 24px; height: 24px; border-radius: 5px; display: flex; align-items: center; justify-content: center; font-size: 8px; font-weight: 700; flex-shrink: 0; }
-.aside-opp-name { flex: 1; font-size: 11px; color: var(--t2); }
-.aside-opp-match { font-size: 11px; font-family: var(--mono); color: var(--green); font-weight: 600; }
-
-/* ── MANAGER: KPI GRID ── */
-.kpi-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; margin-bottom: 14px; }
-@media (max-width: 680px) { .kpi-grid { grid-template-columns: repeat(2,1fr); } }
-.kpi-card { background: var(--surface2); border: 1px solid var(--border2); border-radius: var(--r2); padding: 14px 12px; }
-.kpi-val { font-family: var(--mono); font-size: 22px; font-weight: 600; margin-bottom: 4px; }
-.kpi-lbl { font-size: 9px; color: var(--t3); text-transform: uppercase; letter-spacing: .05em; }
+/* ── MANAGER: KPI ── */
+.kpi-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; flex-shrink: 0; }
+@media (max-width: 680px) { .kpi-row { grid-template-columns: repeat(2,1fr); } }
+.kpi { background: var(--surface2); border: 1px solid var(--border2); border-radius: var(--r2); padding: 12px; }
+.kpi-n { font-family: var(--mono); font-size: 22px; font-weight: 600; margin-bottom: 3px; }
+.kpi-l { font-size: 9px; color: var(--t3); text-transform: uppercase; letter-spacing: .05em; }
+.kpi-d { font-size: 9px; margin-top: 3px; }
 
 /* ── MANAGER: INNER TABS ── */
-.mgr-inner-tabs { display: flex; gap: 4px; margin-bottom: 14px; background: rgba(0,0,0,.3); border: 1px solid var(--border2); border-radius: var(--r2); padding: 4px; width: fit-content; overflow-x: auto; scrollbar-width: none; }
-.mgr-inner-tabs::-webkit-scrollbar { display: none; }
-.mgr-tab { padding: 6px 12px; border-radius: 6px; font-size: 11px; font-weight: 500; color: var(--t3); cursor: pointer; border: 1px solid transparent; background: transparent; white-space: nowrap; transition: all .15s; }
+.mgr-tabs { display: flex; gap: 2px; padding: 4px; background: rgba(0,0,0,.3); border: 1px solid var(--border2); border-radius: var(--r2); width: fit-content; overflow-x: auto; scrollbar-width: none; flex-shrink: 0; }
+.mgr-tabs::-webkit-scrollbar { display: none; }
+.mgr-tab { padding: 5px 12px; border-radius: 5px; font-size: 11px; font-weight: 500; color: var(--t3); cursor: pointer; border: 1px solid transparent; white-space: nowrap; transition: all .14s; }
 .mgr-tab.active { background: rgba(245,158,11,.1); color: var(--amber); border-color: rgba(245,158,11,.22); }
 .mgr-tab:hover:not(.active) { color: var(--t2); }
 .mgr-screen { display: none; }
-.mgr-screen.active { display: block; }
+.mgr-screen.active { display: flex; flex-direction: column; }
 
-/* ── MANAGER: ROSTER TABLE ── */
-.mgr-roster-card { background: var(--surface2); border: 1px solid var(--border2); border-radius: var(--r2); overflow: hidden; }
-.mgr-roster-hdr { display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; border-bottom: 1px solid var(--border2); }
-.mgr-roster-title { font-size: 10px; font-weight: 700; color: var(--t3); text-transform: uppercase; letter-spacing: .08em; }
-.mgr-creator-row { display: flex; align-items: center; gap: 10px; padding: 11px 14px; border-bottom: 1px solid var(--border2); transition: background .15s; }
-.mgr-creator-row:last-child { border-bottom: none; }
-.mgr-creator-row:hover { background: rgba(255,255,255,.02); }
-.mgr-av { width: 32px; height: 32px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; background: var(--surface); }
-.mgr-cr-name { font-size: 12px; font-weight: 600; color: var(--t1); display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
-.mgr-cr-meta { font-size: 10px; color: var(--t3); margin-top: 1px; }
-.mgr-level-badge { font-size: 9px; font-weight: 700; padding: 2px 6px; border-radius: 3px; }
-.mgr-level-badge.l4 { background: rgba(16,185,129,.1); border: 1px solid rgba(16,185,129,.22); color: var(--green); }
-.mgr-level-badge.l3 { background: rgba(245,158,11,.1); border: 1px solid rgba(245,158,11,.2); color: var(--amber); }
-.mgr-level-badge.l2 { background: rgba(245,243,238,.05); border: 1px solid var(--border2); color: var(--t3); }
-.mgr-leveled { font-size: 8px; background: rgba(16,185,129,.08); border: 1px solid rgba(16,185,129,.18); color: var(--green); padding: 1px 5px; border-radius: 3px; }
-.mgr-score { font-family: var(--mono); font-size: 13px; font-weight: 600; text-align: right; flex-shrink: 0; min-width: 40px; }
-.mgr-streak { font-size: 10px; color: var(--t3); text-align: right; margin-top: 1px; }
-.mgr-active-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
-.mgr-more { padding: 9px 14px; font-size: 10px; color: var(--t3); }
+/* ── MANAGER: ROSTER ROWS ── */
+.rost-row { display: flex; align-items: center; gap: 10px; padding: 10px 13px; border-bottom: 1px solid var(--border2); cursor: pointer; transition: background .13s; }
+.rost-row:last-child { border-bottom: none; }
+.rost-row:hover { background: rgba(255,255,255,.02); }
+.rost-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+.rost-av { width: 30px; height: 30px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; }
+.rost-name { font-size: 12px; font-weight: 600; color: var(--t1); display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.rost-meta { font-size: 10px; color: var(--t3); margin-top: 1px; }
+.rost-lvl { font-size: 9px; font-weight: 700; padding: 2px 6px; border-radius: 3px; flex-shrink: 0; }
+.rost-lvl.l4 { background: rgba(16,185,129,.1); border: 1px solid rgba(16,185,129,.2); color: var(--green); }
+.rost-lvl.l3 { background: rgba(245,158,11,.1); border: 1px solid rgba(245,158,11,.2); color: var(--amber); }
+.rost-lvl.l2 { background: rgba(245,243,238,.05); border: 1px solid var(--border2); color: var(--t3); }
+.rost-trust { font-family: var(--mono); font-size: 12px; font-weight: 600; }
+.rost-streak { font-size: 10px; color: var(--t3); }
+.rost-leveled { font-size: 8px; background: rgba(16,185,129,.08); border: 1px solid rgba(16,185,129,.18); color: var(--green); padding: 1px 5px; border-radius: 3px; }
 
-/* ── MANAGER: ASIDE ── */
-.aside-health-row { display: flex; align-items: center; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid var(--border2); }
-.aside-health-row:last-child { border-bottom: none; }
-.aside-health-lbl { font-size: 10px; color: var(--t3); }
-.aside-health-val { font-size: 11px; font-family: var(--mono); font-weight: 500; color: var(--t1); }
-.aside-health-val.g { color: var(--green); }
-.aside-earn-val { font-family: var(--mono); font-size: 24px; font-weight: 600; color: var(--green); }
-.aside-earn-sub { font-size: 10px; color: var(--t3); line-height: 1.4; margin-top: 3px; }
-.aside-alert { display: flex; align-items: flex-start; gap: 7px; padding: 7px 0; border-bottom: 1px solid var(--border2); }
-.aside-alert:last-child { border-bottom: none; padding-bottom: 0; }
-.aside-alert-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--amber); flex-shrink: 0; margin-top: 4px; }
-.aside-alert-text { font-size: 10px; color: var(--t2); line-height: 1.4; }
+/* ── MANAGER: PIPELINE ROWS ── */
+.pipe-row { display: flex; align-items: center; gap: 8px; padding: 9px 13px; border-bottom: 1px solid var(--border2); }
+.pipe-row:last-child { border-bottom: none; }
+.pipe-stage { font-size: 9px; font-weight: 700; padding: 2px 8px; border-radius: 4px; flex-shrink: 0; text-align: center; min-width: 72px; }
+.pipe-stage.p { background: rgba(245,158,11,.1); border: 1px solid rgba(245,158,11,.2); color: var(--amber); }
+.pipe-stage.a { background: rgba(16,185,129,.1); border: 1px solid rgba(16,185,129,.2); color: var(--green); }
+.pipe-stage.c { background: rgba(124,58,237,.1); border: 1px solid rgba(124,58,237,.2); color: var(--violet2); }
+.pipe-brand { font-size: 12px; font-weight: 600; color: var(--t1); flex: 1; }
+.pipe-creator { font-size: 10px; color: var(--t3); flex-shrink: 0; }
+.pipe-val { font-size: 11px; font-family: var(--mono); font-weight: 600; flex-shrink: 0; }
 
-/* ── SPONSOR: NETWORK BANNER ── */
-.sp-network-banner { background: linear-gradient(135deg,rgba(124,58,237,.08),rgba(124,58,237,.02)); border: 1px solid rgba(124,58,237,.22); border-radius: var(--r2); padding: 14px 16px; margin-bottom: 14px; }
-.sp-network-eyebrow { font-size: 9px; font-weight: 700; color: var(--violet2); text-transform: uppercase; letter-spacing: .07em; margin-bottom: 5px; }
-.sp-network-title { font-size: 14px; font-weight: 700; color: var(--violet2); margin-bottom: 6px; }
-.sp-network-sub { font-size: 11px; color: var(--t2); line-height: 1.55; margin-bottom: 10px; }
-.sp-pillars { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-.sp-pillar { display: flex; gap: 8px; }
-.sp-pillar-icon { font-size: 13px; flex-shrink: 0; margin-top: 1px; }
-.sp-pillar-title { font-size: 11px; font-weight: 600; color: var(--t1); margin-bottom: 2px; }
-.sp-pillar-desc { font-size: 10px; color: var(--t3); line-height: 1.4; }
+/* ── MANAGER: ALERTS ── */
+.alert-row { display: flex; align-items: flex-start; gap: 8px; padding: 9px 13px; border-bottom: 1px solid var(--border2); }
+.alert-row:last-child { border-bottom: none; }
+.alert-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; margin-top: 4px; }
+.alert-body { flex: 1; font-size: 11px; color: var(--t2); line-height: 1.45; }
+.alert-time { font-size: 9px; color: var(--t3); font-family: var(--mono); white-space: nowrap; padding-top: 2px; }
 
-/* ── SPONSOR: KPI STRIP ── */
-.sp-kpi-strip { display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; margin-bottom: 14px; }
-@media (max-width: 620px) { .sp-kpi-strip { grid-template-columns: repeat(2,1fr); } }
-.sp-kpi { background: var(--surface2); border: 1px solid var(--border2); border-radius: var(--r2); padding: 12px; }
-.sp-kpi-val { font-family: var(--mono); font-size: 20px; font-weight: 600; color: var(--t1); }
-.sp-kpi-lbl { font-size: 9px; color: var(--t3); text-transform: uppercase; letter-spacing: .04em; margin-top: 2px; }
-.sp-kpi-d { font-size: 9px; margin-top: 2px; }
+/* ── MANAGER: REVENUE ROWS ── */
+.rev-row { display: flex; align-items: center; gap: 8px; padding: 8px 13px; border-bottom: 1px solid var(--border2); }
+.rev-row:last-child { border-bottom: none; }
+.rev-av { width: 22px; height: 22px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 700; }
+.rev-name { flex: 1; font-size: 11px; color: var(--t2); }
+.rev-val { font-size: 11px; font-family: var(--mono); font-weight: 600; }
 
-/* ── SPONSOR: CREATOR CARDS ── */
-.cr-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-@media (max-width: 600px) { .cr-grid { grid-template-columns: 1fr; } }
-.cr-card { background: var(--surface2); border: 1px solid var(--border2); border-radius: var(--r2); padding: 14px; transition: border-color .18s; }
-.cr-card:hover { border-color: rgba(245,158,11,.2); }
-.cr-top { display: flex; align-items: center; gap: 10px; margin-bottom: 9px; }
-.cr-av { width: 36px; height: 36px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; }
-.cr-name { font-size: 13px; font-weight: 700; color: var(--t1); }
-.cr-meta { font-size: 10px; color: var(--t3); }
-.cr-role-badge { font-size: 9px; font-weight: 700; padding: 3px 7px; border-radius: 4px; flex-shrink: 0; }
-.cr-role-badge.creator { background: rgba(245,158,11,.12); border: 1px solid rgba(245,158,11,.26); color: var(--amber); }
-.cr-role-badge.elite { background: rgba(16,185,129,.12); border: 1px solid rgba(16,185,129,.26); color: var(--green); }
-.cr-role-badge.partner { background: rgba(124,58,237,.12); border: 1px solid rgba(124,58,237,.26); color: var(--violet2); }
-.cr-role-badge.builder { background: rgba(245,243,238,.05); border: 1px solid var(--border2); color: var(--t3); }
-.cr-score-row { display: flex; align-items: center; justify-content: space-between; font-size: 10px; color: var(--t3); margin-bottom: 4px; }
-.cr-sbar { height: 3px; background: rgba(255,255,255,.05); border-radius: 2px; overflow: hidden; margin-bottom: 8px; }
-.cr-sfill { height: 100%; border-radius: 2px; }
-.cr-stat-row { display: flex; align-items: center; justify-content: space-between; font-size: 10px; color: var(--t3); margin-bottom: 3px; }
-.cr-tags { display: flex; gap: 4px; flex-wrap: wrap; margin: 7px 0; }
-.cr-tag { font-size: 9px; padding: 2px 6px; border-radius: 3px; font-weight: 600; }
-.cr-tag.v { background: rgba(16,185,129,.1); border: 1px solid rgba(16,185,129,.2); color: var(--green); }
-.cr-tag.c { background: rgba(245,158,11,.1); border: 1px solid rgba(245,158,11,.2); color: var(--amber); }
-.cr-tag.t { background: rgba(124,58,237,.1); border: 1px solid rgba(124,58,237,.2); color: var(--violet2); }
-.cr-tag.sr { background: rgba(99,102,241,.1); border: 1px solid rgba(99,102,241,.2); color: #818CF8; }
-.cr-tag.hp { background: rgba(245,243,238,.05); border: 1px solid var(--border2); color: var(--t3); }
-.cr-ready { display: flex; align-items: flex-start; gap: 6px; font-size: 10px; line-height: 1.4; padding: 7px 9px; border-radius: 5px; margin-bottom: 10px; }
-.cr-ready.h { background: rgba(16,185,129,.05); border: 1px solid rgba(16,185,129,.15); color: var(--t2); }
-.cr-ready.b { background: rgba(245,243,238,.03); border: 1px solid var(--border2); color: var(--t3); }
-.cr-btns { display: flex; gap: 7px; }
-.cr-btn-p { flex: 1; background: var(--amber); color: #000; font-size: 11px; font-weight: 700; padding: 7px; border-radius: 5px; border: none; cursor: pointer; }
-.cr-btn-g { flex: 1; background: transparent; border: 1px solid var(--border2); color: var(--t2); font-size: 11px; font-weight: 500; padding: 7px; border-radius: 5px; cursor: pointer; }
+/* ── MANAGER: ENQUIRY ── */
+.enquiry-card { padding: 12px 13px; }
+.enquiry-from { font-size: 11px; font-weight: 700; color: var(--t1); margin-bottom: 3px; }
+.enquiry-sub { font-size: 10px; color: var(--t3); line-height: 1.5; margin-bottom: 8px; }
+.enquiry-deadline { display: inline-block; font-size: 9px; color: var(--amber); font-weight: 600; background: rgba(245,158,11,.08); border: 1px solid rgba(245,158,11,.18); border-radius: 4px; padding: 2px 7px; margin-bottom: 9px; }
+.enquiry-btn { font-size: 10px; font-weight: 700; padding: 7px 14px; border-radius: 5px; background: var(--amber); color: #000; border: none; cursor: pointer; width: 100%; }
+
+/* ── SPONSOR: SEARCH BAR ── */
+.sp-search-wrap { padding: 12px 14px 0; flex-shrink: 0; }
+.sp-search { display: flex; align-items: center; gap: 10px; background: rgba(255,255,255,.04); border: 1px solid var(--border); border-radius: var(--r2); padding: 10px 14px; margin-bottom: 8px; }
+.sp-search-val { flex: 1; font-size: 12px; color: var(--t2); font-family: var(--mono); }
+.sp-search-btn { font-size: 10px; font-weight: 700; padding: 5px 14px; border-radius: 5px; background: var(--amber); color: #000; border: none; cursor: pointer; flex-shrink: 0; }
+.sp-filters { display: flex; gap: 5px; flex-wrap: wrap; padding-bottom: 10px; border-bottom: 1px solid var(--border2); }
+.sp-chip { font-size: 10px; padding: 3px 9px; border-radius: 12px; background: rgba(245,158,11,.08); border: 1px solid rgba(245,158,11,.22); color: var(--amber); cursor: pointer; display: flex; align-items: center; gap: 4px; }
+.sp-chip-x { opacity: .6; font-size: 9px; }
+.sp-chip.off { background: var(--surface2); border-color: var(--border2); color: var(--t3); }
+
+/* ── SPONSOR: RESULT ROWS ── */
+.res-row { display: flex; align-items: center; gap: 10px; padding: 11px 14px; border-bottom: 1px solid var(--border2); cursor: pointer; transition: background .13s; }
+.res-row:hover { background: rgba(255,255,255,.02); }
+.res-row:last-child { border-bottom: none; }
+.res-av { width: 34px; height: 34px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; }
+.res-name { font-size: 12px; font-weight: 700; color: var(--t1); display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.res-meta { font-size: 10px; color: var(--t3); margin-top: 2px; }
+.res-tags { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 4px; }
+.res-fit { font-size: 15px; font-weight: 700; font-family: var(--mono); text-align: right; flex-shrink: 0; min-width: 42px; }
+.res-fit-lbl { font-size: 8px; color: var(--t3); text-align: right; margin-top: 1px; }
+.res-actions { display: flex; gap: 5px; flex-shrink: 0; }
+.res-btn { font-size: 10px; padding: 5px 9px; border-radius: 5px; border: 1px solid var(--border2); color: var(--t2); background: transparent; cursor: pointer; white-space: nowrap; }
+.res-btn.p { background: var(--amber); border-color: var(--amber); color: #000; font-weight: 700; }
+
+/* ── SPONSOR: SHORTLIST ── */
+.sl-row { display: flex; align-items: center; gap: 8px; padding: 8px 13px; border-bottom: 1px solid var(--border2); }
+.sl-row:last-child { border-bottom: none; }
+.sl-row-av { width: 24px; height: 24px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 700; }
+.sl-row-name { flex: 1; font-size: 11px; color: var(--t2); }
+.sl-row-trust { font-size: 11px; font-family: var(--mono); font-weight: 700; color: var(--green); }
+.sl-build-btn { display: block; margin: 11px 13px; font-size: 10px; font-weight: 700; padding: 8px; background: linear-gradient(90deg,var(--violet),var(--amber)); color: #000; border: none; border-radius: 5px; cursor: pointer; text-align: center; }
+
+/* ── SPONSOR: RECO ── */
+.reco-body { padding: 12px 13px; }
+.reco-eyebrow { font-size: 9px; color: var(--violet2); font-weight: 700; text-transform: uppercase; letter-spacing: .07em; margin-bottom: 5px; }
+.reco-reason { font-size: 10px; color: var(--t3); line-height: 1.5; margin-bottom: 9px; font-style: italic; }
+.reco-creator { display: flex; align-items: center; gap: 8px; }
+.reco-av { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; flex-shrink: 0; }
+.reco-name { font-size: 11px; font-weight: 700; color: var(--t1); }
+.reco-fit { font-size: 10px; color: var(--green); }
+.reco-btn { font-size: 9px; font-weight: 600; padding: 4px 10px; border-radius: 4px; border: 1px solid rgba(124,58,237,.3); color: var(--violet2); background: rgba(124,58,237,.07); cursor: pointer; margin-left: auto; flex-shrink: 0; }
+
+/* ── SPONSOR: BUDGET ── */
+.budget-body { padding: 12px 13px; }
+.budget-total { font-family: var(--mono); font-size: 22px; font-weight: 600; color: var(--t1); }
+.budget-sub { font-size: 10px; color: var(--t3); margin-bottom: 9px; }
+.budget-bar { height: 4px; background: rgba(255,255,255,.05); border-radius: 2px; overflow: hidden; margin-bottom: 5px; }
+.budget-bar-fill { height: 100%; border-radius: 2px; background: linear-gradient(90deg,var(--violet),var(--amber)); }
+.budget-legend { display: flex; justify-content: space-between; font-size: 9px; }
+
 
 @media (max-width: 500px) {
   .network-sec { padding: 52px 0; }
@@ -1557,673 +1632,586 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
 
         <!-- ═══ CREATOR ═══ -->
         <div class="pw-panel active" id="panel-creator">
-          <div class="panel-layout">
 
-            <!-- CREATOR MAIN -->
-            <div class="panel-main">
+          <!-- App Bar -->
+          <div class="app-bar">
+            <div class="app-crumb">
+              <span class="app-crumb-root">LEVL</span>
+              <span class="app-crumb-sep">/</span>
+              <span class="app-crumb-current">Creator OS</span>
+            </div>
+            <div class="app-search-hint">
+              <svg width="10" height="10" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.5"/><path d="M10.5 10.5l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              Search&hellip; <kbd>&#8984;K</kbd>
+            </div>
+            <div class="app-bar-right">
+              <div class="notif-btn">&#128276;<span class="notif-badge">2</span></div>
+              <div class="app-av" style="background:linear-gradient(135deg,#F59E0B,#7C3AED)">J</div>
+            </div>
+          </div>
 
-              <!-- Hero banner -->
-              <div class="c-hero">
-                <div style="width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#F59E0B,#7C3AED);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;flex-shrink:0">J</div>
-                <div style="flex:1;min-width:0">
-                  <div class="c-hero-title">Jordan Kuznets <span style="font-size:10px;font-weight:400;color:var(--green);background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.2);border-radius:4px;padding:2px 7px;margin-left:4px">&#10003; Verified</span></div>
-                  <div class="c-hero-sub">@jordank &middot; Gaming &amp; Tech &middot; UK &middot; levl.gg/c/jordank &middot; 4 yrs on LEVL &middot; <span style="color:var(--amber)">&#128293; 6-week streak</span></div>
-                  <div style="display:flex;gap:7px;margin-top:8px;flex-wrap:wrap">
-                    <div class="c-hero-chip">L3 Established</div>
-                    <div style="font-size:10px;color:var(--t3);display:flex;align-items:center;gap:5px"><span style="background:rgba(244,63,94,.12);border-radius:4px;padding:2px 5px;color:#f87171">YT</span> <span style="background:rgba(100,65,165,.15);border-radius:4px;padding:2px 5px;color:#a78bfa">Twitch</span> <span style="background:rgba(88,101,242,.15);border-radius:4px;padding:2px 5px;color:#818cf8">Discord</span></div>
+          <div class="dash-body">
+            <div class="dash-main">
+
+              <div class="greeting">
+                <div>
+                  <div class="greeting-hi">Good evening, Jordan &#128075;</div>
+                  <div class="greeting-date">Thursday, 25 June 2026 &middot; Week 26</div>
+                </div>
+                <div class="greeting-right">
+                  <div class="greeting-streak">&#128293; 6-week streak</div>
+                  <div class="greeting-sub">Keep it alive this week</div>
+                </div>
+              </div>
+
+              <div class="ds">
+                <div class="ds-hdr">
+                  <span class="ds-title">LEVEL JOURNEY</span>
+                  <span class="ds-badge amber">L3 Established</span>
+                </div>
+                <div class="lvl-journey">
+                  <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:3px">
+                    <div class="lvl-journey-num">3</div>
+                    <div>
+                      <div style="font-size:12px;font-weight:600;color:var(--t1)">Established Creator</div>
+                      <div class="lvl-journey-label">Next: L4 Partner &mdash; 68 XP to go</div>
+                    </div>
+                    <div style="margin-left:auto;text-align:right">
+                      <div style="font-size:11px;font-weight:700;color:var(--t2);font-family:var(--mono)">732 / 800</div>
+                      <div style="font-size:9px;color:var(--t3)">Top 31% of creators</div>
+                    </div>
+                  </div>
+                  <div class="lvl-journey-bar"><div class="lvl-journey-fill bar-animate" style="--w:91.5%"></div></div>
+                  <div class="lvl-journey-pct">91.5% to Level 4 &middot; Publishing record verified &middot; 3 sponsor deals completed</div>
+                </div>
+                <div class="prog-road">
+                  <div class="prog-step done"><div class="prog-node">&#10003;</div><div class="prog-label">Explorer</div></div>
+                  <div class="prog-step done"><div class="prog-node">&#10003;</div><div class="prog-label">Builder</div></div>
+                  <div class="prog-step curr"><div class="prog-node">3</div><div class="prog-label">Creator</div></div>
+                  <div class="prog-step"><div class="prog-node">4</div><div class="prog-label">Partner</div></div>
+                  <div class="prog-step"><div class="prog-node">5</div><div class="prog-label">Pro</div></div>
+                  <div class="prog-step"><div class="prog-node">6</div><div class="prog-label">Elite</div></div>
+                </div>
+              </div>
+
+              <div class="ds">
+                <div class="ds-hdr">
+                  <span class="ds-title">THIS WEEK</span>
+                  <span class="ds-meta">w/c 23 Jun</span>
+                </div>
+                <div class="week-grid">
+                  <div class="week-cell">
+                    <div class="week-cell-icon">&#128293;</div>
+                    <div class="week-cell-val" style="color:var(--amber)">6</div>
+                    <div class="week-cell-lbl">Week Streak</div>
+                    <div class="week-cell-sub">Personal best</div>
+                  </div>
+                  <div class="week-cell">
+                    <div class="week-cell-icon">&#8593;</div>
+                    <div class="week-cell-val" style="color:var(--green)">+18</div>
+                    <div class="week-cell-lbl">XP Gained</div>
+                    <div class="week-cell-sub">This month</div>
+                  </div>
+                  <div class="week-cell">
+                    <div class="week-cell-icon">&#9672;</div>
+                    <div class="week-cell-val" style="color:var(--violet2)">3</div>
+                    <div class="week-cell-lbl">Active Deals</div>
+                    <div class="week-cell-sub">GearX renewed &times;3</div>
+                  </div>
+                  <div class="week-cell">
+                    <div class="week-cell-icon">&#128101;</div>
+                    <div class="week-cell-val" style="color:var(--t1)">12</div>
+                    <div class="week-cell-lbl">Network</div>
+                    <div class="week-cell-sub">&#163;57/mo earning</div>
                   </div>
                 </div>
               </div>
 
-              <!-- Level section -->
-              <div class="c-level-section">
-                <div>
-                  <div class="c-level-eyebrow">Level</div>
-                  <div class="c-level-num">3</div>
+              <div class="ds">
+                <div class="ds-hdr">
+                  <span class="ds-title">TODAY&apos;S ACTIONS</span>
+                  <span class="ds-badge green">3 actions &middot; +60 XP available</span>
                 </div>
-                <div>
-                  <div class="c-level-badge">Next: L4 Partner &#8594;</div>
-                  <div class="c-level-desc">Established creator with verified audience, active sponsor history, and consistent 6-week publishing record.</div>
-                  <div class="c-level-unlock">Unlock at 800 XP &middot; 68 XP to go</div>
+                <div class="action-row">
+                  <div class="action-cb"></div>
+                  <div style="flex:1;min-width:0">
+                    <div class="action-txt">Add Friday evening stream to your schedule</div>
+                    <div class="action-why">Consistency signal &mdash; updates your publishing pattern and boosts Longevity score</div>
+                  </div>
+                  <div class="action-pills"><span class="pill pill-easy">Easy</span><span class="pill pill-xp">+20 XP</span></div>
                 </div>
-                <div>
-                  <div class="c-level-pct">Top<br>31%</div>
-                  <div class="c-level-pct-lbl">of creators</div>
+                <div class="action-row">
+                  <div class="action-cb"></div>
+                  <div style="flex:1;min-width:0">
+                    <div class="action-txt">Create sponsor-safe highlight reel</div>
+                    <div class="action-why">Sponsorship History signal &mdash; deal-ready proof for incoming enquiry from TechBrand Ltd</div>
+                  </div>
+                  <div class="action-pills"><span class="pill pill-med">Medium</span><span class="pill pill-xp">+20 XP</span></div>
                 </div>
-              </div>
-
-              <!-- Progress road -->
-              <div class="prog-road">
-                <div class="prog-step done">
-                  <div class="prog-node">&#10003;</div>
-                  <div class="prog-label">Explorer</div>
-                </div>
-                <div class="prog-step done">
-                  <div class="prog-node">&#10003;</div>
-                  <div class="prog-label">Builder</div>
-                </div>
-                <div class="prog-step curr">
-                  <div class="prog-node">3</div>
-                  <div class="prog-label">Creator</div>
-                </div>
-                <div class="prog-step">
-                  <div class="prog-node">4</div>
-                  <div class="prog-label">Partner</div>
-                </div>
-                <div class="prog-step">
-                  <div class="prog-node">5</div>
-                  <div class="prog-label">Pro</div>
-                </div>
-                <div class="prog-step">
-                  <div class="prog-node">6</div>
-                  <div class="prog-label">Elite</div>
+                <div class="action-row">
+                  <div class="action-cb"></div>
+                  <div style="flex:1;min-width:0">
+                    <div class="action-txt">Pin LEVL profile link in Discord bio</div>
+                    <div class="action-why">Verification signal &mdash; community presence increases discovery ranking by 12%</div>
+                  </div>
+                  <div class="action-pills"><span class="pill pill-easy">Easy</span><span class="pill pill-xp">+20 XP</span></div>
                 </div>
               </div>
 
-              <!-- This week stats -->
-              <div class="this-week">
-                <div class="tw-stat">
-                  <div class="tw-icon" style="color:var(--amber)">&#128293;</div>
-                  <div class="tw-val">6</div>
-                  <div class="tw-lbl">week streak</div>
+              <div class="ds">
+                <div class="ds-hdr">
+                  <span class="ds-title">ACTIVE CAMPAIGN</span>
+                  <div class="campaign-live"><div class="campaign-live-dot"></div>Live now</div>
                 </div>
-                <div class="tw-stat">
-                  <div class="tw-icon" style="color:var(--green)">&#8593;</div>
-                  <div class="tw-val">+18</div>
-                  <div class="tw-lbl">XP this month</div>
-                </div>
-                <div class="tw-stat">
-                  <div class="tw-icon" style="color:var(--violet2)">&#9672;</div>
-                  <div class="tw-val">3</div>
-                  <div class="tw-lbl">active deals</div>
-                </div>
-                <div class="tw-stat">
-                  <div class="tw-icon" style="color:var(--green)">&#10003;</div>
-                  <div class="tw-val">GearX</div>
-                  <div class="tw-lbl">renewed &times;3</div>
+                <div class="camp-body">
+                  <div class="camp-title">
+                    <div style="width:26px;height:26px;border-radius:5px;background:rgba(245,158,11,.15);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:var(--amber)">GX</div>
+                    GearX &mdash; Q4 Gaming Integration
+                  </div>
+                  <div class="camp-meta">Integration deal &middot; 3 streams completed &middot; Renewal #3 &middot; Ends 30 Jun 2026<br>Contract: <strong style="color:var(--green);font-family:var(--mono)">&#163;960/mo</strong> &middot; Next payment in 5 days</div>
+                  <div class="camp-prog"><div class="camp-prog-fill" style="width:78%"></div></div>
+                  <div class="camp-prog-lbl">78% through campaign &mdash; 2 deliverables remaining</div>
+                  <div class="camp-btns">
+                    <button class="camp-btn primary">Log deliverable</button>
+                    <button class="camp-btn">View contract</button>
+                    <button class="camp-btn">Message sponsor</button>
+                  </div>
                 </div>
               </div>
 
-              <!-- XP strip -->
-              <div class="xp-strip">
-                <span class="xp-strip-val">732 XP</span>
-                <div style="flex:1;height:6px;background:rgba(245,243,238,.07);border-radius:4px;overflow:hidden;margin:0 10px">
-                  <div class="bar-animate" style="height:100%;background:linear-gradient(90deg,var(--violet),var(--amber));border-radius:4px;--w:91.5%"></div>
+              <div class="ds">
+                <div class="ds-hdr">
+                  <span class="ds-title">RECENT ACTIVITY</span>
+                  <span class="ds-link">View all &rarr;</span>
                 </div>
-                <span class="xp-strip-val">800 XP</span>
-                <span class="xp-strip-delta">+68 to L4</span>
-              </div>
-
-              <!-- Today actions -->
-              <div class="today-actions-hdr">Today&apos;s recommended actions</div>
-              <div class="action-item">
-                <div class="action-check"></div>
-                <div style="flex:1;min-width:0">
-                  <div class="action-title">Add Friday evening stream schedule</div>
-                  <div class="action-why">Consistency signal &mdash; boosts your Longevity score</div>
+                <div class="act-item">
+                  <div class="act-icon g">&#8593;</div>
+                  <div class="act-body">
+                    <div class="act-title">Reputation score increased to 742</div>
+                    <div class="act-sub">Longevity +4 &middot; Consistency +3 &middot; Publishing record updated</div>
+                  </div>
+                  <div class="act-time">2h ago</div>
                 </div>
-                <div style="display:flex;align-items:center;gap:6px;flex-shrink:0">
-                  <span class="action-tag easy">Easy</span>
-                  <span class="action-xp">+20 XP</span>
+                <div class="act-item">
+                  <div class="act-icon a">&#9672;</div>
+                  <div class="act-body">
+                    <div class="act-title">GearX renewed for 3rd consecutive month</div>
+                    <div class="act-sub">Sponsor History signal updated &middot; +8 XP earned</div>
+                  </div>
+                  <div class="act-time">Yesterday</div>
                 </div>
-              </div>
-              <div class="action-item">
-                <div class="action-check"></div>
-                <div style="flex:1;min-width:0">
-                  <div class="action-title">Create sponsor-safe highlight reel</div>
-                  <div class="action-why">Sponsorship History signal &mdash; deal-ready proof</div>
+                <div class="act-item">
+                  <div class="act-icon v">&#9889;</div>
+                  <div class="act-body">
+                    <div class="act-title">New opportunity: Kick Creator Program</div>
+                    <div class="act-sub">91% campaign fit &middot; Exclusive access via LEVL network</div>
+                  </div>
+                  <div class="act-time">2d ago</div>
                 </div>
-                <div style="display:flex;align-items:center;gap:6px;flex-shrink:0">
-                  <span class="action-tag med">Medium</span>
-                  <span class="action-xp">+20 XP</span>
-                </div>
-              </div>
-              <div class="action-item">
-                <div class="action-check"></div>
-                <div style="flex:1;min-width:0">
-                  <div class="action-title">Pin LEVL profile link in Discord bio</div>
-                  <div class="action-why">Verification signal &mdash; community presence</div>
-                </div>
-                <div style="display:flex;align-items:center;gap:6px;flex-shrink:0">
-                  <span class="action-tag easy">Easy</span>
-                  <span class="action-xp">+20 XP</span>
+                <div class="act-item">
+                  <div class="act-icon g">&#10003;</div>
+                  <div class="act-body">
+                    <div class="act-title">YouTube channel verification renewed</div>
+                    <div class="act-sub">API connection refreshed &middot; 48.2K subscribers confirmed</div>
+                  </div>
+                  <div class="act-time">3d ago</div>
                 </div>
               </div>
 
-            </div><!-- /panel-main -->
+            </div><!-- /dash-main -->
 
-            <!-- CREATOR ASIDE -->
-            <div class="panel-aside">
+            <div class="dash-side">
 
-              <div class="aside-lbl">Reputation Score</div>
-              <div class="aside-rep-box">
-                <div class="aside-rep-num">742</div>
-                <div style="font-size:10px;color:var(--t3);margin-top:3px">/ 1,000 &middot; &#8593; +18 this month</div>
-              </div>
-
-              <div style="margin-bottom:14px">
-                <div class="rep-comp">
-                  <div class="rep-comp-name">Longevity</div>
-                  <div class="rep-comp-bg"><div class="rep-comp-fill bar-animate" style="--w:89%;background:var(--green)"></div></div>
-                  <div class="rep-comp-val">178</div>
+              <div class="ds">
+                <div class="ds-hdr">
+                  <span class="ds-title">REPUTATION</span>
+                  <span class="ds-badge green">&#8593; +18 this month</span>
                 </div>
-                <div class="rep-comp">
-                  <div class="rep-comp-name">Audience</div>
-                  <div class="rep-comp-bg"><div class="rep-comp-fill bar-animate" style="--w:84%;background:var(--green);animation-delay:.1s"></div></div>
-                  <div class="rep-comp-val">168</div>
-                </div>
-                <div class="rep-comp">
-                  <div class="rep-comp-name">Consistency</div>
-                  <div class="rep-comp-bg"><div class="rep-comp-fill bar-animate" style="--w:79%;background:var(--amber);animation-delay:.2s"></div></div>
-                  <div class="rep-comp-val">158</div>
-                </div>
-                <div class="rep-comp">
-                  <div class="rep-comp-name">Verification</div>
-                  <div class="rep-comp-bg"><div class="rep-comp-fill bar-animate" style="--w:59%;background:var(--green);animation-delay:.3s"></div></div>
-                  <div class="rep-comp-val">118</div>
-                </div>
-                <div class="rep-comp">
-                  <div class="rep-comp-name">Sponsor Hist.</div>
-                  <div class="rep-comp-bg"><div class="rep-comp-fill bar-animate" style="--w:39%;background:var(--violet2);animation-delay:.4s"></div></div>
-                  <div class="rep-comp-val">78</div>
-                </div>
-                <div class="rep-comp">
-                  <div class="rep-comp-name">Community</div>
-                  <div class="rep-comp-bg"><div class="rep-comp-fill bar-animate" style="--w:22%;background:var(--green);animation-delay:.5s"></div></div>
-                  <div class="rep-comp-val">42</div>
+                <div style="padding:12px 13px">
+                  <div class="rep-score-big">742</div>
+                  <div class="rep-score-sub">/ 1,000 &middot; Top 31% of creators</div>
+                  <div class="rep-bar-row"><span class="rep-bar-lbl">Longevity</span><div class="rep-bar-bg"><div class="rep-bar-fill bar-animate" style="--w:89%;background:var(--green)"></div></div><span class="rep-bar-val">178</span></div>
+                  <div class="rep-bar-row"><span class="rep-bar-lbl">Audience</span><div class="rep-bar-bg"><div class="rep-bar-fill bar-animate" style="--w:84%;background:var(--green);animation-delay:.08s"></div></div><span class="rep-bar-val">168</span></div>
+                  <div class="rep-bar-row"><span class="rep-bar-lbl">Consistency</span><div class="rep-bar-bg"><div class="rep-bar-fill bar-animate" style="--w:79%;background:var(--amber);animation-delay:.16s"></div></div><span class="rep-bar-val">158</span></div>
+                  <div class="rep-bar-row"><span class="rep-bar-lbl">Verification</span><div class="rep-bar-bg"><div class="rep-bar-fill bar-animate" style="--w:59%;background:var(--green);animation-delay:.24s"></div></div><span class="rep-bar-val">118</span></div>
+                  <div class="rep-bar-row"><span class="rep-bar-lbl">Sponsor Hist.</span><div class="rep-bar-bg"><div class="rep-bar-fill bar-animate" style="--w:39%;background:var(--violet2);animation-delay:.32s"></div></div><span class="rep-bar-val">78</span></div>
+                  <div class="rep-bar-row"><span class="rep-bar-lbl">Community</span><div class="rep-bar-bg"><div class="rep-bar-fill bar-animate" style="--w:22%;background:var(--green);animation-delay:.4s"></div></div><span class="rep-bar-val">42</span></div>
                 </div>
               </div>
 
-              <div class="aside-lbl">Trust Badges</div>
-              <div class="trust-badges">
-                <div class="tb v">&#10003; Verified</div>
-                <div class="tb c">&#128293; Consistent</div>
-                <div class="tb t">&#11088; Trusted</div>
+              <div class="ds">
+                <div class="ds-hdr"><span class="ds-title">TRUST BADGES</span></div>
+                <div style="padding:10px 13px">
+                  <div class="badge-row">
+                    <span class="bdg g">&#10003; Verified</span>
+                    <span class="bdg a">&#128293; Consistent</span>
+                    <span class="bdg v">&#11088; Trusted</span>
+                    <span class="bdg i">&#9672; Deal Ready</span>
+                  </div>
+                </div>
               </div>
 
-              <div class="aside-lbl">Top Opportunities</div>
-              <div class="aside-opp-row">
-                <div class="aside-opp-logo" style="background:rgba(16,185,129,.12);color:var(--green)">KC</div>
-                <div class="aside-opp-name">Kick Creator Program</div>
-                <div class="aside-opp-match">91%</div>
-              </div>
-              <div class="aside-opp-row">
-                <div class="aside-opp-logo" style="background:rgba(124,58,237,.12);color:var(--violet2)">DB</div>
-                <div class="aside-opp-name">Duelbits Partner</div>
-                <div class="aside-opp-match">82%</div>
-              </div>
-              <div class="aside-opp-row">
-                <div class="aside-opp-logo" style="background:rgba(245,158,11,.1);color:var(--amber)">PD</div>
-                <div class="aside-opp-name">Packdraw Affiliate</div>
-                <div class="aside-opp-match" style="color:var(--amber)">78%</div>
+              <div class="ds">
+                <div class="ds-hdr">
+                  <span class="ds-title">MATCHED OPPS</span>
+                  <span class="ds-badge violet">3 new</span>
+                </div>
+                <div class="opp-row">
+                  <div class="opp-row-logo" style="background:rgba(16,185,129,.12);color:var(--green)">KC</div>
+                  <div class="opp-row-name">Kick Creator Program</div>
+                  <div class="opp-row-match" style="color:var(--green)">91%</div>
+                </div>
+                <div class="opp-row">
+                  <div class="opp-row-logo" style="background:rgba(124,58,237,.12);color:var(--violet2)">DB</div>
+                  <div class="opp-row-name">Duelbits Partner</div>
+                  <div class="opp-row-match" style="color:var(--green)">82%</div>
+                </div>
+                <div class="opp-row">
+                  <div class="opp-row-logo" style="background:rgba(245,158,11,.1);color:var(--amber)">PD</div>
+                  <div class="opp-row-name">Packdraw Affiliate</div>
+                  <div class="opp-row-match" style="color:var(--amber)">78%</div>
+                </div>
               </div>
 
-              <div class="aside-lbl" style="margin-top:12px">LEVL Network</div>
-              <div style="font-size:11px;color:var(--t2);margin-bottom:2px">12 members &middot; <span style="color:var(--green);font-family:var(--mono)">&#163;57/mo</span></div>
-              <div style="font-size:10px;color:var(--t3);font-family:var(--mono)">levl.gg/n/jordank</div>
+              <div class="ds">
+                <div class="ds-hdr"><span class="ds-title">LEVL NETWORK</span></div>
+                <div class="net-mini">
+                  <div class="net-mini-val">&#163;57</div>
+                  <div class="net-mini-sub">earned this month &middot; 12 members</div>
+                  <div class="net-mini-row">
+                    <div class="net-mini-av" style="background:linear-gradient(135deg,#10B981,#F59E0B)">M</div>
+                    <div class="net-mini-name">Maya Liu</div>
+                    <div class="net-mini-earn">&#163;22/mo</div>
+                  </div>
+                  <div class="net-mini-row">
+                    <div class="net-mini-av" style="background:linear-gradient(135deg,#7C3AED,#F43F5E)">T</div>
+                    <div class="net-mini-name">Tom Keane</div>
+                    <div class="net-mini-earn">&#163;18/mo</div>
+                  </div>
+                  <div class="net-mini-row">
+                    <div class="net-mini-av" style="background:linear-gradient(135deg,#F43F5E,#F59E0B)">Z</div>
+                    <div class="net-mini-name">Zara Patel</div>
+                    <div class="net-mini-earn">&#163;17/mo</div>
+                  </div>
+                </div>
+              </div>
 
-            </div><!-- /panel-aside -->
-
-          </div><!-- /panel-layout -->
+            </div><!-- /dash-side -->
+          </div><!-- /dash-body -->
         </div><!-- /panel-creator -->
 
         <!-- ═══ MANAGER ═══ -->
         <div class="pw-panel" id="panel-manager">
-          <div class="panel-layout">
+          <!-- App Bar -->
+          <div class="app-bar">
+            <div class="app-crumb">
+              <span class="app-crumb-root">LEVL</span>
+              <span class="app-crumb-sep">/</span>
+              <span class="app-crumb-current">Roster</span>
+            </div>
+            <div class="app-search-hint">
+              <svg width="10" height="10" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.5"/><path d="M10.5 10.5l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              Search creators&hellip; <kbd>&#8984;K</kbd>
+            </div>
+            <div class="app-bar-right">
+              <div class="notif-btn">&#128276;<span class="notif-badge">3</span></div>
+              <div class="app-av" style="background:linear-gradient(135deg,#10B981,#7C3AED)">S</div>
+            </div>
+          </div>
 
-            <!-- MANAGER MAIN -->
-            <div class="panel-main">
+          <div class="dash-body wide">
+            <div class="dash-main">
 
-              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
-                <div style="font-size:13px;font-weight:700;color:var(--t1)">Sam Rivera <span style="font-size:10px;font-weight:400;color:var(--t3)">&mdash; Creator Manager</span></div>
-                <div style="font-size:9px;color:var(--green);font-weight:600;background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.2);border-radius:4px;padding:3px 8px">&#9679; 9 on roster</div>
+              <div class="kpi-row">
+                <div class="kpi"><div class="kpi-n" style="color:var(--t1)">9</div><div class="kpi-l">Creators</div><div class="kpi-d" style="color:var(--green)">&#8593; +1 this month</div></div>
+                <div class="kpi"><div class="kpi-n" style="color:var(--amber)">4</div><div class="kpi-l">Active Campaigns</div><div class="kpi-d" style="color:var(--amber)">2 pending renewal</div></div>
+                <div class="kpi"><div class="kpi-n" style="color:var(--green)">&#163;18.4K</div><div class="kpi-l">Pipeline Value</div><div class="kpi-d" style="color:var(--green)">&#8593; +&#163;2.1K vs last mo</div></div>
+                <div class="kpi"><div class="kpi-n" style="color:var(--violet2)">91</div><div class="kpi-l">Avg Trust Score</div><div class="kpi-d" style="color:var(--green)">Top 15% of network</div></div>
               </div>
 
-              <!-- KPI grid -->
-              <div class="kpi-grid">
-                <div class="kpi-card">
-                  <div class="kpi-val" style="color:var(--t1)">9</div>
-                  <div class="kpi-lbl">Creators on roster</div>
-                </div>
-                <div class="kpi-card">
-                  <div class="kpi-val" style="color:var(--amber)">4</div>
-                  <div class="kpi-lbl">Active campaigns</div>
-                </div>
-                <div class="kpi-card">
-                  <div class="kpi-val" style="color:var(--green)">&#163;18.4K</div>
-                  <div class="kpi-lbl">Pipeline value</div>
-                </div>
-                <div class="kpi-card">
-                  <div class="kpi-val" style="color:var(--violet2)">91</div>
-                  <div class="kpi-lbl">Avg trust score</div>
-                </div>
-              </div>
-
-              <!-- Inner tabs -->
-              <div class="mgr-inner-tabs">
-                <div class="mgr-tab active" onclick="switchMgrTab('roster',this)">Roster Overview</div>
+              <div class="mgr-tabs">
+                <div class="mgr-tab active" onclick="switchMgrTab('roster',this)">Roster</div>
                 <div class="mgr-tab" onclick="switchMgrTab('pipeline',this)">Pipeline</div>
                 <div class="mgr-tab" onclick="switchMgrTab('campaigns',this)">Campaigns</div>
                 <div class="mgr-tab" onclick="switchMgrTab('economics',this)">Economics</div>
               </div>
 
-              <!-- Roster screen -->
-              <div class="mgr-screen active" id="mgr-roster">
-                <div class="mgr-creator-row">
-                  <div class="mgr-av" style="background:linear-gradient(135deg,#F59E0B,#7C3AED)">J</div>
+              <div class="ds mgr-screen active" id="mgr-roster">
+                <div class="rost-row">
+                  <div class="rost-dot" style="background:var(--green)"></div>
+                  <div class="rost-av" style="background:linear-gradient(135deg,#F59E0B,#7C3AED)">J</div>
                   <div style="flex:1;min-width:0">
-                    <div class="mgr-cr-name">Jordan Kuznets <span class="mgr-active-dot" style="background:var(--green)"></span></div>
-                    <div class="mgr-cr-meta">Gaming &middot; YouTube &middot; Twitch &middot; 84K reach</div>
+                    <div class="rost-name">Jordan Kuznets <span class="rost-leveled">&#128293; 6w streak</span></div>
+                    <div class="rost-meta">Gaming &middot; YouTube &middot; Twitch &middot; 84K reach &middot; 3 active deals</div>
                   </div>
-                  <div style="text-align:right;flex-shrink:0">
-                    <div><span class="mgr-level-badge l3">L3</span></div>
-                    <div class="mgr-score" style="color:var(--t1)">Trust 82</div>
-                    <div class="mgr-streak">&#128293; 6w</div>
-                  </div>
+                  <div style="text-align:right;flex-shrink:0"><span class="rost-lvl l3">L3</span><div class="rost-trust" style="color:var(--t1)">Trust 82</div></div>
                 </div>
-                <div class="mgr-creator-row">
-                  <div class="mgr-av" style="background:linear-gradient(135deg,#10B981,#F59E0B)">M</div>
+                <div class="rost-row">
+                  <div class="rost-dot" style="background:var(--green)"></div>
+                  <div class="rost-av" style="background:linear-gradient(135deg,#10B981,#F59E0B)">M</div>
                   <div style="flex:1;min-width:0">
-                    <div class="mgr-cr-name">Maya Liu <span class="mgr-active-dot" style="background:var(--green)"></span> <span class="mgr-leveled">&#8593; Levelled up</span></div>
-                    <div class="mgr-cr-meta">Fitness &middot; Lifestyle &middot; Instagram &middot; TikTok &middot; 210K</div>
+                    <div class="rost-name">Maya Liu <span class="rost-leveled">&#8593; Levelled up</span></div>
+                    <div class="rost-meta">Fitness &middot; Lifestyle &middot; Instagram &middot; TikTok &middot; 210K reach</div>
                   </div>
-                  <div style="text-align:right;flex-shrink:0">
-                    <div><span class="mgr-level-badge l4">L4</span></div>
-                    <div class="mgr-score" style="color:var(--green)">Trust 91</div>
-                    <div class="mgr-streak">&#128293; 14w</div>
-                  </div>
+                  <div style="text-align:right;flex-shrink:0"><span class="rost-lvl l4">L4</span><div class="rost-trust" style="color:var(--green)">Trust 91</div></div>
                 </div>
-                <div class="mgr-creator-row">
-                  <div class="mgr-av" style="background:linear-gradient(135deg,#7C3AED,#F43F5E)">T</div>
+                <div class="rost-row">
+                  <div class="rost-dot" style="background:var(--green)"></div>
+                  <div class="rost-av" style="background:linear-gradient(135deg,#7C3AED,#F43F5E)">T</div>
                   <div style="flex:1;min-width:0">
-                    <div class="mgr-cr-name">Tom Keane</div>
-                    <div class="mgr-cr-meta">Tech &middot; Reviews &middot; YouTube &middot; 52K reach</div>
+                    <div class="rost-name">Tom Keane</div>
+                    <div class="rost-meta">Tech &middot; Reviews &middot; YouTube &middot; 52K reach &middot; Deal expiring soon</div>
                   </div>
-                  <div style="text-align:right;flex-shrink:0">
-                    <div><span class="mgr-level-badge l3">L3</span></div>
-                    <div class="mgr-score" style="color:var(--t1)">Trust 74</div>
-                    <div class="mgr-streak">4w</div>
-                  </div>
+                  <div style="text-align:right;flex-shrink:0"><span class="rost-lvl l3">L3</span><div class="rost-trust" style="color:var(--t1)">Trust 74</div></div>
                 </div>
-                <div class="mgr-creator-row">
-                  <div class="mgr-av" style="background:linear-gradient(135deg,#F43F5E,#F59E0B)">Z</div>
+                <div class="rost-row">
+                  <div class="rost-dot" style="background:var(--amber)"></div>
+                  <div class="rost-av" style="background:linear-gradient(135deg,#F43F5E,#F59E0B)">Z</div>
                   <div style="flex:1;min-width:0">
-                    <div class="mgr-cr-name">Zara Patel</div>
-                    <div class="mgr-cr-meta">Beauty &middot; Fashion &middot; Instagram &middot; 28K reach</div>
+                    <div class="rost-name">Zara Patel <span class="rost-streak">9w</span></div>
+                    <div class="rost-meta">Beauty &middot; Fashion &middot; Instagram &middot; 28K reach</div>
                   </div>
-                  <div style="text-align:right;flex-shrink:0">
-                    <div><span class="mgr-level-badge l2">L2</span></div>
-                    <div class="mgr-score" style="color:var(--t3)">Trust 68</div>
-                    <div class="mgr-streak">9w</div>
-                  </div>
+                  <div style="text-align:right;flex-shrink:0"><span class="rost-lvl l2">L2</span><div class="rost-trust" style="color:var(--t3)">Trust 68</div></div>
                 </div>
-                <div class="mgr-more">+ 5 more creators on roster</div>
+                <div style="padding:10px 13px;font-size:10px;color:var(--t3);text-align:center">+ 5 more creators &middot; <span style="color:var(--amber);cursor:pointer">View all &rarr;</span></div>
               </div>
 
-              <!-- Pipeline screen -->
-              <div class="mgr-screen" id="mgr-pipeline">
-                <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:10px">
-                  <div style="background:var(--surface2);border:1px solid var(--border2);border-radius:var(--r2);padding:10px">
-                    <div style="font-size:9px;font-weight:600;color:var(--t3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px">Prospecting <span style="color:var(--amber)">2</span></div>
-                    <div style="background:var(--surface);border:1px solid var(--border2);border-radius:6px;padding:8px;margin-bottom:6px"><div style="font-size:11px;font-weight:600;color:var(--t1)">TechNest</div><div style="font-size:10px;color:var(--t3)">Jordan K. &middot; &#163;700</div></div>
-                    <div style="background:var(--surface);border:1px solid var(--border2);border-radius:6px;padding:8px"><div style="font-size:11px;font-weight:600;color:var(--t1)">FitFuel</div><div style="font-size:10px;color:var(--t3)">Maya Liu &middot; &#163;2,800</div></div>
-                  </div>
-                  <div style="background:var(--surface2);border:1px solid var(--border2);border-radius:var(--r2);padding:10px">
-                    <div style="font-size:9px;font-weight:600;color:var(--t3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px">Active <span style="color:var(--green)">2</span></div>
-                    <div style="background:var(--surface);border:1px solid var(--border2);border-radius:6px;padding:8px;margin-bottom:6px"><div style="font-size:11px;font-weight:600;color:var(--t1)">GearX</div><div style="font-size:10px;color:var(--t3)">Jordan K. &middot; &#163;960</div></div>
-                    <div style="background:var(--surface);border:1px solid var(--border2);border-radius:6px;padding:8px"><div style="font-size:11px;font-weight:600;color:var(--t1)">FitFuel</div><div style="font-size:10px;color:var(--t3)">Maya Liu &middot; &#163;2,400</div></div>
-                  </div>
-                  <div style="background:var(--surface2);border:1px solid var(--border2);border-radius:var(--r2);padding:10px">
-                    <div style="font-size:9px;font-weight:600;color:var(--t3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px">Closed <span style="color:var(--green)">1</span></div>
-                    <div style="background:var(--surface);border:1px solid rgba(16,185,129,.2);border-radius:6px;padding:8px"><div style="font-size:11px;font-weight:600;color:var(--green)">NordVPN &#10003;</div><div style="font-size:10px;color:var(--t3)">Tom Keane &middot; &#163;750</div></div>
-                  </div>
-                </div>
-                <div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:var(--t3);border-top:1px solid var(--border2);padding-top:8px">
-                  <span>Total pipeline value</span>
-                  <span style="color:var(--green);font-weight:600;font-family:var(--mono)">&#163;18,400 / month</span>
+              <div class="ds mgr-screen" id="mgr-pipeline">
+                <div class="pipe-row"><span class="pipe-stage a">Active</span><span class="pipe-brand">GearX &mdash; Q4 Gaming</span><span class="pipe-creator">Jordan K.</span><span class="pipe-val" style="color:var(--green)">&#163;960/mo</span></div>
+                <div class="pipe-row"><span class="pipe-stage a">Active</span><span class="pipe-brand">FitFuel &mdash; Supplement Series</span><span class="pipe-creator">Maya Liu</span><span class="pipe-val" style="color:var(--green)">&#163;2,400/mo</span></div>
+                <div class="pipe-row"><span class="pipe-stage p">Prospect</span><span class="pipe-brand">TechNest &mdash; Review Series</span><span class="pipe-creator">Jordan K.</span><span class="pipe-val" style="color:var(--amber)">&#163;700</span></div>
+                <div class="pipe-row"><span class="pipe-stage p">Prospect</span><span class="pipe-brand">FitFuel &mdash; Season 2</span><span class="pipe-creator">Maya Liu</span><span class="pipe-val" style="color:var(--amber)">&#163;2,800</span></div>
+                <div class="pipe-row"><span class="pipe-stage c">Closed &#10003;</span><span class="pipe-brand">NordVPN &mdash; Tech Review</span><span class="pipe-creator">Tom Keane</span><span class="pipe-val" style="color:var(--t3)">&#163;750</span></div>
+                <div style="display:flex;justify-content:space-between;padding:10px 13px;border-top:1px solid var(--border2);font-size:11px">
+                  <span style="color:var(--t3)">Total pipeline</span>
+                  <span style="color:var(--green);font-family:var(--mono);font-weight:600">&#163;18,400 / month</span>
                 </div>
               </div>
 
-              <!-- Campaigns screen -->
-              <div class="mgr-screen" id="mgr-campaigns">
-                <div style="font-size:11px;color:var(--t2);margin-bottom:10px">4 active campaigns across roster</div>
-                <div class="mgr-creator-row">
-                  <div class="mgr-av" style="background:rgba(245,158,11,.15);color:var(--amber);font-size:11px;font-weight:700">GX</div>
-                  <div style="flex:1;min-width:0">
-                    <div class="mgr-cr-name">GearX &mdash; Q4 Gaming</div>
-                    <div class="mgr-cr-meta">Jordan K. &middot; Integration &middot; Live now</div>
-                  </div>
+              <div class="ds mgr-screen" id="mgr-campaigns">
+                <div class="rost-row" style="padding:11px 13px">
+                  <div class="rost-av" style="background:rgba(245,158,11,.15);color:var(--amber);font-size:10px;font-weight:700;border-radius:6px">GX</div>
+                  <div style="flex:1;min-width:0"><div class="rost-name">GearX &mdash; Q4 Gaming</div><div class="rost-meta">Jordan K. &middot; Integration &middot; <span style="color:var(--green)">Live now</span></div></div>
                   <div style="font-size:12px;font-weight:600;color:var(--green);font-family:var(--mono)">&#163;960/mo</div>
                 </div>
-                <div class="mgr-creator-row">
-                  <div class="mgr-av" style="background:rgba(16,185,129,.12);color:var(--green);font-size:11px;font-weight:700">FF</div>
-                  <div style="flex:1;min-width:0">
-                    <div class="mgr-cr-name">FitFuel &mdash; Supplement Series</div>
-                    <div class="mgr-cr-meta">Maya Liu &middot; Video &times;4 &middot; Live now</div>
-                  </div>
+                <div class="rost-row" style="padding:11px 13px">
+                  <div class="rost-av" style="background:rgba(16,185,129,.12);color:var(--green);font-size:10px;font-weight:700;border-radius:6px">FF</div>
+                  <div style="flex:1;min-width:0"><div class="rost-name">FitFuel &mdash; Supplement Series</div><div class="rost-meta">Maya Liu &middot; Video &times;4 &middot; <span style="color:var(--green)">Live now</span></div></div>
                   <div style="font-size:12px;font-weight:600;color:var(--green);font-family:var(--mono)">&#163;2,400/mo</div>
                 </div>
-                <div class="mgr-creator-row">
-                  <div class="mgr-av" style="background:rgba(124,58,237,.12);color:var(--violet2);font-size:11px;font-weight:700">NV</div>
-                  <div style="flex:1;min-width:0">
-                    <div class="mgr-cr-name">NordVPN &mdash; Tech Review</div>
-                    <div class="mgr-cr-meta">Tom Keane &middot; 1 video &middot; Completed &#10003;</div>
-                  </div>
+                <div class="rost-row" style="padding:11px 13px">
+                  <div class="rost-av" style="background:rgba(124,58,237,.12);color:var(--violet2);font-size:10px;font-weight:700;border-radius:6px">NV</div>
+                  <div style="flex:1;min-width:0"><div class="rost-name">NordVPN &mdash; Tech Review</div><div class="rost-meta">Tom Keane &middot; 1 video &middot; Completed &#10003;</div></div>
                   <div style="font-size:12px;font-weight:600;color:var(--t3);font-family:var(--mono)">&#163;750</div>
                 </div>
-                <div class="mgr-creator-row">
-                  <div class="mgr-av" style="background:rgba(244,63,94,.1);color:#F43F5E;font-size:11px;font-weight:700">FF</div>
-                  <div style="flex:1;min-width:0">
-                    <div class="mgr-cr-name">FitFuel &mdash; Prospect</div>
-                    <div class="mgr-cr-meta">Maya Liu &middot; Negotiation &middot; &#163;2,800</div>
-                  </div>
+                <div class="rost-row" style="padding:11px 13px">
+                  <div class="rost-av" style="background:rgba(244,63,94,.1);color:#F43F5E;font-size:10px;font-weight:700;border-radius:6px">FF</div>
+                  <div style="flex:1;min-width:0"><div class="rost-name">FitFuel &mdash; Season 2 Prospect</div><div class="rost-meta">Maya Liu &middot; Negotiation &middot; &#163;2,800</div></div>
                   <div style="font-size:12px;font-weight:600;color:var(--amber)">Pending</div>
                 </div>
               </div>
 
-              <!-- Economics screen -->
-              <div class="mgr-screen" id="mgr-economics">
-                <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px">
-                  <div style="background:var(--surface2);border:1px solid var(--border2);border-radius:var(--r2);padding:12px">
+              <div class="ds mgr-screen" id="mgr-economics">
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:13px">
+                  <div style="background:var(--surface);border:1px solid var(--border2);border-radius:var(--r2);padding:12px">
                     <div style="font-size:9px;color:var(--t3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:6px">Monthly earnings</div>
                     <div style="font-size:22px;font-weight:700;color:var(--green);font-family:var(--mono)">&#163;4,840</div>
                     <div style="font-size:10px;color:var(--t3);margin-top:3px">&#8593; +&#163;220 vs last month</div>
                   </div>
-                  <div style="background:var(--surface2);border:1px solid var(--border2);border-radius:var(--r2);padding:12px">
+                  <div style="background:var(--surface);border:1px solid var(--border2);border-radius:var(--r2);padding:12px">
                     <div style="font-size:9px;color:var(--t3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:6px">Avg deal size</div>
                     <div style="font-size:22px;font-weight:700;color:var(--amber);font-family:var(--mono)">&#163;1,210</div>
                     <div style="font-size:10px;color:var(--t3);margin-top:3px">4 active deals</div>
                   </div>
                 </div>
-                <div style="font-size:10px;color:var(--t3);margin-bottom:8px;text-transform:uppercase;letter-spacing:.07em;font-weight:600">Revenue by creator</div>
-                <div class="mgr-creator-row">
-                  <div class="mgr-av" style="background:linear-gradient(135deg,#10B981,#F59E0B)">M</div>
-                  <div style="flex:1;min-width:0"><div class="mgr-cr-name">Maya Liu</div><div class="mgr-cr-meta">2 deals active</div></div>
-                  <div style="font-size:12px;font-weight:600;color:var(--green);font-family:var(--mono)">&#163;2,400/mo</div>
+                <div style="font-size:10px;color:var(--t3);margin:0 13px 8px;text-transform:uppercase;letter-spacing:.07em;font-weight:600">Revenue by creator</div>
+                <div class="rev-row"><div class="rev-av" style="background:linear-gradient(135deg,#10B981,#F59E0B)">M</div><div class="rev-name">Maya Liu <span style="font-size:9px;color:var(--t3)">&middot; 2 deals active</span></div><div class="rev-val" style="color:var(--green)">&#163;2,400/mo</div></div>
+                <div class="rev-row"><div class="rev-av" style="background:linear-gradient(135deg,#F59E0B,#7C3AED)">J</div><div class="rev-name">Jordan Kuznets <span style="font-size:9px;color:var(--t3)">&middot; 1 deal active</span></div><div class="rev-val" style="color:var(--green)">&#163;960/mo</div></div>
+                <div class="rev-row"><div class="rev-av" style="background:linear-gradient(135deg,#7C3AED,#F43F5E)">T</div><div class="rev-name">Tom Keane <span style="font-size:9px;color:var(--t3)">&middot; 1 deal completed</span></div><div class="rev-val" style="color:var(--t2)">&#163;750</div></div>
+              </div>
+
+            </div><!-- /dash-main -->
+
+            <div class="dash-side">
+
+              <div class="ds">
+                <div class="ds-hdr"><span class="ds-title">ALERTS</span><span class="ds-badge amber">3 new</span></div>
+                <div class="alert-row">
+                  <div class="alert-dot" style="background:var(--green)"></div>
+                  <div class="alert-body">Maya Liu reached <strong style="color:var(--green)">Level 4</strong> &mdash; update her pitch pack</div>
+                  <div class="alert-time">1h ago</div>
                 </div>
-                <div class="mgr-creator-row">
-                  <div class="mgr-av" style="background:linear-gradient(135deg,#F59E0B,#7C3AED)">J</div>
-                  <div style="flex:1;min-width:0"><div class="mgr-cr-name">Jordan Kuznets</div><div class="mgr-cr-meta">1 deal active</div></div>
-                  <div style="font-size:12px;font-weight:600;color:var(--green);font-family:var(--mono)">&#163;960/mo</div>
+                <div class="alert-row">
+                  <div class="alert-dot" style="background:var(--amber)"></div>
+                  <div class="alert-body">Tom Keane &mdash; NordVPN deal expiring in 5 days</div>
+                  <div class="alert-time">3h ago</div>
                 </div>
-                <div class="mgr-creator-row">
-                  <div class="mgr-av" style="background:linear-gradient(135deg,#7C3AED,#F43F5E)">T</div>
-                  <div style="flex:1;min-width:0"><div class="mgr-cr-name">Tom Keane</div><div class="mgr-cr-meta">1 deal completed</div></div>
-                  <div style="font-size:12px;font-weight:600;color:var(--t2);font-family:var(--mono)">&#163;750</div>
+                <div class="alert-row">
+                  <div class="alert-dot" style="background:var(--amber)"></div>
+                  <div class="alert-body">Zara Patel hit 9-week streak milestone</div>
+                  <div class="alert-time">Yesterday</div>
                 </div>
               </div>
 
-            </div><!-- /panel-main -->
-
-            <!-- MANAGER ASIDE -->
-            <div class="panel-aside">
-
-              <div class="aside-lbl">Roster Health</div>
-              <div class="aside-health-row">
-                <div class="aside-health-lbl">Avg trust score</div>
-                <div class="aside-health-val g">79.4</div>
-              </div>
-              <div class="aside-health-row">
-                <div class="aside-health-lbl">Active streaks</div>
-                <div class="aside-health-val g">8 / 9</div>
-              </div>
-              <div class="aside-health-row">
-                <div class="aside-health-lbl">Active campaigns</div>
-                <div class="aside-health-val g">3</div>
-              </div>
-              <div class="aside-health-row">
-                <div class="aside-health-lbl">L3+ creators</div>
-                <div class="aside-health-val g">6 / 9</div>
-              </div>
-              <div class="aside-health-row">
-                <div class="aside-health-lbl">Combined reach</div>
-                <div class="aside-health-val g">847K</div>
+              <div class="ds">
+                <div class="ds-hdr"><span class="ds-title">MONTHLY REVENUE</span><span class="ds-badge green">&#8593; +&#163;220</span></div>
+                <div style="padding:12px 13px">
+                  <div style="font-family:var(--mono);font-size:26px;font-weight:600;color:var(--green)">&#163;4,840</div>
+                  <div style="font-size:10px;color:var(--t3);margin-bottom:10px">June 2026 &middot; 4 deals</div>
+                </div>
+                <div class="rev-row"><div class="rev-av" style="background:linear-gradient(135deg,#10B981,#F59E0B)">M</div><div class="rev-name">Maya Liu</div><div class="rev-val" style="color:var(--green)">&#163;2,400</div></div>
+                <div class="rev-row"><div class="rev-av" style="background:linear-gradient(135deg,#F59E0B,#7C3AED)">J</div><div class="rev-name">Jordan K.</div><div class="rev-val" style="color:var(--green)">&#163;960</div></div>
+                <div class="rev-row"><div class="rev-av" style="background:linear-gradient(135deg,#7C3AED,#F43F5E)">T</div><div class="rev-name">Tom Keane</div><div class="rev-val" style="color:var(--t2)">&#163;750</div></div>
               </div>
 
-              <div class="aside-lbl" style="margin-top:14px">Monthly Earnings</div>
-              <div class="aside-earn-val">&#163;4,840</div>
-              <div class="aside-earn-sub">&#8593; +&#163;220 vs last month</div>
-
-              <div class="aside-lbl" style="margin-top:14px">Alerts</div>
-              <div class="aside-alert">
-                <div class="aside-alert-dot" style="background:var(--green)"></div>
-                <div class="aside-alert-text">Maya Liu reached <strong style="color:var(--green)">Level 4</strong></div>
-              </div>
-              <div class="aside-alert">
-                <div class="aside-alert-dot" style="background:var(--amber)"></div>
-                <div class="aside-alert-text">Tom Keane &mdash; NordVPN deal expiring soon</div>
-              </div>
-              <div class="aside-alert">
-                <div class="aside-alert-dot" style="background:var(--amber)"></div>
-                <div class="aside-alert-text">Zara Patel &mdash; 9-week streak milestone</div>
+              <div class="ds">
+                <div class="ds-hdr"><span class="ds-title">INBOUND ENQUIRY</span><span class="ds-badge violet">New</span></div>
+                <div class="enquiry-card">
+                  <div class="enquiry-from">TechBrand Ltd</div>
+                  <div class="enquiry-sub">Seeking Gaming creator for UK product launch. Budget &#163;1,200&ndash;1,800/mo. 3-month minimum. Verified sponsor with 94% renewal rate on LEVL.</div>
+                  <div class="enquiry-deadline">Respond by 28 Jun</div>
+                  <button class="enquiry-btn">Review &amp; Respond &rarr;</button>
+                </div>
               </div>
 
-            </div><!-- /panel-aside -->
-
-          </div><!-- /panel-layout -->
+            </div><!-- /dash-side -->
+          </div><!-- /dash-body -->
         </div><!-- /panel-manager -->
 
         <!-- ═══ SPONSOR ═══ -->
         <div class="pw-panel" id="panel-sponsor">
-          <div class="panel-full" style="padding:0">
 
-            <!-- Header -->
-            <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 18px 10px">
-              <div>
-                <div style="font-size:13px;font-weight:700;color:var(--t1)">TechBrand Ltd <span style="font-size:10px;font-weight:400;color:var(--violet2);background:rgba(124,58,237,.1);border:1px solid rgba(124,58,237,.22);border-radius:4px;padding:2px 7px;margin-left:5px">Pro Sponsor &middot; UK</span></div>
-                <div style="font-size:10px;color:var(--t3);margin-top:3px">Private access &middot; Active Budget: <span style="color:var(--green);font-family:var(--mono)">&#163;12,400</span></div>
-              </div>
+          <div class="app-bar">
+            <div class="app-crumb">
+              <span class="app-crumb-root">LEVL</span>
+              <span class="app-crumb-sep">/</span>
+              <span class="app-crumb-current">Creator Discovery</span>
             </div>
-
-            <!-- Search + filters -->
-            <div style="padding:0 18px 10px">
-              <div class="disc-search">
-                <svg width="13" height="13" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;color:var(--t3)"><circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.5"/><path d="M10.5 10.5l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-                <span class="disc-search-placeholder">Search verified creators by niche, tier, platform&hellip;</span>
-                <span class="disc-result-count">1,284 matching</span>
-              </div>
-              <div class="discovery-filters">
-                <div class="filter-chip active">Gaming</div>
-                <div class="filter-chip active">UK</div>
-                <div class="filter-chip">10K&ndash;100K</div>
-                <div class="filter-chip">L3+</div>
-                <div class="filter-chip">&#10003; Verified</div>
-                <div class="filter-chip">Sponsor Ready</div>
-              </div>
+            <div style="margin-left:auto;display:flex;align-items:center;gap:8px">
+              <div style="font-size:10px;color:var(--green);font-family:var(--mono);background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.2);border-radius:5px;padding:3px 8px">Budget: &#163;12,400 remaining</div>
+              <div class="notif-btn">&#128276;<span class="notif-badge">1</span></div>
+              <div class="app-av" style="background:linear-gradient(135deg,#7C3AED,#F59E0B);font-size:8px">TB</div>
             </div>
+          </div>
 
-            <!-- Network banner -->
-            <div style="padding:0 18px 10px">
-              <div class="sp-network-banner">
-                <div class="sp-network-eyebrow">LEVL Private Network</div>
-                <div class="sp-network-title">1,284 verified creators matching your brief</div>
-                <div class="sp-network-sub">Every creator is API-verified, scored, and deal-ready. No self-reported data, no guesswork.</div>
-                <div class="sp-pillars">
-                  <div class="sp-pillar">
-                    <div class="sp-pillar-icon">&#10003;</div>
-                    <div>
-                      <div class="sp-pillar-title">Platform Verified</div>
-                      <div class="sp-pillar-desc">API-connected, no self-reported claims</div>
-                    </div>
+          <div class="sp-search-wrap">
+            <div class="sp-search">
+              <svg width="13" height="13" viewBox="0 0 16 16" fill="none" style="color:var(--t3);flex-shrink:0"><circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.5"/><path d="M10.5 10.5l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              <span class="sp-search-val">Gaming &middot; UK &middot; 10K&ndash;100K &middot; L3+ &middot; Verified &middot; Sponsor Ready</span>
+              <button class="sp-search-btn">Search</button>
+            </div>
+            <div class="sp-filters">
+              <span class="sp-chip">Gaming <span class="sp-chip-x">&times;</span></span>
+              <span class="sp-chip">UK <span class="sp-chip-x">&times;</span></span>
+              <span class="sp-chip">10K&ndash;100K <span class="sp-chip-x">&times;</span></span>
+              <span class="sp-chip">L3+ <span class="sp-chip-x">&times;</span></span>
+              <span class="sp-chip">&#10003; Verified <span class="sp-chip-x">&times;</span></span>
+              <span class="sp-chip off">Sponsor Ready</span>
+              <span class="sp-chip off">Female creators</span>
+              <span class="sp-chip off">YouTube</span>
+            </div>
+          </div>
+
+          <div class="dash-body wide">
+            <div class="dash-main">
+
+              <div style="display:flex;align-items:center;justify-content:space-between;flex-shrink:0;padding:0 2px">
+                <div style="font-size:11px;color:var(--t2)"><strong style="color:var(--t1)">1,284 results</strong> &middot; Sorted: Campaign Fit &#9660;</div>
+                <div style="font-size:10px;color:var(--amber);cursor:pointer">Save search</div>
+              </div>
+
+              <div class="ds">
+                <div class="res-row">
+                  <div class="res-av" style="background:linear-gradient(135deg,#F59E0B,#7C3AED)">J</div>
+                  <div style="flex:1;min-width:0">
+                    <div class="res-name">Jordan Kuznets <span class="bdg g" style="font-size:8px">&#10003; Verified</span> <span class="bdg a" style="font-size:8px">&#128293; 6w</span></div>
+                    <div class="res-meta">@jordank &middot; Gaming &middot; UK &middot; 48.2K subs &middot; 4.8% eng &middot; 3 deals &middot; GearX renewed &times;3</div>
+                    <div class="res-tags"><span class="bdg v">L3 Creator</span><span class="bdg g">Deal Ready</span><span class="bdg i">YouTube &middot; Twitch</span></div>
                   </div>
-                  <div class="sp-pillar">
-                    <div class="sp-pillar-icon">&#9672;</div>
-                    <div>
-                      <div class="sp-pillar-title">Deal History</div>
-                      <div class="sp-pillar-desc">Public sponsorship records &amp; renewal rates</div>
-                    </div>
+                  <div style="text-align:right;flex-shrink:0"><div class="res-fit" style="color:var(--green)">94%</div><div class="res-fit-lbl">Campaign fit</div></div>
+                  <div class="res-actions"><button class="res-btn p">Propose deal</button><button class="res-btn">Shortlist</button></div>
+                </div>
+                <div class="res-row">
+                  <div class="res-av" style="background:linear-gradient(135deg,#7C3AED,#10B981)">A</div>
+                  <div style="flex:1;min-width:0">
+                    <div class="res-name">Aria S. <span class="bdg g" style="font-size:8px">&#10003; Verified</span> <span class="bdg a" style="font-size:8px">&#128293; 12w</span></div>
+                    <div class="res-meta">@arias &middot; Tech &middot; UK &middot; 82.4K subs &middot; 6.1% eng &middot; 6 deals &middot; 83% renewal rate</div>
+                    <div class="res-tags"><span class="bdg v">L4 Partner</span><span class="bdg g">Sponsor Ready &#11088;</span><span class="bdg i">YouTube</span></div>
                   </div>
-                  <div class="sp-pillar">
-                    <div class="sp-pillar-icon">&#128293;</div>
-                    <div>
-                      <div class="sp-pillar-title">Activity Signals</div>
-                      <div class="sp-pillar-desc">Live streak, engagement &amp; consistency scoring</div>
-                    </div>
+                  <div style="text-align:right;flex-shrink:0"><div class="res-fit" style="color:var(--green)">91%</div><div class="res-fit-lbl">Campaign fit</div></div>
+                  <div class="res-actions"><button class="res-btn p">Propose deal</button><button class="res-btn">Shortlist</button></div>
+                </div>
+                <div class="res-row">
+                  <div class="res-av" style="background:linear-gradient(135deg,#10B981,#7C3AED)">P</div>
+                  <div style="flex:1;min-width:0">
+                    <div class="res-name">Priya L. <span class="bdg g" style="font-size:8px">&#10003; Verified</span> <span class="bdg g" style="font-size:8px">&#11088; Elite</span></div>
+                    <div class="res-meta">@priyal &middot; Fitness &middot; UK &middot; 210K subs &middot; 5.4% eng &middot; 14 deals &middot; 91% renewal rate</div>
+                    <div class="res-tags"><span class="bdg v">L6 Elite</span><span class="bdg a">52w streak</span><span class="bdg g">Premium Tier</span></div>
+                  </div>
+                  <div style="text-align:right;flex-shrink:0"><div class="res-fit" style="color:var(--amber)">78%</div><div class="res-fit-lbl">Campaign fit</div></div>
+                  <div class="res-actions"><button class="res-btn p">Propose deal</button><button class="res-btn">Shortlist</button></div>
+                </div>
+                <div class="res-row">
+                  <div class="res-av" style="background:linear-gradient(135deg,#F43F5E,#F59E0B)">M</div>
+                  <div style="flex:1;min-width:0">
+                    <div class="res-name">Marcus R. <span class="bdg g" style="font-size:8px">&#10003; Verified</span></div>
+                    <div class="res-meta">@marcusr &middot; Gaming &middot; UK &middot; 22.1K subs &middot; 7.2% eng &middot; Building &mdash; no deal history yet</div>
+                    <div class="res-tags"><span class="bdg v">L2 Builder</span><span class="bdg i">High Engagement &#8593;</span></div>
+                  </div>
+                  <div style="text-align:right;flex-shrink:0"><div class="res-fit" style="color:var(--t3)">64%</div><div class="res-fit-lbl">Campaign fit</div></div>
+                  <div class="res-actions"><button class="res-btn" style="opacity:.5;cursor:default">No history</button><button class="res-btn">Shortlist</button></div>
+                </div>
+              </div>
+
+              <div style="font-size:10px;color:var(--t3);text-align:center;flex-shrink:0">Showing 4 of 1,284 results &middot; <span style="color:var(--amber);cursor:pointer">Load more</span></div>
+
+            </div><!-- /dash-main -->
+
+            <div class="dash-side">
+
+              <div class="ds">
+                <div class="ds-hdr"><span class="ds-title">SHORTLIST</span><span class="ds-badge amber">2 saved</span></div>
+                <div class="sl-row">
+                  <div class="sl-row-av" style="background:linear-gradient(135deg,#F59E0B,#7C3AED)">J</div>
+                  <div class="sl-row-name">Jordan Kuznets</div>
+                  <div class="sl-row-trust">82</div>
+                </div>
+                <div class="sl-row">
+                  <div class="sl-row-av" style="background:linear-gradient(135deg,#7C3AED,#10B981)">A</div>
+                  <div class="sl-row-name">Aria S.</div>
+                  <div class="sl-row-trust">91</div>
+                </div>
+                <button class="sl-build-btn">Build Campaign Brief &rarr;</button>
+              </div>
+
+              <div class="ds">
+                <div class="ds-hdr"><span class="ds-title">LEVL PICK</span><span class="ds-badge violet">AI Match</span></div>
+                <div class="reco-body">
+                  <div class="reco-eyebrow">Based on your campaign brief</div>
+                  <div class="reco-reason">&ldquo;Maya Liu&rsquo;s audience overlap with your target demo is 87%. Her 52-week streak and 14 completed deals make her the highest-trust creator in your niche.&rdquo;</div>
+                  <div class="reco-creator">
+                    <div class="reco-av" style="background:linear-gradient(135deg,#10B981,#F59E0B)">M</div>
+                    <div><div class="reco-name">Maya Liu</div><div class="reco-fit">97% campaign fit &middot; L4 Partner</div></div>
+                    <button class="reco-btn">View &rarr;</button>
                   </div>
                 </div>
               </div>
-            </div>
 
-            <!-- KPI strip -->
-            <div style="padding:0 18px 10px">
-              <div class="sp-kpi-strip">
-                <div class="sp-kpi">
-                  <div class="sp-kpi-val">1,284</div>
-                  <div class="sp-kpi-lbl">Matching creators</div>
-                  <div class="sp-kpi-d" style="color:var(--green)">&#8593; 48 this week</div>
-                </div>
-                <div class="sp-kpi">
-                  <div class="sp-kpi-val" style="color:var(--green)">94%</div>
-                  <div class="sp-kpi-lbl">Platform-verified</div>
-                  <div class="sp-kpi-d">&nbsp;</div>
-                </div>
-                <div class="sp-kpi">
-                  <div class="sp-kpi-val" style="color:var(--amber)">72</div>
-                  <div class="sp-kpi-lbl">Sponsor Ready badge</div>
-                  <div class="sp-kpi-d">&nbsp;</div>
-                </div>
-                <div class="sp-kpi">
-                  <div class="sp-kpi-val" style="color:var(--violet2)">&#163;380</div>
-                  <div class="sp-kpi-lbl">Avg deal size</div>
-                  <div class="sp-kpi-d">&nbsp;</div>
+              <div class="ds">
+                <div class="ds-hdr"><span class="ds-title">CAMPAIGN BUDGET</span></div>
+                <div class="budget-body">
+                  <div class="budget-total">&#163;12,400</div>
+                  <div class="budget-sub">Remaining of &#163;18,000 total &middot; Q3 2026</div>
+                  <div class="budget-bar"><div class="budget-bar-fill bar-animate" style="--w:68.9%"></div></div>
+                  <div class="budget-legend">
+                    <span style="color:var(--t3)">Allocated: &#163;5,600</span>
+                    <span style="color:var(--amber)">31% spent</span>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <!-- Creator cards grid -->
-            <div style="padding:0 18px 18px">
-              <div class="cr-grid">
-
-                <!-- Jordan Kuznets -->
-                <div class="cr-card">
-                  <div class="cr-top">
-                    <div class="cr-av" style="background:linear-gradient(135deg,#F59E0B,#7C3AED)">J</div>
-                    <div style="flex:1;min-width:0">
-                      <div class="cr-name">Jordan Kuznets</div>
-                      <div class="cr-meta">@jordank &middot; Gaming &middot; UK &middot; &#128293; 6w</div>
-                    </div>
-                    <span class="cr-role-badge creator">Creator</span>
-                  </div>
-                  <div class="cr-score-row">
-                    <span>Trust score</span>
-                    <span style="color:var(--green);font-weight:700;font-family:var(--mono)">82</span>
-                  </div>
-                  <div class="cr-sbar"><div class="cr-sfill bar-animate" style="--w:82%;background:var(--green)"></div></div>
-                  <div class="cr-stat-row">
-                    <span>48.2K subs</span>
-                    <span>4.8% eng</span>
-                    <span style="color:var(--violet2)">3 deals</span>
-                  </div>
-                  <div class="cr-tags">
-                    <span class="cr-tag v">&#10003; Verified</span>
-                    <span class="cr-tag c">&#128293; Consistent</span>
-                    <span class="cr-tag t">&#11088; Trusted</span>
-                  </div>
-                  <div class="cr-ready h">Deal-ready &middot; 3 completed &middot; GearX renewed &times;3</div>
-                  <div class="cr-btns">
-                    <button class="cr-btn-p">Propose deal</button>
-                    <button class="cr-btn-g">View profile</button>
-                  </div>
-                </div>
-
-                <!-- Priya L. -->
-                <div class="cr-card">
-                  <div class="cr-top">
-                    <div class="cr-av" style="background:linear-gradient(135deg,#10B981,#7C3AED)">P</div>
-                    <div style="flex:1;min-width:0">
-                      <div class="cr-name">Priya L.</div>
-                      <div class="cr-meta">@priyal &middot; Fitness &middot; UK &middot; &#128293; 52w</div>
-                    </div>
-                    <span class="cr-role-badge elite">Elite</span>
-                  </div>
-                  <div class="cr-score-row">
-                    <span>Trust score</span>
-                    <span style="color:var(--green);font-weight:700;font-family:var(--mono)">97</span>
-                  </div>
-                  <div class="cr-sbar"><div class="cr-sfill bar-animate" style="--w:97%;background:var(--green);animation-delay:.1s"></div></div>
-                  <div class="cr-stat-row">
-                    <span>210K subs</span>
-                    <span>5.4% eng</span>
-                    <span style="color:var(--violet2)">14 deals</span>
-                  </div>
-                  <div class="cr-tags">
-                    <span class="cr-tag sr">&#127885; 52-Wk Streak</span>
-                    <span class="cr-tag hp">&#128142; Elite</span>
-                  </div>
-                  <div class="cr-ready b">91% renewal rate &middot; Premium tier creator</div>
-                  <div class="cr-btns">
-                    <button class="cr-btn-p">Propose deal</button>
-                    <button class="cr-btn-g">View profile</button>
-                  </div>
-                </div>
-
-                <!-- Marcus R. -->
-                <div class="cr-card">
-                  <div class="cr-top">
-                    <div class="cr-av" style="background:linear-gradient(135deg,#F43F5E,#F59E0B)">M</div>
-                    <div style="flex:1;min-width:0">
-                      <div class="cr-name">Marcus R.</div>
-                      <div class="cr-meta">@marcusr &middot; Gaming &middot; UK &middot; 4w</div>
-                    </div>
-                    <span class="cr-role-badge builder">Builder</span>
-                  </div>
-                  <div class="cr-score-row">
-                    <span>Trust score</span>
-                    <span style="color:var(--amber);font-weight:700;font-family:var(--mono)">64</span>
-                  </div>
-                  <div class="cr-sbar"><div class="cr-sfill bar-animate" style="--w:64%;background:var(--amber);animation-delay:.2s"></div></div>
-                  <div class="cr-stat-row">
-                    <span>22.1K subs</span>
-                    <span>7.2%&#8593; eng</span>
-                    <span style="color:var(--t3)">0 deals</span>
-                  </div>
-                  <div class="cr-tags">
-                    <span class="cr-tag v">&#10003; Verified</span>
-                    <span class="cr-tag c">&#128293; Consistent</span>
-                  </div>
-                  <div class="cr-ready b">Building &mdash; high engagement, no deal history yet</div>
-                  <div class="cr-btns">
-                    <button class="cr-btn-p" style="opacity:.5;cursor:default">No history yet</button>
-                    <button class="cr-btn-g">View profile</button>
-                  </div>
-                </div>
-
-                <!-- Aria S. -->
-                <div class="cr-card">
-                  <div class="cr-top">
-                    <div class="cr-av" style="background:linear-gradient(135deg,#7C3AED,#10B981)">A</div>
-                    <div style="flex:1;min-width:0">
-                      <div class="cr-name">Aria S.</div>
-                      <div class="cr-meta">@arias &middot; Tech &middot; UK &middot; &#128293; 12w</div>
-                    </div>
-                    <span class="cr-role-badge partner">Partner</span>
-                  </div>
-                  <div class="cr-score-row">
-                    <span>Trust score</span>
-                    <span style="color:var(--green);font-weight:700;font-family:var(--mono)">91</span>
-                  </div>
-                  <div class="cr-sbar"><div class="cr-sfill bar-animate" style="--w:91%;background:var(--green);animation-delay:.3s"></div></div>
-                  <div class="cr-stat-row">
-                    <span>82.4K subs</span>
-                    <span>6.1% eng</span>
-                    <span style="color:var(--violet2)">6 deals</span>
-                  </div>
-                  <div class="cr-tags">
-                    <span class="cr-tag v">&#10003; Verified</span>
-                    <span class="cr-tag sr">&#127885; Sponsor Ready</span>
-                    <span class="cr-tag hp">&#128142; High Performing</span>
-                  </div>
-                  <div class="cr-ready h">83% renewal rate &middot; 6 deals completed</div>
-                  <div class="cr-btns">
-                    <button class="cr-btn-p">Propose deal</button>
-                    <button class="cr-btn-g">View profile</button>
-                  </div>
-                </div>
-
-              </div><!-- /cr-grid -->
-            </div>
-
-          </div><!-- /panel-full -->
+            </div><!-- /dash-side -->
+          </div><!-- /dash-body -->
         </div><!-- /panel-sponsor -->
 
       </div><!-- /pw-main -->
