@@ -526,51 +526,28 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
 }
 
 /* ── LEVL NETWORK SECTION ── */
-.network-sec { padding: 80px 0 72px; }
-.network-header { text-align: center; margin-bottom: 44px; }
-.network-manifesto { font-size: 15px; color: var(--t2); line-height: 1.8; max-width: 520px; margin: 18px auto 0; }
-
-/* Canvas */
-.network-canvas-wrap {
-  max-width: 1000px; margin: 0 auto;
-  background: linear-gradient(180deg,rgba(245,158,11,.022) 0%,transparent 100%);
-  border: 1px solid var(--border2); border-radius: 16px; overflow: hidden;
-}
+.network-sec { padding: 80px 0 72px; border-top: 1px solid var(--border2); }
+.network-layout { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 56px; align-items: center; }
+@media (max-width: 860px) { .network-layout { grid-template-columns: 1fr; gap: 32px; } }
+.network-visual { border: 1px solid var(--border2); border-radius: 16px; overflow: hidden; background: linear-gradient(160deg,rgba(245,158,11,.025) 0%,transparent 70%); }
 #levl-net-canvas { width: 100%; display: block; }
-
-/* Live metrics strip */
-.network-live-metrics {
-  display: flex; align-items: center; justify-content: center; gap: 0;
-  max-width: 760px; margin: 36px auto 0;
-  background: var(--surface2); border: 1px solid var(--border2); border-radius: 12px; overflow: hidden;
-}
-.nlm-card { flex: 1; padding: 20px 16px; text-align: center; }
-.nlm-val { font-family: var(--mono); font-size: 21px; font-weight: 700; color: var(--amber); margin-bottom: 5px; letter-spacing: -.01em; }
-.nlm-label { font-size: 10px; color: var(--t3); letter-spacing: .02em; }
-.nlm-div { width: 1px; background: var(--border2); align-self: stretch; flex-shrink: 0; }
-
-/* Tier row */
-.network-tiers-row {
-  display: flex; align-items: flex-start; gap: 0;
-  max-width: 820px; margin: 36px auto 0;
-  background: var(--surface2); border: 1px solid var(--border2); border-radius: 12px; overflow: hidden;
-}
-.ntr-item { flex: 1; padding: 20px 22px; display: flex; gap: 12px; align-items: flex-start; }
-.ntr-item + .ntr-item { border-left: 1px solid var(--border2); }
-.ntr-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; margin-top: 5px; }
+.network-content { display: flex; flex-direction: column; }
+.network-content .section-title { font-size: clamp(22px, 3vw, 30px); line-height: 1.18; margin-bottom: 14px; }
+.network-explainer { font-size: 14px; color: var(--t2); line-height: 1.75; margin-bottom: 24px; }
+.nw-tier-card { border-radius: 10px; padding: 16px 18px; margin-bottom: 10px; }
+.nw-tier-1 { border: 1px solid rgba(245,158,11,.22); background: rgba(245,158,11,.04); }
+.nw-tier-2 { border: 1px solid rgba(139,92,246,.22); background: rgba(139,92,246,.04); }
+.nw-tier-header { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+.nw-tier-label { font-size: 11px; font-weight: 600; color: var(--t1); letter-spacing: .02em; }
+.ntr-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
 .ntr-amber { background: var(--amber); box-shadow: 0 0 6px rgba(245,158,11,.5); }
 .ntr-violet { background: var(--violet2); box-shadow: 0 0 6px rgba(139,92,246,.5); }
 .ntr-green { background: var(--green); box-shadow: 0 0 6px rgba(16,185,129,.5); }
-.ntr-name { font-size: 12px; font-weight: 600; color: var(--t1); margin-bottom: 5px; }
-.ntr-detail { font-size: 12px; color: var(--t3); line-height: 1.6; }
-.ntr-result .ntr-name { color: var(--green); }
-@media (max-width: 680px) {
-  .network-tiers-row { flex-direction: column; }
-  .ntr-item + .ntr-item { border-left: none; border-top: 1px solid var(--border2); }
-  .network-live-metrics { flex-direction: column; }
-  .nlm-div { width: 100%; height: 1px; align-self: auto; }
-  .nlm-card { padding: 14px 16px; }
-}
+.nw-tier-rate { font-family: var(--mono); font-size: 12px; color: var(--amber); letter-spacing: .01em; margin-bottom: 5px; padding-left: 15px; }
+.nw-tier-2 .nw-tier-rate { color: var(--violet2); }
+.nw-tier-eg { font-size: 12px; color: var(--t3); padding-left: 15px; line-height: 1.65; }
+.nw-tier-eg strong { color: var(--t2); font-weight: 500; }
+.nw-no-cap { font-family: var(--mono); font-size: 10px; letter-spacing: .08em; color: var(--t3); text-transform: uppercase; margin-top: 20px; }
 
 /* 6-level progression strip (creator passport tab) */
 .level-strip { display: flex; gap: 3px; background: var(--surface2); border: 1px solid var(--border2); border-radius: var(--r2); padding: 8px 10px; }
@@ -1441,9 +1418,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
 .roles-sec .section-title { text-align: center; }
 .roles-tabs { justify-content: center; }
 
-.network-sec .section-eyebrow,
-.network-sec .section-title { text-align: center; }
-.network-sec .section-sub { text-align: center; margin-left: auto; margin-right: auto; }
+
 
 /* ── MOBILE: missing section padding ── */
 @media (max-width: 500px) {
@@ -3770,21 +3745,41 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
 <!-- LEVL NETWORK -->
 <section class="network-sec" id="network">
   <div class="section-inner">
+    <div class="network-layout">
 
-    <!-- Header -->
-    <div class="network-header">
-      <div class="section-eyebrow r">LEVL Network</div>
-      <div class="r d1"><h2 class="section-title">Your network<br>becomes an asset.</h2></div>
-      <div class="r d2">
-        <p class="network-manifesto">Social platforms reward attention. Agencies reward transactions. LEVL rewards the people who genuinely help others succeed — sharing 20% of platform revenue from your direct introductions, and 5% from theirs, compounding permanently with no ceiling and no expiry.</p>
+      <!-- Left: animated canvas -->
+      <div class="network-visual r d1">
+        <canvas id="levl-net-canvas"></canvas>
       </div>
-    </div>
 
-    <!-- Full-width network canvas -->
-    <div class="network-canvas-wrap r d3">
-      <canvas id="levl-net-canvas"></canvas>
-    </div>
+      <!-- Right: content -->
+      <div class="network-content r d2">
+        <div class="section-eyebrow" style="margin-bottom:14px">LEVL Network</div>
+        <h2 class="section-title">Introductions you already make.<br>Now they pay.</h2>
+        <p class="network-explainer">Every day, creators introduce other creators to brands, managers, and deals. That value disappears. LEVL tracks and rewards every introduction &mdash; with no ceiling, no expiry, and no extra effort.</p>
 
+        <div class="nw-tier-card nw-tier-1">
+          <div class="nw-tier-header">
+            <span class="ntr-dot ntr-amber"></span>
+            <span class="nw-tier-label">Tier 1 &mdash; Creators you introduce directly</span>
+          </div>
+          <div class="nw-tier-rate">20% of their platform subscription revenue, forever</div>
+          <div class="nw-tier-eg">Introduce 5 creators at £49/mo &rarr; <strong>+£49/mo passive income</strong></div>
+        </div>
+
+        <div class="nw-tier-card nw-tier-2">
+          <div class="nw-tier-header">
+            <span class="ntr-dot ntr-violet"></span>
+            <span class="nw-tier-label">Tier 2 &mdash; Creators they introduce</span>
+          </div>
+          <div class="nw-tier-rate">5% from their extended network too</div>
+          <div class="nw-tier-eg">Those 5 each refer 3 more at £49/mo &rarr; <strong>+£36.75/mo</strong></div>
+        </div>
+
+        <div class="nw-no-cap">No cap &nbsp;&middot;&nbsp; No expiry &nbsp;&middot;&nbsp; Compounds automatically</div>
+      </div>
+
+    </div>
   </div>
 </section>
 
@@ -3859,13 +3854,10 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
 
   // Abstract supporting nodes: [fx, fy, '', baseR]
   var ABS = [
-    [0.48, 0.11, '', 3.0],
-    [0.88, 0.48, '', 2.6],
-    [0.05, 0.48, '', 2.4],
-    [0.62, 0.84, '', 2.2],
-    [0.36, 0.82, '', 2.0],
-    [0.94, 0.78, '', 1.8],
-    [0.70, 0.10, '', 2.2]
+    [0.48, 0.11, '', 2.6],
+    [0.88, 0.48, '', 2.2],
+    [0.05, 0.48, '', 2.0],
+    [0.64, 0.82, '', 2.0]
   ];
 
   // Semantic connections (indices into SEM, 0–5)
@@ -3879,8 +3871,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
   // Abstract connections (indices into NODES after concat)
   // SEM is 0–5, ABS starts at 6
   var ABS_CONNS = [
-    [0,8],[1,6],[1,12],[2,7],[2,12],
-    [3,10],[5,9],[5,11],[6,12],[9,10]
+    [0,8],[1,6],[2,7],[3,9],[5,9]
   ];
 
   var NODES, CONNS, N_SEM;
@@ -3915,7 +3906,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
 
   var signals = [];
   var lastSigTime = 0;
-  var SIG_INTERVAL = 2200;
+  var SIG_INTERVAL = 4200;
 
   function draw(ts) {
     requestAnimationFrame(draw);
@@ -3932,19 +3923,19 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
       var adj = CONNS.filter(function(c) {
         return c[0] === activeNode || c[1] === activeNode;
       });
-      if (adj.length && signals.length < 6) {
+      if (adj.length && signals.length < 3) {
         var pick = adj[Math.floor(Math.random() * adj.length)];
         signals.push({
           from: pick[0], to: pick[1], t: 0,
-          speed: 0.0022 + Math.random() * 0.0016,
-          op: 0.38 + Math.random() * 0.22
+          speed: 0.0012 + Math.random() * 0.0008,
+          op: 0.22 + Math.random() * 0.10
         });
       }
     }
 
     // Dot grid (desktop only, very faint)
     if (!isMobile) {
-      ctx.fillStyle = 'rgba(245,158,11,0.026)';
+      ctx.fillStyle = 'rgba(245,158,11,0.012)';
       for (var gx = 0; gx < W; gx += 70) {
         for (var gy = 0; gy < H; gy += 70) {
           ctx.beginPath(); ctx.arc(gx, gy, 0.7, 0, Math.PI * 2); ctx.fill();
@@ -3958,9 +3949,9 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
       var c = CONNS[ci];
       var a = nxy(c[0]), b = nxy(c[1]);
       var isSem = c[0] < N_SEM && c[1] < N_SEM;
-      var baseOp = isSem ? 0.073 : 0.045;
+      var baseOp = isSem ? 0.036 : 0.018;
       var isActive = (c[0] === activeNode || c[1] === activeNode);
-      var lineOp = baseOp + (isActive ? actFade * 0.13 : 0);
+      var lineOp = baseOp + (isActive ? actFade * 0.055 : 0);
       ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y);
       ctx.strokeStyle = 'rgba(245,158,11,' + lineOp + ')';
       ctx.stroke();
@@ -3976,20 +3967,20 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
       var baseR = n[3];
 
       // Outer glow ring
-      var ringOp = (0.15 + af * 0.44) * d;
-      ctx.beginPath(); ctx.arc(p.x, p.y, baseR * 2.2, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(245,158,11,' + (ringOp * 0.35) + ')'; ctx.fill();
+      var ringOp = (0.06 + af * 0.16) * d;
+      ctx.beginPath(); ctx.arc(p.x, p.y, baseR * 2.0, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(245,158,11,' + (ringOp * 0.18) + ')'; ctx.fill();
 
       // Core dot
       ctx.beginPath(); ctx.arc(p.x, p.y, baseR * 0.52, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(245,158,11,' + ((0.38 + af * 0.49) * d) + ')'; ctx.fill();
+      ctx.fillStyle = 'rgba(245,158,11,' + ((0.16 + af * 0.20) * d) + ')'; ctx.fill();
 
       // Label (semantic nodes only)
       var label = n[2];
       if (label && (!isMobile || isAct)) {
         var labelOp = isMobile
-          ? (isAct ? 0.07 + af * 0.47 : 0)
-          : (0.083 * d + af * 0.47);
+          ? (isAct ? 0.04 + af * 0.28 : 0)
+          : (0.040 * d + af * 0.28);
         if (labelOp > 0.005) {
           ctx.font = '600 10px Inter,sans-serif';
           ctx.fillStyle = 'rgba(245,158,11,' + labelOp + ')';
@@ -4007,11 +3998,11 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
       var y = a.y + (b.y - a.y) * s.t;
       var fade = s.t < 0.12 ? s.t / 0.12 : s.t > 0.88 ? (1 - s.t) / 0.12 : 1;
       // Glow trail
-      ctx.beginPath(); ctx.arc(x, y, 5.5, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(245,158,11,' + (s.op * fade * 0.106) + ')'; ctx.fill();
+      ctx.beginPath(); ctx.arc(x, y, 4.5, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(245,158,11,' + (s.op * fade * 0.055) + ')'; ctx.fill();
       // Core pulse
-      ctx.beginPath(); ctx.arc(x, y, 2.6, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(245,158,11,' + (s.op * fade) + ')'; ctx.fill();
+      ctx.beginPath(); ctx.arc(x, y, 2.0, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(245,158,11,' + (s.op * fade * 0.68) + ')'; ctx.fill();
       return true;
     });
   }
@@ -4429,9 +4420,9 @@ if (sd) sigObs.observe(sd);
   }
 
   function resize(){
-    var pw=cv.parentElement.clientWidth||900;
+    var pw=cv.parentElement.clientWidth||500;
     cv.width=pw;
-    cv.height=Math.round(Math.max(300,Math.min(460,pw*0.44)));
+    cv.height=Math.round(Math.max(340,Math.min(560,pw*0.90)));
     build();
   }
 
