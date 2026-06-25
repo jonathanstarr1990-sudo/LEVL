@@ -1244,6 +1244,31 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
 .hero-proof-inline strong { color: var(--amber); font-family: var(--mono); }
 .hero-proof-dot { opacity: .35; }
 
+
+/* ── HERO SIGNAL ANIMATION ── */
+.hero-signals { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin: 28px auto 30px; max-width: 600px; }
+.hsig { display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--border2); border-radius: 20px; padding: 5px 12px 5px 9px; font-size: 10px; color: var(--t3); transition: color .4s, border-color .4s, background .4s; position: relative; overflow: hidden; }
+.hsig-dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
+.hsig-val { font-family: var(--mono); font-size: 9px; font-weight: 700; margin-left: 4px; opacity: 0; transition: opacity .4s; }
+.hsig.on { color: var(--t2); border-color: rgba(245,243,238,.22); background: rgba(255,255,255,.04); }
+.hsig.on .hsig-val { opacity: 1; }
+.hsig.on.green-sig { border-color: rgba(16,185,129,.32); color: #10B981; background: rgba(16,185,129,.06); }
+.hsig.on.amber-sig { border-color: rgba(245,158,11,.32); color: var(--amber); background: rgba(245,158,11,.06); }
+.hsig.on.violet-sig { border-color: rgba(124,58,237,.32); color: var(--violet2); background: rgba(124,58,237,.06); }
+@media (max-width: 520px) { .hero-signals { gap: 5px; } .hsig { font-size: 9px; padding: 4px 9px 4px 7px; } }
+
+/* ── WS LIVE BADGE: only show on active card ── */
+.ws-live-badge { display: none; }
+.ws-card.active .ws-live-badge { display: flex; }
+
+/* ── PER-WORKSPACE FRAME ACCENT ── */
+.wf-creator { box-shadow: 0 0 60px rgba(245,158,11,.07), 0 40px 80px rgba(0,0,0,.6) !important; transition: box-shadow .5s ease; }
+.wf-manager  { box-shadow: 0 0 60px rgba(16,185,129,.07), 0 40px 80px rgba(0,0,0,.6) !important; transition: box-shadow .5s ease; }
+.wf-sponsor  { box-shadow: 0 0 60px rgba(124,58,237,.08), 0 40px 80px rgba(0,0,0,.6) !important; transition: box-shadow .5s ease; }
+.wf-creator .pw-titlebar { background: linear-gradient(90deg,rgba(245,158,11,.06),#08080f) !important; }
+.wf-manager  .pw-titlebar { background: linear-gradient(90deg,rgba(16,185,129,.06),#08080f) !important; }
+.wf-sponsor  .pw-titlebar { background: linear-gradient(90deg,rgba(124,58,237,.07),#08080f) !important; }
+
 /* ── QUICK HOW IT WORKS STRIP ── */
 .qhiw { padding: 26px 0; border-top: 1px solid var(--border2); border-bottom: 1px solid var(--border2); background: rgba(245,158,11,0.014); }
 .qhiw-steps { display: flex; align-items: flex-start; gap: 6px; }
@@ -1724,16 +1749,24 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
 <section class="hero">
   <div class="hero-eyebrow">
     <div class="hero-eyebrow-dot"></div>
-    Trust Infrastructure · Private Beta
+    Private Beta
   </div>
   <h1 class="hero-tagline">
-    A verified reputation network<br>
-    for the <em>creator economy.</em>
+    Followers measure reach.<br>
+    <em>LEVL measures reputation.</em>
   </h1>
-  <p style="font-size:17px;color:var(--amber);text-align:center;letter-spacing:-.01em;margin-bottom:28px;font-weight:500">Followers show reach. Reputation shows trust.</p>
-  <div class="hero-ctas">
-    <a href="#waitlist" class="btn-primary">Join the waitlist</a>
-    <a href="#demo" class="btn-ghost">Explore the platform ↓</a>
+
+  <!-- Reputation signal animation -->
+  <div class="hero-signals">
+    <span class="hsig green-sig" id="hsig0"><span class="hsig-dot" style="background:#10B981"></span>Platform verified<span class="hsig-val">+Signal</span></span>
+    <span class="hsig amber-sig" id="hsig1"><span class="hsig-dot" style="background:#F59E0B"></span>Deal renewed &times;3<span class="hsig-val">+Trust</span></span>
+    <span class="hsig green-sig" id="hsig2"><span class="hsig-dot" style="background:#10B981"></span>52 weeks consistent<span class="hsig-val">+Record</span></span>
+    <span class="hsig violet-sig" id="hsig3"><span class="hsig-dot" style="background:#8B5CF6"></span>Manager endorsed<span class="hsig-val">+Signal</span></span>
+    <span class="hsig amber-sig" id="hsig4"><span class="hsig-dot" style="background:#F59E0B"></span>Opportunity matched<span class="hsig-val">91%</span></span>
+  </div>
+
+  <div class="hero-ctas" style="margin-bottom:14px">
+    <a href="#demo" class="btn-primary">Explore the platform ↓</a>
   </div>
   <div class="hero-proof-inline">
     <span><strong>143</strong> creators</span>
@@ -1742,7 +1775,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
     <span class="hero-proof-dot">&middot;</span>
     <span><strong>12</strong> sponsors</span>
     <span class="hero-proof-dot">&middot;</span>
-    <span>Founding cohort</span>
+    <a href="#waitlist" style="color:var(--t3);text-decoration:none;transition:color .2s" onmouseover="this.style.color='var(--t2)'" onmouseout="this.style.color='var(--t3)'">Join the waitlist &rarr;</a>
   </div>
 </section>
 
@@ -1752,7 +1785,6 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
   <div class="section-inner">
     <div class="problem-intro r">
       <div class="problem-intro-hl">The creator economy runs on trust.<br>It has no infrastructure to verify it.</div>
-          <p style="font-size:14px;color:var(--t3);line-height:1.75;margin-top:14px;max-width:520px;margin-left:auto;margin-right:auto;text-align:center">A creator’s reputation is trapped inside the platforms they built it on. When ecosystems shift, it doesn’t travel with them. LEVL exists to change that.</p>
     </div>
     <div class="problem-grid">
       <div class="problem-card r d1">
@@ -1837,6 +1869,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
           <div class="ws-icon ws-icon-manager">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="8" cy="7" r="3" stroke="currentColor" stroke-width="1.6"/><path d="M3 20c0-2.76 2.24-5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="16" cy="7" r="3" stroke="currentColor" stroke-width="1.6"/><path d="M11 20c0-2.76 2.24-5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
           </div>
+          <div class="ws-live-badge"><div class="ws-live-dot"></div>active</div>
         </div>
         <div class="ws-card-name">Manager Workspace</div>
         <div class="ws-card-desc">Roster management, deal pipeline, pitch pack builder and revenue analytics for your talent operation.</div>
@@ -1859,6 +1892,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
           <div class="ws-icon ws-icon-sponsor">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="10.5" cy="10.5" r="6.5" stroke="currentColor" stroke-width="1.6"/><path d="M15.5 15.5l5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
           </div>
+          <div class="ws-live-badge"><div class="ws-live-dot"></div>active</div>
         </div>
         <div class="ws-card-name">Sponsor Discovery</div>
         <div class="ws-card-desc">Search and verify creators by reputation data, manage shortlists, active deals and review evidence.</div>
@@ -1877,7 +1911,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
 </div>
 
 <div class="pw" style="margin-top:0;padding-top:0;">
-  <div class="pw-frame pw-sidebar-mode">
+  <div class="pw-frame pw-sidebar-mode wf-creator">
     <div class="pw-titlebar">
       <div class="pw-dot r"></div><div class="pw-dot y"></div><div class="pw-dot g"></div>
       <div class="pw-url">app.levl.io</div>
@@ -4141,6 +4175,9 @@ function _doWsSwitch(id) {
   if (sb) sb.classList.add('active');
   document.querySelectorAll('.mob-subnav-btn').forEach(function(el) { el.classList.remove('active'); });
   _setView(id, PANEL_DEFAULTS[id] || 'dashboard');
+  // Per-workspace frame accent
+  var frame = document.querySelector('.pw-frame');
+  if (frame) { frame.classList.remove('wf-creator','wf-manager','wf-sponsor'); frame.classList.add('wf-' + id); }
 }
 
 function _setView(panelId, viewId) {
@@ -4359,6 +4396,21 @@ if (sd) sigObs.observe(sd);
     if (e.key === 'Escape') close();
   });
 })();
+
+// Hero signal animation
+(function() {
+  var sigs = ['hsig0','hsig1','hsig2','hsig3','hsig4'];
+  var idx = 0;
+  function tick() {
+    sigs.forEach(function(id) { var el = document.getElementById(id); if (el) el.classList.remove('on'); });
+    var el = document.getElementById(sigs[idx]);
+    if (el) el.classList.add('on');
+    idx = (idx + 1) % sigs.length;
+  }
+  tick();
+  setInterval(tick, 1400);
+})();
+
 </script>
 </body>
 </html>
