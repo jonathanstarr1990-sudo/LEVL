@@ -524,39 +524,51 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
 }
 
 /* ── LEVL NETWORK SECTION ── */
-.network-sec { padding: 72px 0; }
-.network-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: start; margin-top: 40px; }
-@media (max-width: 860px) { .network-grid { grid-template-columns: 1fr; } }
-.network-visual-col, .network-explain-col { display: flex; flex-direction: column; gap: 14px; }
-.network-eyebrow-label { font-size: 9px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: var(--amber); opacity: .55; margin-bottom: 4px; }
-.network-svg { width: 100%; height: auto; margin-bottom: 2px; }
-.network-income-scale { background: var(--surface2); border: 1px solid var(--border2); border-radius: var(--r); padding: 18px 20px; display: flex; flex-direction: column; gap: 10px; }
-.nis-row { display: flex; align-items: center; gap: 10px; }
-.nis-label { font-size: 10px; color: var(--t3); width: 86px; flex-shrink: 0; }
-.nis-bar-wrap { flex: 1; height: 4px; background: rgba(255,255,255,0.06); border-radius: 2px; overflow: hidden; }
-.nis-bar { height: 100%; border-radius: 2px; }
-.nis-val { font-family: var(--mono); font-size: 11px; color: var(--amber); width: 52px; text-align: right; flex-shrink: 0; }
-.nis-note { font-size: 9px; color: var(--t3); opacity: .55; text-align: center; margin-top: 2px; }
-.network-how-box { background: var(--surface2); border: 1px solid var(--border2); border-radius: var(--r); padding: 20px; }
-.network-how-label { font-size: 9px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--amber); opacity: .55; margin-bottom: 14px; }
-.network-how-steps { display: flex; flex-direction: column; gap: 11px; }
-.network-step { display: flex; gap: 12px; align-items: flex-start; }
-.nstep-num { width: 22px; height: 22px; border-radius: 50%; background: rgba(245,158,11,0.08); border: 1px solid rgba(245,158,11,0.26); display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 900; color: var(--amber); flex-shrink: 0; }
-.nstep-text { font-size: 12px; color: var(--t2); line-height: 1.65; padding-top: 2px; }
-.network-tiers { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-.network-tier { border-radius: var(--r2); padding: 16px 18px; }
-.network-tier.amber-tier { background: rgba(245,158,11,0.05); border: 1px solid rgba(245,158,11,0.18); }
-.network-tier.violet-tier { background: rgba(139,92,246,0.05); border: 1px solid rgba(139,92,246,0.18); }
-.tier-label { font-size: 9px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--amber); opacity: .6; margin-bottom: 6px; }
-.violet-tier .tier-label { color: var(--violet); }
-.tier-pct { font-size: 28px; font-weight: 700; color: var(--amber); line-height: 1; font-family: var(--mono); }
-.violet-tier .tier-pct { color: var(--violet); }
-.tier-sub { font-size: 10px; color: var(--t3); margin-top: 4px; }
-.tier-val { font-family: var(--mono); font-size: 11px; color: var(--green); font-weight: 700; margin-top: 8px; }
-.network-compound-note { background: rgba(16,185,129,0.04); border: 1px solid rgba(16,185,129,0.13); border-radius: var(--r2); padding: 16px 18px; }
-.compound-title { font-size: 12px; font-weight: 700; color: var(--green); margin-bottom: 5px; }
-.compound-body { font-size: 12px; color: var(--t3); line-height: 1.7; }
-.network-incl-note { font-size: 11px; color: var(--t3); text-align: center; padding: 10px 14px; border: 1px solid var(--border2); border-radius: var(--r2); }
+.network-sec { padding: 80px 0 72px; }
+.network-header { text-align: center; margin-bottom: 44px; }
+.network-manifesto { font-size: 15px; color: var(--t2); line-height: 1.8; max-width: 520px; margin: 18px auto 0; }
+
+/* Canvas */
+.network-canvas-wrap {
+  max-width: 1000px; margin: 0 auto;
+  background: linear-gradient(180deg,rgba(245,158,11,.022) 0%,transparent 100%);
+  border: 1px solid var(--border2); border-radius: 16px; overflow: hidden;
+}
+#levl-net-canvas { width: 100%; display: block; }
+
+/* Live metrics strip */
+.network-live-metrics {
+  display: flex; align-items: center; justify-content: center; gap: 0;
+  max-width: 760px; margin: 36px auto 0;
+  background: var(--surface2); border: 1px solid var(--border2); border-radius: 12px; overflow: hidden;
+}
+.nlm-card { flex: 1; padding: 20px 16px; text-align: center; }
+.nlm-val { font-family: var(--mono); font-size: 21px; font-weight: 700; color: var(--amber); margin-bottom: 5px; letter-spacing: -.01em; }
+.nlm-label { font-size: 10px; color: var(--t3); letter-spacing: .02em; }
+.nlm-div { width: 1px; background: var(--border2); align-self: stretch; flex-shrink: 0; }
+
+/* Tier row */
+.network-tiers-row {
+  display: flex; align-items: flex-start; gap: 0;
+  max-width: 820px; margin: 36px auto 0;
+  background: var(--surface2); border: 1px solid var(--border2); border-radius: 12px; overflow: hidden;
+}
+.ntr-item { flex: 1; padding: 20px 22px; display: flex; gap: 12px; align-items: flex-start; }
+.ntr-item + .ntr-item { border-left: 1px solid var(--border2); }
+.ntr-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; margin-top: 5px; }
+.ntr-amber { background: var(--amber); box-shadow: 0 0 6px rgba(245,158,11,.5); }
+.ntr-violet { background: var(--violet2); box-shadow: 0 0 6px rgba(139,92,246,.5); }
+.ntr-green { background: var(--green); box-shadow: 0 0 6px rgba(16,185,129,.5); }
+.ntr-name { font-size: 12px; font-weight: 600; color: var(--t1); margin-bottom: 5px; }
+.ntr-detail { font-size: 12px; color: var(--t3); line-height: 1.6; }
+.ntr-result .ntr-name { color: var(--green); }
+@media (max-width: 680px) {
+  .network-tiers-row { flex-direction: column; }
+  .ntr-item + .ntr-item { border-left: none; border-top: 1px solid var(--border2); }
+  .network-live-metrics { flex-direction: column; }
+  .nlm-div { width: 100%; height: 1px; align-self: auto; }
+  .nlm-card { padding: 14px 16px; }
+}
 
 /* 6-level progression strip (creator passport tab) */
 .level-strip { display: flex; gap: 3px; background: var(--surface2); border: 1px solid var(--border2); border-radius: var(--r2); padding: 8px 10px; }
@@ -1082,8 +1094,6 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
 
 @media (max-width: 500px) {
   .network-sec { padding: 52px 0; }
-  .network-grid { gap: 16px; }
-  .network-tiers { grid-template-columns: 1fr; }
 }
 
 /* ── CAMPAIGN HISTORY ── */
@@ -3765,107 +3775,69 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
 <!-- LEVL NETWORK -->
 <section class="network-sec" id="network">
   <div class="section-inner">
-    <div class="r"><div class="section-eyebrow">LEVL Network</div></div>
-    <div class="r d1"><h2 class="section-title">The creator economy<br>runs on relationships.<br><em>LEVL rewards those who help build them.</em></h2></div>
-    <div class="r d2"><p class="section-sub">LEVL shares platform revenue with creators who help build the ecosystem — 20% from your direct network, 5% from theirs, compounding monthly with no cap or expiry.</p></div>
 
-    <div class="network-grid r d3">
-
-      <!-- Left: network graph + income scale -->
-      <div class="network-visual-col">
-        <div class="network-eyebrow-label">Your network, visualised.</div>
-
-        <svg class="network-svg" viewBox="0 0 380 220" xmlns="http://www.w3.org/2000/svg">
-          <!-- Tier 2 extended lines (violet, faint) -->
-          <line x1="80" y1="40" x2="40" y2="20" stroke="rgba(139,92,246,0.14)" stroke-width="1"/>
-          <line x1="80" y1="40" x2="65" y2="15" stroke="rgba(139,92,246,0.14)" stroke-width="1"/>
-          <line x1="160" y1="35" x2="145" y2="12" stroke="rgba(139,92,246,0.14)" stroke-width="1"/>
-          <line x1="240" y1="40" x2="255" y2="15" stroke="rgba(139,92,246,0.14)" stroke-width="1"/>
-          <line x1="300" y1="45" x2="318" y2="18" stroke="rgba(139,92,246,0.14)" stroke-width="1"/>
-          <line x1="300" y1="45" x2="340" y2="22" stroke="rgba(139,92,246,0.14)" stroke-width="1"/>
-          <!-- Tier 1 direct lines (amber) -->
-          <line x1="190" y1="110" x2="80" y2="40" stroke="rgba(245,158,11,0.24)" stroke-width="1.5"/>
-          <line x1="190" y1="110" x2="130" y2="50" stroke="rgba(245,158,11,0.24)" stroke-width="1.5"/>
-          <line x1="190" y1="110" x2="160" y2="35" stroke="rgba(245,158,11,0.24)" stroke-width="1.5"/>
-          <line x1="190" y1="110" x2="240" y2="40" stroke="rgba(245,158,11,0.24)" stroke-width="1.5"/>
-          <line x1="190" y1="110" x2="300" y2="45" stroke="rgba(245,158,11,0.24)" stroke-width="1.5"/>
-          <line x1="190" y1="110" x2="100" y2="160" stroke="rgba(245,158,11,0.24)" stroke-width="1.5"/>
-          <line x1="190" y1="110" x2="155" y2="175" stroke="rgba(245,158,11,0.24)" stroke-width="1.5"/>
-          <line x1="190" y1="110" x2="225" y2="175" stroke="rgba(245,158,11,0.24)" stroke-width="1.5"/>
-          <line x1="190" y1="110" x2="280" y2="160" stroke="rgba(245,158,11,0.24)" stroke-width="1.5"/>
-          <!-- Tier 2 nodes (violet) -->
-          <circle cx="40" cy="20" r="3.5" fill="rgba(139,92,246,0.15)" stroke="rgba(139,92,246,0.48)" stroke-width="1.5"/>
-          <circle cx="65" cy="15" r="3.5" fill="rgba(139,92,246,0.15)" stroke="rgba(139,92,246,0.48)" stroke-width="1.5"/>
-          <circle cx="145" cy="12" r="3.5" fill="rgba(139,92,246,0.15)" stroke="rgba(139,92,246,0.48)" stroke-width="1.5"/>
-          <circle cx="255" cy="15" r="3.5" fill="rgba(139,92,246,0.15)" stroke="rgba(139,92,246,0.48)" stroke-width="1.5"/>
-          <circle cx="318" cy="18" r="3.5" fill="rgba(139,92,246,0.15)" stroke="rgba(139,92,246,0.48)" stroke-width="1.5"/>
-          <circle cx="340" cy="22" r="3.5" fill="rgba(139,92,246,0.15)" stroke="rgba(139,92,246,0.48)" stroke-width="1.5"/>
-          <!-- Tier 1 nodes (amber) -->
-          <circle cx="80" cy="40" r="6" fill="rgba(245,158,11,0.15)" stroke="rgba(245,158,11,0.6)" stroke-width="1.5"/>
-          <circle cx="130" cy="50" r="6" fill="rgba(245,158,11,0.15)" stroke="rgba(245,158,11,0.6)" stroke-width="1.5"/>
-          <circle cx="160" cy="35" r="6" fill="rgba(245,158,11,0.15)" stroke="rgba(245,158,11,0.6)" stroke-width="1.5"/>
-          <circle cx="240" cy="40" r="6" fill="rgba(245,158,11,0.15)" stroke="rgba(245,158,11,0.6)" stroke-width="1.5"/>
-          <circle cx="300" cy="45" r="6" fill="rgba(245,158,11,0.15)" stroke="rgba(245,158,11,0.6)" stroke-width="1.5"/>
-          <circle cx="100" cy="160" r="6" fill="rgba(245,158,11,0.15)" stroke="rgba(245,158,11,0.6)" stroke-width="1.5"/>
-          <circle cx="155" cy="175" r="6" fill="rgba(245,158,11,0.15)" stroke="rgba(245,158,11,0.6)" stroke-width="1.5"/>
-          <circle cx="225" cy="175" r="6" fill="rgba(245,158,11,0.15)" stroke="rgba(245,158,11,0.6)" stroke-width="1.5"/>
-          <circle cx="280" cy="160" r="6" fill="rgba(245,158,11,0.15)" stroke="rgba(245,158,11,0.6)" stroke-width="1.5"/>
-          <!-- Centre YOU node (pulsing) -->
-          <circle cx="190" cy="110" r="16" fill="rgba(245,158,11,0.10)" stroke="rgba(245,158,11,0.65)" stroke-width="2">
-            <animate attributeName="r" values="16;19;16" dur="3.2s" repeatCount="indefinite"/>
-            <animate attributeName="stroke-opacity" values="0.65;0.2;0.65" dur="3.2s" repeatCount="indefinite"/>
-          </circle>
-          <text x="190" y="115" text-anchor="middle" font-size="8" font-weight="800" fill="rgba(245,158,11,0.9)" font-family="monospace">YOU</text>
-          <text x="190" y="208" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.18)" font-family="sans-serif">9 direct · 6 extended · 15 total</text>
-        </svg>
-
-        <!-- Compounding income scale -->
-        <div class="network-income-scale">
-          <div class="nis-row">
-            <span class="nis-label">5 creators</span>
-            <div class="nis-bar-wrap"><div class="nis-bar" style="width:16%;background:var(--amber)"></div></div>
-            <span class="nis-val">£15/mo</span>
-          </div>
-          <div class="nis-row">
-            <span class="nis-label">15 creators</span>
-            <div class="nis-bar-wrap"><div class="nis-bar" style="width:40%;background:var(--amber)"></div></div>
-            <span class="nis-val">£45/mo</span>
-          </div>
-          <div class="nis-row">
-            <span class="nis-label">30 creators</span>
-            <div class="nis-bar-wrap"><div class="nis-bar" style="width:70%;background:linear-gradient(90deg,var(--amber),var(--green))"></div></div>
-            <span class="nis-val">£90/mo</span>
-          </div>
-          <div class="nis-row">
-            <span class="nis-label">50 creators</span>
-            <div class="nis-bar-wrap"><div class="nis-bar" style="width:100%;background:linear-gradient(90deg,var(--amber),var(--green))"></div></div>
-            <span class="nis-val">£150/mo</span>
-          </div>
-          <div class="nis-note">Direct network only. Extended network adds further compounding.</div>
-        </div>
-      </div>
-
-      <!-- Right: mechanism + tier breakdown + compound note -->
-      <div class="network-explain-col">
-
-        <div class="network-tiers">
-          <div class="network-tier amber-tier">
-            <div class="tier-label">Tier 1 · Direct</div>
-            <div class="tier-pct">20%</div>
-            <div class="tier-sub">platform revenue · direct network</div>
-            <div class="tier-val">£3.00 / creator / mo</div>
-          </div>
-          <div class="network-tier violet-tier">
-            <div class="tier-label">Tier 2 · Extended</div>
-            <div class="tier-pct">5%</div>
-            <div class="tier-sub">platform revenue · extended network</div>
-            <div class="tier-val">£0.75 / creator / mo</div>
-          </div>
-        </div>
-
-
+    <!-- Header -->
+    <div class="network-header">
+      <div class="section-eyebrow r">LEVL Network</div>
+      <div class="r d1"><h2 class="section-title">Your network<br>becomes an asset.</h2></div>
+      <div class="r d2">
+        <p class="network-manifesto">Social platforms reward attention. Agencies reward transactions. LEVL rewards the people who genuinely help others succeed — and ensures that value compounds forever, with no ceiling and no expiry.</p>
       </div>
     </div>
+
+    <!-- Full-width network canvas -->
+    <div class="network-canvas-wrap r d3">
+      <canvas id="levl-net-canvas"></canvas>
+    </div>
+
+    <!-- Live metrics -->
+    <div class="network-live-metrics r d4">
+      <div class="nlm-card">
+        <div class="nlm-val" id="nlm-members">143</div>
+        <div class="nlm-label">Network members</div>
+      </div>
+      <div class="nlm-div"></div>
+      <div class="nlm-card">
+        <div class="nlm-val" id="nlm-earnings">£6,840</div>
+        <div class="nlm-label">Distributed this month</div>
+      </div>
+      <div class="nlm-div"></div>
+      <div class="nlm-card">
+        <div class="nlm-val">1,240</div>
+        <div class="nlm-label">Network connections</div>
+      </div>
+      <div class="nlm-div"></div>
+      <div class="nlm-card">
+        <div class="nlm-val">&infin;</div>
+        <div class="nlm-label">No cap. No expiry.</div>
+      </div>
+    </div>
+
+    <!-- Compact tier breakdown -->
+    <div class="network-tiers-row r d5">
+      <div class="ntr-item">
+        <span class="ntr-dot ntr-amber"></span>
+        <div>
+          <div class="ntr-name">Tier 1 &mdash; Your direct network</div>
+          <div class="ntr-detail">20% of platform revenue from every creator you introduce to LEVL</div>
+        </div>
+      </div>
+      <div class="ntr-item">
+        <span class="ntr-dot ntr-violet"></span>
+        <div>
+          <div class="ntr-name">Tier 2 &mdash; Their networks too</div>
+          <div class="ntr-detail">5% from every creator they introduce — compounding automatically</div>
+        </div>
+      </div>
+      <div class="ntr-item ntr-result">
+        <span class="ntr-dot ntr-green"></span>
+        <div>
+          <div class="ntr-name">Your reputation creates income</div>
+          <div class="ntr-detail">Every relationship you build becomes permanent, compounding value</div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -4389,6 +4361,182 @@ if (sd) sigObs.observe(sd);
   }
   tick();
   setInterval(tick, 1400);
+})();
+
+// ── LEVL NETWORK CANVAS ANIMATION ──
+(function(){
+  var cv=document.getElementById('levl-net-canvas');
+  if(!cv) return;
+  var ctx=cv.getContext('2d');
+  var nodes=[],edges=[],signals=[];
+  var W,H,cx,cy,startT=Date.now(),lastSig=0;
+
+  function clamp(v,lo,hi){return Math.max(lo,Math.min(hi,v));}
+  function ease(t){return t<.5?2*t*t:-1+(4-2*t)*t;}
+
+  function build(){
+    W=cv.width; H=cv.height; cx=W/2; cy=H/2;
+    nodes=[]; edges=[]; signals=[];
+    // YOU
+    nodes.push({x:cx,y:cy,r:18,tier:0,op:1});
+    // Tier 1 — 9 nodes in ellipse
+    var t1c=9,rx=W*0.30,ry=H*0.36;
+    for(var i=0;i<t1c;i++){
+      var a=(i/t1c)*Math.PI*2-Math.PI/2+(i%2===0?0.14:-0.14);
+      var rax=rx*(0.90+Math.random()*0.18), ray=ry*(0.90+Math.random()*0.18);
+      var nx=clamp(cx+Math.cos(a)*rax,18,W-18);
+      var ny=clamp(cy+Math.sin(a)*ray,10,H-10);
+      var idx=nodes.length;
+      nodes.push({x:nx,y:ny,r:7,tier:1,op:0,angle:a,delay:700+i*240});
+      edges.push({a:0,b:idx,tier:1});
+    }
+    // Tier 2 — 2-3 nodes per Tier 1
+    var t1list=nodes.filter(function(n){return n.tier===1;});
+    t1list.forEach(function(n,i){
+      var count=i%3===1?3:2;
+      for(var j=0;j<count;j++){
+        var a2=n.angle+(j-(count-1)/2)*0.42;
+        var dx=n.x-cx,dy=n.y-cy,d=Math.sqrt(dx*dx+dy*dy);
+        var nx2=clamp(n.x+Math.cos(a2)*(d*0.54+18),8,W-8);
+        var ny2=clamp(n.y+Math.sin(a2)*(d*0.48+14),5,H-5);
+        var idx2=nodes.length;
+        nodes.push({x:nx2,y:ny2,r:4,tier:2,op:0,pIdx:nodes.indexOf(n),delay:2700+(i*3+j)*155});
+        edges.push({a:nodes.indexOf(n),b:idx2,tier:2});
+      }
+    });
+  }
+
+  function spawnSig(){
+    var alive=nodes.filter(function(n){return n.tier===1&&n.op>0.8;});
+    if(!alive.length) return;
+    var tgt=alive[Math.floor(Math.random()*alive.length)];
+    var you=nodes[0];
+    signals.push({fx:you.x,fy:you.y,tx:tgt.x,ty:tgt.y,t:0,tier:1});
+    var t2opts=nodes.filter(function(n){return n.tier===2&&n.pIdx===nodes.indexOf(tgt)&&n.op>0.8;});
+    if(t2opts.length&&Math.random()>0.38){
+      var t2=t2opts[Math.floor(Math.random()*t2opts.length)];
+      signals.push({fx:tgt.x,fy:tgt.y,tx:t2.x,ty:t2.y,t:0,tier:2,delay:52});
+    }
+  }
+
+  function frame(){
+    requestAnimationFrame(frame);
+    var now=Date.now(),ms=now-startT;
+    ctx.clearRect(0,0,W,H);
+
+    // Fade nodes in
+    nodes.forEach(function(n){
+      if(n.delay&&ms>n.delay) n.op=Math.min(1,n.op+0.013);
+    });
+
+    // Edges
+    edges.forEach(function(e){
+      var a=nodes[e.a],b=nodes[e.b];
+      var alpha=Math.min(a.op,b.op);
+      if(alpha<0.04) return;
+      ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y);
+      ctx.strokeStyle=e.tier===1
+        ?'rgba(245,158,11,'+(0.21*alpha)+')'
+        :'rgba(139,92,246,'+(0.13*alpha)+')';
+      ctx.lineWidth=e.tier===1?1.5:1;
+      ctx.stroke();
+    });
+
+    // Spawn + draw signals
+    if(now-lastSig>720&&ms>1500){spawnSig();lastSig=now;}
+    signals=signals.filter(function(s){
+      if(s.delay&&s.delay-->0) return true;
+      s.t+=0.0072;
+      if(s.t>=1) return false;
+      var ex=ease(s.t);
+      var x=s.fx+(s.tx-s.fx)*ex,y=s.fy+(s.ty-s.fy)*ex;
+      var fa=s.t<0.1?s.t*10:s.t>0.88?(1-s.t)/0.12:1;
+      ctx.beginPath();
+      ctx.arc(x,y,s.tier===1?3.5:2.5,0,Math.PI*2);
+      ctx.fillStyle=s.tier===1?'rgba(245,158,11,'+(0.95*fa)+')':'rgba(139,92,246,'+(0.88*fa)+')';
+      ctx.fill();
+      return true;
+    });
+
+    // Tier 2 nodes
+    nodes.forEach(function(n){
+      if(n.tier!==2||n.op<0.04) return;
+      var p=0.6+0.4*Math.sin(now*0.0009+n.x*0.033);
+      ctx.beginPath(); ctx.arc(n.x,n.y,n.r,0,Math.PI*2);
+      ctx.fillStyle='rgba(139,92,246,'+(0.10*n.op)+')'; ctx.fill();
+      ctx.strokeStyle='rgba(139,92,246,'+(0.46*n.op*p)+')';
+      ctx.lineWidth=1.5; ctx.stroke();
+    });
+
+    // Tier 1 nodes
+    nodes.forEach(function(n){
+      if(n.tier!==1||n.op<0.04) return;
+      var p=0.72+0.28*Math.sin(now*0.0012+n.y*0.038);
+      ctx.beginPath(); ctx.arc(n.x,n.y,n.r,0,Math.PI*2);
+      ctx.fillStyle='rgba(245,158,11,'+(0.13*n.op)+')'; ctx.fill();
+      ctx.strokeStyle='rgba(245,158,11,'+(0.58*n.op*p)+')';
+      ctx.lineWidth=1.5; ctx.stroke();
+    });
+
+    // YOU node
+    var yo=nodes[0];
+    var p=0.8+0.2*Math.sin(now*0.0014);
+    var g=ctx.createRadialGradient(yo.x,yo.y,yo.r,yo.x,yo.y,yo.r*3.2*p);
+    g.addColorStop(0,'rgba(245,158,11,0.13)'); g.addColorStop(1,'rgba(245,158,11,0)');
+    ctx.beginPath(); ctx.arc(yo.x,yo.y,yo.r*3.2*p,0,Math.PI*2); ctx.fillStyle=g; ctx.fill();
+    ctx.beginPath(); ctx.arc(yo.x,yo.y,yo.r,0,Math.PI*2);
+    ctx.fillStyle='rgba(245,158,11,0.12)'; ctx.fill();
+    ctx.strokeStyle='rgba(245,158,11,'+(0.7*p)+')'; ctx.lineWidth=2; ctx.stroke();
+    ctx.font='bold 7px monospace'; ctx.fillStyle='rgba(245,158,11,0.88)';
+    ctx.textAlign='center'; ctx.textBaseline='middle';
+    ctx.fillText('YOU',yo.x,yo.y);
+
+    // Legend labels (subtle)
+    ctx.font='9px sans-serif'; ctx.fillStyle='rgba(245,243,238,0.14)';
+    ctx.textAlign='left'; ctx.textBaseline='bottom';
+    ctx.fillText('\u25cf Tier 1 — Direct',12,H-8);
+    ctx.fillStyle='rgba(139,92,246,0.35)';
+    ctx.fillText('\u25cf Tier 2 — Extended',110,H-8);
+  }
+
+  function resize(){
+    var pw=cv.parentElement.clientWidth||900;
+    cv.width=pw;
+    cv.height=Math.round(Math.max(300,Math.min(460,pw*0.44)));
+    build();
+  }
+
+  // Count-up animation for metrics
+  function countUp(id, endVal, prefix, suffix, dur){
+    var el=document.getElementById(id);
+    if(!el) return;
+    var s=Date.now(), origText=el.textContent;
+    function step(){
+      var prog=Math.min(1,(Date.now()-s)/dur);
+      var e2=prog<.5?2*prog*prog:-1+(4-2*prog)*prog;
+      el.textContent=(prefix||'')+Math.round(e2*endVal).toLocaleString()+(suffix||'');
+      if(prog<1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  // Trigger count-up when section is visible
+  var netSec=document.getElementById('network');
+  if(netSec&&window.IntersectionObserver){
+    var counted=false;
+    var netObs=new IntersectionObserver(function(entries){
+      if(entries[0].isIntersecting&&!counted){
+        counted=true;
+        countUp('nlm-members',143,'','',1400);
+        countUp('nlm-earnings',6840,'£','',1600);
+      }
+    },{threshold:0.2});
+    netObs.observe(netSec);
+  }
+
+  resize();
+  window.addEventListener('resize',resize);
+  frame();
 })();
 
 </script>
