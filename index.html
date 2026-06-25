@@ -1077,6 +1077,97 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
   .network-tiers { grid-template-columns: 1fr; }
 }
 
+/* ── CAMPAIGN HISTORY ── */
+.camp-list { padding: 10px 14px; overflow-y: auto; display: flex; flex-direction: column; gap: 8px; }
+.camp-card { background: rgba(255,255,255,.03); border: 1px solid var(--border2); border-radius: 8px; padding: 12px 13px; }
+.camp-card-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 5px; }
+.camp-brand { font-size: 12px; font-weight: 600; color: var(--t1); }
+.camp-period { font-size: 9px; color: var(--t3); }
+.camp-meta-line { font-size: 10px; color: var(--t2); margin-bottom: 6px; }
+.camp-bar-row { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+.camp-bar { flex: 1; height: 3px; background: rgba(255,255,255,.06); border-radius: 2px; overflow: hidden; }
+.camp-bar-fill { height: 100%; border-radius: 2px; }
+.camp-footer { display: flex; justify-content: space-between; align-items: center; }
+.camp-val { font-family: var(--mono); font-weight: 700; font-size: 12px; color: var(--amber); }
+.camp-rating { font-size: 10px; color: var(--amber); letter-spacing: 1px; }
+.camp-status { font-size: 8px; padding: 2px 7px; border-radius: 20px; font-weight: 700; }
+.camp-status.live { background: rgba(16,185,129,.15); color: #10B981; }
+.camp-status.review { background: rgba(245,158,11,.15); color: var(--amber); }
+.camp-status.done { background: rgba(255,255,255,.06); color: var(--t3); }
+.camp-status.upcoming { background: rgba(124,58,237,.15); color: var(--violet2); }
+
+/* ── REPUTATION TIMELINE ── */
+.rep-wrap { display: grid; grid-template-columns: 1fr 196px; flex: 1; min-height: 0; overflow: hidden; }
+.rep-timeline { padding: 14px; overflow-y: auto; }
+.rep-side { padding: 12px; border-left: 1px solid var(--border2); overflow-y: auto; display: flex; flex-direction: column; gap: 10px; }
+.rep-event { display: flex; gap: 12px; padding-bottom: 18px; position: relative; }
+.rep-event:last-child { padding-bottom: 0; }
+.rep-event::before { content:''; position:absolute; left:14px; top:32px; bottom:0; width:1px; background: var(--border2); }
+.rep-event:last-child::before { display:none; }
+.rep-dot { width: 29px; height: 29px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0; border: 2px solid transparent; }
+.rep-dot.green { background: rgba(16,185,129,.12); border-color: rgba(16,185,129,.35); }
+.rep-dot.amber { background: rgba(245,158,11,.12); border-color: rgba(245,158,11,.35); }
+.rep-dot.violet { background: rgba(124,58,237,.12); border-color: rgba(124,58,237,.35); }
+.rep-dot.grey { background: rgba(255,255,255,.04); border-color: var(--border2); }
+.rep-body { flex: 1; padding-top: 3px; }
+.rep-title { font-size: 11px; font-weight: 600; color: var(--t1); margin-bottom: 2px; }
+.rep-detail { font-size: 10px; color: var(--t3); line-height: 1.5; }
+.rep-date { font-size: 9px; color: var(--t3); margin-top: 3px; }
+.rep-delta { font-size: 9px; font-weight: 700; margin-left: 6px; }
+.rep-delta.up { color: #10B981; }
+.rep-delta.amber { color: var(--amber); }
+
+/* ── CREATOR PROFILE (Sponsor) ── */
+.profile-layout { display: grid; grid-template-columns: 1fr 210px; flex: 1; min-height: 0; overflow: hidden; }
+.profile-main { overflow-y: auto; display: flex; flex-direction: column; }
+.profile-back { padding: 8px 14px; font-size: 9px; color: var(--t3); border-bottom: 1px solid var(--border2); flex-shrink: 0; }
+.profile-back span { color: var(--amber); cursor: pointer; }
+.profile-hero { padding: 16px 14px 14px; background: linear-gradient(135deg,rgba(124,58,237,.1),rgba(245,158,11,.07)); border-bottom: 1px solid var(--border2); display: flex; align-items: center; gap: 14px; flex-shrink: 0; }
+.profile-av { width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 700; color: white; flex-shrink: 0; }
+.profile-name { font-size: 15px; font-weight: 700; color: var(--t1); margin-bottom: 2px; }
+.profile-sub { font-size: 10px; color: var(--t3); }
+.profile-tags { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 5px; }
+.profile-hero-right { margin-left: auto; text-align: right; flex-shrink: 0; }
+.profile-trust-big { font-size: 30px; font-weight: 700; color: var(--t1); font-family: var(--mono); line-height: 1; }
+.profile-trust-lbl { font-size: 9px; color: var(--t3); margin-top: 2px; }
+.profile-stat-strip { display: grid; grid-template-columns: repeat(4,1fr); border-bottom: 1px solid var(--border2); flex-shrink: 0; }
+.profile-stat { padding: 10px 6px; text-align: center; border-right: 1px solid var(--border2); }
+.profile-stat:last-child { border-right: none; }
+.profile-stat-val { font-size: 15px; font-weight: 700; color: var(--t1); font-family: var(--mono); }
+.profile-stat-lbl { font-size: 8px; color: var(--t3); margin-top: 1px; }
+.profile-section { padding: 12px 14px; border-bottom: 1px solid var(--border2); }
+.profile-sec-title { font-size: 9px; font-weight: 600; color: var(--t3); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 8px; }
+.profile-plat-row { display: flex; align-items: center; gap: 10px; padding: 6px 0; border-bottom: 1px solid var(--border2); font-size: 10px; }
+.profile-plat-row:last-child { border-bottom: none; }
+.profile-plat-icon { font-size: 14px; width: 26px; text-align: center; }
+.profile-plat-name { font-weight: 600; color: var(--t1); width: 64px; }
+.profile-plat-stat { color: var(--t3); flex: 1; }
+.profile-aud-bar { display: flex; align-items: center; gap: 8px; margin-bottom: 5px; font-size: 9px; }
+.profile-aud-label { color: var(--t3); width: 90px; flex-shrink: 0; }
+.profile-aud-track { flex: 1; height: 3px; background: rgba(255,255,255,.06); border-radius: 2px; overflow: hidden; }
+.profile-aud-fill { height: 100%; border-radius: 2px; background: var(--violet2); }
+.profile-aud-pct { color: var(--t2); font-weight: 600; width: 30px; text-align: right; font-family: var(--mono); }
+.profile-side { padding: 12px; border-left: 1px solid var(--border2); overflow-y: auto; display: flex; flex-direction: column; gap: 10px; }
+
+/* ── VERIFICATION EVIDENCE ── */
+.verif-wrap { flex: 1; overflow-y: auto; display: flex; flex-direction: column; }
+.verif-header { padding: 12px 16px; border-bottom: 1px solid var(--border2); display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; }
+.verif-overall { font-size: 9px; background: rgba(16,185,129,.1); color: #10B981; border: 1px solid rgba(16,185,129,.2); border-radius: 20px; padding: 3px 10px; font-weight: 600; }
+.verif-category { padding: 10px 16px; border-bottom: 1px solid var(--border2); }
+.verif-cat-head { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+.verif-cat-icon { font-size: 14px; }
+.verif-cat-title { font-size: 11px; font-weight: 600; color: var(--t1); flex: 1; }
+.verif-cat-score { font-size: 9px; padding: 2px 8px; border-radius: 20px; font-weight: 600; }
+.verif-cat-score.pass { background: rgba(16,185,129,.15); color: #10B981; }
+.verif-cat-score.warn { background: rgba(245,158,11,.15); color: var(--amber); }
+.verif-item { display: flex; align-items: flex-start; gap: 8px; padding: 5px 0; border-bottom: 1px solid rgba(245,243,238,.04); }
+.verif-item:last-child { border-bottom: none; }
+.verif-check { width: 15px; height: 15px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 8px; font-weight: 800; flex-shrink: 0; margin-top: 1px; }
+.verif-check.pass { background: rgba(16,185,129,.15); color: #10B981; }
+.verif-check.warn { background: rgba(245,158,11,.15); color: var(--amber); }
+.verif-item-label { font-size: 10px; font-weight: 600; color: var(--t1); margin-bottom: 1px; }
+.verif-item-detail { font-size: 9px; color: var(--t3); line-height: 1.5; }
+
 /* ── QUICK HOW IT WORKS STRIP ── */
 .qhiw { padding: 26px 0; border-top: 1px solid var(--border2); border-bottom: 1px solid var(--border2); background: rgba(245,158,11,0.014); }
 .qhiw-steps { display: flex; align-items: flex-start; gap: 6px; }
@@ -1719,9 +1810,17 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
             <svg class="pw-nav-icon" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="6" r="2.8" stroke="currentColor" stroke-width="1.3"/><path d="M3 14c0-2.76 2.24-5 5-5s5 2.24 5 5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
             My Passport
           </div>
+          <div class="pw-nav-item" data-subview="history" onclick="switchView('creator','history',this)">
+            <svg class="pw-nav-icon" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="5.5" stroke="currentColor" stroke-width="1.3"/><path d="M8 5v3.5l2.5 1.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+            Campaign History
+          </div>
           <div class="pw-nav-item" data-subview="opportunities" onclick="switchView('creator','opportunities',this)">
             <svg class="pw-nav-icon" viewBox="0 0 16 16" fill="none"><path d="M8 2l1.4 3.2 3.6.5-2.6 2.5.6 3.5L8 10.2 4.9 11.7l.6-3.5L3 5.7l3.6-.5L8 2z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
             Opportunities
+          </div>
+          <div class="pw-nav-item" data-subview="reputation" onclick="switchView('creator','reputation',this)">
+            <svg class="pw-nav-icon" viewBox="0 0 16 16" fill="none"><path d="M2 14V6l4-4h8v12H2z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M5 9h6M5 12h4M6 2v4H2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+            Reputation Timeline
           </div>
           <div class="pw-nav-item" data-subview="platforms" onclick="switchView('creator','platforms',this)">
             <svg class="pw-nav-icon" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="5" height="5" rx="1" stroke="currentColor" stroke-width="1.3"/><rect x="9" y="2" width="5" height="5" rx="1" stroke="currentColor" stroke-width="1.3"/><rect x="2" y="9" width="5" height="5" rx="1" stroke="currentColor" stroke-width="1.3"/><rect x="9" y="9" width="5" height="5" rx="1" stroke="currentColor" stroke-width="1.3"/></svg>
@@ -1791,6 +1890,10 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
             <svg class="pw-nav-icon" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.5"/><path d="M10.5 10.5l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
             Discover Creators
           </div>
+          <div class="pw-nav-item" data-subview="profile" onclick="switchView('sponsor','profile',this)">
+            <svg class="pw-nav-icon" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="6" r="2.8" stroke="currentColor" stroke-width="1.3"/><path d="M3 14c0-2.76 2.24-5 5-5s5 2.24 5 5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="M12 9l1.5 1.5M12 12l1.5-1.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+            Creator Profiles
+          </div>
           <div class="pw-nav-item" data-subview="shortlist" onclick="switchView('sponsor','shortlist',this)">
             <svg class="pw-nav-icon" viewBox="0 0 16 16" fill="none"><path d="M8 2l1.4 3.2 3.6.5-2.6 2.5.6 3.5L8 10.2 4.9 11.7l.6-3.5L3 5.7l3.6-.5L8 2z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
             Shortlist
@@ -1798,6 +1901,10 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
           <div class="pw-nav-item" data-subview="deals" onclick="switchView('sponsor','deals',this)">
             <svg class="pw-nav-icon" viewBox="0 0 16 16" fill="none"><path d="M2 12V4a2 2 0 012-2h8a2 2 0 012 2v8l-3-2-3 2-3-2-3 2z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
             Active Deals
+          </div>
+          <div class="pw-nav-item" data-subview="verification" onclick="switchView('sponsor','verification',this)">
+            <svg class="pw-nav-icon" viewBox="0 0 16 16" fill="none"><path d="M8 2l5 2v5c0 3-5 5-5 5S3 12 3 9V4l5-2z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M5.5 8l2 2 3-3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Verification Evidence
           </div>
           <div class="pw-sb-divider"></div>
           <div class="pw-sb-section-label">Switch view</div>
@@ -2350,6 +2457,240 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
               </div>
             </div>
           </div><!-- /view-creator-platforms -->
+
+
+          <!-- ── CREATOR: CAMPAIGN HISTORY ── -->
+          <div class="pw-view" id="view-creator-history">
+            <div class="opp-filter-bar">
+              <div class="opp-filter-chip active">All (11)</div>
+              <div class="opp-filter-chip">Active</div>
+              <div class="opp-filter-chip">Completed</div>
+              <div class="opp-filter-chip">Upcoming</div>
+              <div style="margin-left:auto;font-size:9px;color:var(--t3)">Total earned: <span style="color:var(--amber);font-family:var(--mono);font-weight:600">&#163;47,200</span></div>
+            </div>
+            <div class="opp-layout">
+              <div class="camp-list">
+                <div class="camp-card" style="border-color:rgba(16,185,129,.25)">
+                  <div class="camp-card-head"><div class="camp-brand">GearX &mdash; Q4 Gaming Bundle</div><div><span class="camp-status live">&#9679; Live</span></div></div>
+                  <div class="camp-meta-line">YouTube + Twitch &middot; Gaming peripherals &middot; 2 deliverables</div>
+                  <div class="camp-bar-row">
+                    <div style="font-size:9px;color:var(--t3);width:78px;flex-shrink:0">Del. 2 of 4</div>
+                    <div class="camp-bar"><div class="camp-bar-fill bar-animate" style="--w:50%;background:linear-gradient(90deg,var(--violet2),var(--amber))"></div></div>
+                    <div style="font-size:9px;color:var(--t3);width:28px;text-align:right">50%</div>
+                  </div>
+                  <div class="camp-footer"><span class="camp-val">&#163;960<span style="font-size:9px;color:var(--t3);font-weight:400">/mo</span></span><span style="font-size:9px;color:var(--t3)">Jul&ndash;Sep 2026 &middot; Renews Q5</span></div>
+                </div>
+                <div class="camp-card" style="border-color:rgba(245,158,11,.25)">
+                  <div class="camp-card-head"><div class="camp-brand">NordVPN &mdash; Creator Protection</div><div><span class="camp-status review">&#9679; In Review</span></div></div>
+                  <div class="camp-meta-line">YouTube &middot; Software / VPN &middot; 1 dedicated video</div>
+                  <div class="camp-bar-row">
+                    <div style="font-size:9px;color:var(--t3);width:78px;flex-shrink:0">Del. 1 of 1</div>
+                    <div class="camp-bar"><div class="camp-bar-fill bar-animate" style="--w:100%;background:var(--amber)"></div></div>
+                    <div style="font-size:9px;color:var(--t3);width:28px;text-align:right">100%</div>
+                  </div>
+                  <div class="camp-footer"><span class="camp-val">&#163;900</span><span style="font-size:9px;color:var(--t3)">Jun&ndash;Jul 2026 &middot; Approval pending</span></div>
+                </div>
+                <div class="camp-card">
+                  <div class="camp-card-head"><div class="camp-brand">GearX &mdash; Q3 Gaming Bundle</div><div><span class="camp-status done">Completed &#10003;</span></div></div>
+                  <div class="camp-meta-line">YouTube + Twitch &middot; Gaming peripherals &middot; 4 deliverables</div>
+                  <div class="camp-bar-row">
+                    <div style="font-size:9px;color:var(--t3);width:78px;flex-shrink:0">Del. 4 of 4</div>
+                    <div class="camp-bar"><div class="camp-bar-fill" style="width:100%;background:rgba(16,185,129,.4)"></div></div>
+                    <div style="font-size:9px;color:var(--t3);width:28px;text-align:right">100%</div>
+                  </div>
+                  <div class="camp-footer"><span class="camp-val">&#163;960<span style="font-size:9px;color:var(--t3);font-weight:400">/mo</span></span><div class="camp-rating">&#9733;&#9733;&#9733;&#9733;&#9733; <span style="font-size:9px;color:var(--t3);margin-left:3px">4.8</span></div></div>
+                </div>
+                <div class="camp-card">
+                  <div class="camp-card-head"><div class="camp-brand">FitFuel &mdash; Supplement Series</div><div><span class="camp-status done">Completed &#10003;</span></div></div>
+                  <div class="camp-meta-line">YouTube &middot; Nutrition / lifestyle &middot; 4 videos</div>
+                  <div class="camp-bar-row">
+                    <div style="font-size:9px;color:var(--t3);width:78px;flex-shrink:0">Del. 4 of 4</div>
+                    <div class="camp-bar"><div class="camp-bar-fill" style="width:100%;background:rgba(16,185,129,.4)"></div></div>
+                    <div style="font-size:9px;color:var(--t3);width:28px;text-align:right">100%</div>
+                  </div>
+                  <div class="camp-footer"><span class="camp-val">&#163;2,400<span style="font-size:9px;color:var(--t3);font-weight:400">/mo</span></span><div class="camp-rating">&#9733;&#9733;&#9733;&#9733;&#9733; <span style="font-size:9px;color:var(--t3);margin-left:3px">4.9</span></div></div>
+                </div>
+                <div class="camp-card">
+                  <div class="camp-card-head"><div class="camp-brand">TechBrand &mdash; Q1 Review Series</div><div><span class="camp-status done">Completed &#10003;</span></div></div>
+                  <div class="camp-meta-line">YouTube &middot; Consumer tech &middot; 1 dedicated review</div>
+                  <div class="camp-footer" style="margin-top:4px"><span class="camp-val">&#163;1,800</span><div class="camp-rating">&#9733;&#9733;&#9733;&#9733;&#9734; <span style="font-size:9px;color:var(--t3);margin-left:3px">4.6</span></div></div>
+                </div>
+                <div class="camp-card">
+                  <div class="camp-card-head"><div class="camp-brand">Corsair &mdash; Streamer Pack</div><div><span class="camp-status done">Completed &#10003;</span></div></div>
+                  <div class="camp-meta-line">YouTube + Twitch &middot; Gaming peripherals &middot; 2 posts</div>
+                  <div class="camp-footer" style="margin-top:4px"><span class="camp-val">&#163;750</span><div class="camp-rating">&#9733;&#9733;&#9733;&#9733;&#9734; <span style="font-size:9px;color:var(--t3);margin-left:3px">4.7</span></div></div>
+                </div>
+                <div class="camp-card" style="border-color:rgba(124,58,237,.25)">
+                  <div class="camp-card-head"><div class="camp-brand">TechNest &mdash; Laptop Review</div><div><span class="camp-status upcoming">Upcoming</span></div></div>
+                  <div class="camp-meta-line">YouTube &middot; Consumer tech &middot; 1 review &middot; Starting 25 Jul</div>
+                  <div class="camp-footer" style="margin-top:4px"><span class="camp-val">&#163;750</span><span style="font-size:9px;color:var(--t3)">Contract signed &#10003;</span></div>
+                </div>
+              </div>
+              <div class="opp-side">
+                <div class="ds">
+                  <div class="ds-hdr"><span class="ds-title">EARNINGS SUMMARY</span></div>
+                  <div style="padding:8px 13px 10px;display:flex;flex-direction:column;gap:6px">
+                    <div style="font-size:28px;font-weight:700;color:var(--t1);font-family:var(--mono)">&#163;47,200</div>
+                    <div style="font-size:9px;color:var(--t3);margin-bottom:4px">All-time deal value</div>
+                    <div style="display:flex;justify-content:space-between;font-size:9px"><span style="color:var(--t3)">Active monthly</span><span style="color:var(--amber);font-family:var(--mono);font-weight:600">&#163;960</span></div>
+                    <div style="display:flex;justify-content:space-between;font-size:9px"><span style="color:var(--t3)">Pending review</span><span style="color:var(--t1);font-family:var(--mono)">&#163;900</span></div>
+                    <div style="display:flex;justify-content:space-between;font-size:9px"><span style="color:var(--t3)">Upcoming</span><span style="color:var(--violet2);font-family:var(--mono)">&#163;750</span></div>
+                  </div>
+                </div>
+                <div class="ds">
+                  <div class="ds-hdr"><span class="ds-title">DEAL STATS</span></div>
+                  <div style="padding:8px 13px 10px;display:flex;flex-direction:column;gap:5px;font-size:9px">
+                    <div style="display:flex;justify-content:space-between"><span style="color:var(--t3)">Total campaigns</span><span style="color:var(--t1)">11</span></div>
+                    <div style="display:flex;justify-content:space-between"><span style="color:var(--t3)">Completed</span><span style="color:#10B981">8 &#10003;</span></div>
+                    <div style="display:flex;justify-content:space-between"><span style="color:var(--t3)">Renewal rate</span><span style="color:var(--t1)">75%</span></div>
+                    <div style="display:flex;justify-content:space-between"><span style="color:var(--t3)">Avg sponsor rating</span><span style="color:var(--amber)">4.7 / 5.0</span></div>
+                    <div style="display:flex;justify-content:space-between"><span style="color:var(--t3)">Disputes</span><span style="color:#10B981">0 &#10003;</span></div>
+                    <div style="display:flex;justify-content:space-between"><span style="color:var(--t3)">Late deliverables</span><span style="color:#10B981">0 &#10003;</span></div>
+                  </div>
+                </div>
+                <div class="ds">
+                  <div class="ds-hdr"><span class="ds-title">TOP PARTNERS</span></div>
+                  <div style="padding:8px 13px 10px;display:flex;flex-direction:column;gap:6px">
+                    <div style="display:flex;align-items:center;gap:8px"><div style="width:22px;height:22px;border-radius:5px;background:linear-gradient(135deg,#F59E0B,#7C3AED);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#fff">GX</div><div><div style="font-size:10px;color:var(--t1);font-weight:600">GearX</div><div style="font-size:8px;color:var(--t3)">&#215;3 campaigns &middot; Renewed</div></div></div>
+                    <div style="display:flex;align-items:center;gap:8px"><div style="width:22px;height:22px;border-radius:5px;background:linear-gradient(135deg,#10B981,#0D9488);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#fff">FF</div><div><div style="font-size:10px;color:var(--t1);font-weight:600">FitFuel</div><div style="font-size:8px;color:var(--t3)">&#215;2 campaigns &middot; Renewed</div></div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div><!-- /view-creator-history -->
+
+          <!-- ── CREATOR: REPUTATION TIMELINE ── -->
+          <div class="pw-view" id="view-creator-reputation">
+            <div class="rep-wrap">
+              <div class="rep-timeline">
+                <div style="font-size:10px;color:var(--t3);margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border2)">Showing all reputation events &middot; Most recent first &middot; <span style="color:var(--amber)">Trust Score: 82</span></div>
+                <div class="rep-event">
+                  <div class="rep-dot violet">&#8593;</div>
+                  <div class="rep-body">
+                    <div class="rep-title">Trust Score increased to 82 <span class="rep-delta up">+2</span></div>
+                    <div class="rep-detail">NordVPN campaign completed with 5-star rating. Sponsor satisfaction signals contributed to trust increase.</div>
+                    <div class="rep-date">Jun 22, 2026</div>
+                  </div>
+                </div>
+                <div class="rep-event">
+                  <div class="rep-dot green">&#10003;</div>
+                  <div class="rep-body">
+                    <div class="rep-title">NordVPN Creator Protection — Completed ★★★★★</div>
+                    <div class="rep-detail">Deliverable approved. Sponsor rating: 4.9/5. Payment processed: &#163;900. No disputes.</div>
+                    <div class="rep-date">Jun 18, 2026</div>
+                  </div>
+                </div>
+                <div class="rep-event">
+                  <div class="rep-dot amber">&#128293;</div>
+                  <div class="rep-body">
+                    <div class="rep-title">6-Week Active Streak <span class="rep-delta amber">Milestone</span></div>
+                    <div class="rep-detail">Logged activity on LEVL for 6 consecutive weeks. Streak bonus applied to Trust Score.</div>
+                    <div class="rep-date">Jun 14, 2026</div>
+                  </div>
+                </div>
+                <div class="rep-event">
+                  <div class="rep-dot amber">&#127942;</div>
+                  <div class="rep-body">
+                    <div class="rep-title">Level 3 — Established Creator achieved <span class="rep-delta amber">+Level</span></div>
+                    <div class="rep-detail">Reached 732 XP. Unlocked: Campaign History badge, priority discovery ranking, verified profile seal.</div>
+                    <div class="rep-date">Apr 3, 2026</div>
+                  </div>
+                </div>
+                <div class="rep-event">
+                  <div class="rep-dot green">&#10003;</div>
+                  <div class="rep-body">
+                    <div class="rep-title">GearX Q3 Gaming — Completed ★★★★★</div>
+                    <div class="rep-detail">All 4 deliverables approved. Sponsor rating: 4.8/5. Payment &#163;2,880. Sponsor has renewed for Q4.</div>
+                    <div class="rep-date">Mar 28, 2026</div>
+                  </div>
+                </div>
+                <div class="rep-event">
+                  <div class="rep-dot violet">&#10003;</div>
+                  <div class="rep-body">
+                    <div class="rep-title">Twitch verified and connected <span class="rep-delta up">+4 Trust pts</span></div>
+                    <div class="rep-detail">Twitch OAuth authentication confirmed. 12,400 followers and channel analytics now imported to LEVL.</div>
+                    <div class="rep-date">Mar 9, 2026</div>
+                  </div>
+                </div>
+                <div class="rep-event">
+                  <div class="rep-dot green">&#10003;</div>
+                  <div class="rep-body">
+                    <div class="rep-title">FitFuel Supplement Series — Completed ★★★★★</div>
+                    <div class="rep-detail">All 4 deliverables approved. Sponsor rating: 4.9/5. Highest-rated campaign to date. Payment &#163;9,600.</div>
+                    <div class="rep-date">Mar 1, 2026</div>
+                  </div>
+                </div>
+                <div class="rep-event">
+                  <div class="rep-dot violet">&#128220;</div>
+                  <div class="rep-body">
+                    <div class="rep-title">LEVL Trust Certificate issued</div>
+                    <div class="rep-detail">Identity verified, platform authentication confirmed, compliance screening passed. Certificate ID: LEVL-2024-00219.</div>
+                    <div class="rep-date">Feb 14, 2026</div>
+                  </div>
+                </div>
+                <div class="rep-event">
+                  <div class="rep-dot green">&#10003;</div>
+                  <div class="rep-body">
+                    <div class="rep-title">YouTube verified and connected <span class="rep-delta up">+8 Trust pts</span></div>
+                    <div class="rep-detail">YouTube OAuth authentication confirmed. 47,400 subscribers and full analytics imported. Primary platform set.</div>
+                    <div class="rep-date">Jan 14, 2026</div>
+                  </div>
+                </div>
+                <div class="rep-event">
+                  <div class="rep-dot green">&#10003;</div>
+                  <div class="rep-body">
+                    <div class="rep-title">TechBrand Q1 Series — Completed ★★★★</div>
+                    <div class="rep-detail">Deliverable approved. Sponsor rating: 4.6/5. Payment &#163;1,800. First completed campaign on LEVL.</div>
+                    <div class="rep-date">Jan 8, 2026</div>
+                  </div>
+                </div>
+                <div class="rep-event">
+                  <div class="rep-dot grey">&#127775;</div>
+                  <div class="rep-body">
+                    <div class="rep-title">Joined LEVL &mdash; Early access granted</div>
+                    <div class="rep-detail">Invitation accepted from LEVL waitlist. Starting Trust Score: 40. Profile created. First deal matched within 18 days.</div>
+                    <div class="rep-date">Dec 20, 2025</div>
+                  </div>
+                </div>
+              </div>
+              <div class="rep-side">
+                <div class="ds">
+                  <div class="ds-hdr"><span class="ds-title">TRUST SCORE</span></div>
+                  <div style="padding:10px 13px">
+                    <div style="font-size:36px;font-weight:700;color:var(--t1);font-family:var(--mono)">82</div>
+                    <div style="font-size:9px;color:var(--t3);margin-bottom:8px">Top 31% of LEVL network</div>
+                    <div class="lvl-journey-bar"><div class="lvl-journey-fill bar-animate" style="--w:82%"></div></div>
+                    <div style="margin-top:10px;font-size:9px;color:var(--t3)">At 85 &rarr; <span style="color:var(--amber)">Gold Verified</span></div>
+                  </div>
+                </div>
+                <div class="ds">
+                  <div class="ds-hdr"><span class="ds-title">SCORE BREAKDOWN</span></div>
+                  <div style="padding:8px 13px 10px;display:flex;flex-direction:column;gap:6px">
+                    <div style="font-size:9px;color:var(--t3)">Platform authenticity</div>
+                    <div class="lvl-journey-bar" style="margin-bottom:3px"><div class="lvl-journey-fill bar-animate" style="--w:94%"></div></div>
+                    <div style="font-size:9px;color:var(--t3)">Deal performance</div>
+                    <div class="lvl-journey-bar" style="margin-bottom:3px"><div class="lvl-journey-fill bar-animate" style="--w:100%"></div></div>
+                    <div style="font-size:9px;color:var(--t3)">Consistency &amp; streak</div>
+                    <div class="lvl-journey-bar" style="margin-bottom:3px"><div class="lvl-journey-fill bar-animate" style="--w:75%"></div></div>
+                    <div style="font-size:9px;color:var(--t3)">Audience quality</div>
+                    <div class="lvl-journey-bar"><div class="lvl-journey-fill bar-animate" style="--w:88%"></div></div>
+                  </div>
+                </div>
+                <div class="ds">
+                  <div class="ds-hdr"><span class="ds-title">MILESTONES</span></div>
+                  <div style="padding:8px 13px 10px;display:flex;flex-direction:column;gap:6px;font-size:9px">
+                    <div style="color:var(--green)">&#10003; LEVL Verified Creator</div>
+                    <div style="color:var(--green)">&#10003; L3 Established</div>
+                    <div style="color:var(--green)">&#10003; 5+ completed deals</div>
+                    <div style="color:var(--green)">&#10003; 6-week streak</div>
+                    <div style="color:var(--t3)">&#9633; Gold Verified (85+)</div>
+                    <div style="color:var(--t3)">&#9633; L4 Partner (800 XP)</div>
+                    <div style="color:var(--t3)">&#9633; &#163;50K total earnings</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div><!-- /view-creator-reputation -->
 
         </div><!-- /panel-creator -->
 
@@ -2995,6 +3336,234 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
             </div>
           </div><!-- /view-sponsor-deals -->
 
+
+          <!-- ── SPONSOR: CREATOR PROFILES ── -->
+          <div class="pw-view" id="view-sponsor-profile">
+            <div class="profile-layout">
+              <div class="profile-main">
+                <div class="profile-back">&#8592; Back to search results &middot; Viewing: <span>Jordan Kuznets</span> &middot; 94% campaign fit</div>
+                <div class="profile-hero">
+                  <div class="profile-av" style="background:linear-gradient(135deg,#F59E0B,#7C3AED)">J</div>
+                  <div>
+                    <div class="profile-name">Jordan Kuznets <span class="bdg g" style="font-size:8px">&#10003; Verified</span></div>
+                    <div class="profile-sub">@jordank &middot; Gaming &middot; UK &middot; Member since Jan 2024</div>
+                    <div class="profile-tags">
+                      <span class="bdg v">L3 Established</span>
+                      <span class="bdg g">Deal Ready</span>
+                      <span class="bdg a">&#128293; 6w streak</span>
+                      <span class="bdg i">YouTube &middot; Twitch</span>
+                    </div>
+                  </div>
+                  <div class="profile-hero-right">
+                    <div class="profile-trust-big">82</div>
+                    <div class="profile-trust-lbl">LEVL Trust Score</div>
+                    <div style="margin-top:4px;font-size:8px;color:var(--green)">&#10003; Sponsor-ready verified</div>
+                  </div>
+                </div>
+                <div class="profile-stat-strip">
+                  <div class="profile-stat"><div class="profile-stat-val">48.2K</div><div class="profile-stat-lbl">Subscribers</div></div>
+                  <div class="profile-stat"><div class="profile-stat-val">4.8%</div><div class="profile-stat-lbl">Engagement rate</div></div>
+                  <div class="profile-stat"><div class="profile-stat-val" style="color:var(--green)">8</div><div class="profile-stat-lbl">Deals completed</div></div>
+                  <div class="profile-stat"><div class="profile-stat-val">75%</div><div class="profile-stat-lbl">Renewal rate</div></div>
+                </div>
+                <div class="profile-section">
+                  <div class="profile-sec-title">Platform breakdown</div>
+                  <div class="profile-plat-row">
+                    <div class="profile-plat-icon">&#127909;</div>
+                    <div class="profile-plat-name">YouTube</div>
+                    <div class="profile-plat-stat">48,200 subscribers &middot; 4.8% eng &middot; 8,400 avg views &middot; Verified &#10003;</div>
+                    <div style="font-size:9px;color:var(--green)">Primary</div>
+                  </div>
+                  <div class="profile-plat-row">
+                    <div class="profile-plat-icon">&#127918;</div>
+                    <div class="profile-plat-name">Twitch</div>
+                    <div class="profile-plat-stat">12,400 followers &middot; 840 avg viewers &middot; 62h/mo &middot; Verified &#10003;</div>
+                    <div style="font-size:9px;color:var(--t3)">Secondary</div>
+                  </div>
+                  <div class="profile-plat-row">
+                    <div class="profile-plat-icon">&#127897;</div>
+                    <div class="profile-plat-name">TikTok</div>
+                    <div class="profile-plat-stat">23,700 followers &middot; 6.2% eng &middot; Verified &#10003;</div>
+                    <div style="font-size:9px;color:var(--t3)">Tertiary</div>
+                  </div>
+                </div>
+                <div class="profile-section">
+                  <div class="profile-sec-title">Audience insights</div>
+                  <div class="profile-aud-bar"><div class="profile-aud-label">Age 18&ndash;24</div><div class="profile-aud-track"><div class="profile-aud-fill bar-animate" style="--w:58%"></div></div><div class="profile-aud-pct">58%</div></div>
+                  <div class="profile-aud-bar"><div class="profile-aud-label">Age 25&ndash;34</div><div class="profile-aud-track"><div class="profile-aud-fill bar-animate" style="--w:28%;background:var(--violet)"></div></div><div class="profile-aud-pct">28%</div></div>
+                  <div class="profile-aud-bar"><div class="profile-aud-label">Male audience</div><div class="profile-aud-track"><div class="profile-aud-fill bar-animate" style="--w:71%"></div></div><div class="profile-aud-pct">71%</div></div>
+                  <div class="profile-aud-bar"><div class="profile-aud-label">UK audience</div><div class="profile-aud-track"><div class="profile-aud-fill bar-animate" style="--w:62%;background:var(--amber)"></div></div><div class="profile-aud-pct">62%</div></div>
+                  <div class="profile-aud-bar"><div class="profile-aud-label">Gaming interest</div><div class="profile-aud-track"><div class="profile-aud-fill bar-animate" style="--w:94%;background:#10B981"></div></div><div class="profile-aud-pct">94%</div></div>
+                </div>
+                <div class="profile-section">
+                  <div class="profile-sec-title">Content performance</div>
+                  <div style="display:flex;gap:6px;flex-wrap:wrap">
+                    <div style="flex:1;min-width:80px;background:rgba(255,255,255,.03);border:1px solid var(--border2);border-radius:6px;padding:8px 10px"><div style="font-size:14px;font-weight:700;color:var(--t1);font-family:var(--mono)">8,400</div><div style="font-size:8px;color:var(--t3)">Avg views / video</div></div>
+                    <div style="flex:1;min-width:80px;background:rgba(255,255,255,.03);border:1px solid var(--border2);border-radius:6px;padding:8px 10px"><div style="font-size:14px;font-weight:700;color:var(--t1);font-family:var(--mono)">640</div><div style="font-size:8px;color:var(--t3)">Avg likes</div></div>
+                    <div style="flex:1;min-width:80px;background:rgba(255,255,255,.03);border:1px solid var(--border2);border-radius:6px;padding:8px 10px"><div style="font-size:14px;font-weight:700;color:var(--amber);font-family:var(--mono)">12,200</div><div style="font-size:8px;color:var(--t3)">Brand mention avg views</div></div>
+                    <div style="flex:1;min-width:80px;background:rgba(255,255,255,.03);border:1px solid var(--border2);border-radius:6px;padding:8px 10px"><div style="font-size:14px;font-weight:700;color:var(--green);font-family:var(--mono)">&#163;0.07</div><div style="font-size:8px;color:var(--t3)">Sponsored CPV</div></div>
+                  </div>
+                </div>
+                <div class="profile-section" style="border-bottom:none">
+                  <div class="profile-sec-title">Recent deal history</div>
+                  <div style="display:flex;flex-direction:column;gap:6px">
+                    <div style="display:flex;align-items:center;justify-content:space-between;font-size:10px"><span style="color:var(--t1)">GearX Q4 Gaming</span><span style="color:var(--green)">&#9679; Active &middot; &#163;960/mo</span></div>
+                    <div style="display:flex;align-items:center;justify-content:space-between;font-size:10px"><span style="color:var(--t1)">NordVPN Creator</span><span style="color:var(--t3)">Completed &#10003; ★★★★★ &#163;900</span></div>
+                    <div style="display:flex;align-items:center;justify-content:space-between;font-size:10px"><span style="color:var(--t1)">GearX Q3 Gaming</span><span style="color:var(--t3)">Completed &#10003; ★★★★★ &#163;2,880</span></div>
+                  </div>
+                </div>
+              </div>
+              <div class="profile-side">
+                <div style="background:var(--amber);color:#000;border-radius:7px;padding:9px;font-size:10px;font-weight:700;text-align:center;cursor:pointer">Propose deal</div>
+                <div style="background:rgba(255,255,255,.06);color:var(--t2);border-radius:7px;padding:9px;font-size:10px;font-weight:600;text-align:center;cursor:pointer">Save to shortlist</div>
+                <div class="ds">
+                  <div class="ds-hdr"><span class="ds-title">TRUST CERTIFICATE</span></div>
+                  <div style="padding:8px 13px 10px">
+                    <div style="font-size:9px;color:#10B981;font-weight:600;margin-bottom:4px">&#10003; LEVL Verified</div>
+                    <div style="font-size:9px;color:var(--t3);line-height:1.5">Identity, platforms, compliance &amp; deal performance all verified. Certificate valid until Dec 2026.</div>
+                    <div style="margin-top:8px;font-size:9px;background:rgba(255,255,255,.04);border:1px solid var(--border2);border-radius:5px;padding:5px 8px;font-family:var(--mono);color:var(--t3)">LEVL-2024-00219</div>
+                  </div>
+                </div>
+                <div class="ds">
+                  <div class="ds-hdr"><span class="ds-title">SIMILAR CREATORS</span></div>
+                  <div style="padding:8px 13px 10px;display:flex;flex-direction:column;gap:7px">
+                    <div style="display:flex;align-items:center;gap:8px"><div style="width:24px;height:24px;border-radius:50%;background:linear-gradient(135deg,#7C3AED,#F43F5E);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#fff">K</div><div><div style="font-size:10px;color:var(--t1)">Kai Mendez</div><div style="font-size:8px;color:var(--t3)">Gaming &middot; 31.8K &middot; 87% fit</div></div></div>
+                    <div style="display:flex;align-items:center;gap:8px"><div style="width:24px;height:24px;border-radius:50%;background:linear-gradient(135deg,#10B981,#F59E0B);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#fff">R</div><div><div style="font-size:10px;color:var(--t1)">Riley Chen</div><div style="font-size:8px;color:var(--t3)">Gaming &middot; 62K &middot; 82% fit</div></div></div>
+                  </div>
+                </div>
+                <div style="font-size:9px;color:var(--amber);text-align:center;cursor:pointer;padding:4px">View Verification Evidence &rarr;</div>
+              </div>
+            </div>
+          </div><!-- /view-sponsor-profile -->
+
+          <!-- ── SPONSOR: VERIFICATION EVIDENCE ── -->
+          <div class="pw-view" id="view-sponsor-verification">
+            <div class="verif-wrap">
+              <div class="verif-header">
+                <div>
+                  <div style="font-size:11px;font-weight:700;color:var(--t1)">Verification Evidence &mdash; Jordan Kuznets</div>
+                  <div style="font-size:9px;color:var(--t3);margin-top:2px">5 verification layers &middot; Last verified Jun 14, 2026 &middot; Certificate valid until Dec 14, 2026</div>
+                </div>
+                <div style="display:flex;align-items:center;gap:8px">
+                  <div class="verif-overall">&#10003; 98/100 &mdash; LEVL Verified</div>
+                  <div style="font-size:9px;background:rgba(255,255,255,.06);color:var(--t2);border-radius:5px;padding:4px 10px;cursor:pointer">Download Report</div>
+                </div>
+              </div>
+
+              <div class="verif-category">
+                <div class="verif-cat-head">
+                  <div class="verif-cat-icon">&#128100;</div>
+                  <div class="verif-cat-title">Identity Verification</div>
+                  <div class="verif-cat-score pass">Passed 100%</div>
+                </div>
+                <div class="verif-item">
+                  <div class="verif-check pass">&#10003;</div>
+                  <div><div class="verif-item-label">Government ID verified</div><div class="verif-item-detail">Verified via Stripe Identity secure document check. Full legal name and date of birth confirmed. Jan 14, 2024.</div></div>
+                </div>
+                <div class="verif-item">
+                  <div class="verif-check pass">&#10003;</div>
+                  <div><div class="verif-item-label">UK residence confirmed</div><div class="verif-item-detail">Address verified against submitted documentation. Postcode matched to stated location. United Kingdom &#10003;</div></div>
+                </div>
+                <div class="verif-item">
+                  <div class="verif-check pass">&#10003;</div>
+                  <div><div class="verif-item-label">Email authentication</div><div class="verif-item-detail">Primary email confirmed and 2FA enabled. Account activity consistent with UK time zone.</div></div>
+                </div>
+                <div class="verif-item">
+                  <div class="verif-check pass">&#10003;</div>
+                  <div><div class="verif-item-label">Age verification — 18+</div><div class="verif-item-detail">Age eligibility confirmed for all campaign categories including alcohol and finance.</div></div>
+                </div>
+              </div>
+
+              <div class="verif-category">
+                <div class="verif-cat-head">
+                  <div class="verif-cat-icon">&#128279;</div>
+                  <div class="verif-cat-title">Platform Authentication</div>
+                  <div class="verif-cat-score pass">Passed 75%</div>
+                </div>
+                <div class="verif-item">
+                  <div class="verif-check pass">&#10003;</div>
+                  <div><div class="verif-item-label">YouTube OAuth confirmed</div><div class="verif-item-detail">API access granted. Channel ownership verified. 48,200 subscribers, full analytics imported. Connected Jan 14, 2024.</div></div>
+                </div>
+                <div class="verif-item">
+                  <div class="verif-check pass">&#10003;</div>
+                  <div><div class="verif-item-label">Twitch OAuth confirmed</div><div class="verif-item-detail">Broadcaster status verified. 12,400 followers, channel analytics imported. Affiliate confirmed. Connected Mar 9, 2026.</div></div>
+                </div>
+                <div class="verif-item">
+                  <div class="verif-check pass">&#10003;</div>
+                  <div><div class="verif-item-label">TikTok account verified</div><div class="verif-item-detail">Account ownership confirmed via code challenge. 23,700 followers, engagement data imported.</div></div>
+                </div>
+                <div class="verif-item">
+                  <div class="verif-check warn">!</div>
+                  <div><div class="verif-item-label" style="color:var(--amber)">Instagram — Token expired</div><div class="verif-item-detail">OAuth refresh token expired Jun 2026. Creator has been notified. Data last imported May 31, 2026. Reconnection pending.</div></div>
+                </div>
+              </div>
+
+              <div class="verif-category">
+                <div class="verif-cat-head">
+                  <div class="verif-cat-icon">&#128202;</div>
+                  <div class="verif-cat-title">Audience Analysis</div>
+                  <div class="verif-cat-score pass">Passed 94%</div>
+                </div>
+                <div class="verif-item">
+                  <div class="verif-check pass">&#10003;</div>
+                  <div><div class="verif-item-label">Bot detection — Audience authenticity: 94/100</div><div class="verif-item-detail">Subscriber growth pattern analysis shows organic growth. No bot traffic detected across YouTube or Twitch. Analysis run Jun 14, 2026.</div></div>
+                </div>
+                <div class="verif-item">
+                  <div class="verif-check pass">&#10003;</div>
+                  <div><div class="verif-item-label">Engagement quality verified</div><div class="verif-item-detail">4.8% engagement rate vs platform median of 2.1%. Comment sentiment positive. Like/view ratio consistent over 24 months.</div></div>
+                </div>
+                <div class="verif-item">
+                  <div class="verif-check pass">&#10003;</div>
+                  <div><div class="verif-item-label">Geographic distribution confirmed</div><div class="verif-item-detail">62% UK-based audience confirmed via platform analytics. Matches stated location and content language.</div></div>
+                </div>
+                <div class="verif-item">
+                  <div class="verif-check pass">&#10003;</div>
+                  <div><div class="verif-item-label">Demographic consistency</div><div class="verif-item-detail">Gaming audience profile (94% gaming interest) consistent with content type and posting history over 24 months.</div></div>
+                </div>
+              </div>
+
+              <div class="verif-category">
+                <div class="verif-cat-head">
+                  <div class="verif-cat-icon">&#9989;</div>
+                  <div class="verif-cat-title">Content &amp; Compliance</div>
+                  <div class="verif-cat-score pass">Passed 100%</div>
+                </div>
+                <div class="verif-item">
+                  <div class="verif-check pass">&#10003;</div>
+                  <div><div class="verif-item-label">Content history scan — 24 months reviewed</div><div class="verif-item-detail">AI-assisted content scan across all platforms. No policy violations, hate speech, or misinformation detected.</div></div>
+                </div>
+                <div class="verif-item">
+                  <div class="verif-check pass">&#10003;</div>
+                  <div><div class="verif-item-label">Brand safety score — 91/100</div><div class="verif-item-detail">Safe for all content categories including finance, pharmaceuticals, and age-restricted products. No brand-risk content detected.</div></div>
+                </div>
+                <div class="verif-item">
+                  <div class="verif-check pass">&#10003;</div>
+                  <div><div class="verif-item-label">FTC / ASA disclosure compliance</div><div class="verif-item-detail">All 8 sponsored posts correctly labelled with #ad or equivalent per platform requirements. Compliance rate: 100%.</div></div>
+                </div>
+              </div>
+
+              <div class="verif-category" style="border-bottom:none">
+                <div class="verif-cat-head">
+                  <div class="verif-cat-icon">&#127919;</div>
+                  <div class="verif-cat-title">Deal Performance Record</div>
+                  <div class="verif-cat-score pass">Passed 100%</div>
+                </div>
+                <div class="verif-item">
+                  <div class="verif-check pass">&#10003;</div>
+                  <div><div class="verif-item-label">8 campaigns completed — 0 disputes, 0 late deliverables</div><div class="verif-item-detail">Full campaign history verified on-chain. Each deliverable timestamped, sponsor-approved, and contract-compliant.</div></div>
+                </div>
+                <div class="verif-item">
+                  <div class="verif-check pass">&#10003;</div>
+                  <div><div class="verif-item-label">Renewal rate — 75% (industry avg: 42%)</div><div class="verif-item-detail">6 of 8 completed sponsors have renewed or are in renewal discussions. Indicates consistent deliverable quality.</div></div>
+                </div>
+                <div class="verif-item">
+                  <div class="verif-check pass">&#10003;</div>
+                  <div><div class="verif-item-label">Sponsor satisfaction score — 4.7 / 5.0</div><div class="verif-item-detail">Average rating from 8 completed sponsors. Scores range from 4.5 to 4.9. All ratings verified as genuine.</div></div>
+                </div>
+              </div>
+            </div>
+          </div><!-- /view-sponsor-verification -->
+
         </div><!-- /panel-sponsor -->
 
       </div><!-- /pw-main -->
@@ -3511,9 +4080,9 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
 
 // ── PRODUCT WINDOW TABS ──
 var VIEW_CRUMBS = {
-  creator: { dashboard:'Dashboard', passport:'My Passport', opportunities:'Opportunities', platforms:'Platform Connections' },
+  creator: { dashboard:'Dashboard', passport:'My Passport', history:'Campaign History', opportunities:'Opportunities', reputation:'Reputation Timeline', platforms:'Platform Connections' },
   manager: { roster:'Roster', pipeline:'Deals & Pipeline', pitchpacks:'Pitch Packs', economics:'Economics' },
-  sponsor: { discover:'Creator Discovery', shortlist:'Shortlist', deals:'Active Deals' }
+  sponsor: { discover:'Creator Discovery', profile:'Creator Profiles', shortlist:'Shortlist', deals:'Active Deals', verification:'Verification Evidence' }
 };
 var PANEL_DEFAULTS = { creator:'dashboard', manager:'roster', sponsor:'discover' };
 
