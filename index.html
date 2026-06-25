@@ -559,6 +559,64 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
 .lvl-step.lv-active .lvl-name { color: var(--green); font-weight: 600; }
 .lvl-step.lv-passed .lvl-num, .lvl-step.lv-passed .lvl-name { opacity: .4; }
 
+/* ── PLATFORM SECTION INTRO ── */
+.plat-intro { max-width: 1000px; margin: 0 auto 28px; padding: 0 16px; text-align: center; }
+.plat-intro .section-title { margin-bottom: 8px; }
+.plat-intro .section-sub { margin: 0 auto; font-size: 14px; }
+
+/* ── SIDEBAR APP SHELL ── */
+.pw-body { display: flex; }
+.pw-sidebar { width: 172px; border-right: 1px solid var(--border2); padding: 14px 10px; display: flex; flex-direction: column; flex-shrink: 0; background: rgba(0,0,0,0.2); }
+.pw-sb-user { display: flex; align-items: center; gap: 9px; padding-bottom: 13px; border-bottom: 1px solid var(--border2); margin-bottom: 12px; }
+.pw-sb-av { width: 32px; height: 32px; border-radius: 50%; background: linear-gradient(135deg,#F59E0B,#7C3AED); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: #fff; flex-shrink: 0; }
+.pw-sb-name { font-size: 11px; font-weight: 600; color: var(--t2); line-height: 1.3; }
+.pw-sb-role { font-size: 9px; color: var(--t3); }
+.pw-sb-section-label { font-size: 9px; color: var(--t3); text-transform: uppercase; letter-spacing: .07em; font-weight: 600; padding: 0 10px 6px; }
+.pw-nav-item { display: flex; align-items: center; gap: 9px; padding: 9px 10px; border-radius: 7px; cursor: pointer; font-size: 12px; color: var(--t3); transition: all .18s; border: 1px solid transparent; margin-bottom: 2px; user-select: none; }
+.pw-nav-item:hover:not(.active) { color: var(--t2); background: rgba(255,255,255,0.03); }
+.pw-nav-item.active { background: rgba(245,158,11,0.09); border-color: rgba(245,158,11,0.22); color: var(--amber); font-weight: 500; }
+.pw-nav-icon { width: 15px; height: 15px; flex-shrink: 0; }
+.pw-sb-divider { height: 1px; background: var(--border2); margin: 10px 0; }
+.pw-main { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+@media (min-width: 621px) { .pw-sidebar-mode .pw-tabs { display: none; } }
+@media (max-width: 620px) {
+  .pw-sidebar { display: none; }
+  .pw-sidebar-mode .pw-tabs { display: flex; }
+  .pw-body { display: block; }
+}
+
+/* ── LIVE TITLEBAR INDICATOR ── */
+.pw-titlebar-right { display: flex; align-items: center; gap: 5px; margin-left: auto; }
+.pw-live-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: livePulse 2s ease-in-out infinite; flex-shrink: 0; }
+.pw-live-label { font-size: 10px; color: var(--green); font-family: var(--mono); letter-spacing: .03em; }
+
+/* ── REPUTATION HERO WIDGET ── */
+.rep-hero { background: linear-gradient(135deg,rgba(124,58,237,0.07),rgba(245,158,11,0.04)); border: 1px solid rgba(124,58,237,0.18); border-radius: var(--r2); padding: 14px 16px; margin-bottom: 10px; }
+.rep-hero-top { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 10px; }
+.rep-hero-num { font-family: var(--mono); font-size: 38px; font-weight: 500; color: var(--t1); line-height: 1; }
+.rep-hero-denom { font-family: var(--mono); font-size: 12px; color: var(--t3); margin-top: 2px; }
+.rep-hero-label { font-size: 9px; font-weight: 600; color: var(--t3); text-transform: uppercase; letter-spacing: .07em; margin-bottom: 4px; }
+.rep-hero-delta { font-size: 11px; color: var(--green); margin-top: 5px; }
+.rep-hero-bar-bg { height: 4px; background: rgba(255,255,255,0.05); border-radius: 2px; overflow: hidden; }
+.rep-hero-bar { height: 100%; border-radius: 2px; background: linear-gradient(90deg,var(--violet),var(--violet2),var(--amber2)); }
+
+/* ── MANAGER STATS BAR ── */
+.mgr-stats-bar { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; margin-bottom: 12px; }
+.mgr-stat { background: var(--surface2); border: 1px solid var(--border2); border-radius: var(--r2); padding: 10px 8px; text-align: center; }
+.mgr-stat-val { font-family: var(--mono); font-size: 15px; font-weight: 600; color: var(--amber); }
+.mgr-stat-lbl { font-size: 9px; color: var(--t3); text-transform: uppercase; letter-spacing: .04em; margin-top: 2px; }
+
+/* ── SPONSOR SEARCH ── */
+.disc-search { display: flex; align-items: center; gap: 9px; background: var(--surface2); border: 1px solid var(--border2); border-radius: var(--r2); padding: 9px 12px; margin-bottom: 9px; transition: border-color .2s; }
+.disc-search:hover { border-color: rgba(245,158,11,0.2); }
+.disc-search-placeholder { font-size: 12px; color: var(--t3); flex: 1; }
+.disc-result-count { font-size: 10px; color: var(--t3); font-family: var(--mono); white-space: nowrap; }
+
+/* ── PIPELINE FOOTER ── */
+.pipeline-footer { display: flex; align-items: center; justify-content: space-between; background: rgba(16,185,129,0.05); border: 1px solid rgba(16,185,129,0.15); border-radius: var(--r2); padding: 9px 12px; margin-top: 10px; }
+.pipeline-footer-lbl { font-size: 10px; color: var(--t3); }
+.pipeline-footer-val { font-family: var(--mono); font-size: 14px; color: var(--green); font-weight: 500; }
+
 @media (max-width: 500px) {
   .network-sec { padding: 52px 0; }
   .network-grid { gap: 16px; }
@@ -1169,417 +1227,483 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
 </div>
 </div>
 
-<!-- PRODUCT WINDOW -->
+<!-- PLATFORM PREVIEW -->
+<div class="plat-intro">
+  <div class="section-eyebrow">Platform Preview</div>
+  <h2 class="section-title">Built for every side of the deal.</h2>
+  <p class="section-sub">Three distinct workspaces. One verified reputation layer powering every interaction.</p>
+</div>
+
 <div id="demo" class="pw" style="margin-top:0;padding-top:0;">
-  <div class="pw-frame">
+  <div class="pw-frame pw-sidebar-mode">
     <div class="pw-titlebar">
       <div class="pw-dot r"></div><div class="pw-dot y"></div><div class="pw-dot g"></div>
       <div class="pw-url">app.levl.io</div>
-    </div>
-    <div class="pw-tabs" id="mainTabs">
-      <button class="pw-tab active" onclick="switchMainTab('creator',this)">Creator</button>
-      <button class="pw-tab" onclick="switchMainTab('manager',this)">Manager</button>
-      <button class="pw-tab" onclick="switchMainTab('sponsor',this)">Sponsor</button>
+      <div class="pw-titlebar-right"><div class="pw-live-dot"></div><span class="pw-live-label">live</span></div>
     </div>
 
-    <!-- ═══ CREATOR ═══ -->
-    <div class="pw-panel active" id="panel-creator">
-      <div class="pw-subtabs">
-        <button class="pw-stab active" onclick="switchSubTab('creator','passport',this)">Passport</button>
-        <button class="pw-stab" onclick="switchSubTab('creator','signals',this)">Signals</button>
-        <button class="pw-stab" onclick="switchSubTab('creator','opportunities',this)">Opportunities</button>
-        <button class="pw-stab" onclick="switchSubTab('creator','referrals',this)">LEVL Network</button>
-      </div>
-      <div class="pw-content">
+    <div class="pw-body">
 
-        <!-- Passport -->
-        <div class="pw-sub active" id="creator-passport">
-          <div class="profile-card">
-            <div class="avatar">J<div class="avatar-badge"><svg viewBox="0 0 10 8" fill="none"><path d="M1 4l2.5 2.5L9 1" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg></div></div>
-            <div class="profile-info">
-              <div class="profile-name">Jordan Kuznets <span class="verified-badge">✓ VERIFIED</span></div>
-              <div class="profile-handle">@jordank · Gaming &amp; Tech · UK · levl.gg/c/jordank</div>
-              <div class="profile-bio">4 years consistent. Honest reviews, real benchmarks. UK-based gaming &amp; tech creator. GearX renewed ×3.</div>
-              <div class="platform-badges">
-                <div class="plat-badge"><div class="plat-icon" style="background:#f00"></div>YouTube</div>
-                <div class="plat-badge"><div class="plat-icon" style="background:#6441a5"></div>Twitch</div>
-                <div class="plat-badge"><div class="plat-icon" style="background:#5865F2"></div>Discord</div>
-              </div>
-            </div>
-          </div>
-          <div class="metrics-row">
-            <div class="metric-box"><div class="metric-val">48.2K</div><div class="metric-lbl">Subscribers</div></div>
-            <div class="metric-box"><div class="metric-val">4.8%</div><div class="metric-lbl">Engagement</div></div>
-            <div class="metric-box"><div class="metric-val">6w</div><div class="metric-lbl">Consistency</div></div>
-          </div>
-          <!-- Level indicator -->
-          <div style="display:flex;align-items:center;gap:8px;background:var(--surface2);border:1px solid rgba(245,158,11,0.22);border-radius:var(--r2);padding:10px 12px;margin-bottom:9px">
-            <div style="background:var(--amber);color:#000;font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px;flex-shrink:0">L3</div>
-            <div style="flex:1;min-width:0">
-              <div style="font-size:12px;font-weight:500;color:var(--t1)">Verified Creator · Established</div>
-              <div style="font-size:10px;color:var(--t3);margin-top:1px">3 platforms verified · GearX ×3 renewed · 6w consistent</div>
-            </div>
-            <div style="text-align:right;flex-shrink:0">
-              <div style="font-size:9px;color:var(--t3)">Next level</div>
-              <div style="font-size:11px;color:var(--amber);font-weight:600">Partner</div>
-            </div>
-          </div>
-          <!-- Profile Strength (imported) -->
-          <div class="strength-section" style="margin-bottom:8px">
-            <div class="strength-header">
-              <span class="strength-label">Profile Strength</span>
-              <span class="strength-val">74%</span>
-            </div>
-            <div style="font-size:9px;color:var(--t3);margin-bottom:5px">Reflects reliability, consistency &amp; delivery history · Verified from platforms · Not self-reported</div>
-            <div class="strength-bar-bg"><div class="strength-bar bar-animate" style="--w:74.2%"></div></div>
-          </div>
-          <!-- Reputation Score -->
-          <div class="strength-section" style="margin-bottom:9px">
-            <div class="strength-header">
-              <span class="strength-label">Reputation Score</span>
-              <span style="font-size:15px;font-weight:600;color:var(--violet2);font-family:var(--mono)">620 / 1,000</span>
-            </div>
-            <div style="font-size:9px;color:var(--t3);margin-bottom:5px">Activity-weighted composite · complements verified platform signals</div>
-            <div class="strength-bar-bg"><div class="strength-bar bar-animate" style="--w:62%;background:linear-gradient(90deg,var(--violet),var(--violet2))"></div></div>
-          </div>
-          <!-- 6-level progression strip — L1 Rising → L6 Legendary -->
-          <div class="level-strip">
-            <div class="lvl-step lv-passed"><div class="lvl-num">L1</div><div class="lvl-name">Rising</div></div>
-            <div class="lvl-step lv-passed"><div class="lvl-num">L2</div><div class="lvl-name">Emerging</div></div>
-            <div class="lvl-step lv-active"><div class="lvl-num">L3</div><div class="lvl-name">Established</div></div>
-            <div class="lvl-step"><div class="lvl-num">L4</div><div class="lvl-name">Partner</div></div>
-            <div class="lvl-step"><div class="lvl-num">L5</div><div class="lvl-name">Elite</div></div>
-            <div class="lvl-step"><div class="lvl-num">L6</div><div class="lvl-name">Legendary</div></div>
+      <!-- ── LEFT SIDEBAR ── -->
+      <div class="pw-sidebar">
+        <div class="pw-sb-user">
+          <div class="pw-sb-av">J</div>
+          <div>
+            <div class="pw-sb-name">Jordan K.</div>
+            <div class="pw-sb-role">Creator · L3</div>
           </div>
         </div>
 
-        <!-- Signals — 6 LEVL rating components -->
-        <div class="pw-sub" id="creator-signals">
-          <div class="signals-list">
-            <div class="signal-row">
-              <div class="signal-icon green">◉</div>
-              <div class="signal-body"><div class="signal-name">Longevity</div><div class="signal-desc">4 years active · YouTube, Twitch, Discord</div></div>
-              <div class="signal-bar-wrap"><div class="signal-bar-bg"><div class="signal-bar-fill green bar-animate" style="--w:91%"></div></div></div>
-              <div class="signal-score">91%</div>
-            </div>
-            <div class="signal-row">
-              <div class="signal-icon green">✓</div>
-              <div class="signal-body"><div class="signal-name">Audience</div><div class="signal-desc">48.2K verified · 82% UK/US · API-sourced</div></div>
-              <div class="signal-bar-wrap"><div class="signal-bar-bg"><div class="signal-bar-fill green bar-animate" style="--w:84%;animation-delay:.1s"></div></div></div>
-              <div class="signal-score">84%</div>
-            </div>
-            <div class="signal-row">
-              <div class="signal-icon amber">🔥</div>
-              <div class="signal-body"><div class="signal-name">Consistency</div><div class="signal-desc">6w consistent publishing · platform-verified</div></div>
-              <div class="signal-bar-wrap"><div class="signal-bar-bg"><div class="signal-bar-fill amber bar-animate" style="--w:78%;animation-delay:.2s"></div></div></div>
-              <div class="signal-score" style="color:var(--amber)">78%</div>
-            </div>
-            <div class="signal-row">
-              <div class="signal-icon green">✓</div>
-              <div class="signal-body"><div class="signal-name">Verification</div><div class="signal-desc">YouTube + Twitch + Discord API-connected</div></div>
-              <div class="signal-bar-wrap"><div class="signal-bar-bg"><div class="signal-bar-fill green bar-animate" style="--w:95%;animation-delay:.3s"></div></div></div>
-              <div class="signal-score">95%</div>
-            </div>
-            <div class="signal-row">
-              <div class="signal-icon violet">◈</div>
-              <div class="signal-body"><div class="signal-name">Sponsorship History</div><div class="signal-desc">GearX ×3 renewed · 3 deals on public record</div></div>
-              <div class="signal-bar-wrap"><div class="signal-bar-bg"><div class="signal-bar-fill violet bar-animate" style="--w:72%;animation-delay:.4s"></div></div></div>
-              <div class="signal-score" style="color:var(--violet2)">72%</div>
-            </div>
-            <div class="signal-row">
-              <div class="signal-icon green">◉</div>
-              <div class="signal-body"><div class="signal-name">Community</div><div class="signal-desc">Discord server · 2,840 members · active</div></div>
-              <div class="signal-bar-wrap"><div class="signal-bar-bg"><div class="signal-bar-fill green bar-animate" style="--w:68%;animation-delay:.5s"></div></div></div>
-              <div class="signal-score">68%</div>
-            </div>
-          </div>
+        <div class="pw-sb-section-label">Workspace</div>
+
+        <div class="pw-nav-item active" data-view="creator" onclick="switchMainTab('creator',this)">
+          <svg class="pw-nav-icon" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="12" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M5 8h6M5 5.5h4M5 10.5h3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+          Creator OS
+        </div>
+        <div class="pw-nav-item" data-view="manager" onclick="switchMainTab('manager',this)">
+          <svg class="pw-nav-icon" viewBox="0 0 16 16" fill="none"><circle cx="5.5" cy="5" r="2.2" stroke="currentColor" stroke-width="1.3"/><path d="M2 13c0-1.9 1.6-3.5 3.5-3.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><circle cx="11" cy="5" r="2.2" stroke="currentColor" stroke-width="1.3"/><path d="M8 13c0-1.9 1.6-3.5 3.5-3.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+          Manager
+        </div>
+        <div class="pw-nav-item" data-view="sponsor" onclick="switchMainTab('sponsor',this)">
+          <svg class="pw-nav-icon" viewBox="0 0 16 16" fill="none"><path d="M8 2l1.4 3.2 3.6.5-2.6 2.5.6 3.5L8 10.2 4.9 11.7l.6-3.5L3 5.7l3.6-.5L8 2z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
+          Sponsor
         </div>
 
-        <!-- Opportunities — level-gated -->
-        <div class="pw-sub" id="creator-opportunities"><div style="font-size:9px;color:var(--t3);margin-bottom:10px;letter-spacing:.04em;text-transform:uppercase;font-weight:600">Matched to your reputation tier · Established</div>
-          <div style="font-size:10px;color:var(--t3);margin-bottom:10px">Matched by verified signals, reputation tier &amp; niche</div>
-          <div class="opp-list">
-            <div class="opp-card">
-              <div class="opp-logo" style="background:rgba(16,185,129,0.13);color:var(--green);font-size:11px;font-weight:700">KC</div>
-              <div class="opp-body">
-                <div class="opp-brand">Kick Creator Program</div>
-                <div class="opp-title">Platform revenue share · Verified creators eligible</div>
-                <div class="opp-tags"><span class="opp-tag fit">91% match</span><span class="opp-tag cat">Rev share</span><span class="opp-tag cat">No minimum</span></div>
-              </div>
-              <div style="text-align:right;flex-shrink:0"><div class="opp-fit-val">91%</div><div class="opp-fit-lbl"><span class="status-dot green"></span>Unlocked</div></div>
-            </div>
-            <div class="opp-card">
-              <div class="opp-logo" style="background:rgba(124,58,237,0.12);color:var(--violet2);font-size:11px;font-weight:700">DB</div>
-              <div class="opp-body">
-                <div class="opp-brand">Duelbits Partner</div>
-                <div class="opp-title">UK eligible · Monthly retainer + commission</div>
-                <div class="opp-tags"><span class="opp-tag fit">82% match</span><span class="opp-tag cat">£600–1.2K/mo</span></div>
-              </div>
-              <div style="text-align:right;flex-shrink:0"><div class="opp-fit-val">82%</div><div class="opp-fit-lbl"><span class="status-dot green"></span>Unlocked</div></div>
-            </div>
-            <div class="opp-card" style="opacity:0.72">
-              <div class="opp-logo" style="background:rgba(245,158,11,0.1);color:var(--amber);font-size:11px;font-weight:700">PD</div>
-              <div class="opp-body">
-                <div class="opp-brand">Packdraw Affiliate</div>
-                <div class="opp-title">Case packs · 1 requirement gap remaining</div>
-                <div class="opp-tags"><span class="opp-tag fit">78% match</span><span class="opp-tag cat">1 gap remaining</span></div>
-              </div>
-              <div style="text-align:right;flex-shrink:0"><div class="opp-fit-val">78%</div><div class="opp-fit-lbl"><span class="status-dot amber"></span>1 gap</div></div>
-            </div>
-          </div>
-        </div>
+        <div class="pw-sb-divider"></div>
+        <div class="pw-sb-section-label">More</div>
 
-        <!-- LEVL Network — referrals with Tier 1 / Tier 2 -->
-        <div class="pw-sub" id="creator-referrals">
-          <!-- Summary stats -->
-          <div class="metrics-row" style="margin-bottom:11px">
-            <div class="metric-box"><div class="metric-val">12</div><div class="metric-lbl">Network members</div></div>
-            <div class="metric-box"><div class="metric-val" style="color:var(--green)">£57</div><div class="metric-lbl">Per month</div></div>
-            <div class="metric-box"><div class="metric-val" style="font-size:14px">9 + 5</div><div class="metric-lbl">Network depth</div></div>
-          </div>
-          <!-- Tier 1 -->
-          <div style="font-size:9px;font-weight:600;color:var(--amber);text-transform:uppercase;letter-spacing:.07em;margin-bottom:7px">Direct connections — LEVL shares 20% platform revenue</div>
-          <div class="ref-section" style="gap:6px;margin-bottom:11px">
-            <div class="ref-card">
-              <div class="ref-avatar" style="background:linear-gradient(135deg,#10B981,#F59E0B)">N</div>
-              <div class="ref-body"><div class="ref-name">NeonFrost900</div><div class="ref-role">Established · Active · 5 connected creators</div></div>
-              <span style="font-size:10px;color:var(--green);font-family:var(--mono);flex-shrink:0">£3.00/mo</span>
-            </div>
-            <div class="ref-card">
-              <div class="ref-avatar" style="background:linear-gradient(135deg,#7C3AED,#F59E0B)">D</div>
-              <div class="ref-body"><div class="ref-name">DrittKing_97</div><div class="ref-role">Emerging · Active</div></div>
-              <span style="font-size:10px;color:var(--green);font-family:var(--mono);flex-shrink:0">£3.00/mo</span>
-            </div>
-            <div class="ref-card">
-              <div class="ref-avatar" style="background:linear-gradient(135deg,#F43F5E,#F59E0B)">S</div>
-              <div class="ref-body"><div class="ref-name">StreamQueen_K</div><div class="ref-role">Emerging · Building</div></div>
-              <span style="font-size:10px;color:var(--amber);font-family:var(--mono);flex-shrink:0">£3.00/mo</span>
-            </div>
-            <div style="background:var(--surface2);border:1px solid var(--border2);border-radius:var(--r2);padding:7px 10px;font-size:10px;color:var(--t3)">+ 6 more active · earning <span style="color:var(--green)">£2.50/mo</span> each</div>
-          </div>
-          <!-- Tier 2 -->
-          <div style="font-size:9px;font-weight:600;color:var(--t3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:7px">Extended network — 5% revenue participation</div>
-          <div class="ref-card" style="margin-bottom:10px">
-            <div class="ref-avatar" style="background:linear-gradient(135deg,#10B981,#7C3AED);font-size:10px">×5</div>
-            <div class="ref-body"><div class="ref-name">5 creators via NeonFrost900</div><div class="ref-role">Extended network · growing independently</div></div>
-            <span style="font-size:10px;color:var(--t2);font-family:var(--mono);flex-shrink:0">£3.12/mo</span>
-          </div>
-          <!-- Network link -->
-          <div style="background:rgba(245,158,11,0.06);border:1px solid rgba(245,158,11,0.18);border-radius:var(--r2);padding:9px 12px;display:flex;align-items:center;justify-content:space-between;gap:8px">
-            <div>
-              <div style="font-size:9px;color:var(--t3);margin-bottom:2px">Your Network Link</div>
-              <div style="font-size:11px;color:var(--amber);font-family:var(--mono)">levl.gg/n/jordank</div>
-            </div>
-            <div style="font-size:10px;font-weight:500;color:var(--t2);background:var(--surface2);border:1px solid var(--border2);padding:4px 9px;border-radius:5px;cursor:pointer;white-space:nowrap">Copy link</div>
-          </div>
+        <div class="pw-nav-item" style="opacity:.42;cursor:default">
+          <svg class="pw-nav-icon" viewBox="0 0 16 16" fill="none"><path d="M8 2v12M2 8h12" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+          Opportunities
         </div>
-
-      </div>
-    </div>
-
-    <!-- ═══ MANAGER ═══ -->
-    <div class="pw-panel" id="panel-manager">
-      <div class="pw-subtabs">
-        <button class="pw-stab active" onclick="switchSubTab('manager','roster',this)">Roster</button>
-        <button class="pw-stab" onclick="switchSubTab('manager','pipeline',this)">Pipeline</button>
-        <button class="pw-stab" onclick="switchSubTab('manager','pitchpack',this)">Pitch Pack</button>
-      </div>
-      <div class="pw-content">
-        <!-- Roster -->
-        <div class="pw-sub active" id="manager-roster">
-          <div style="font-size:11px;color:var(--t3);margin-bottom:10px">9 creators managed · L3+ verified · £4,840/mo pipeline</div>
-          <div class="roster-grid">
-            <div class="roster-card">
-              <div class="roster-avatar" style="background:linear-gradient(135deg,#F59E0B,#7C3AED)">J</div>
-              <div class="roster-name">Jordan K.</div>
-              <div class="roster-cat">Gaming · 48.2K</div>
-              <div class="roster-score">L3 Established</div>
-              <span class="roster-tag v">L3 · Verified</span>
-            </div>
-            <div class="roster-card">
-              <div class="roster-avatar" style="background:linear-gradient(135deg,#10B981,#F59E0B)">M</div>
-              <div class="roster-name">Maya Liu</div>
-              <div class="roster-cat">Fitness · 210K</div>
-              <div class="roster-score">L4 Partner</div>
-              <span class="roster-tag v">L4 · Partner</span>
-            </div>
-            <div class="roster-card">
-              <div class="roster-avatar" style="background:linear-gradient(135deg,#7C3AED,#F43F5E)">T</div>
-              <div class="roster-name">Tom Keane</div>
-              <div class="roster-cat">Tech · 52K</div>
-              <div class="roster-score">L3 Established</div>
-              <span class="roster-tag v">L3 · Verified</span>
-            </div>
-            <div class="roster-card">
-              <div class="roster-avatar" style="background:linear-gradient(135deg,#F43F5E,#F59E0B)">Z</div>
-              <div class="roster-name">Zara Patel</div>
-              <div class="roster-cat">Beauty · 28K</div>
-              <div class="roster-score">L2 Emerging</div>
-              <span class="roster-tag a">L2 · Growing</span>
-            </div>
-          </div>
-        </div>
-        <!-- Pipeline -->
-        <div class="pw-sub" id="manager-pipeline">
-          <div class="pipeline">
-            <div class="pipeline-col">
-              <div class="pipeline-hdr">Prospecting <span class="pipeline-count">2</span></div>
-              <div class="deal-card"><div class="deal-brand">TechNest</div><div class="deal-val">£700</div><div class="deal-creator">Jordan K.</div></div>
-              <div class="deal-card"><div class="deal-brand">FitFuel</div><div class="deal-val">£2,800</div><div class="deal-creator">Maya Liu</div></div>
-            </div>
-            <div class="pipeline-col">
-              <div class="pipeline-hdr">Active <span class="pipeline-count">2</span></div>
-              <div class="deal-card"><div class="deal-brand">GearX</div><div class="deal-val">£960</div><div class="deal-creator">Jordan K.</div></div>
-              <div class="deal-card"><div class="deal-brand">FitFuel</div><div class="deal-val">£2,400</div><div class="deal-creator">Maya Liu</div></div>
-            </div>
-            <div class="pipeline-col">
-              <div class="pipeline-hdr">Closed <span class="pipeline-count">1</span></div>
-              <div class="deal-card" style="border-color:rgba(16,185,129,0.2)"><div class="deal-brand" style="color:var(--green)">NordVPN ✓</div><div class="deal-val">£750</div><div class="deal-creator">Tom Keane</div></div>
-            </div>
-          </div>
-        </div>
-        <!-- Pitch Pack -->
-        <div class="pw-sub" id="manager-pitchpack">
-          <div class="pitch-frame">
-            <div class="pitch-header">
-              <div><div class="pitch-title">Gaming &amp; Tech Roster</div><div class="pitch-sub">Auto-generated · Updated 2h ago · Manager Passport</div></div>
-              <div class="pitch-badge">↓ Export PDF</div>
-            </div>
-            <div class="pitch-stats">
-              <div class="pitch-stat"><div class="pitch-stat-val">4</div><div class="pitch-stat-lbl">Creators</div></div>
-              <div class="pitch-stat"><div class="pitch-stat-val">328K</div><div class="pitch-stat-lbl">Verified Audience</div></div>
-              <div class="pitch-stat"><div class="pitch-stat-val">L3+</div><div class="pitch-stat-lbl">Avg Level</div></div>
-              <div class="pitch-stat"><div class="pitch-stat-val">5</div><div class="pitch-stat-lbl">Deals live</div></div>
-            </div>
-            <div class="pitch-creator-row">
-              <div class="pitch-creator-av" style="background:linear-gradient(135deg,#F59E0B,#7C3AED)">J</div>
-              <div class="pitch-creator-info" style="flex:1;min-width:0">
-                <div class="pitch-creator-name">Jordan Kuznets · L3</div>
-                <div class="pitch-creator-meta">Gaming · 48.2K · GearX ×3 renewed</div>
-              </div>
-              <div class="pitch-creator-score" style="color:var(--green)">L3 Verified</div>
-            </div>
-            <div class="pitch-creator-row">
-              <div class="pitch-creator-av" style="background:linear-gradient(135deg,#10B981,#F59E0B)">M</div>
-              <div class="pitch-creator-info" style="flex:1;min-width:0">
-                <div class="pitch-creator-name">Maya Liu · L4</div>
-                <div class="pitch-creator-meta">Fitness · 210K · 14-week publishing record</div>
-              </div>
-              <div class="pitch-creator-score" style="color:var(--green)">L4 Verified</div>
-            </div>
-          </div>
+        <div class="pw-nav-item" style="opacity:.42;cursor:default">
+          <svg class="pw-nav-icon" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="5.5" stroke="currentColor" stroke-width="1.3"/><path d="M8 5.5V8.5l2 1.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+          History
         </div>
       </div>
-    </div>
 
-    <!-- ═══ SPONSOR ═══ -->
-    <div class="pw-panel" id="panel-sponsor">
-      <div class="pw-subtabs">
-        <button class="pw-stab active" onclick="switchSubTab('sponsor','discovery',this)">Discovery</button>
-        <button class="pw-stab" onclick="switchSubTab('sponsor','fit',this)">Fit Analysis</button>
-        <button class="pw-stab" onclick="switchSubTab('sponsor','shortlist',this)">Shortlist</button>
-      </div>
-      <div class="pw-content">
-        <!-- Discovery -->
-        <div class="pw-sub active" id="sponsor-discovery">
-          <div class="discovery-filters">
-            <div class="filter-chip active">Gaming</div>
-            <div class="filter-chip">UK</div>
-            <div class="filter-chip">10K–100K</div>
-            <div class="filter-chip">L3+</div>
-            <div class="filter-chip">✓ Verified</div>
+      <!-- ── MAIN AREA ── -->
+      <div class="pw-main">
+
+        <!-- Mobile tabs (hidden on desktop via pw-sidebar-mode) -->
+        <div class="pw-tabs" id="mainTabs">
+          <button class="pw-tab active" data-view="creator" onclick="switchMainTab('creator',this)">Creator</button>
+          <button class="pw-tab" data-view="manager" onclick="switchMainTab('manager',this)">Manager</button>
+          <button class="pw-tab" data-view="sponsor" onclick="switchMainTab('sponsor',this)">Sponsor</button>
+        </div>
+
+        <!-- ═══ CREATOR ═══ -->
+        <div class="pw-panel active" id="panel-creator">
+          <div class="pw-subtabs">
+            <button class="pw-stab active" onclick="switchSubTab('creator','passport',this)">Passport</button>
+            <button class="pw-stab" onclick="switchSubTab('creator','signals',this)">Signals</button>
+            <button class="pw-stab" onclick="switchSubTab('creator','opportunities',this)">Opportunities</button>
+            <button class="pw-stab" onclick="switchSubTab('creator','referrals',this)">LEVL Network</button>
           </div>
-          <div class="disc-grid">
-            <div class="disc-card">
-              <div class="disc-card-top">
-                <div class="disc-av" style="background:linear-gradient(135deg,#F59E0B,#7C3AED)">J</div>
-                <div><div class="disc-name">Jordan K.</div><div class="disc-handle">@jordank · L3 · 🔥 6w</div></div>
+          <div class="pw-content">
+
+            <!-- Passport -->
+            <div class="pw-sub active" id="creator-passport">
+              <div class="profile-card">
+                <div class="avatar">J<div class="avatar-badge"><svg viewBox="0 0 10 8" fill="none"><path d="M1 4l2.5 2.5L9 1" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg></div></div>
+                <div class="profile-info">
+                  <div class="profile-name">Jordan Kuznets <span class="verified-badge">✓ VERIFIED</span></div>
+                  <div class="profile-handle">@jordank · Gaming &amp; Tech · UK · levl.gg/c/jordank</div>
+                  <div class="profile-bio">4 years consistent. Honest reviews, real benchmarks. UK-based gaming &amp; tech creator. GearX renewed ×3.</div>
+                  <div class="platform-badges">
+                    <div class="plat-badge"><div class="plat-icon" style="background:#f00"></div>YouTube</div>
+                    <div class="plat-badge"><div class="plat-icon" style="background:#6441a5"></div>Twitch</div>
+                    <div class="plat-badge"><div class="plat-icon" style="background:#5865F2"></div>Discord</div>
+                  </div>
+                </div>
               </div>
-              <div class="disc-metrics"><div class="disc-metric"><span>48.2K</span> subs</div><div class="disc-metric"><span>L3</span> Verified</div></div>
-              <div style="font-size:9px;color:var(--green);margin-top:4px">GearX renewed ×3</div>
-              <div class="disc-fit"><div class="disc-fit-bar"><div class="disc-fit-fill bar-animate" style="--w:91%"></div></div><div class="disc-fit-val">91% fit</div></div>
+
+              <!-- Reputation Score — hero widget -->
+              <div class="rep-hero">
+                <div class="rep-hero-top">
+                  <div>
+                    <div class="rep-hero-label">Reputation Score</div>
+                    <div class="rep-hero-num">620</div>
+                    <div class="rep-hero-denom">/ 1,000</div>
+                  </div>
+                  <div style="flex:1;min-width:0">
+                    <div style="font-size:9px;color:var(--t3);margin-bottom:6px;line-height:1.4">Activity-weighted composite · not self-reported</div>
+                    <div class="rep-hero-delta">↑ +18 this month</div>
+                    <div style="margin-top:10px;display:flex;gap:7px;flex-wrap:wrap">
+                      <div style="background:var(--amber);color:#000;font-size:10px;font-weight:700;padding:3px 9px;border-radius:4px">L3 Established</div>
+                      <div style="background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.22);color:var(--green);font-size:10px;padding:3px 8px;border-radius:4px">Next: L4 Partner →</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="rep-hero-bar-bg"><div class="rep-hero-bar bar-animate" style="--w:62%"></div></div>
+              </div>
+
+              <!-- 6-level progression strip -->
+              <div class="level-strip" style="margin-bottom:10px">
+                <div class="lvl-step lv-passed"><div class="lvl-num">L1</div><div class="lvl-name">Rising</div></div>
+                <div class="lvl-step lv-passed"><div class="lvl-num">L2</div><div class="lvl-name">Emerging</div></div>
+                <div class="lvl-step lv-active"><div class="lvl-num">L3</div><div class="lvl-name">Established</div></div>
+                <div class="lvl-step"><div class="lvl-num">L4</div><div class="lvl-name">Partner</div></div>
+                <div class="lvl-step"><div class="lvl-num">L5</div><div class="lvl-name">Elite</div></div>
+                <div class="lvl-step"><div class="lvl-num">L6</div><div class="lvl-name">Legendary</div></div>
+              </div>
+
+              <!-- Key metrics -->
+              <div class="metrics-row">
+                <div class="metric-box"><div class="metric-val">48.2K</div><div class="metric-lbl">Subscribers</div></div>
+                <div class="metric-box"><div class="metric-val">4.8%</div><div class="metric-lbl">Engagement</div></div>
+                <div class="metric-box"><div class="metric-val" style="color:var(--green)">74%</div><div class="metric-lbl">Profile Strength</div></div>
+              </div>
             </div>
-            <div class="disc-card">
-              <div class="disc-card-top">
-                <div class="disc-av" style="background:linear-gradient(135deg,#7C3AED,#10B981)">A</div>
-                <div><div class="disc-name">Aria S.</div><div class="disc-handle">@arias · L4 · Partner</div></div>
+
+            <!-- Signals -->
+            <div class="pw-sub" id="creator-signals">
+              <div class="signals-list">
+                <div class="signal-row">
+                  <div class="signal-icon green">◉</div>
+                  <div class="signal-body"><div class="signal-name">Longevity</div><div class="signal-desc">4 years active · YouTube, Twitch, Discord</div></div>
+                  <div class="signal-bar-wrap"><div class="signal-bar-bg"><div class="signal-bar-fill green bar-animate" style="--w:91%"></div></div></div>
+                  <div class="signal-score">91%</div>
+                </div>
+                <div class="signal-row">
+                  <div class="signal-icon green">✓</div>
+                  <div class="signal-body"><div class="signal-name">Audience</div><div class="signal-desc">48.2K verified · 82% UK/US · API-sourced</div></div>
+                  <div class="signal-bar-wrap"><div class="signal-bar-bg"><div class="signal-bar-fill green bar-animate" style="--w:84%;animation-delay:.1s"></div></div></div>
+                  <div class="signal-score">84%</div>
+                </div>
+                <div class="signal-row">
+                  <div class="signal-icon amber">🔥</div>
+                  <div class="signal-body"><div class="signal-name">Consistency</div><div class="signal-desc">6w consistent publishing · platform-verified</div></div>
+                  <div class="signal-bar-wrap"><div class="signal-bar-bg"><div class="signal-bar-fill amber bar-animate" style="--w:78%;animation-delay:.2s"></div></div></div>
+                  <div class="signal-score" style="color:var(--amber)">78%</div>
+                </div>
+                <div class="signal-row">
+                  <div class="signal-icon green">✓</div>
+                  <div class="signal-body"><div class="signal-name">Verification</div><div class="signal-desc">YouTube + Twitch + Discord API-connected</div></div>
+                  <div class="signal-bar-wrap"><div class="signal-bar-bg"><div class="signal-bar-fill green bar-animate" style="--w:95%;animation-delay:.3s"></div></div></div>
+                  <div class="signal-score">95%</div>
+                </div>
+                <div class="signal-row">
+                  <div class="signal-icon violet">◈</div>
+                  <div class="signal-body"><div class="signal-name">Sponsorship History</div><div class="signal-desc">GearX ×3 renewed · 3 deals on public record</div></div>
+                  <div class="signal-bar-wrap"><div class="signal-bar-bg"><div class="signal-bar-fill violet bar-animate" style="--w:72%;animation-delay:.4s"></div></div></div>
+                  <div class="signal-score" style="color:var(--violet2)">72%</div>
+                </div>
+                <div class="signal-row">
+                  <div class="signal-icon green">◉</div>
+                  <div class="signal-body"><div class="signal-name">Community</div><div class="signal-desc">Discord server · 2,840 members · active</div></div>
+                  <div class="signal-bar-wrap"><div class="signal-bar-bg"><div class="signal-bar-fill green bar-animate" style="--w:68%;animation-delay:.5s"></div></div></div>
+                  <div class="signal-score">68%</div>
+                </div>
               </div>
-              <div class="disc-metrics"><div class="disc-metric"><span>82.4K</span> subs</div><div class="disc-metric"><span>L4</span> Verified</div></div>
-              <div style="font-size:9px;color:var(--green);margin-top:4px">6 deals · 83% renewed</div>
-              <div class="disc-fit"><div class="disc-fit-bar"><div class="disc-fit-fill bar-animate" style="--w:88%;animation-delay:.1s"></div></div><div class="disc-fit-val">88% fit</div></div>
             </div>
-            <div class="disc-card">
-              <div class="disc-card-top">
-                <div class="disc-av" style="background:linear-gradient(135deg,#F43F5E,#F59E0B)">M</div>
-                <div><div class="disc-name">Marcus R.</div><div class="disc-handle">@marcusr · L2 · Building</div></div>
+
+            <!-- Opportunities -->
+            <div class="pw-sub" id="creator-opportunities">
+              <div style="font-size:9px;color:var(--t3);margin-bottom:10px;letter-spacing:.04em;text-transform:uppercase;font-weight:600">Matched to your reputation tier · Established</div>
+              <div style="font-size:10px;color:var(--t3);margin-bottom:10px">Matched by verified signals, reputation tier &amp; niche</div>
+              <div class="opp-list">
+                <div class="opp-card">
+                  <div class="opp-logo" style="background:rgba(16,185,129,0.13);color:var(--green);font-size:11px;font-weight:700">KC</div>
+                  <div class="opp-body">
+                    <div class="opp-brand">Kick Creator Program</div>
+                    <div class="opp-title">Platform revenue share · Verified creators eligible</div>
+                    <div class="opp-tags"><span class="opp-tag fit">91% match</span><span class="opp-tag cat">Rev share</span><span class="opp-tag cat">No minimum</span></div>
+                  </div>
+                  <div style="text-align:right;flex-shrink:0"><div class="opp-fit-val">91%</div><div class="opp-fit-lbl"><span class="status-dot green"></span>Unlocked</div></div>
+                </div>
+                <div class="opp-card">
+                  <div class="opp-logo" style="background:rgba(124,58,237,0.12);color:var(--violet2);font-size:11px;font-weight:700">DB</div>
+                  <div class="opp-body">
+                    <div class="opp-brand">Duelbits Partner</div>
+                    <div class="opp-title">UK eligible · Monthly retainer + commission</div>
+                    <div class="opp-tags"><span class="opp-tag fit">82% match</span><span class="opp-tag cat">£600–1.2K/mo</span></div>
+                  </div>
+                  <div style="text-align:right;flex-shrink:0"><div class="opp-fit-val">82%</div><div class="opp-fit-lbl"><span class="status-dot green"></span>Unlocked</div></div>
+                </div>
+                <div class="opp-card" style="opacity:0.72">
+                  <div class="opp-logo" style="background:rgba(245,158,11,0.1);color:var(--amber);font-size:11px;font-weight:700">PD</div>
+                  <div class="opp-body">
+                    <div class="opp-brand">Packdraw Affiliate</div>
+                    <div class="opp-title">Case packs · 1 requirement gap remaining</div>
+                    <div class="opp-tags"><span class="opp-tag fit">78% match</span><span class="opp-tag cat">1 gap remaining</span></div>
+                  </div>
+                  <div style="text-align:right;flex-shrink:0"><div class="opp-fit-val">78%</div><div class="opp-fit-lbl"><span class="status-dot amber"></span>1 gap</div></div>
+                </div>
               </div>
-              <div class="disc-metrics"><div class="disc-metric"><span>22.1K</span> subs</div><div class="disc-metric"><span>L2</span> Building</div></div>
-              <div style="font-size:9px;color:var(--t3);margin-top:4px">Building record · platform verified</div>
-              <div class="disc-fit"><div class="disc-fit-bar"><div class="disc-fit-fill bar-animate" style="--w:76%;animation-delay:.2s"></div></div><div class="disc-fit-val">76% fit</div></div>
+            </div>
+
+            <!-- LEVL Network -->
+            <div class="pw-sub" id="creator-referrals">
+              <div class="metrics-row" style="margin-bottom:11px">
+                <div class="metric-box"><div class="metric-val">12</div><div class="metric-lbl">Network members</div></div>
+                <div class="metric-box"><div class="metric-val" style="color:var(--green)">£57</div><div class="metric-lbl">Per month</div></div>
+                <div class="metric-box"><div class="metric-val" style="font-size:14px">9 + 5</div><div class="metric-lbl">Network depth</div></div>
+              </div>
+              <div style="font-size:9px;font-weight:600;color:var(--amber);text-transform:uppercase;letter-spacing:.07em;margin-bottom:7px">Direct connections — LEVL shares 20% platform revenue</div>
+              <div class="ref-section" style="gap:6px;margin-bottom:11px">
+                <div class="ref-card">
+                  <div class="ref-avatar" style="background:linear-gradient(135deg,#10B981,#F59E0B)">N</div>
+                  <div class="ref-body"><div class="ref-name">NeonFrost900</div><div class="ref-role">Established · Active · 5 connected creators</div></div>
+                  <span style="font-size:10px;color:var(--green);font-family:var(--mono);flex-shrink:0">£3.00/mo</span>
+                </div>
+                <div class="ref-card">
+                  <div class="ref-avatar" style="background:linear-gradient(135deg,#7C3AED,#F59E0B)">D</div>
+                  <div class="ref-body"><div class="ref-name">DrittKing_97</div><div class="ref-role">Emerging · Active</div></div>
+                  <span style="font-size:10px;color:var(--green);font-family:var(--mono);flex-shrink:0">£3.00/mo</span>
+                </div>
+                <div class="ref-card">
+                  <div class="ref-avatar" style="background:linear-gradient(135deg,#F43F5E,#F59E0B)">S</div>
+                  <div class="ref-body"><div class="ref-name">StreamQueen_K</div><div class="ref-role">Emerging · Building</div></div>
+                  <span style="font-size:10px;color:var(--amber);font-family:var(--mono);flex-shrink:0">£3.00/mo</span>
+                </div>
+                <div style="background:var(--surface2);border:1px solid var(--border2);border-radius:var(--r2);padding:7px 10px;font-size:10px;color:var(--t3)">+ 6 more active · earning <span style="color:var(--green)">£2.50/mo</span> each</div>
+              </div>
+              <div style="font-size:9px;font-weight:600;color:var(--t3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:7px">Extended network — 5% revenue participation</div>
+              <div class="ref-card" style="margin-bottom:10px">
+                <div class="ref-avatar" style="background:linear-gradient(135deg,#10B981,#7C3AED);font-size:10px">×5</div>
+                <div class="ref-body"><div class="ref-name">5 creators via NeonFrost900</div><div class="ref-role">Extended network · growing independently</div></div>
+                <span style="font-size:10px;color:var(--t2);font-family:var(--mono);flex-shrink:0">£3.12/mo</span>
+              </div>
+              <div style="background:rgba(245,158,11,0.06);border:1px solid rgba(245,158,11,0.18);border-radius:var(--r2);padding:9px 12px;display:flex;align-items:center;justify-content:space-between;gap:8px">
+                <div>
+                  <div style="font-size:9px;color:var(--t3);margin-bottom:2px">Your Network Link</div>
+                  <div style="font-size:11px;color:var(--amber);font-family:var(--mono)">levl.gg/n/jordank</div>
+                </div>
+                <div style="font-size:10px;font-weight:500;color:var(--t2);background:var(--surface2);border:1px solid var(--border2);padding:4px 9px;border-radius:5px;cursor:pointer;white-space:nowrap">Copy link</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ═══ MANAGER ═══ -->
+        <div class="pw-panel" id="panel-manager">
+          <div class="pw-subtabs">
+            <button class="pw-stab active" onclick="switchSubTab('manager','roster',this)">Roster</button>
+            <button class="pw-stab" onclick="switchSubTab('manager','pipeline',this)">Pipeline</button>
+            <button class="pw-stab" onclick="switchSubTab('manager','pitchpack',this)">Pitch Pack</button>
+          </div>
+          <div class="pw-content">
+            <!-- Always-visible stats bar -->
+            <div class="mgr-stats-bar">
+              <div class="mgr-stat"><div class="mgr-stat-val">9</div><div class="mgr-stat-lbl">Creators</div></div>
+              <div class="mgr-stat"><div class="mgr-stat-val">£4,840</div><div class="mgr-stat-lbl">Pipeline / mo</div></div>
+              <div class="mgr-stat"><div class="mgr-stat-val">L3+</div><div class="mgr-stat-lbl">Avg Level</div></div>
+            </div>
+
+            <!-- Roster -->
+            <div class="pw-sub active" id="manager-roster">
+              <div class="roster-grid">
+                <div class="roster-card">
+                  <div class="roster-avatar" style="background:linear-gradient(135deg,#F59E0B,#7C3AED)">J</div>
+                  <div class="roster-name">Jordan K.</div>
+                  <div class="roster-cat">Gaming · 48.2K</div>
+                  <div class="roster-score">L3 Established</div>
+                  <span class="roster-tag v">L3 · Verified</span>
+                </div>
+                <div class="roster-card">
+                  <div class="roster-avatar" style="background:linear-gradient(135deg,#10B981,#F59E0B)">M</div>
+                  <div class="roster-name">Maya Liu</div>
+                  <div class="roster-cat">Fitness · 210K</div>
+                  <div class="roster-score">L4 Partner</div>
+                  <span class="roster-tag v">L4 · Partner</span>
+                </div>
+                <div class="roster-card">
+                  <div class="roster-avatar" style="background:linear-gradient(135deg,#7C3AED,#F43F5E)">T</div>
+                  <div class="roster-name">Tom Keane</div>
+                  <div class="roster-cat">Tech · 52K</div>
+                  <div class="roster-score">L3 Established</div>
+                  <span class="roster-tag v">L3 · Verified</span>
+                </div>
+                <div class="roster-card">
+                  <div class="roster-avatar" style="background:linear-gradient(135deg,#F43F5E,#F59E0B)">Z</div>
+                  <div class="roster-name">Zara Patel</div>
+                  <div class="roster-cat">Beauty · 28K</div>
+                  <div class="roster-score">L2 Emerging</div>
+                  <span class="roster-tag a">L2 · Growing</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pipeline -->
+            <div class="pw-sub" id="manager-pipeline">
+              <div class="pipeline">
+                <div class="pipeline-col">
+                  <div class="pipeline-hdr">Prospecting <span class="pipeline-count">2</span></div>
+                  <div class="deal-card"><div class="deal-brand">TechNest</div><div class="deal-val">£700</div><div class="deal-creator">Jordan K.</div></div>
+                  <div class="deal-card"><div class="deal-brand">FitFuel</div><div class="deal-val">£2,800</div><div class="deal-creator">Maya Liu</div></div>
+                </div>
+                <div class="pipeline-col">
+                  <div class="pipeline-hdr">Active <span class="pipeline-count">2</span></div>
+                  <div class="deal-card"><div class="deal-brand">GearX</div><div class="deal-val">£960</div><div class="deal-creator">Jordan K.</div></div>
+                  <div class="deal-card"><div class="deal-brand">FitFuel</div><div class="deal-val">£2,400</div><div class="deal-creator">Maya Liu</div></div>
+                </div>
+                <div class="pipeline-col">
+                  <div class="pipeline-hdr">Closed <span class="pipeline-count">1</span></div>
+                  <div class="deal-card" style="border-color:rgba(16,185,129,0.2)"><div class="deal-brand" style="color:var(--green)">NordVPN ✓</div><div class="deal-val">£750</div><div class="deal-creator">Tom Keane</div></div>
+                </div>
+              </div>
+              <div class="pipeline-footer">
+                <span class="pipeline-footer-lbl">Total pipeline value</span>
+                <span class="pipeline-footer-val">£6,810 / month</span>
+              </div>
+            </div>
+
+            <!-- Pitch Pack -->
+            <div class="pw-sub" id="manager-pitchpack">
+              <div class="pitch-frame">
+                <div class="pitch-header">
+                  <div><div class="pitch-title">Gaming &amp; Tech Roster</div><div class="pitch-sub">Auto-generated · Updated 2h ago · Manager Passport</div></div>
+                  <div class="pitch-badge">↓ Export PDF</div>
+                </div>
+                <div class="pitch-stats">
+                  <div class="pitch-stat"><div class="pitch-stat-val">4</div><div class="pitch-stat-lbl">Creators</div></div>
+                  <div class="pitch-stat"><div class="pitch-stat-val">328K</div><div class="pitch-stat-lbl">Verified Audience</div></div>
+                  <div class="pitch-stat"><div class="pitch-stat-val">L3+</div><div class="pitch-stat-lbl">Avg Level</div></div>
+                  <div class="pitch-stat"><div class="pitch-stat-val">5</div><div class="pitch-stat-lbl">Deals live</div></div>
+                </div>
+                <div class="pitch-creator-row">
+                  <div class="pitch-creator-av" style="background:linear-gradient(135deg,#F59E0B,#7C3AED)">J</div>
+                  <div class="pitch-creator-info" style="flex:1;min-width:0">
+                    <div class="pitch-creator-name">Jordan Kuznets · L3</div>
+                    <div class="pitch-creator-meta">Gaming · 48.2K · GearX ×3 renewed</div>
+                  </div>
+                  <div class="pitch-creator-score" style="color:var(--green)">L3 Verified</div>
+                </div>
+                <div class="pitch-creator-row">
+                  <div class="pitch-creator-av" style="background:linear-gradient(135deg,#10B981,#F59E0B)">M</div>
+                  <div class="pitch-creator-info" style="flex:1;min-width:0">
+                    <div class="pitch-creator-name">Maya Liu · L4</div>
+                    <div class="pitch-creator-meta">Fitness · 210K · 14-week publishing record</div>
+                  </div>
+                  <div class="pitch-creator-score" style="color:var(--green)">L4 Verified</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <!-- Fit Analysis -->
-        <div class="pw-sub" id="sponsor-fit">
-          <div class="fit-header">
-            <div><div class="fit-brief-label">Brief</div><div class="fit-brief-val">Gaming Peripheral Review Q4</div></div>
-            <div class="fit-brief-sep"></div>
-            <div><div class="fit-brief-label">Category</div><div class="fit-brief-val">Gaming · Tech</div></div>
-            <div class="fit-brief-sep"></div>
-            <div><div class="fit-brief-label">Budget</div><div class="fit-brief-val">£500–1,500</div></div>
+
+        <!-- ═══ SPONSOR ═══ -->
+        <div class="pw-panel" id="panel-sponsor">
+          <div class="pw-subtabs">
+            <button class="pw-stab active" onclick="switchSubTab('sponsor','discovery',this)">Discovery</button>
+            <button class="pw-stab" onclick="switchSubTab('sponsor','fit',this)">Fit Analysis</button>
+            <button class="pw-stab" onclick="switchSubTab('sponsor','shortlist',this)">Shortlist</button>
           </div>
-          <div class="fit-list">
-            <div class="fit-row">
-              <div class="fit-row-av" style="background:linear-gradient(135deg,#F59E0B,#7C3AED)">J</div>
-              <div style="flex:1;min-width:0">
-                <div class="fit-row-name">Jordan Kuznets</div>
-                <div class="fit-row-meta">48.2K · Gaming · L3 Established · Verified</div>
-                <div class="fit-reasons"><span class="fit-reason">GearX ×3 renewed</span><span class="fit-reason">82% UK/US audience</span><span class="fit-reason">Budget fit</span></div>
+          <div class="pw-content">
+
+            <!-- Discovery -->
+            <div class="pw-sub active" id="sponsor-discovery">
+              <div class="disc-search">
+                <svg width="13" height="13" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;color:var(--t3)"><circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.5"/><path d="M10.5 10.5l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                <span class="disc-search-placeholder">Search by niche, tier, platform…</span>
+                <span class="disc-result-count">3 results</span>
               </div>
-              <div style="text-align:right;flex-shrink:0"><div class="fit-score-val">91%</div><div class="fit-score-lbl">Campaign Fit</div></div>
-            </div>
-            <div class="fit-row">
-              <div class="fit-row-av" style="background:linear-gradient(135deg,#7C3AED,#10B981)">A</div>
-              <div style="flex:1;min-width:0">
-                <div class="fit-row-name">Aria S.</div>
-                <div class="fit-row-meta">82.4K · Tech · L4 Partner · Verified</div>
-                <div class="fit-reasons"><span class="fit-reason">83% renewal rate</span><span class="fit-reason">Tech niche</span></div>
+              <div class="discovery-filters">
+                <div class="filter-chip active">Gaming</div>
+                <div class="filter-chip">UK</div>
+                <div class="filter-chip">10K–100K</div>
+                <div class="filter-chip">L3+</div>
+                <div class="filter-chip">✓ Verified</div>
               </div>
-              <div style="text-align:right;flex-shrink:0"><div class="fit-score-val">88%</div><div class="fit-score-lbl">Campaign Fit</div></div>
+              <div class="disc-grid">
+                <div class="disc-card">
+                  <div class="disc-card-top">
+                    <div class="disc-av" style="background:linear-gradient(135deg,#F59E0B,#7C3AED)">J</div>
+                    <div><div class="disc-name">Jordan K.</div><div class="disc-handle">@jordank · L3 · 🔥 6w</div></div>
+                  </div>
+                  <div class="disc-metrics"><div class="disc-metric"><span>48.2K</span> subs</div><div class="disc-metric"><span>L3</span> Verified</div></div>
+                  <div style="font-size:9px;color:var(--green);margin-top:4px">GearX renewed ×3</div>
+                  <div class="disc-fit"><div class="disc-fit-bar"><div class="disc-fit-fill bar-animate" style="--w:91%"></div></div><div class="disc-fit-val">91% fit</div></div>
+                </div>
+                <div class="disc-card">
+                  <div class="disc-card-top">
+                    <div class="disc-av" style="background:linear-gradient(135deg,#7C3AED,#10B981)">A</div>
+                    <div><div class="disc-name">Aria S.</div><div class="disc-handle">@arias · L4 · Partner</div></div>
+                  </div>
+                  <div class="disc-metrics"><div class="disc-metric"><span>82.4K</span> subs</div><div class="disc-metric"><span>L4</span> Verified</div></div>
+                  <div style="font-size:9px;color:var(--green);margin-top:4px">6 deals · 83% renewed</div>
+                  <div class="disc-fit"><div class="disc-fit-bar"><div class="disc-fit-fill bar-animate" style="--w:88%;animation-delay:.1s"></div></div><div class="disc-fit-val">88% fit</div></div>
+                </div>
+                <div class="disc-card">
+                  <div class="disc-card-top">
+                    <div class="disc-av" style="background:linear-gradient(135deg,#F43F5E,#F59E0B)">M</div>
+                    <div><div class="disc-name">Marcus R.</div><div class="disc-handle">@marcusr · L2 · Building</div></div>
+                  </div>
+                  <div class="disc-metrics"><div class="disc-metric"><span>22.1K</span> subs</div><div class="disc-metric"><span>L2</span> Building</div></div>
+                  <div style="font-size:9px;color:var(--t3);margin-top:4px">Building record · platform verified</div>
+                  <div class="disc-fit"><div class="disc-fit-bar"><div class="disc-fit-fill bar-animate" style="--w:76%;animation-delay:.2s"></div></div><div class="disc-fit-val">76% fit</div></div>
+                </div>
+              </div>
             </div>
+
+            <!-- Fit Analysis -->
+            <div class="pw-sub" id="sponsor-fit">
+              <div class="fit-header">
+                <div><div class="fit-brief-label">Brief</div><div class="fit-brief-val">Gaming Peripheral Review Q4</div></div>
+                <div class="fit-brief-sep"></div>
+                <div><div class="fit-brief-label">Category</div><div class="fit-brief-val">Gaming · Tech</div></div>
+                <div class="fit-brief-sep"></div>
+                <div><div class="fit-brief-label">Budget</div><div class="fit-brief-val">£500–1,500</div></div>
+              </div>
+              <div class="fit-list">
+                <div class="fit-row">
+                  <div class="fit-row-av" style="background:linear-gradient(135deg,#F59E0B,#7C3AED)">J</div>
+                  <div style="flex:1;min-width:0">
+                    <div class="fit-row-name">Jordan Kuznets</div>
+                    <div class="fit-row-meta">48.2K · Gaming · L3 Established · Verified</div>
+                    <div class="fit-reasons"><span class="fit-reason">GearX ×3 renewed</span><span class="fit-reason">82% UK/US audience</span><span class="fit-reason">Budget fit</span></div>
+                  </div>
+                  <div style="text-align:right;flex-shrink:0"><div class="fit-score-val">91%</div><div class="fit-score-lbl">Campaign Fit</div></div>
+                </div>
+                <div class="fit-row">
+                  <div class="fit-row-av" style="background:linear-gradient(135deg,#7C3AED,#10B981)">A</div>
+                  <div style="flex:1;min-width:0">
+                    <div class="fit-row-name">Aria S.</div>
+                    <div class="fit-row-meta">82.4K · Tech · L4 Partner · Verified</div>
+                    <div class="fit-reasons"><span class="fit-reason">83% renewal rate</span><span class="fit-reason">Tech niche</span></div>
+                  </div>
+                  <div style="text-align:right;flex-shrink:0"><div class="fit-score-val">88%</div><div class="fit-score-lbl">Campaign Fit</div></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Shortlist -->
+            <div class="pw-sub" id="sponsor-shortlist">
+              <div class="shortlist">
+                <div class="sl-card">
+                  <div class="sl-av" style="background:linear-gradient(135deg,#F59E0B,#7C3AED)">J</div>
+                  <div class="sl-info">
+                    <div class="sl-name">Jordan Kuznets <span class="verified-badge">L3</span></div>
+                    <div class="sl-meta">Gaming · 48.2K · GearX ×3 renewed</div>
+                  </div>
+                  <div style="flex-shrink:0;text-align:right"><div class="sl-score-val" style="color:var(--green)">L3</div><div class="sl-score-lbl">Established</div></div>
+                  <div class="sl-actions"><button class="sl-btn primary">Propose</button><button class="sl-btn ghost">Brief</button></div>
+                </div>
+                <div class="sl-card">
+                  <div class="sl-av" style="background:linear-gradient(135deg,#7C3AED,#10B981)">A</div>
+                  <div class="sl-info">
+                    <div class="sl-name">Aria S. <span class="verified-badge">L4</span></div>
+                    <div class="sl-meta">Tech · 82.4K · 83% renewal rate</div>
+                  </div>
+                  <div style="flex-shrink:0;text-align:right"><div class="sl-score-val" style="color:var(--green)">L4</div><div class="sl-score-lbl">Partner</div></div>
+                  <div class="sl-actions"><button class="sl-btn primary">Propose</button><button class="sl-btn ghost">Brief</button></div>
+                </div>
+                <div style="background:var(--surface2);border:1px solid var(--border2);border-radius:var(--r2);padding:12px;margin-top:2px">
+                  <div style="font-size:10px;color:var(--t3);margin-bottom:9px">Comparison</div>
+                  <div class="sl-comparison">
+                    <div class="sl-comp-metric"><div class="sl-comp-val">L3 vs L4</div><div class="sl-comp-lbl">LEVL Level</div></div>
+                    <div class="sl-comp-metric"><div class="sl-comp-val">4.8% vs 6.1%</div><div class="sl-comp-lbl">Engagement</div></div>
+                    <div class="sl-comp-metric"><div class="sl-comp-val">3 vs 6</div><div class="sl-comp-lbl">Deals done</div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
-        <!-- Shortlist -->
-        <div class="pw-sub" id="sponsor-shortlist">
-          <div class="shortlist">
-            <div class="sl-card">
-              <div class="sl-av" style="background:linear-gradient(135deg,#F59E0B,#7C3AED)">J</div>
-              <div class="sl-info">
-                <div class="sl-name">Jordan Kuznets <span class="verified-badge">L3</span></div>
-                <div class="sl-meta">Gaming · 48.2K · GearX ×3 renewed</div>
-              </div>
-              <div style="flex-shrink:0;text-align:right"><div class="sl-score-val" style="color:var(--green)">L3</div><div class="sl-score-lbl">Established</div></div>
-              <div class="sl-actions"><button class="sl-btn primary">Propose</button><button class="sl-btn ghost">Brief</button></div>
-            </div>
-            <div class="sl-card">
-              <div class="sl-av" style="background:linear-gradient(135deg,#7C3AED,#10B981)">A</div>
-              <div class="sl-info">
-                <div class="sl-name">Aria S. <span class="verified-badge">L4</span></div>
-                <div class="sl-meta">Tech · 82.4K · 83% renewal rate</div>
-              </div>
-              <div style="flex-shrink:0;text-align:right"><div class="sl-score-val" style="color:var(--green)">L4</div><div class="sl-score-lbl">Partner</div></div>
-              <div class="sl-actions"><button class="sl-btn primary">Propose</button><button class="sl-btn ghost">Brief</button></div>
-            </div>
-            <div style="background:var(--surface2);border:1px solid var(--border2);border-radius:var(--r2);padding:12px;margin-top:2px">
-              <div style="font-size:10px;color:var(--t3);margin-bottom:9px">Comparison</div>
-              <div class="sl-comparison">
-                <div class="sl-comp-metric"><div class="sl-comp-val">L3 vs L4</div><div class="sl-comp-lbl">LEVL Level</div></div>
-                <div class="sl-comp-metric"><div class="sl-comp-val">4.8% vs 6.1%</div><div class="sl-comp-lbl">Engagement</div></div>
-                <div class="sl-comp-metric"><div class="sl-comp-val">3 vs 6</div><div class="sl-comp-lbl">Deals done</div></div>
-              </div>
-            </div>
-          </div>
-        </div>
+
       </div>
     </div>
 
@@ -2096,8 +2220,10 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
 // ── PRODUCT WINDOW TABS ──
 function switchMainTab(id, btn) {
   document.querySelectorAll('.pw-panel').forEach(function(el) { el.classList.remove('active'); });
-  document.querySelectorAll('.pw-tab').forEach(function(el) { el.classList.remove('active'); });
+  document.querySelectorAll('.pw-tab, .pw-nav-item[data-view]').forEach(function(el) { el.classList.remove('active'); });
   document.getElementById('panel-' + id).classList.add('active');
+  // Activate all elements (sidebar items + mobile tabs) that target this view
+  document.querySelectorAll('[data-view="' + id + '"]').forEach(function(el) { el.classList.add('active'); });
   btn.classList.add('active');
   // Re-trigger bar animations in active sub
   triggerBarsIn(document.getElementById('panel-' + id));
