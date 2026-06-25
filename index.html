@@ -1015,9 +1015,9 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
 .econ-side { padding: 12px; border-left: 1px solid var(--border2); overflow-y: auto; display: flex; flex-direction: column; gap: 10px; }
 .econ-chart { background: rgba(255,255,255,.03); border: 1px solid var(--border2); border-radius: 8px; padding: 13px 14px; }
 .econ-chart-bars { display: flex; align-items: flex-end; gap: 6px; height: 80px; margin-top: 10px; }
-.econ-bar-wrap { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; }
-.econ-bar { width: 100%; border-radius: 3px 3px 0 0; background: linear-gradient(180deg,var(--amber),var(--violet)); }
-.econ-bar-label { font-size: 8px; color: var(--t3); }
+.econ-bar-wrap { flex: 1; height: 80px; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; gap: 3px; }
+.econ-bar { width: 100%; border-radius: 3px 3px 0 0; background: linear-gradient(0deg, var(--violet) 0%, var(--amber) 100%); min-height: 2px; }
+.econ-bar-label { font-size: 8px; color: var(--t3); flex-shrink: 0; }
 .econ-kpi-row { display: flex; gap: 8px; }
 .econ-kpi { flex: 1; background: rgba(255,255,255,.03); border: 1px solid var(--border2); border-radius: 8px; padding: 10px 12px; }
 .econ-kpi-val { font-size: 20px; font-weight: 700; color: var(--t1); font-family: var(--mono); }
@@ -2032,7 +2032,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
                   <div class="greeting-date">Thursday, 25 June 2026 &middot; Week 26</div>
                 </div>
                 <div class="greeting-right">
-                  <div class="greeting-streak">&#128293; 6-week streak</div>
+                  <div class="greeting-streak">&#9679; 6-week activity record</div>
                   <div class="greeting-sub">Keep it alive this week</div>
                 </div>
               </div>
@@ -2047,7 +2047,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
                     <div class="lvl-journey-num">3</div>
                     <div>
                       <div style="font-size:12px;font-weight:600;color:var(--t1)">Established Creator</div>
-                      <div class="lvl-journey-label">Next: L4 Partner &mdash; 68 XP to go</div>
+                      <div class="lvl-journey-label">Next: L4 Partner &mdash; 68 pts to go</div>
                     </div>
                     <div style="margin-left:auto;text-align:right">
                       <div style="font-size:11px;font-weight:700;color:var(--t2);font-family:var(--mono)">732 / 800</div>
@@ -2074,15 +2074,15 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
                 </div>
                 <div class="week-grid">
                   <div class="week-cell">
-                    <div class="week-cell-icon">&#128293;</div>
+                    <div class="week-cell-icon">&#9679;</div>
                     <div class="week-cell-val" style="color:var(--amber)">6</div>
-                    <div class="week-cell-lbl">Week Streak</div>
-                    <div class="week-cell-sub">Personal best</div>
+                    <div class="week-cell-lbl">Activity Record</div>
+                    <div class="week-cell-sub">Weeks consecutive</div>
                   </div>
                   <div class="week-cell">
                     <div class="week-cell-icon">&#8593;</div>
                     <div class="week-cell-val" style="color:var(--green)">+18</div>
-                    <div class="week-cell-lbl">XP Gained</div>
+                    <div class="week-cell-lbl">Score Gained</div>
                     <div class="week-cell-sub">This month</div>
                   </div>
                   <div class="week-cell">
@@ -2103,7 +2103,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
               <div class="ds">
                 <div class="ds-hdr">
                   <span class="ds-title">TODAY&apos;S ACTIONS</span>
-                  <span class="ds-badge green">3 actions &middot; +60 XP available</span>
+                  <span class="ds-badge green">3 actions &middot; +60 Trust pts</span>
                 </div>
                 <div class="action-row">
                   <div class="action-cb"></div>
@@ -2111,7 +2111,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
                     <div class="action-txt">Add Friday evening stream to your schedule</div>
                     <div class="action-why">Consistency signal &mdash; updates your publishing pattern and boosts Longevity score</div>
                   </div>
-                  <div class="action-pills"><span class="pill pill-easy">Easy</span><span class="pill pill-xp">+20 XP</span></div>
+                  <div class="action-pills"><span class="pill pill-easy">Easy</span><span class="pill pill-xp">+20 pts</span></div>
                 </div>
                 <div class="action-row">
                   <div class="action-cb"></div>
@@ -2119,7 +2119,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
                     <div class="action-txt">Create sponsor-safe highlight reel</div>
                     <div class="action-why">Sponsorship History signal &mdash; deal-ready proof for incoming enquiry from TechBrand Ltd</div>
                   </div>
-                  <div class="action-pills"><span class="pill pill-med">Medium</span><span class="pill pill-xp">+20 XP</span></div>
+                  <div class="action-pills"><span class="pill pill-med">Medium</span><span class="pill pill-xp">+20 pts</span></div>
                 </div>
                 <div class="action-row">
                   <div class="action-cb"></div>
@@ -2127,7 +2127,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
                     <div class="action-txt">Pin LEVL profile link in Discord bio</div>
                     <div class="action-why">Verification signal &mdash; community presence increases discovery ranking by 12%</div>
                   </div>
-                  <div class="action-pills"><span class="pill pill-easy">Easy</span><span class="pill pill-xp">+20 XP</span></div>
+                  <div class="action-pills"><span class="pill pill-easy">Easy</span><span class="pill pill-xp">+20 pts</span></div>
                 </div>
               </div>
 
@@ -2169,7 +2169,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
                   <div class="act-icon a">&#9672;</div>
                   <div class="act-body">
                     <div class="act-title">GearX renewed for 3rd consecutive month</div>
-                    <div class="act-sub">Sponsor History signal updated &middot; +8 XP earned</div>
+                    <div class="act-sub">Sponsor History signal updated &middot; +8 Trust pts earned</div>
                   </div>
                   <div class="act-time">Yesterday</div>
                 </div>
@@ -2655,8 +2655,8 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
                 <div class="rep-event">
                   <div class="rep-dot amber">&#128293;</div>
                   <div class="rep-body">
-                    <div class="rep-title">6-Week Active Streak <span class="rep-delta amber">Milestone</span></div>
-                    <div class="rep-detail">Logged activity on LEVL for 6 consecutive weeks. Streak bonus applied to Trust Score.</div>
+                    <div class="rep-title">6-Week Consistency Record <span class="rep-delta amber">Milestone</span></div>
+                    <div class="rep-detail">Six consecutive weeks of verified platform activity. Consistency milestone applied to Trust Score.</div>
                     <div class="rep-date">Jun 14, 2026</div>
                   </div>
                 </div>
@@ -2664,7 +2664,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
                   <div class="rep-dot amber">&#127942;</div>
                   <div class="rep-body">
                     <div class="rep-title">Level 3 — Established Creator achieved <span class="rep-delta amber">+Level</span></div>
-                    <div class="rep-detail">Reached 732 XP. Unlocked: Campaign History badge, priority discovery ranking, verified profile seal.</div>
+                    <div class="rep-detail">Reached Level 3. Unlocked: Campaign History badge, priority discovery ranking, verified profile seal.</div>
                     <div class="rep-date">Apr 3, 2026</div>
                   </div>
                 </div>
@@ -2742,7 +2742,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
                     <div class="lvl-journey-bar" style="margin-bottom:3px"><div class="lvl-journey-fill bar-animate" style="--w:94%"></div></div>
                     <div style="font-size:9px;color:var(--t3)">Deal performance</div>
                     <div class="lvl-journey-bar" style="margin-bottom:3px"><div class="lvl-journey-fill bar-animate" style="--w:100%"></div></div>
-                    <div style="font-size:9px;color:var(--t3)">Consistency &amp; streak</div>
+                    <div style="font-size:9px;color:var(--t3)">Consistency &amp; activity</div>
                     <div class="lvl-journey-bar" style="margin-bottom:3px"><div class="lvl-journey-fill bar-animate" style="--w:75%"></div></div>
                     <div style="font-size:9px;color:var(--t3)">Audience quality</div>
                     <div class="lvl-journey-bar"><div class="lvl-journey-fill bar-animate" style="--w:88%"></div></div>
@@ -2754,9 +2754,9 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
                     <div style="color:var(--green)">&#10003; LEVL Verified Creator</div>
                     <div style="color:var(--green)">&#10003; L3 Established</div>
                     <div style="color:var(--green)">&#10003; 5+ completed deals</div>
-                    <div style="color:var(--green)">&#10003; 6-week streak</div>
+                    <div style="color:var(--green)">&#10003; 6-week activity verified</div>
                     <div style="color:var(--t3)">&#9633; Gold Verified (85+)</div>
-                    <div style="color:var(--t3)">&#9633; L4 Partner (800 XP)</div>
+                    <div style="color:var(--t3)">&#9633; L4 Partner</div>
                     <div style="color:var(--t3)">&#9633; &#163;50K total earnings</div>
                   </div>
                 </div>
@@ -2814,7 +2814,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
                   <div class="rost-dot" style="background:var(--green)"></div>
                   <div class="rost-av" style="background:linear-gradient(135deg,#F59E0B,#7C3AED)">J</div>
                   <div style="flex:1;min-width:0">
-                    <div class="rost-name">Jordan Kuznets <span class="rost-leveled">&#128293; 6w streak</span></div>
+                    <div class="rost-name">Jordan Kuznets <span class="rost-leveled">6w consistent</span></div>
                     <div class="rost-meta">Gaming &middot; YouTube &middot; Twitch &middot; 84K reach &middot; 3 active deals</div>
                   </div>
                   <div style="text-align:right;flex-shrink:0"><span class="rost-lvl l3">L3</span><div class="rost-trust" style="color:var(--t1)">Trust 82</div></div>
@@ -2841,7 +2841,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
                   <div class="rost-dot" style="background:var(--amber)"></div>
                   <div class="rost-av" style="background:linear-gradient(135deg,#F43F5E,#F59E0B)">Z</div>
                   <div style="flex:1;min-width:0">
-                    <div class="rost-name">Zara Patel <span class="rost-streak">9w</span></div>
+                    <div class="rost-name">Zara Patel <span class="rost-streak">9w active</span></div>
                     <div class="rost-meta">Beauty &middot; Fashion &middot; Instagram &middot; 28K reach</div>
                   </div>
                   <div style="text-align:right;flex-shrink:0"><span class="rost-lvl l2">L2</span><div class="rost-trust" style="color:var(--t3)">Trust 68</div></div>
@@ -2921,7 +2921,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
                 </div>
                 <div class="alert-row">
                   <div class="alert-dot" style="background:var(--amber)"></div>
-                  <div class="alert-body">Zara Patel hit 9-week streak milestone</div>
+                  <div class="alert-body">Zara Patel — 9-week consistency record</div>
                   <div class="alert-time">Yesterday</div>
                 </div>
               </div>
@@ -3067,12 +3067,12 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
                 <div class="econ-chart">
                   <div style="display:flex;align-items:center;justify-content:space-between"><div style="font-size:10px;font-weight:600;color:var(--t2)">Monthly revenue &mdash; last 6 months</div><div style="font-size:9px;color:var(--t3)">Gross deal value</div></div>
                   <div class="econ-chart-bars">
-                    <div class="econ-bar-wrap"><div class="econ-bar" style="height:42%"></div><div class="econ-bar-label">Jan</div></div>
-                    <div class="econ-bar-wrap"><div class="econ-bar" style="height:55%"></div><div class="econ-bar-label">Feb</div></div>
-                    <div class="econ-bar-wrap"><div class="econ-bar" style="height:48%"></div><div class="econ-bar-label">Mar</div></div>
-                    <div class="econ-bar-wrap"><div class="econ-bar" style="height:70%"></div><div class="econ-bar-label">Apr</div></div>
-                    <div class="econ-bar-wrap"><div class="econ-bar" style="height:82%"></div><div class="econ-bar-label">May</div></div>
-                    <div class="econ-bar-wrap"><div class="econ-bar" style="height:100%"></div><div class="econ-bar-label">Jun</div></div>
+                    <div class="econ-bar-wrap"><div class="econ-bar" style="height:27px"></div><div class="econ-bar-label">Jan</div></div>
+                    <div class="econ-bar-wrap"><div class="econ-bar" style="height:35px"></div><div class="econ-bar-label">Feb</div></div>
+                    <div class="econ-bar-wrap"><div class="econ-bar" style="height:31px"></div><div class="econ-bar-label">Mar</div></div>
+                    <div class="econ-bar-wrap"><div class="econ-bar" style="height:45px"></div><div class="econ-bar-label">Apr</div></div>
+                    <div class="econ-bar-wrap"><div class="econ-bar" style="height:52px"></div><div class="econ-bar-label">May</div></div>
+                    <div class="econ-bar-wrap"><div class="econ-bar" style="height:64px"></div><div class="econ-bar-label">Jun</div></div>
                   </div>
                 </div>
                 <div class="ds">
@@ -3202,7 +3202,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
                   <div style="flex:1;min-width:0">
                     <div class="res-name">Priya L. <span class="bdg g" style="font-size:8px">&#10003; Verified</span> <span class="bdg g" style="font-size:8px">&#11088; Elite</span></div>
                     <div class="res-meta">@priyal &middot; Fitness &middot; UK &middot; 210K subs &middot; 5.4% eng &middot; 14 deals &middot; 91% renewal rate</div>
-                    <div class="res-tags"><span class="bdg v">L6 Elite</span><span class="bdg a">52w streak</span><span class="bdg g">Premium Tier</span></div>
+                    <div class="res-tags"><span class="bdg v">L6 Elite</span><span class="bdg a">52w consistent</span><span class="bdg g">Premium Tier</span></div>
                   </div>
                   <div style="text-align:right;flex-shrink:0"><div class="res-fit" style="color:var(--amber)">78%</div><div class="res-fit-lbl">Campaign fit</div></div>
                   <div class="res-actions"><button class="res-btn p">Propose deal</button><button class="res-btn">Shortlist</button></div>
@@ -3244,7 +3244,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
                 <div class="ds-hdr"><span class="ds-title">LEVL PICK</span><span class="ds-badge violet">AI Match</span></div>
                 <div class="reco-body">
                   <div class="reco-eyebrow">Based on your campaign brief</div>
-                  <div class="reco-reason">&ldquo;Maya Liu&rsquo;s audience overlap with your target demo is 87%. Her 52-week streak and 14 completed deals make her the highest-trust creator in your niche.&rdquo;</div>
+                  <div class="reco-reason">&ldquo;Maya Liu&rsquo;s audience overlap with your target demo is 87%. Her 52-week verified activity record and 14 completed deals make her the highest-trust creator in your niche.&rdquo;</div>
                   <div class="reco-creator">
                     <div class="reco-av" style="background:linear-gradient(135deg,#10B981,#F59E0B)">M</div>
                     <div><div class="reco-name">Maya Liu</div><div class="reco-fit">97% campaign fit &middot; L4 Partner</div></div>
@@ -3435,7 +3435,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
                     <div class="profile-tags">
                       <span class="bdg v">L3 Established</span>
                       <span class="bdg g">Deal Ready</span>
-                      <span class="bdg a">&#128293; 6w streak</span>
+                      <span class="bdg a">6w consistent</span>
                       <span class="bdg i">YouTube &middot; Twitch</span>
                     </div>
                   </div>
