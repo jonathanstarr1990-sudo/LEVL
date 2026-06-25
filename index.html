@@ -65,9 +65,16 @@ nav {
 /* ─── HERO ─── */
 .hero {
   position: relative; z-index: 1;
-  display: flex; flex-direction: column; align-items: center;
-  text-align: center;
-  padding: 96px 20px 32px;
+  padding: 110px 0 64px;
+}
+.hero-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+@media (max-width: 620px) {
+  .hero { padding: 80px 0 44px; }
+  .hero-inner { padding: 0 20px; }
 }
 .hero-eyebrow {
   display: inline-flex; align-items: center; gap: 8px;
@@ -91,12 +98,12 @@ nav {
 }
 .hero-tagline {
   font-family: var(--display);
-  font-size: clamp(40px, 9vw, 96px);
+  font-size: clamp(46px, 8vw, 92px);
   font-weight: 300;
-  line-height: 1.0;
-  letter-spacing: -.025em;
+  line-height: 1.06;
+  letter-spacing: -.03em;
   max-width: 820px;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   color: var(--t1);
 }
 .hero-tagline em { font-style: italic; color: var(--amber); }
@@ -1204,7 +1211,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
 
 
 /* ── WORKSPACE SELECTOR ── */
-.ws-selector-wrap { max-width: 1120px; margin: 0 auto; padding: 52px 16px 0; }
+.ws-selector-wrap { max-width: 1120px; margin: 0 auto; padding: 16px 16px 0; }
 .ws-intro { text-align: center; margin-bottom: 28px; }
 .ws-selector { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
 .ws-card { background: var(--surface2); border: 1px solid var(--border2); border-radius: 12px; overflow: hidden; cursor: pointer; transition: border-color .22s, box-shadow .22s, transform .2s; }
@@ -1222,7 +1229,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
 .ws-icon-creator { background: rgba(245,158,11,.12); color: var(--amber); }
 .ws-icon-manager { background: rgba(16,185,129,.12); color: #10B981; }
 .ws-icon-sponsor { background: rgba(124,58,237,.12); color: var(--violet2); }
-.ws-live-badge { display: flex; align-items: center; gap: 4px; font-size: 9px; color: var(--green); font-family: var(--mono); background: rgba(16,185,129,.08); border: 1px solid rgba(16,185,129,.2); border-radius: 10px; padding: 2px 8px; }
+.ws-live-badge { display: none; align-items: center; gap: 4px; font-size: 9px; color: var(--green); font-family: var(--mono); background: rgba(16,185,129,.08); border: 1px solid rgba(16,185,129,.2); border-radius: 10px; padding: 2px 8px; }
 .ws-live-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--green); animation: livePulse 2s ease-in-out infinite; }
 .ws-card-name { font-size: 15px; font-weight: 700; color: var(--t1); margin-bottom: 6px; letter-spacing: -.01em; }
 .ws-card-desc { font-size: 11px; color: var(--t3); line-height: 1.65; margin-bottom: 14px; min-height: 36px; }
@@ -1239,26 +1246,10 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
 @media (max-width: 760px) { .ws-selector { grid-template-columns: 1fr; } }
 @media (max-width: 620px) { .ws-selector-wrap { display: none; } }
 
-/* Hero proof inline */
-.hero-proof-inline { display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; font-size: 12px; color: var(--t3); margin-top: 18px; letter-spacing: .01em; }
-.hero-proof-inline strong { color: var(--amber); font-family: var(--mono); }
-.hero-proof-dot { opacity: .35; }
-
-
-/* ── HERO SIGNAL ANIMATION ── */
-.hero-signals { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin: 28px auto 30px; max-width: 600px; }
-.hsig { display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--border2); border-radius: 20px; padding: 5px 12px 5px 9px; font-size: 10px; color: var(--t3); transition: color .4s, border-color .4s, background .4s; position: relative; overflow: hidden; }
-.hsig-dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
-.hsig-val { font-family: var(--mono); font-size: 9px; font-weight: 700; margin-left: 4px; opacity: 0; transition: opacity .4s; }
-.hsig.on { color: var(--t2); border-color: rgba(245,243,238,.22); background: rgba(255,255,255,.04); }
-.hsig.on .hsig-val { opacity: 1; }
-.hsig.on.green-sig { border-color: rgba(16,185,129,.32); color: #10B981; background: rgba(16,185,129,.06); }
-.hsig.on.amber-sig { border-color: rgba(245,158,11,.32); color: var(--amber); background: rgba(245,158,11,.06); }
-.hsig.on.violet-sig { border-color: rgba(124,58,237,.32); color: var(--violet2); background: rgba(124,58,237,.06); }
-@media (max-width: 520px) { .hero-signals { gap: 5px; } .hsig { font-size: 9px; padding: 4px 9px 4px 7px; } }
+/* Hero CTA */
+.hero-btn { display: inline-block; }
 
 /* ── WS LIVE BADGE: only show on active card ── */
-.ws-live-badge { display: none; }
 .ws-card.active .ws-live-badge { display: flex; }
 
 /* ── PER-WORKSPACE FRAME ACCENT ── */
@@ -1747,95 +1738,22 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-eyebrow">
-    <div class="hero-eyebrow-dot"></div>
-    Private Beta
-  </div>
-  <h1 class="hero-tagline">
-    Followers measure reach.<br>
-    <em>LEVL measures reputation.</em>
-  </h1>
-
-  <!-- Reputation signal animation -->
-  <div class="hero-signals">
-    <span class="hsig green-sig" id="hsig0"><span class="hsig-dot" style="background:#10B981"></span>Platform verified<span class="hsig-val">+Signal</span></span>
-    <span class="hsig amber-sig" id="hsig1"><span class="hsig-dot" style="background:#F59E0B"></span>Deal renewed &times;3<span class="hsig-val">+Trust</span></span>
-    <span class="hsig green-sig" id="hsig2"><span class="hsig-dot" style="background:#10B981"></span>52 weeks consistent<span class="hsig-val">+Record</span></span>
-    <span class="hsig violet-sig" id="hsig3"><span class="hsig-dot" style="background:#8B5CF6"></span>Manager endorsed<span class="hsig-val">+Signal</span></span>
-    <span class="hsig amber-sig" id="hsig4"><span class="hsig-dot" style="background:#F59E0B"></span>Opportunity matched<span class="hsig-val">91%</span></span>
-  </div>
-
-  <div class="hero-ctas" style="margin-bottom:14px">
-    <a href="#demo" class="btn-primary">Explore the platform ↓</a>
-  </div>
-  <div class="hero-proof-inline">
-    <span><strong>143</strong> creators</span>
-    <span class="hero-proof-dot">&middot;</span>
-    <span><strong>31</strong> managers</span>
-    <span class="hero-proof-dot">&middot;</span>
-    <span><strong>12</strong> sponsors</span>
-    <span class="hero-proof-dot">&middot;</span>
-    <a href="#waitlist" style="color:var(--t3);text-decoration:none;transition:color .2s" onmouseover="this.style.color='var(--t2)'" onmouseout="this.style.color='var(--t3)'">Join the waitlist &rarr;</a>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">
+      <div class="hero-eyebrow-dot"></div>
+      Private Beta
+    </div>
+    <h1 class="hero-tagline">
+      Your reputation lives<br>
+      <em>on platforms you don't own.</em>
+    </h1>
+    <a href="#demo" class="btn-primary hero-btn">Explore the platform &darr;</a>
   </div>
 </section>
 
 
-<!-- PROBLEM FRAMING -->
-<div class="problem-strip">
-  <div class="section-inner">
-    <div class="problem-intro r">
-      <div class="problem-intro-hl">The creator economy runs on trust.<br>It has no infrastructure to verify it.</div>
-    </div>
-    <div class="problem-grid">
-      <div class="problem-card r d1">
-        <div class="problem-who">Creators</div>
-        <div class="problem-text">Pitch with screenshots and self-reported numbers. No portable record of their campaign history, brand deals, or who they've worked with.</div>
-      </div>
-      <div class="problem-card r d2">
-        <div class="problem-who">Managers</div>
-        <div class="problem-text">Manage talent across DMs, spreadsheets, and disconnected emails. Rebuild pitch materials from scratch for every deal, with no shared verified record.</div>
-      </div>
-      <div class="problem-card r d3">
-        <div class="problem-who">Sponsors</div>
-        <div class="problem-text">Commit campaign budgets with no way to verify a creator's reliability, consistency, or actual delivery record. Follower counts are all that's on offer.</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<!-- TICKER -->
-<div class="ticker-outer">
-<div class="ticker-wrap">
-  <div class="ticker-track">
-    <span class="ticker-item"><span class="ticker-dot"></span>Platform verified · Jordan K. · YouTube, Twitch, Discord connected</span>
-    <span class="ticker-item"><span class="ticker-dot"></span>Deal renewed · GearX × Jordan Kuznets · ×3 — strongest trust signal</span>
-    <span class="ticker-item"><span class="ticker-dot"></span>New opportunity unlocked · 91% match · Kick Creator Program</span>
-    <span class="ticker-item"><span class="ticker-dot"></span>Manager endorsement added · Sam Rivera</span>
-    <span class="ticker-item"><span class="ticker-dot"></span>Consistency verified · 52 weeks on record · Elite tier · Priya L.</span>
-    <span class="ticker-item"><span class="ticker-dot"></span>Network member joined · NeonFrost900 via Jordan K. · Tier 1</span>
-    <span class="ticker-item"><span class="ticker-dot"></span>Deal closed · £2,400 · FitFuel × Maya Liu · Q4 campaign</span>
-    <span class="ticker-item"><span class="ticker-dot"></span>Reputation Signal added · GearX renewed · trust record updated</span>
-    <!-- duplicate for seamless loop -->
-    <span class="ticker-item"><span class="ticker-dot"></span>Platform verified · Jordan K. · YouTube, Twitch, Discord connected</span>
-    <span class="ticker-item"><span class="ticker-dot"></span>Deal renewed · GearX × Jordan Kuznets · ×3 — strongest trust signal</span>
-    <span class="ticker-item"><span class="ticker-dot"></span>New opportunity unlocked · 91% match · Kick Creator Program</span>
-    <span class="ticker-item"><span class="ticker-dot"></span>Manager endorsement added · Sam Rivera</span>
-    <span class="ticker-item"><span class="ticker-dot"></span>Consistency verified · 52 weeks on record · Elite tier · Priya L.</span>
-    <span class="ticker-item"><span class="ticker-dot"></span>Network member joined · NeonFrost900 via Jordan K. · Tier 1</span>
-    <span class="ticker-item"><span class="ticker-dot"></span>Deal closed · £2,400 · FitFuel × Maya Liu · Q4 campaign</span>
-    <span class="ticker-item"><span class="ticker-dot"></span>Reputation Signal added · GearX renewed · trust record updated</span>
-  </div>
-</div>
-</div>
-
 <!-- WORKSPACE SELECTOR -->
 <div class="ws-selector-wrap" id="demo">
-  <div class="ws-intro">
-    <div class="section-eyebrow r">Platform Preview</div>
-    <h2 class="section-title r d1" style="font-size:clamp(22px,3.5vw,34px);margin-bottom:10px">Three workspaces.<br><em>One reputation layer.</em></h2>
-    <p class="section-sub r d2" style="font-size:13px;max-width:520px;margin:0 auto">Select a workspace below. Each is a distinct application — explore them all.</p>
-  </div>
   <div class="ws-selector">
 
     <!-- Creator OS -->
@@ -1849,7 +1767,6 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
           <div class="ws-live-badge"><div class="ws-live-dot"></div>active</div>
         </div>
         <div class="ws-card-name">Creator OS</div>
-        <div class="ws-card-desc">Passport, campaign history, opportunities and platform connections — your verified career layer.</div>
         <div class="ws-card-user">
           <div class="ws-user-av" style="background:linear-gradient(135deg,#F59E0B,#7C3AED)">J</div>
           <div class="ws-user-info">
@@ -1872,7 +1789,6 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
           <div class="ws-live-badge"><div class="ws-live-dot"></div>active</div>
         </div>
         <div class="ws-card-name">Manager Workspace</div>
-        <div class="ws-card-desc">Roster management, deal pipeline, pitch pack builder and revenue analytics for your talent operation.</div>
         <div class="ws-card-user">
           <div class="ws-user-av" style="background:linear-gradient(135deg,#10B981,#7C3AED)">S</div>
           <div class="ws-user-info">
@@ -1895,7 +1811,6 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
           <div class="ws-live-badge"><div class="ws-live-dot"></div>active</div>
         </div>
         <div class="ws-card-name">Sponsor Discovery</div>
-        <div class="ws-card-desc">Search and verify creators by reputation data, manage shortlists, active deals and review evidence.</div>
         <div class="ws-card-user">
           <div class="ws-user-av" style="background:linear-gradient(135deg,#7C3AED,#F59E0B);font-size:8px">TB</div>
           <div class="ws-user-info">
@@ -3722,6 +3637,54 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
     </div><!-- /pw-body -->
   </div><!-- /pw-frame -->
 </div><!-- /pw -->
+
+<!-- TICKER -->
+<div class="ticker-outer">
+<div class="ticker-wrap">
+  <div class="ticker-track">
+    <span class="ticker-item"><span class="ticker-dot"></span>Platform verified · Jordan K. · YouTube, Twitch, Discord connected</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Deal renewed · GearX × Jordan Kuznets · ×3 — strongest trust signal</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>New opportunity unlocked · 91% match · Kick Creator Program</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Manager endorsement added · Sam Rivera</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Consistency verified · 52 weeks on record · Elite tier · Priya L.</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Network member joined · NeonFrost900 via Jordan K. · Tier 1</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Deal closed · £2,400 · FitFuel × Maya Liu · Q4 campaign</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Reputation Signal added · GearX renewed · trust record updated</span>
+    <!-- duplicate for seamless loop -->
+    <span class="ticker-item"><span class="ticker-dot"></span>Platform verified · Jordan K. · YouTube, Twitch, Discord connected</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Deal renewed · GearX × Jordan Kuznets · ×3 — strongest trust signal</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>New opportunity unlocked · 91% match · Kick Creator Program</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Manager endorsement added · Sam Rivera</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Consistency verified · 52 weeks on record · Elite tier · Priya L.</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Network member joined · NeonFrost900 via Jordan K. · Tier 1</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Deal closed · £2,400 · FitFuel × Maya Liu · Q4 campaign</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Reputation Signal added · GearX renewed · trust record updated</span>
+  </div>
+</div>
+</div>
+
+<!-- PROBLEM FRAMING -->
+<div class="problem-strip">
+  <div class="section-inner">
+    <div class="problem-intro r">
+      <div class="problem-intro-hl">The creator economy runs on trust.<br>It has no infrastructure to verify it.</div>
+    </div>
+    <div class="problem-grid">
+      <div class="problem-card r d1">
+        <div class="problem-who">Creators</div>
+        <div class="problem-text">Pitch with screenshots and self-reported numbers. No portable record of their campaign history, brand deals, or who they've worked with.</div>
+      </div>
+      <div class="problem-card r d2">
+        <div class="problem-who">Managers</div>
+        <div class="problem-text">Manage talent across DMs, spreadsheets, and disconnected emails. Rebuild pitch materials from scratch for every deal, with no shared verified record.</div>
+      </div>
+      <div class="problem-card r d3">
+        <div class="problem-who">Sponsors</div>
+        <div class="problem-text">Commit campaign budgets with no way to verify a creator's reliability, consistency, or actual delivery record. Follower counts are all that's on offer.</div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- INFRASTRUCTURE PRECEDENT -->
 <section class="infra-sec" id="trust">
