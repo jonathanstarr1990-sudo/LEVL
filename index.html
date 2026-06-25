@@ -885,6 +885,191 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
 .budget-bar-fill { height: 100%; border-radius: 2px; background: linear-gradient(90deg,var(--violet),var(--amber)); }
 .budget-legend { display: flex; justify-content: space-between; font-size: 9px; }
 
+/* ── VIEWS ── */
+.pw-view { display: none; flex: 1; min-height: 0; overflow: hidden; flex-direction: column; }
+.pw-view.active { display: flex; }
+
+/* ── PLATFORM CONNECTIONS ── */
+.plat-grid { display: flex; flex-direction: column; gap: 8px; padding: 14px; }
+.plat-card { background: rgba(255,255,255,.03); border: 1px solid var(--border2); border-radius: 8px; overflow: hidden; }
+.plat-card-head { display: flex; align-items: center; gap: 10px; padding: 10px 13px; }
+.plat-icon { width: 28px; height: 28px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0; }
+.plat-name { font-size: 12px; font-weight: 600; color: var(--t1); }
+.plat-handle { font-size: 10px; color: var(--t3); margin-top: 1px; }
+.plat-status-pill { margin-left: auto; font-size: 9px; padding: 2px 8px; border-radius: 20px; font-weight: 600; }
+.plat-status-pill.ok { background: rgba(16,185,129,.15); color: #10B981; }
+.plat-status-pill.warn { background: rgba(245,158,11,.18); color: #F59E0B; }
+.plat-status-pill.off { background: rgba(245,243,238,.06); color: var(--t3); }
+.plat-health { width: 7px; height: 7px; border-radius: 50%; margin-left: 6px; }
+.plat-health.green { background: #10B981; box-shadow: 0 0 5px #10B981; }
+.plat-health.amber { background: #F59E0B; box-shadow: 0 0 5px #F59E0B; }
+.plat-health.grey { background: rgba(245,243,238,.2); }
+.plat-expand { padding: 0 13px 13px; border-top: 1px solid var(--border2); }
+.plat-meta-row { display: flex; gap: 6px; flex-wrap: wrap; padding: 10px 0 0; }
+.plat-meta-item { background: rgba(255,255,255,.04); border: 1px solid var(--border2); border-radius: 6px; padding: 6px 10px; flex: 1; min-width: 80px; }
+.plat-meta-label { font-size: 9px; color: var(--t3); margin-bottom: 2px; }
+.plat-meta-val { font-size: 12px; font-weight: 600; color: var(--t1); font-family: var(--mono); }
+.plat-perms { margin-top: 8px; }
+.plat-perms-label { font-size: 9px; color: var(--t3); margin-bottom: 5px; text-transform: uppercase; letter-spacing: .06em; }
+.plat-perm-tag { display: inline-flex; align-items: center; gap: 4px; font-size: 9px; background: rgba(16,185,129,.1); color: #10B981; border-radius: 4px; padding: 2px 7px; margin: 2px; }
+.plat-sig-row { margin-top: 10px; }
+.plat-sig-label { font-size: 9px; color: var(--t3); margin-bottom: 6px; text-transform: uppercase; letter-spacing: .06em; }
+.plat-sig-item { display: flex; align-items: center; gap: 8px; margin-bottom: 5px; }
+.plat-sig-name { font-size: 10px; color: var(--t2); width: 100px; flex-shrink: 0; }
+.plat-sig-bar-wrap { flex: 1; height: 3px; background: rgba(255,255,255,.06); border-radius: 2px; overflow: hidden; }
+.plat-sig-bar { height: 100%; border-radius: 2px; }
+.plat-sig-pct { font-size: 10px; font-family: var(--mono); color: var(--t2); width: 32px; text-align: right; }
+.plat-mini-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 0 14px 14px; }
+.plat-mini-card { background: rgba(255,255,255,.03); border: 1px solid var(--border2); border-radius: 8px; padding: 10px 12px; display: flex; align-items: center; gap: 10px; }
+.plat-mini-name { font-size: 11px; font-weight: 600; color: var(--t1); }
+.plat-mini-sub { font-size: 9px; color: var(--t3); margin-top: 1px; }
+.plat-mini-right { margin-left: auto; }
+
+/* ── PASSPORT ── */
+.passport-layout { display: grid; grid-template-columns: 1fr 200px; flex: 1; min-height: 0; overflow: hidden; }
+.passport-main { padding: 14px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; }
+.passport-side { padding: 12px; overflow-y: auto; border-left: 1px solid var(--border2); display: flex; flex-direction: column; gap: 10px; }
+.passport-card { background: linear-gradient(135deg,rgba(124,58,237,.15),rgba(245,158,11,.1)); border: 1px solid rgba(245,158,11,.22); border-radius: 12px; padding: 18px; display: flex; align-items: center; gap: 16px; }
+.passport-av { width: 52px; height: 52px; border-radius: 50%; background: linear-gradient(135deg,#F59E0B,#7C3AED); display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 700; color: white; flex-shrink: 0; }
+.passport-name { font-size: 16px; font-weight: 700; color: var(--t1); }
+.passport-meta { font-size: 10px; color: var(--t3); margin-top: 2px; }
+.passport-badge { display: inline-flex; align-items: center; gap: 5px; background: rgba(245,158,11,.15); border: 1px solid rgba(245,158,11,.3); border-radius: 20px; padding: 3px 10px; font-size: 10px; font-weight: 600; color: var(--amber); margin-top: 6px; }
+.passport-verif-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.passport-verif-item { background: rgba(255,255,255,.03); border: 1px solid var(--border2); border-radius: 8px; padding: 10px 12px; display: flex; align-items: center; gap: 10px; }
+.passport-verif-icon { font-size: 16px; }
+.passport-verif-platform { font-size: 11px; font-weight: 600; color: var(--t1); }
+.passport-verif-handle { font-size: 9px; color: var(--t3); }
+.passport-verif-check { margin-left: auto; font-size: 11px; }
+.passport-cert { background: rgba(16,185,129,.06); border: 1px solid rgba(16,185,129,.2); border-radius: 10px; padding: 14px 16px; }
+.passport-cert-title { font-size: 10px; color: #10B981; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 4px; }
+.passport-cert-body { font-size: 11px; color: var(--t2); line-height: 1.5; }
+.passport-record-row { display: flex; justify-content: space-between; align-items: center; padding: 7px 0; border-bottom: 1px solid var(--border2); }
+.passport-record-row:last-child { border-bottom: none; }
+.passport-record-label { font-size: 10px; color: var(--t3); }
+.passport-record-val { font-size: 11px; font-weight: 600; color: var(--t1); font-family: var(--mono); }
+
+/* ── OPPORTUNITIES ── */
+.opp-filter-bar { display: flex; gap: 6px; padding: 10px 14px; border-bottom: 1px solid var(--border2); flex-shrink: 0; flex-wrap: wrap; align-items: center; }
+.opp-filter-chip { font-size: 9px; border: 1px solid var(--border2); border-radius: 20px; padding: 3px 9px; color: var(--t3); cursor: pointer; }
+.opp-filter-chip.active { border-color: var(--amber); color: var(--amber); background: rgba(245,158,11,.08); }
+.opp-layout { display: grid; grid-template-columns: 1fr 196px; flex: 1; min-height: 0; overflow: hidden; }
+.opp-list { padding: 10px 14px; overflow-y: auto; display: flex; flex-direction: column; gap: 8px; }
+.opp-side { padding: 12px; border-left: 1px solid var(--border2); overflow-y: auto; display: flex; flex-direction: column; gap: 10px; }
+.opp-row { background: rgba(255,255,255,.03); border: 1px solid var(--border2); border-radius: 8px; padding: 11px 13px; display: flex; align-items: center; gap: 10px; cursor: pointer; transition: border-color .2s; }
+.opp-row:hover { border-color: rgba(245,158,11,.28); }
+.opp-brand-av { width: 34px; height: 34px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: white; flex-shrink: 0; }
+.opp-brand-name { font-size: 11px; font-weight: 600; color: var(--t1); }
+.opp-brand-niche { font-size: 9px; color: var(--t3); margin-top: 1px; }
+.opp-budget { font-size: 11px; font-weight: 600; color: var(--t2); font-family: var(--mono); margin-left: auto; white-space: nowrap; }
+.opp-match-pill { font-size: 9px; padding: 2px 7px; border-radius: 20px; font-weight: 700; white-space: nowrap; }
+.opp-match-pill.high { background: rgba(16,185,129,.15); color: #10B981; }
+.opp-match-pill.med { background: rgba(245,158,11,.15); color: #F59E0B; }
+.opp-deadline { font-size: 9px; color: var(--t3); white-space: nowrap; }
+
+/* ── KANBAN ── */
+.kanban-wrap { display: flex; flex: 1; min-height: 0; overflow-x: auto; gap: 10px; padding: 12px; }
+.kanban-col { flex: 0 0 190px; display: flex; flex-direction: column; gap: 8px; }
+.kanban-col-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 2px; }
+.kanban-col-title { font-size: 10px; font-weight: 600; color: var(--t3); text-transform: uppercase; letter-spacing: .06em; }
+.kanban-col-count { font-size: 9px; background: rgba(255,255,255,.08); border-radius: 20px; padding: 1px 7px; color: var(--t3); }
+.kanban-card { background: rgba(255,255,255,.04); border: 1px solid var(--border2); border-radius: 8px; padding: 10px 11px; cursor: pointer; transition: border-color .2s; }
+.kanban-card:hover { border-color: rgba(245,158,11,.28); }
+.kanban-card-brand { font-size: 11px; font-weight: 600; color: var(--t1); margin-bottom: 1px; }
+.kanban-card-creator { font-size: 9px; color: var(--t3); margin-bottom: 6px; }
+.kanban-card-value { font-size: 12px; font-weight: 700; color: var(--amber); font-family: var(--mono); margin-bottom: 6px; }
+.kanban-card-bar { height: 2px; background: rgba(255,255,255,.05); border-radius: 2px; overflow: hidden; }
+.kanban-card-bar-fill { height: 100%; border-radius: 2px; background: linear-gradient(90deg,var(--violet2),var(--amber)); }
+.kanban-stage-pill { display: inline-block; font-size: 8px; padding: 2px 6px; border-radius: 20px; font-weight: 600; margin-top: 5px; }
+.kanban-stage-pill.prospect { background: rgba(124,58,237,.15); color: var(--violet2); }
+.kanban-stage-pill.active { background: rgba(16,185,129,.15); color: #10B981; }
+.kanban-stage-pill.renewal { background: rgba(245,158,11,.15); color: var(--amber); }
+.kanban-stage-pill.closed { background: rgba(255,255,255,.06); color: var(--t3); }
+
+/* ── PITCH PACKS ── */
+.pitch-layout { display: grid; grid-template-columns: 1fr 220px; flex: 1; min-height: 0; overflow: hidden; }
+.pitch-builder { padding: 14px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; }
+.pitch-preview { padding: 12px; border-left: 1px solid var(--border2); overflow-y: auto; display: flex; flex-direction: column; gap: 10px; }
+.pitch-creator-pick { display: flex; gap: 6px; flex-wrap: wrap; }
+.pitch-creator-chip { display: flex; align-items: center; gap: 6px; background: rgba(255,255,255,.04); border: 1px solid var(--border2); border-radius: 6px; padding: 5px 9px; font-size: 10px; color: var(--t1); cursor: pointer; }
+.pitch-creator-chip.selected { border-color: var(--amber); background: rgba(245,158,11,.1); color: var(--amber); }
+.pitch-creator-av { width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 700; color: white; }
+.pitch-obj-list { display: flex; flex-direction: column; gap: 5px; }
+.pitch-obj-row { display: flex; align-items: center; gap: 8px; padding: 7px 10px; background: rgba(255,255,255,.03); border: 1px solid var(--border2); border-radius: 6px; cursor: pointer; font-size: 10px; color: var(--t2); }
+.pitch-obj-row.selected { border-color: var(--violet2); color: var(--t1); background: rgba(124,58,237,.08); }
+.pitch-tier { background: rgba(255,255,255,.03); border: 1px solid var(--border2); border-radius: 8px; padding: 10px 12px; }
+.pitch-tier-name { font-size: 11px; font-weight: 600; color: var(--t1); margin-bottom: 2px; }
+.pitch-tier-price { font-size: 16px; font-weight: 700; color: var(--amber); font-family: var(--mono); }
+.pitch-tier-desc { font-size: 9px; color: var(--t3); margin-top: 3px; line-height: 1.5; }
+.pitch-preview-card { background: linear-gradient(135deg,rgba(124,58,237,.12),rgba(245,158,11,.08)); border: 1px solid rgba(245,158,11,.2); border-radius: 10px; padding: 14px; }
+.pitch-preview-title { font-size: 11px; font-weight: 700; color: var(--t1); margin-bottom: 2px; }
+.pitch-preview-sub { font-size: 9px; color: var(--t3); margin-bottom: 10px; }
+.pitch-stat-row { display: flex; justify-content: space-between; padding: 5px 0; border-bottom: 1px solid var(--border2); }
+.pitch-stat-row:last-child { border-bottom: none; }
+.pitch-stat-label { font-size: 9px; color: var(--t3); }
+.pitch-stat-val { font-size: 10px; font-weight: 600; color: var(--t1); font-family: var(--mono); }
+.pitch-export-btn { width: 100%; padding: 9px; background: var(--amber); color: #000; border-radius: 7px; font-size: 11px; font-weight: 700; text-align: center; cursor: pointer; letter-spacing: .02em; box-sizing: border-box; }
+
+/* ── ECONOMICS ── */
+.econ-layout { display: grid; grid-template-columns: 1fr 196px; flex: 1; min-height: 0; overflow: hidden; }
+.econ-main { padding: 14px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; }
+.econ-side { padding: 12px; border-left: 1px solid var(--border2); overflow-y: auto; display: flex; flex-direction: column; gap: 10px; }
+.econ-chart { background: rgba(255,255,255,.03); border: 1px solid var(--border2); border-radius: 8px; padding: 13px 14px; }
+.econ-chart-bars { display: flex; align-items: flex-end; gap: 6px; height: 80px; margin-top: 10px; }
+.econ-bar-wrap { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.econ-bar { width: 100%; border-radius: 3px 3px 0 0; background: linear-gradient(180deg,var(--amber),var(--violet)); }
+.econ-bar-label { font-size: 8px; color: var(--t3); }
+.econ-kpi-row { display: flex; gap: 8px; }
+.econ-kpi { flex: 1; background: rgba(255,255,255,.03); border: 1px solid var(--border2); border-radius: 8px; padding: 10px 12px; }
+.econ-kpi-val { font-size: 20px; font-weight: 700; color: var(--t1); font-family: var(--mono); }
+.econ-kpi-label { font-size: 9px; color: var(--t3); margin-top: 1px; }
+.econ-kpi-delta { font-size: 9px; color: #10B981; margin-top: 2px; font-weight: 600; }
+.econ-creator-row { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--border2); }
+.econ-creator-row:last-child { border-bottom: none; }
+.econ-creator-av { width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; color: white; flex-shrink: 0; }
+.econ-creator-name { font-size: 11px; font-weight: 600; color: var(--t1); }
+.econ-creator-sub { font-size: 9px; color: var(--t3); }
+.econ-creator-val { margin-left: auto; font-size: 12px; font-weight: 700; color: var(--amber); font-family: var(--mono); }
+.econ-deal-row { display: flex; align-items: center; gap: 8px; padding: 6px 0; border-bottom: 1px solid var(--border2); font-size: 10px; }
+.econ-deal-row:last-child { border-bottom: none; }
+
+/* ── SPONSOR SHORTLIST ── */
+.shortlist-layout { display: grid; grid-template-columns: 1fr 210px; flex: 1; min-height: 0; overflow: hidden; }
+.shortlist-main { padding: 12px 14px; overflow-y: auto; display: flex; flex-direction: column; gap: 9px; }
+.shortlist-side { padding: 12px; border-left: 1px solid var(--border2); overflow-y: auto; display: flex; flex-direction: column; gap: 10px; }
+.shortlist-card { background: rgba(255,255,255,.03); border: 1px solid var(--border2); border-radius: 8px; padding: 12px 13px; }
+.shortlist-card-head { display: flex; align-items: center; gap: 10px; margin-bottom: 9px; }
+.shortlist-card-av { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; color: white; flex-shrink: 0; }
+.shortlist-card-name { font-size: 12px; font-weight: 600; color: var(--t1); }
+.shortlist-card-sub { font-size: 9px; color: var(--t3); margin-top: 1px; }
+.shortlist-card-match { margin-left: auto; font-size: 18px; font-weight: 700; color: var(--amber); font-family: var(--mono); }
+.shortlist-card-match-label { font-size: 8px; color: var(--t3); text-align: right; margin-top: -2px; }
+.shortlist-stat-row { display: flex; gap: 6px; }
+.shortlist-stat { flex: 1; text-align: center; background: rgba(255,255,255,.04); border-radius: 6px; padding: 5px 4px; }
+.shortlist-stat-val { font-size: 11px; font-weight: 700; color: var(--t1); font-family: var(--mono); }
+.shortlist-stat-label { font-size: 8px; color: var(--t3); margin-top: 1px; }
+.shortlist-card-footer { display: flex; gap: 6px; margin-top: 8px; }
+.shortlist-btn { flex: 1; padding: 5px; font-size: 9px; border-radius: 5px; text-align: center; cursor: pointer; font-weight: 600; }
+.shortlist-btn.primary { background: var(--amber); color: #000; }
+.shortlist-btn.secondary { background: rgba(255,255,255,.06); color: var(--t2); }
+
+/* ── ACTIVE DEALS ── */
+.deals-layout { display: grid; grid-template-columns: 1fr 196px; flex: 1; min-height: 0; overflow: hidden; }
+.deals-main { padding: 12px 14px; overflow-y: auto; display: flex; flex-direction: column; gap: 9px; }
+.deals-side { padding: 12px; border-left: 1px solid var(--border2); overflow-y: auto; display: flex; flex-direction: column; gap: 10px; }
+.deal-card { background: rgba(255,255,255,.03); border: 1px solid var(--border2); border-radius: 8px; padding: 12px 13px; }
+.deal-card-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 7px; }
+.deal-card-brand { font-size: 12px; font-weight: 600; color: var(--t1); }
+.deal-status-pill { font-size: 8px; padding: 2px 8px; border-radius: 20px; font-weight: 700; }
+.deal-status-pill.live { background: rgba(16,185,129,.15); color: #10B981; }
+.deal-status-pill.review { background: rgba(245,158,11,.15); color: var(--amber); }
+.deal-status-pill.pending { background: rgba(124,58,237,.15); color: var(--violet2); }
+.deal-creator-row { font-size: 10px; color: var(--t2); margin-bottom: 7px; }
+.deal-progress-label { font-size: 9px; color: var(--t3); margin-bottom: 4px; }
+.deal-progress-bar { height: 3px; background: rgba(255,255,255,.06); border-radius: 2px; overflow: hidden; margin-bottom: 7px; }
+.deal-progress-fill { height: 100%; border-radius: 2px; }
+.deal-meta-row { display: flex; justify-content: space-between; font-size: 9px; color: var(--t3); flex-wrap: wrap; gap: 3px; }
+.deal-meta-val { color: var(--t1); font-weight: 600; font-family: var(--mono); }
+
 
 @media (max-width: 500px) {
   .network-sec { padding: 52px 0; }
@@ -1526,17 +1711,21 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
             </div>
           </div>
           <div class="pw-sb-section-label">Workspace</div>
-          <div class="pw-nav-item active" data-view="creator" onclick="switchMainTab('creator',this)">
+          <div class="pw-nav-item active" data-view="creator" data-subview="dashboard" onclick="switchMainTab('creator',this)">
             <svg class="pw-nav-icon" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="5.5" height="5.5" rx="1.5" stroke="currentColor" stroke-width="1.3"/><rect x="8.5" y="2" width="5.5" height="5.5" rx="1.5" stroke="currentColor" stroke-width="1.3"/><rect x="2" y="8.5" width="5.5" height="5.5" rx="1.5" stroke="currentColor" stroke-width="1.3"/><rect x="8.5" y="8.5" width="5.5" height="5.5" rx="1.5" stroke="currentColor" stroke-width="1.3"/></svg>
             Dashboard
           </div>
-          <div class="pw-nav-item" style="opacity:.42;cursor:default">
+          <div class="pw-nav-item" data-subview="passport" onclick="switchView('creator','passport',this)">
             <svg class="pw-nav-icon" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="6" r="2.8" stroke="currentColor" stroke-width="1.3"/><path d="M3 14c0-2.76 2.24-5 5-5s5 2.24 5 5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
             My Passport
           </div>
-          <div class="pw-nav-item" style="opacity:.42;cursor:default">
+          <div class="pw-nav-item" data-subview="opportunities" onclick="switchView('creator','opportunities',this)">
             <svg class="pw-nav-icon" viewBox="0 0 16 16" fill="none"><path d="M8 2l1.4 3.2 3.6.5-2.6 2.5.6 3.5L8 10.2 4.9 11.7l.6-3.5L3 5.7l3.6-.5L8 2z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
             Opportunities
+          </div>
+          <div class="pw-nav-item" data-subview="platforms" onclick="switchView('creator','platforms',this)">
+            <svg class="pw-nav-icon" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="5" height="5" rx="1" stroke="currentColor" stroke-width="1.3"/><rect x="9" y="2" width="5" height="5" rx="1" stroke="currentColor" stroke-width="1.3"/><rect x="2" y="9" width="5" height="5" rx="1" stroke="currentColor" stroke-width="1.3"/><rect x="9" y="9" width="5" height="5" rx="1" stroke="currentColor" stroke-width="1.3"/></svg>
+            Platform Connections
           </div>
           <div class="pw-sb-divider"></div>
           <div class="pw-sb-section-label">Switch view</div>
@@ -1560,17 +1749,21 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
             </div>
           </div>
           <div class="pw-sb-section-label">Workspace</div>
-          <div class="pw-nav-item active" data-view="manager" onclick="switchMainTab('manager',this)">
+          <div class="pw-nav-item active" data-view="manager" data-subview="roster" onclick="switchMainTab('manager',this)">
             <svg class="pw-nav-icon" viewBox="0 0 16 16" fill="none"><circle cx="5.5" cy="5" r="2.2" stroke="currentColor" stroke-width="1.3"/><path d="M2 13c0-1.9 1.6-3.5 3.5-3.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><circle cx="11" cy="5" r="2.2" stroke="currentColor" stroke-width="1.3"/><path d="M8 13c0-1.9 1.6-3.5 3.5-3.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
             Roster
           </div>
-          <div class="pw-nav-item" style="opacity:.42;cursor:default">
+          <div class="pw-nav-item" data-subview="pipeline" onclick="switchView('manager','pipeline',this)">
             <svg class="pw-nav-icon" viewBox="0 0 16 16" fill="none"><path d="M2 12V4a2 2 0 012-2h8a2 2 0 012 2v8l-3-2-3 2-3-2-3 2z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
             Deals &amp; Pipeline
           </div>
-          <div class="pw-nav-item" style="opacity:.42;cursor:default">
+          <div class="pw-nav-item" data-subview="pitchpacks" onclick="switchView('manager','pitchpacks',this)">
             <svg class="pw-nav-icon" viewBox="0 0 16 16" fill="none"><rect x="2" y="3" width="12" height="10" rx="2" stroke="currentColor" stroke-width="1.3"/><path d="M5 7h6M5 10h4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
             Pitch Packs
+          </div>
+          <div class="pw-nav-item" data-subview="economics" onclick="switchView('manager','economics',this)">
+            <svg class="pw-nav-icon" viewBox="0 0 16 16" fill="none"><path d="M3 13V8M6 13V5M9 13V7M12 13V3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+            Economics
           </div>
           <div class="pw-sb-divider"></div>
           <div class="pw-sb-section-label">Switch view</div>
@@ -1594,15 +1787,15 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
             </div>
           </div>
           <div class="pw-sb-section-label">Workspace</div>
-          <div class="pw-nav-item active" data-view="sponsor" onclick="switchMainTab('sponsor',this)">
+          <div class="pw-nav-item active" data-view="sponsor" data-subview="discover" onclick="switchMainTab('sponsor',this)">
             <svg class="pw-nav-icon" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.5"/><path d="M10.5 10.5l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
             Discover Creators
           </div>
-          <div class="pw-nav-item" style="opacity:.42;cursor:default">
+          <div class="pw-nav-item" data-subview="shortlist" onclick="switchView('sponsor','shortlist',this)">
             <svg class="pw-nav-icon" viewBox="0 0 16 16" fill="none"><path d="M8 2l1.4 3.2 3.6.5-2.6 2.5.6 3.5L8 10.2 4.9 11.7l.6-3.5L3 5.7l3.6-.5L8 2z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
             Shortlist
           </div>
-          <div class="pw-nav-item" style="opacity:.42;cursor:default">
+          <div class="pw-nav-item" data-subview="deals" onclick="switchView('sponsor','deals',this)">
             <svg class="pw-nav-icon" viewBox="0 0 16 16" fill="none"><path d="M2 12V4a2 2 0 012-2h8a2 2 0 012 2v8l-3-2-3 2-3-2-3 2z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
             Active Deals
           </div>
@@ -1638,7 +1831,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
             <div class="app-crumb">
               <span class="app-crumb-root">LEVL</span>
               <span class="app-crumb-sep">/</span>
-              <span class="app-crumb-current">Creator OS</span>
+              <span class="app-crumb-current" id="crumb-creator">Creator OS</span>
             </div>
             <div class="app-search-hint">
               <svg width="10" height="10" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.5"/><path d="M10.5 10.5l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
@@ -1650,6 +1843,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
             </div>
           </div>
 
+          <div class="pw-view active" id="view-creator-dashboard">
           <div class="dash-body">
             <div class="dash-main">
 
@@ -1898,6 +2092,265 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
 
             </div><!-- /dash-side -->
           </div><!-- /dash-body -->
+          </div><!-- /view-creator-dashboard -->
+
+          <!-- ── CREATOR: MY PASSPORT ── -->
+          <div class="pw-view" id="view-creator-passport">
+            <div class="passport-layout">
+              <div class="passport-main">
+                <div class="passport-card">
+                  <div class="passport-av">J</div>
+                  <div>
+                    <div class="passport-name">Jordan Kuznets</div>
+                    <div class="passport-meta">@jordank &middot; Gaming &middot; UK &middot; Member since Jan 2024</div>
+                    <div class="passport-badge">&#10003;&nbsp; LEVL Verified Creator</div>
+                  </div>
+                </div>
+                <div class="ds">
+                  <div class="ds-hdr"><span class="ds-title">PLATFORM VERIFICATIONS</span></div>
+                  <div class="passport-verif-grid" style="padding:10px 13px">
+                    <div class="passport-verif-item">
+                      <div class="passport-verif-icon">&#127909;</div>
+                      <div><div class="passport-verif-platform">YouTube</div><div class="passport-verif-handle">@jordank &middot; 48.2K</div></div>
+                      <div class="passport-verif-check" style="color:#10B981">&#10003;</div>
+                    </div>
+                    <div class="passport-verif-item">
+                      <div class="passport-verif-icon">&#127918;</div>
+                      <div><div class="passport-verif-platform">Twitch</div><div class="passport-verif-handle">@jordank_live &middot; 12.4K</div></div>
+                      <div class="passport-verif-check" style="color:#10B981">&#10003;</div>
+                    </div>
+                    <div class="passport-verif-item">
+                      <div class="passport-verif-icon">&#127897;</div>
+                      <div><div class="passport-verif-platform">TikTok</div><div class="passport-verif-handle">@jordankz &middot; 23.7K</div></div>
+                      <div class="passport-verif-check" style="color:#10B981">&#10003;</div>
+                    </div>
+                    <div class="passport-verif-item" style="border-color:rgba(245,158,11,.3)">
+                      <div class="passport-verif-icon">&#128247;</div>
+                      <div><div class="passport-verif-platform">Instagram</div><div class="passport-verif-handle" style="color:var(--amber)">&#9888; Token expired</div></div>
+                      <div class="passport-verif-check" style="color:#F59E0B">&#9888;</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="passport-cert">
+                  <div class="passport-cert-title">&#10003;&nbsp; LEVL Trust Certificate &mdash; Issued 14 Feb 2024</div>
+                  <div class="passport-cert-body">This passport confirms Jordan Kuznets has completed identity verification, platform authentication, and compliance screening. Trust Score: <strong style="color:var(--t1)">82 / 100</strong>. Sponsor-ready status active.</div>
+                </div>
+                <div class="ds">
+                  <div class="ds-hdr"><span class="ds-title">SPONSORSHIP RECORD</span></div>
+                  <div style="padding:2px 13px 10px">
+                    <div class="passport-record-row"><span class="passport-record-label">Completed campaigns</span><span class="passport-record-val">8</span></div>
+                    <div class="passport-record-row"><span class="passport-record-label">Total deal value</span><span class="passport-record-val">&#163;47,200</span></div>
+                    <div class="passport-record-row"><span class="passport-record-label">Renewal rate</span><span class="passport-record-val">75%</span></div>
+                    <div class="passport-record-row"><span class="passport-record-label">Avg deliverable score</span><span class="passport-record-val">4.6 / 5.0</span></div>
+                    <div class="passport-record-row"><span class="passport-record-label">Disputes</span><span class="passport-record-val" style="color:#10B981">0</span></div>
+                  </div>
+                </div>
+              </div>
+              <div class="passport-side">
+                <div class="ds">
+                  <div class="ds-hdr"><span class="ds-title">TRUST SCORE</span></div>
+                  <div style="padding:10px 13px">
+                    <div style="font-size:36px;font-weight:700;color:var(--t1);font-family:var(--mono)">82</div>
+                    <div style="font-size:9px;color:var(--t3);margin-bottom:10px">Top 31% of LEVL network</div>
+                    <div class="lvl-journey-bar"><div class="lvl-journey-fill bar-animate" style="--w:82%"></div></div>
+                    <div style="margin-top:10px;font-size:9px;color:var(--t3)">Next threshold: 85 &rarr; <span style="color:var(--amber)">Gold Verified</span></div>
+                  </div>
+                </div>
+                <div class="ds">
+                  <div class="ds-hdr"><span class="ds-title">SHARE PASSPORT</span></div>
+                  <div style="padding:10px 13px;display:flex;flex-direction:column;gap:7px">
+                    <div style="background:rgba(255,255,255,.04);border:1px solid var(--border2);border-radius:7px;padding:8px;text-align:center">
+                      <div style="font-size:9px;color:var(--t3);margin-bottom:5px">Public passport link</div>
+                      <div style="font-size:9px;font-family:var(--mono);color:var(--amber)">levl.gg/p/jordank</div>
+                    </div>
+                    <div style="background:var(--amber);color:#000;border-radius:6px;padding:7px;font-size:10px;font-weight:700;text-align:center;cursor:pointer">Copy link</div>
+                    <div style="background:rgba(255,255,255,.06);color:var(--t2);border-radius:6px;padding:7px;font-size:10px;font-weight:600;text-align:center;cursor:pointer">Download PDF</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div><!-- /view-creator-passport -->
+
+          <!-- ── CREATOR: OPPORTUNITIES ── -->
+          <div class="pw-view" id="view-creator-opportunities">
+            <div class="opp-filter-bar">
+              <div class="opp-filter-chip active">All</div>
+              <div class="opp-filter-chip">Gaming</div>
+              <div class="opp-filter-chip">Tech</div>
+              <div class="opp-filter-chip">Lifestyle</div>
+              <div class="opp-filter-chip">&#163;500+</div>
+              <div class="opp-filter-chip">High match</div>
+              <div style="margin-left:auto;font-size:9px;color:var(--t3)">42 live opportunities</div>
+            </div>
+            <div class="opp-layout">
+              <div class="opp-list">
+                <div class="opp-row">
+                  <div class="opp-brand-av" style="background:linear-gradient(135deg,#F59E0B,#7C3AED)">GX</div>
+                  <div style="flex:1;min-width:0"><div class="opp-brand-name">GearX &mdash; Q4 Gaming Bundle</div><div class="opp-brand-niche">Gaming peripherals &middot; YouTube + Twitch &middot; 2 deliverables</div></div>
+                  <div style="text-align:right;flex-shrink:0"><div class="opp-budget">&#163;1,200</div><div class="opp-deadline">Closes 12 Jul</div></div>
+                  <div class="opp-match-pill high">96%</div>
+                </div>
+                <div class="opp-row">
+                  <div class="opp-brand-av" style="background:linear-gradient(135deg,#10B981,#0D9488)">NV</div>
+                  <div style="flex:1;min-width:0"><div class="opp-brand-name">NordVPN &mdash; Creator Protection</div><div class="opp-brand-niche">Software / VPN &middot; YouTube &middot; 1 dedicated video</div></div>
+                  <div style="text-align:right;flex-shrink:0"><div class="opp-budget">&#163;900</div><div class="opp-deadline">Closes 18 Jul</div></div>
+                  <div class="opp-match-pill high">89%</div>
+                </div>
+                <div class="opp-row">
+                  <div class="opp-brand-av" style="background:linear-gradient(135deg,#7C3AED,#4F46E5)">TN</div>
+                  <div style="flex:1;min-width:0"><div class="opp-brand-name">TechNest &mdash; Laptop Review</div><div class="opp-brand-niche">Consumer tech &middot; YouTube &middot; 1 review</div></div>
+                  <div style="text-align:right;flex-shrink:0"><div class="opp-budget">&#163;750</div><div class="opp-deadline">Closes 25 Jul</div></div>
+                  <div class="opp-match-pill high">84%</div>
+                </div>
+                <div class="opp-row">
+                  <div class="opp-brand-av" style="background:linear-gradient(135deg,#F43F5E,#F59E0B)">FF</div>
+                  <div style="flex:1;min-width:0"><div class="opp-brand-name">FitFuel &mdash; Gaming Edition Launch</div><div class="opp-brand-niche">Nutrition &middot; TikTok + YouTube &middot; 3 posts</div></div>
+                  <div style="text-align:right;flex-shrink:0"><div class="opp-budget">&#163;480</div><div class="opp-deadline">Closes 2 Aug</div></div>
+                  <div class="opp-match-pill med">71%</div>
+                </div>
+                <div class="opp-row">
+                  <div class="opp-brand-av" style="background:linear-gradient(135deg,#0EA5E9,#2563EB)">DP</div>
+                  <div style="flex:1;min-width:0"><div class="opp-brand-name">DeepProxy &mdash; Developer Tools</div><div class="opp-brand-niche">SaaS / dev tools &middot; YouTube &middot; Integration review</div></div>
+                  <div style="text-align:right;flex-shrink:0"><div class="opp-budget">&#163;1,800</div><div class="opp-deadline">Closes 5 Aug</div></div>
+                  <div class="opp-match-pill med">63%</div>
+                </div>
+              </div>
+              <div class="opp-side">
+                <div class="ds">
+                  <div class="ds-hdr"><span class="ds-title">SAVED</span><span class="ds-badge amber">3</span></div>
+                  <div style="padding:6px 13px 10px;display:flex;flex-direction:column;gap:5px">
+                    <div style="font-size:10px;color:var(--t2)">GearX Q4 Gaming</div>
+                    <div style="font-size:10px;color:var(--t2)">NordVPN Creator</div>
+                    <div style="font-size:10px;color:var(--t2)">AMD Creator Grant</div>
+                  </div>
+                </div>
+                <div class="ds">
+                  <div class="ds-hdr"><span class="ds-title">APPLIED</span><span class="ds-badge" style="background:rgba(16,185,129,.15);color:#10B981">2</span></div>
+                  <div style="padding:6px 13px 10px;display:flex;flex-direction:column;gap:8px">
+                    <div><div style="font-size:10px;color:var(--t1)">TechBrand Q3 Series</div><div style="font-size:9px;color:var(--t3)">Applied 3 days ago &middot; Under review</div></div>
+                    <div><div style="font-size:10px;color:var(--t1)">Corsair Streamer Pack</div><div style="font-size:9px;color:var(--green)">Shortlisted by sponsor &#10003;</div></div>
+                  </div>
+                </div>
+                <div class="ds">
+                  <div class="ds-hdr"><span class="ds-title">MATCH FACTORS</span></div>
+                  <div style="padding:8px 13px 10px;display:flex;flex-direction:column;gap:5px;font-size:9px">
+                    <div style="display:flex;justify-content:space-between"><span style="color:var(--t3)">Platform score</span><span style="color:var(--t1)">92</span></div>
+                    <div style="display:flex;justify-content:space-between"><span style="color:var(--t3)">Niche alignment</span><span style="color:var(--t1)">88</span></div>
+                    <div style="display:flex;justify-content:space-between"><span style="color:var(--t3)">Engagement rate</span><span style="color:var(--t1)">4.8%</span></div>
+                    <div style="display:flex;justify-content:space-between"><span style="color:var(--t3)">Deal history</span><span style="color:var(--green)">&#10003; Excellent</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div><!-- /view-creator-opportunities -->
+
+          <!-- ── CREATOR: PLATFORM CONNECTIONS ── -->
+          <div class="pw-view" id="view-creator-platforms">
+            <div style="flex:1;overflow-y:auto;display:flex;flex-direction:column">
+              <div style="padding:10px 14px;border-bottom:1px solid var(--border2);display:flex;align-items:center;justify-content:space-between;flex-shrink:0">
+                <div style="font-size:10px;color:var(--t2)"><strong style="color:var(--t1)">6 platforms</strong> &middot; 5 connected &middot; 1 needs attention</div>
+                <div style="font-size:9px;background:rgba(16,185,129,.1);color:#10B981;border:1px solid rgba(16,185,129,.2);border-radius:20px;padding:2px 10px">Last sync 2 min ago</div>
+              </div>
+              <div class="plat-grid">
+                <div class="plat-card">
+                  <div class="plat-card-head">
+                    <div class="plat-icon" style="background:rgba(255,0,0,.12)">&#127909;</div>
+                    <div><div class="plat-name">YouTube</div><div class="plat-handle">@jordank &middot; 48,200 subscribers</div></div>
+                    <div class="plat-status-pill ok">Connected</div>
+                    <div class="plat-health green"></div>
+                  </div>
+                  <div class="plat-expand">
+                    <div class="plat-meta-row">
+                      <div class="plat-meta-item"><div class="plat-meta-label">Audience</div><div class="plat-meta-val">48.2K</div></div>
+                      <div class="plat-meta-item"><div class="plat-meta-label">Engagement</div><div class="plat-meta-val">4.8%</div></div>
+                      <div class="plat-meta-item"><div class="plat-meta-label">Last sync</div><div class="plat-meta-val">2 min</div></div>
+                      <div class="plat-meta-item"><div class="plat-meta-label">Refresh token</div><div class="plat-meta-val" style="color:#10B981">Valid</div></div>
+                    </div>
+                    <div class="plat-meta-row" style="padding-bottom:0">
+                      <div class="plat-meta-item"><div class="plat-meta-label">Watch time/mo</div><div class="plat-meta-val">1.2M min</div></div>
+                      <div class="plat-meta-item"><div class="plat-meta-label">Connected</div><div class="plat-meta-val">14 Jan 2024</div></div>
+                      <div class="plat-meta-item"><div class="plat-meta-label">Verified</div><div class="plat-meta-val" style="color:#10B981">&#10003; Yes</div></div>
+                      <div class="plat-meta-item"><div class="plat-meta-label">Next sync</div><div class="plat-meta-val">6h</div></div>
+                    </div>
+                    <div class="plat-perms" style="margin-top:10px">
+                      <div class="plat-perms-label">Permissions granted</div>
+                      <span class="plat-perm-tag">&#10003; Analytics read</span>
+                      <span class="plat-perm-tag">&#10003; Audience insights</span>
+                      <span class="plat-perm-tag">&#10003; Engagement data</span>
+                      <span class="plat-perm-tag">&#10003; Demographics</span>
+                      <span class="plat-perm-tag">&#10003; Revenue signals</span>
+                    </div>
+                    <div class="plat-sig-row">
+                      <div class="plat-sig-label">Signal contribution to Trust Score</div>
+                      <div class="plat-sig-item"><div class="plat-sig-name">Consistency</div><div class="plat-sig-bar-wrap"><div class="plat-sig-bar bar-animate" style="--w:88%;background:var(--amber)"></div></div><div class="plat-sig-pct">88%</div></div>
+                      <div class="plat-sig-item"><div class="plat-sig-name">Engagement quality</div><div class="plat-sig-bar-wrap"><div class="plat-sig-bar bar-animate" style="--w:76%;background:var(--violet2)"></div></div><div class="plat-sig-pct">76%</div></div>
+                      <div class="plat-sig-item"><div class="plat-sig-name">Audience authenticity</div><div class="plat-sig-bar-wrap"><div class="plat-sig-bar bar-animate" style="--w:94%;background:#10B981"></div></div><div class="plat-sig-pct">94%</div></div>
+                      <div class="plat-sig-item"><div class="plat-sig-name">Brand safety index</div><div class="plat-sig-bar-wrap"><div class="plat-sig-bar bar-animate" style="--w:91%;background:var(--amber)"></div></div><div class="plat-sig-pct">91%</div></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="plat-card">
+                  <div class="plat-card-head">
+                    <div class="plat-icon" style="background:rgba(145,70,255,.18)">&#127918;</div>
+                    <div><div class="plat-name">Twitch</div><div class="plat-handle">@jordank_live &middot; 12,400 followers</div></div>
+                    <div class="plat-status-pill ok">Connected</div>
+                    <div class="plat-health green"></div>
+                  </div>
+                  <div class="plat-expand">
+                    <div class="plat-meta-row">
+                      <div class="plat-meta-item"><div class="plat-meta-label">Followers</div><div class="plat-meta-val">12.4K</div></div>
+                      <div class="plat-meta-item"><div class="plat-meta-label">Avg viewers</div><div class="plat-meta-val">840</div></div>
+                      <div class="plat-meta-item"><div class="plat-meta-label">Hours/mo</div><div class="plat-meta-val">62h</div></div>
+                      <div class="plat-meta-item"><div class="plat-meta-label">Refresh token</div><div class="plat-meta-val" style="color:#10B981">Valid</div></div>
+                    </div>
+                    <div class="plat-perms" style="margin-top:10px">
+                      <div class="plat-perms-label">Permissions granted</div>
+                      <span class="plat-perm-tag">&#10003; Channel analytics</span>
+                      <span class="plat-perm-tag">&#10003; Viewer data</span>
+                      <span class="plat-perm-tag">&#10003; Subscription signals</span>
+                    </div>
+                    <div class="plat-sig-row">
+                      <div class="plat-sig-label">Signal contribution</div>
+                      <div class="plat-sig-item"><div class="plat-sig-name">Live consistency</div><div class="plat-sig-bar-wrap"><div class="plat-sig-bar bar-animate" style="--w:72%;background:var(--violet2)"></div></div><div class="plat-sig-pct">72%</div></div>
+                      <div class="plat-sig-item"><div class="plat-sig-name">Community depth</div><div class="plat-sig-bar-wrap"><div class="plat-sig-bar bar-animate" style="--w:81%;background:#10B981"></div></div><div class="plat-sig-pct">81%</div></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="plat-mini-grid">
+                <div class="plat-mini-card">
+                  <div class="plat-icon" style="font-size:14px;background:rgba(0,0,0,.3)">&#127897;</div>
+                  <div><div class="plat-mini-name">TikTok</div><div class="plat-mini-sub">@jordankz &middot; 23.7K</div></div>
+                  <div class="plat-mini-right"><div class="plat-status-pill ok" style="font-size:8px">Connected</div></div>
+                </div>
+                <div class="plat-mini-card" style="border-color:rgba(245,158,11,.3)">
+                  <div class="plat-icon" style="font-size:14px;background:rgba(245,158,11,.1)">&#128247;</div>
+                  <div><div class="plat-mini-name">Instagram</div><div class="plat-mini-sub" style="color:var(--amber)">&#9888; Token expired</div></div>
+                  <div class="plat-mini-right"><div class="plat-status-pill warn" style="font-size:8px">Reconnect</div></div>
+                </div>
+                <div class="plat-mini-card">
+                  <div class="plat-icon" style="font-size:14px;background:rgba(88,101,242,.2)">&#128172;</div>
+                  <div><div class="plat-mini-name">Discord</div><div class="plat-mini-sub">jordank_server &middot; 4.2K</div></div>
+                  <div class="plat-mini-right"><div class="plat-status-pill ok" style="font-size:8px">Connected</div></div>
+                </div>
+                <div class="plat-mini-card">
+                  <div class="plat-icon" style="font-size:14px;background:rgba(255,255,255,.04)">&#10006;</div>
+                  <div><div class="plat-mini-name">X / Twitter</div><div class="plat-mini-sub">Optional</div></div>
+                  <div class="plat-mini-right"><div class="plat-status-pill off" style="font-size:8px">Connect</div></div>
+                </div>
+                <div class="plat-mini-card">
+                  <div class="plat-icon" style="font-size:14px;background:rgba(10,102,194,.2)">&#128101;</div>
+                  <div><div class="plat-mini-name">LinkedIn</div><div class="plat-mini-sub">Optional</div></div>
+                  <div class="plat-mini-right"><div class="plat-status-pill off" style="font-size:8px">Connect</div></div>
+                </div>
+                <div class="plat-mini-card" style="border-style:dashed;cursor:pointer">
+                  <div class="plat-icon" style="font-size:18px;background:rgba(255,255,255,.04);color:var(--t3)">+</div>
+                  <div><div class="plat-mini-name" style="color:var(--t3)">Add platform</div><div class="plat-mini-sub">YouTube Music, Kick, Podcast&hellip;</div></div>
+                </div>
+              </div>
+            </div>
+          </div><!-- /view-creator-platforms -->
+
         </div><!-- /panel-creator -->
 
         <!-- ═══ MANAGER ═══ -->
@@ -1907,7 +2360,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
             <div class="app-crumb">
               <span class="app-crumb-root">LEVL</span>
               <span class="app-crumb-sep">/</span>
-              <span class="app-crumb-current">Roster</span>
+              <span class="app-crumb-current" id="crumb-manager">Roster</span>
             </div>
             <div class="app-search-hint">
               <svg width="10" height="10" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.5"/><path d="M10.5 10.5l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
@@ -1919,6 +2372,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
             </div>
           </div>
 
+          <div class="pw-view active" id="view-manager-roster">
           <div class="dash-body wide">
             <div class="dash-main">
 
@@ -2076,6 +2530,181 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
 
             </div><!-- /dash-side -->
           </div><!-- /dash-body -->
+          </div><!-- /view-manager-roster -->
+
+          <!-- ── MANAGER: DEALS & PIPELINE ── -->
+          <div class="pw-view" id="view-manager-pipeline">
+            <div class="kanban-wrap">
+              <div class="kanban-col">
+                <div class="kanban-col-head"><div class="kanban-col-title">Prospecting</div><div class="kanban-col-count">3</div></div>
+                <div class="kanban-card"><div class="kanban-card-brand">TechNest</div><div class="kanban-card-creator">Tom Keane &middot; Tech</div><div class="kanban-card-value">&#163;700</div><div class="kanban-card-bar"><div class="kanban-card-bar-fill" style="width:15%"></div></div><div class="kanban-stage-pill prospect">Initial contact</div></div>
+                <div class="kanban-card"><div class="kanban-card-brand">FitFuel S2</div><div class="kanban-card-creator">Maya Liu &middot; Fitness</div><div class="kanban-card-value">&#163;2,800</div><div class="kanban-card-bar"><div class="kanban-card-bar-fill" style="width:25%"></div></div><div class="kanban-stage-pill prospect">Proposal sent</div></div>
+                <div class="kanban-card"><div class="kanban-card-brand">Corsair UK</div><div class="kanban-card-creator">Jordan K. &middot; Gaming</div><div class="kanban-card-value">&#163;1,500</div><div class="kanban-card-bar"><div class="kanban-card-bar-fill" style="width:10%"></div></div><div class="kanban-stage-pill prospect">In discussion</div></div>
+              </div>
+              <div class="kanban-col">
+                <div class="kanban-col-head"><div class="kanban-col-title">Active</div><div class="kanban-col-count">4</div></div>
+                <div class="kanban-card"><div class="kanban-card-brand">GearX Q4</div><div class="kanban-card-creator">Jordan K. &middot; Gaming</div><div class="kanban-card-value">&#163;960/mo</div><div class="kanban-card-bar"><div class="kanban-card-bar-fill bar-animate" style="--w:68%"></div></div><div class="kanban-stage-pill active">Content live</div></div>
+                <div class="kanban-card"><div class="kanban-card-brand">FitFuel S1</div><div class="kanban-card-creator">Maya Liu &middot; Fitness</div><div class="kanban-card-value">&#163;2,400/mo</div><div class="kanban-card-bar"><div class="kanban-card-bar-fill bar-animate" style="--w:82%"></div></div><div class="kanban-stage-pill active">Del. 3 of 4</div></div>
+                <div class="kanban-card"><div class="kanban-card-brand">AMD Creator</div><div class="kanban-card-creator">Zara P. &middot; Lifestyle</div><div class="kanban-card-value">&#163;480/mo</div><div class="kanban-card-bar"><div class="kanban-card-bar-fill bar-animate" style="--w:45%"></div></div><div class="kanban-stage-pill active">Content live</div></div>
+                <div class="kanban-card"><div class="kanban-card-brand">NordVPN</div><div class="kanban-card-creator">Tom Keane &middot; Tech</div><div class="kanban-card-value">&#163;750</div><div class="kanban-card-bar"><div class="kanban-card-bar-fill bar-animate" style="--w:91%"></div></div><div class="kanban-stage-pill active">Review</div></div>
+              </div>
+              <div class="kanban-col">
+                <div class="kanban-col-head"><div class="kanban-col-title">Up for Renewal</div><div class="kanban-col-count">2</div></div>
+                <div class="kanban-card" style="border-color:rgba(245,158,11,.3)"><div class="kanban-card-brand">GearX Q3</div><div class="kanban-card-creator">Jordan K. &middot; Gaming</div><div class="kanban-card-value">&#163;960/mo</div><div class="kanban-card-bar"><div class="kanban-card-bar-fill" style="width:100%;background:var(--amber)"></div></div><div class="kanban-stage-pill renewal">Renew by Jul 15</div></div>
+                <div class="kanban-card" style="border-color:rgba(245,158,11,.3)"><div class="kanban-card-brand">TechBrand Q2</div><div class="kanban-card-creator">Aria S. &middot; Tech</div><div class="kanban-card-value">&#163;1,800/mo</div><div class="kanban-card-bar"><div class="kanban-card-bar-fill" style="width:100%;background:var(--amber)"></div></div><div class="kanban-stage-pill renewal">Renew by Jul 28</div></div>
+              </div>
+              <div class="kanban-col">
+                <div class="kanban-col-head"><div class="kanban-col-title">Closed Won</div><div class="kanban-col-count">7</div></div>
+                <div class="kanban-card" style="opacity:.6"><div class="kanban-card-brand">NordVPN Tech</div><div class="kanban-card-creator">Tom Keane &middot; Tech</div><div class="kanban-card-value">&#163;750</div><div class="kanban-card-bar"><div class="kanban-card-bar-fill" style="width:100%;background:rgba(255,255,255,.15)"></div></div><div class="kanban-stage-pill closed">Completed &#10003;</div></div>
+                <div class="kanban-card" style="opacity:.6"><div class="kanban-card-brand">FitFuel Launch</div><div class="kanban-card-creator">Maya Liu &middot; Fitness</div><div class="kanban-card-value">&#163;1,200</div><div class="kanban-card-bar"><div class="kanban-card-bar-fill" style="width:100%;background:rgba(255,255,255,.15)"></div></div><div class="kanban-stage-pill closed">Completed &#10003;</div></div>
+                <div style="padding:8px 11px;font-size:9px;color:var(--t3)">+ 5 more &middot; <span style="color:var(--amber);cursor:pointer">View all</span></div>
+              </div>
+            </div>
+          </div><!-- /view-manager-pipeline -->
+
+          <!-- ── MANAGER: PITCH PACKS ── -->
+          <div class="pw-view" id="view-manager-pitchpacks">
+            <div class="pitch-layout">
+              <div class="pitch-builder">
+                <div class="ds">
+                  <div class="ds-hdr"><span class="ds-title">PITCH PACK BUILDER</span><span class="ds-badge amber">Draft</span></div>
+                  <div style="padding:8px 13px 12px">
+                    <div style="font-size:9px;color:var(--t3);margin-bottom:4px">Pack name</div>
+                    <div style="background:rgba(255,255,255,.05);border:1px solid var(--border2);border-radius:6px;padding:7px 10px;font-size:11px;color:var(--t1)">Q4 Gaming Bundle 2026</div>
+                  </div>
+                </div>
+                <div class="ds">
+                  <div class="ds-hdr"><span class="ds-title">SELECT CREATORS</span></div>
+                  <div style="padding:8px 13px 12px">
+                    <div class="pitch-creator-pick">
+                      <div class="pitch-creator-chip selected"><div class="pitch-creator-av" style="background:linear-gradient(135deg,#F59E0B,#7C3AED)">J</div>Jordan K.</div>
+                      <div class="pitch-creator-chip selected"><div class="pitch-creator-av" style="background:linear-gradient(135deg,#7C3AED,#F43F5E)">T</div>Tom Keane</div>
+                      <div class="pitch-creator-chip"><div class="pitch-creator-av" style="background:linear-gradient(135deg,#10B981,#F59E0B)">M</div>Maya Liu</div>
+                      <div class="pitch-creator-chip"><div class="pitch-creator-av" style="background:linear-gradient(135deg,#F43F5E,#F59E0B)">Z</div>Zara P.</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="ds">
+                  <div class="ds-hdr"><span class="ds-title">CAMPAIGN OBJECTIVES</span></div>
+                  <div style="padding:8px 13px 12px">
+                    <div class="pitch-obj-list">
+                      <div class="pitch-obj-row selected">&#9654; Brand awareness + product launch</div>
+                      <div class="pitch-obj-row selected">&#9654; Performance: clicks &amp; conversions</div>
+                      <div class="pitch-obj-row">&#9633; Community engagement</div>
+                      <div class="pitch-obj-row">&#9633; Long-form review content</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="ds">
+                  <div class="ds-hdr"><span class="ds-title">PACKAGE TIERS</span></div>
+                  <div style="padding:8px 13px 12px;display:flex;flex-direction:column;gap:7px">
+                    <div class="pitch-tier"><div style="display:flex;align-items:baseline;gap:8px"><div class="pitch-tier-name">Starter</div><div class="pitch-tier-price">&#163;1,200</div></div><div class="pitch-tier-desc">1 creator &middot; 2 posts &middot; 30-day window &middot; Basic analytics</div></div>
+                    <div class="pitch-tier" style="border-color:rgba(245,158,11,.3);background:rgba(245,158,11,.05)"><div style="display:flex;align-items:baseline;gap:8px"><div class="pitch-tier-name">Growth <span style="font-size:8px;color:var(--amber);font-weight:600">Popular</span></div><div class="pitch-tier-price">&#163;3,400</div></div><div class="pitch-tier-desc">2 creators &middot; 4 posts &middot; 60-day window &middot; Full analytics + trust report</div></div>
+                    <div class="pitch-tier"><div style="display:flex;align-items:baseline;gap:8px"><div class="pitch-tier-name">Premium</div><div class="pitch-tier-price">&#163;7,200</div></div><div class="pitch-tier-desc">4 creators &middot; 8 posts &middot; 90-day window &middot; Whitelisting + exclusivity</div></div>
+                  </div>
+                </div>
+              </div>
+              <div class="pitch-preview">
+                <div class="pitch-preview-card">
+                  <div class="pitch-preview-title">Q4 Gaming Bundle 2026</div>
+                  <div class="pitch-preview-sub">Prepared by Sam Rivera &middot; LEVL Manager</div>
+                  <div style="margin:8px 0;border-top:1px solid var(--border2)"></div>
+                  <div class="pitch-stat-row"><span class="pitch-stat-label">Combined reach</span><span class="pitch-stat-val">60.6K</span></div>
+                  <div class="pitch-stat-row"><span class="pitch-stat-label">Avg engagement</span><span class="pitch-stat-val">5.1%</span></div>
+                  <div class="pitch-stat-row"><span class="pitch-stat-label">Combined trust score</span><span class="pitch-stat-val">78 / 100</span></div>
+                  <div class="pitch-stat-row"><span class="pitch-stat-label">Audience overlap</span><span class="pitch-stat-val">12%</span></div>
+                  <div class="pitch-stat-row"><span class="pitch-stat-label">Verified creators</span><span class="pitch-stat-val" style="color:#10B981">2 / 2 &#10003;</span></div>
+                  <div class="pitch-stat-row"><span class="pitch-stat-label">Selected package</span><span class="pitch-stat-val" style="color:var(--amber)">&#163;3,400</span></div>
+                </div>
+                <div class="ds">
+                  <div class="ds-hdr"><span class="ds-title">TRUST EMBED</span></div>
+                  <div style="padding:8px 13px 10px;font-size:9px;color:var(--t3);line-height:1.5">Live trust certificates for selected creators are embedded in the PDF, pulled from LEVL at export time.</div>
+                </div>
+                <div class="ds">
+                  <div class="ds-hdr"><span class="ds-title">BRANDING</span></div>
+                  <div style="padding:8px 13px 10px;display:flex;flex-direction:column;gap:5px">
+                    <div style="font-size:9px;color:var(--t3)">Cover style</div>
+                    <div style="display:flex;gap:5px">
+                      <div style="flex:1;background:rgba(245,158,11,.1);border:1px solid var(--amber);border-radius:5px;padding:5px;text-align:center;font-size:9px;color:var(--amber)">Dark</div>
+                      <div style="flex:1;background:rgba(255,255,255,.04);border:1px solid var(--border2);border-radius:5px;padding:5px;text-align:center;font-size:9px;color:var(--t3)">Light</div>
+                      <div style="flex:1;background:rgba(255,255,255,.04);border:1px solid var(--border2);border-radius:5px;padding:5px;text-align:center;font-size:9px;color:var(--t3)">Custom</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="pitch-export-btn">&#8675; Export Pitch Pack PDF</div>
+              </div>
+            </div>
+          </div><!-- /view-manager-pitchpacks -->
+
+          <!-- ── MANAGER: ECONOMICS ── -->
+          <div class="pw-view" id="view-manager-economics">
+            <div class="econ-layout">
+              <div class="econ-main">
+                <div class="econ-kpi-row">
+                  <div class="econ-kpi"><div class="econ-kpi-val">&#163;18.4K</div><div class="econ-kpi-label">Monthly pipeline</div><div class="econ-kpi-delta">&#8593; +12.9% vs last mo</div></div>
+                  <div class="econ-kpi"><div class="econ-kpi-val">&#163;6.8K</div><div class="econ-kpi-label">Management fees (MTD)</div><div class="econ-kpi-delta">&#8593; +&#163;820 vs target</div></div>
+                  <div class="econ-kpi"><div class="econ-kpi-val" style="color:var(--amber)">&#163;4.2K</div><div class="econ-kpi-label">Renewal at risk</div><div style="font-size:9px;color:var(--amber);margin-top:2px">&#9888; 2 deals expiring</div></div>
+                </div>
+                <div class="econ-chart">
+                  <div style="display:flex;align-items:center;justify-content:space-between"><div style="font-size:10px;font-weight:600;color:var(--t2)">Monthly revenue &mdash; last 6 months</div><div style="font-size:9px;color:var(--t3)">Gross deal value</div></div>
+                  <div class="econ-chart-bars">
+                    <div class="econ-bar-wrap"><div class="econ-bar" style="height:42%"></div><div class="econ-bar-label">Jan</div></div>
+                    <div class="econ-bar-wrap"><div class="econ-bar" style="height:55%"></div><div class="econ-bar-label">Feb</div></div>
+                    <div class="econ-bar-wrap"><div class="econ-bar" style="height:48%"></div><div class="econ-bar-label">Mar</div></div>
+                    <div class="econ-bar-wrap"><div class="econ-bar" style="height:70%"></div><div class="econ-bar-label">Apr</div></div>
+                    <div class="econ-bar-wrap"><div class="econ-bar" style="height:82%"></div><div class="econ-bar-label">May</div></div>
+                    <div class="econ-bar-wrap"><div class="econ-bar" style="height:100%"></div><div class="econ-bar-label">Jun</div></div>
+                  </div>
+                </div>
+                <div class="ds">
+                  <div class="ds-hdr"><span class="ds-title">CREATOR BREAKDOWN</span></div>
+                  <div style="padding:4px 13px 10px">
+                    <div class="econ-creator-row"><div class="econ-creator-av" style="background:linear-gradient(135deg,#10B981,#F59E0B)">M</div><div><div class="econ-creator-name">Maya Liu</div><div class="econ-creator-sub">FitFuel S1 &middot; Active</div></div><div class="econ-creator-val">&#163;2,400/mo</div></div>
+                    <div class="econ-creator-row"><div class="econ-creator-av" style="background:linear-gradient(135deg,#7C3AED,#4F46E5)">A</div><div><div class="econ-creator-name">Aria Sato</div><div class="econ-creator-sub">TechBrand Q3 &middot; Renewing</div></div><div class="econ-creator-val" style="color:var(--amber)">&#163;1,800/mo</div></div>
+                    <div class="econ-creator-row"><div class="econ-creator-av" style="background:linear-gradient(135deg,#F59E0B,#7C3AED)">J</div><div><div class="econ-creator-name">Jordan Kuznets</div><div class="econ-creator-sub">GearX Q4 &middot; Active</div></div><div class="econ-creator-val">&#163;960/mo</div></div>
+                    <div class="econ-creator-row"><div class="econ-creator-av" style="background:linear-gradient(135deg,#F43F5E,#F59E0B)">Z</div><div><div class="econ-creator-name">Zara Patel</div><div class="econ-creator-sub">AMD Creator &middot; Active</div></div><div class="econ-creator-val">&#163;480/mo</div></div>
+                  </div>
+                </div>
+                <div class="ds">
+                  <div class="ds-hdr"><span class="ds-title">RECENT DEALS</span></div>
+                  <div style="padding:4px 13px 10px">
+                    <div class="econ-deal-row"><span style="color:var(--t1)">GearX Q4 renewal</span><span style="margin-left:auto;color:var(--green);font-family:var(--mono)">&#163;960</span><span style="color:var(--t3);margin-left:10px">Jun 14</span></div>
+                    <div class="econ-deal-row"><span style="color:var(--t1)">NordVPN completion</span><span style="margin-left:auto;color:var(--t2);font-family:var(--mono)">&#163;750</span><span style="color:var(--t3);margin-left:10px">Jun 8</span></div>
+                    <div class="econ-deal-row"><span style="color:var(--t1)">FitFuel S1 mid-payment</span><span style="margin-left:auto;color:var(--green);font-family:var(--mono)">&#163;1,200</span><span style="color:var(--t3);margin-left:10px">Jun 1</span></div>
+                    <div class="econ-deal-row"><span style="color:var(--t1)">AMD Creator deposit</span><span style="margin-left:auto;color:var(--green);font-family:var(--mono)">&#163;240</span><span style="color:var(--t3);margin-left:10px">May 28</span></div>
+                  </div>
+                </div>
+              </div>
+              <div class="econ-side">
+                <div class="ds">
+                  <div class="ds-hdr"><span class="ds-title">FEE STRUCTURE</span></div>
+                  <div style="padding:8px 13px 10px;display:flex;flex-direction:column;gap:5px">
+                    <div style="display:flex;justify-content:space-between;font-size:10px"><span style="color:var(--t3)">Management cut</span><span style="color:var(--t1);font-family:var(--mono)">15%</span></div>
+                    <div style="display:flex;justify-content:space-between;font-size:10px"><span style="color:var(--t3)">Platform fee</span><span style="color:var(--t1);font-family:var(--mono)">5%</span></div>
+                    <div style="display:flex;justify-content:space-between;font-size:10px"><span style="color:var(--t3)">Creator payout</span><span style="color:var(--t1);font-family:var(--mono)">80%</span></div>
+                    <div style="margin-top:6px;padding-top:6px;border-top:1px solid var(--border2);display:flex;justify-content:space-between;font-size:10px"><span style="color:var(--t3)">Your earnings YTD</span><span style="color:var(--amber);font-family:var(--mono);font-weight:600">&#163;14,240</span></div>
+                  </div>
+                </div>
+                <div class="ds">
+                  <div class="ds-hdr"><span class="ds-title">ALERTS</span></div>
+                  <div style="padding:8px 13px 10px;display:flex;flex-direction:column;gap:7px">
+                    <div style="font-size:9px;color:var(--amber)">&#9888; GearX Q3 renewal due Jul 15</div>
+                    <div style="font-size:9px;color:var(--amber)">&#9888; TechBrand contract expires Jul 28</div>
+                    <div style="font-size:9px;color:var(--green)">&#10003; FitFuel payment received Jun 1</div>
+                  </div>
+                </div>
+                <div class="ds">
+                  <div class="ds-hdr"><span class="ds-title">PROJECTIONS</span></div>
+                  <div style="padding:8px 13px 10px">
+                    <div style="font-size:9px;color:var(--t3);margin-bottom:4px">Q3 2026 forecast</div>
+                    <div style="font-size:22px;font-weight:700;color:var(--t1);font-family:var(--mono)">&#163;21.3K</div>
+                    <div style="font-size:9px;color:var(--green)">If both renewals close &#8593;</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div><!-- /view-manager-economics -->
+
         </div><!-- /panel-manager -->
 
         <!-- ═══ SPONSOR ═══ -->
@@ -2085,7 +2714,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
             <div class="app-crumb">
               <span class="app-crumb-root">LEVL</span>
               <span class="app-crumb-sep">/</span>
-              <span class="app-crumb-current">Creator Discovery</span>
+              <span class="app-crumb-current" id="crumb-sponsor">Creator Discovery</span>
             </div>
             <div style="margin-left:auto;display:flex;align-items:center;gap:8px">
               <div style="font-size:10px;color:var(--green);font-family:var(--mono);background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.2);border-radius:5px;padding:3px 8px">Budget: &#163;12,400 remaining</div>
@@ -2094,6 +2723,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
             </div>
           </div>
 
+          <div class="pw-view active" id="view-sponsor-discover">
           <div class="sp-search-wrap">
             <div class="sp-search">
               <svg width="13" height="13" viewBox="0 0 16 16" fill="none" style="color:var(--t3);flex-shrink:0"><circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.5"/><path d="M10.5 10.5l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
@@ -2212,6 +2842,159 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
 
             </div><!-- /dash-side -->
           </div><!-- /dash-body -->
+          </div><!-- /view-sponsor-discover -->
+
+          <!-- ── SPONSOR: SHORTLIST ── -->
+          <div class="pw-view" id="view-sponsor-shortlist">
+            <div class="shortlist-layout">
+              <div class="shortlist-main">
+                <div style="display:flex;align-items:center;justify-content:space-between;padding:0 2px;flex-shrink:0">
+                  <div style="font-size:11px;color:var(--t2)"><strong style="color:var(--t1)">4 creators</strong> shortlisted for Q4 Gaming</div>
+                  <div style="font-size:9px;color:var(--amber);cursor:pointer">+ Add creator</div>
+                </div>
+                <div class="shortlist-card">
+                  <div class="shortlist-card-head">
+                    <div class="shortlist-card-av" style="background:linear-gradient(135deg,#F59E0B,#7C3AED)">J</div>
+                    <div><div class="shortlist-card-name">Jordan Kuznets</div><div class="shortlist-card-sub">@jordank &middot; Gaming &middot; UK &middot; L3</div></div>
+                    <div style="margin-left:auto;text-align:right"><div class="shortlist-card-match">96%</div><div class="shortlist-card-match-label">Campaign fit</div></div>
+                  </div>
+                  <div class="shortlist-stat-row">
+                    <div class="shortlist-stat"><div class="shortlist-stat-val">48.2K</div><div class="shortlist-stat-label">Subscribers</div></div>
+                    <div class="shortlist-stat"><div class="shortlist-stat-val">4.8%</div><div class="shortlist-stat-label">Engagement</div></div>
+                    <div class="shortlist-stat"><div class="shortlist-stat-val">82</div><div class="shortlist-stat-label">Trust</div></div>
+                    <div class="shortlist-stat"><div class="shortlist-stat-val">&#163;960</div><div class="shortlist-stat-label">Est. deal</div></div>
+                  </div>
+                  <div class="shortlist-card-footer">
+                    <div class="shortlist-btn primary">Propose deal</div>
+                    <div class="shortlist-btn secondary">View passport</div>
+                    <div class="shortlist-btn secondary">Remove</div>
+                  </div>
+                </div>
+                <div class="shortlist-card">
+                  <div class="shortlist-card-head">
+                    <div class="shortlist-card-av" style="background:linear-gradient(135deg,#7C3AED,#10B981)">A</div>
+                    <div><div class="shortlist-card-name">Aria Sato</div><div class="shortlist-card-sub">@arias &middot; Tech &middot; UK &middot; L4 Partner</div></div>
+                    <div style="margin-left:auto;text-align:right"><div class="shortlist-card-match">91%</div><div class="shortlist-card-match-label">Campaign fit</div></div>
+                  </div>
+                  <div class="shortlist-stat-row">
+                    <div class="shortlist-stat"><div class="shortlist-stat-val">82.4K</div><div class="shortlist-stat-label">Subscribers</div></div>
+                    <div class="shortlist-stat"><div class="shortlist-stat-val">6.1%</div><div class="shortlist-stat-label">Engagement</div></div>
+                    <div class="shortlist-stat"><div class="shortlist-stat-val">94</div><div class="shortlist-stat-label">Trust</div></div>
+                    <div class="shortlist-stat"><div class="shortlist-stat-val">&#163;1,800</div><div class="shortlist-stat-label">Est. deal</div></div>
+                  </div>
+                  <div class="shortlist-card-footer">
+                    <div class="shortlist-btn primary">Propose deal</div>
+                    <div class="shortlist-btn secondary">View passport</div>
+                    <div class="shortlist-btn secondary">Remove</div>
+                  </div>
+                </div>
+                <div class="shortlist-card">
+                  <div class="shortlist-card-head">
+                    <div class="shortlist-card-av" style="background:linear-gradient(135deg,#F43F5E,#7C3AED)">K</div>
+                    <div><div class="shortlist-card-name">Kai Mendez</div><div class="shortlist-card-sub">@kaimendez &middot; Gaming &middot; EU &middot; L3</div></div>
+                    <div style="margin-left:auto;text-align:right"><div class="shortlist-card-match">87%</div><div class="shortlist-card-match-label">Campaign fit</div></div>
+                  </div>
+                  <div class="shortlist-stat-row">
+                    <div class="shortlist-stat"><div class="shortlist-stat-val">31.8K</div><div class="shortlist-stat-label">Subscribers</div></div>
+                    <div class="shortlist-stat"><div class="shortlist-stat-val">5.3%</div><div class="shortlist-stat-label">Engagement</div></div>
+                    <div class="shortlist-stat"><div class="shortlist-stat-val">78</div><div class="shortlist-stat-label">Trust</div></div>
+                    <div class="shortlist-stat"><div class="shortlist-stat-val">&#163;650</div><div class="shortlist-stat-label">Est. deal</div></div>
+                  </div>
+                  <div class="shortlist-card-footer">
+                    <div class="shortlist-btn primary">Propose deal</div>
+                    <div class="shortlist-btn secondary">View passport</div>
+                    <div class="shortlist-btn secondary">Remove</div>
+                  </div>
+                </div>
+              </div>
+              <div class="shortlist-side">
+                <div class="ds">
+                  <div class="ds-hdr"><span class="ds-title">CAMPAIGN BRIEF</span></div>
+                  <div style="padding:8px 13px 10px;display:flex;flex-direction:column;gap:6px">
+                    <div style="font-size:9px;color:var(--t3)">Campaign name</div>
+                    <div style="background:rgba(255,255,255,.05);border:1px solid var(--border2);border-radius:5px;padding:6px 9px;font-size:10px;color:var(--t1)">Q4 Gaming Bundle</div>
+                    <div style="font-size:9px;color:var(--t3);margin-top:3px">Budget</div>
+                    <div style="background:rgba(255,255,255,.05);border:1px solid var(--border2);border-radius:5px;padding:6px 9px;font-size:10px;color:var(--amber);font-family:var(--mono)">&#163;4,200 allocated</div>
+                    <div style="font-size:9px;color:var(--t3);margin-top:3px">Deliverables</div>
+                    <div style="font-size:9px;color:var(--t2);line-height:1.6">2 dedicated YouTube videos, 2 Twitch live mentions, 1 TikTok short</div>
+                  </div>
+                </div>
+                <div class="ds">
+                  <div class="ds-hdr"><span class="ds-title">COMBINED REACH</span></div>
+                  <div style="padding:8px 13px 10px">
+                    <div style="font-size:28px;font-weight:700;color:var(--t1);font-family:var(--mono)">162K</div>
+                    <div style="font-size:9px;color:var(--t3);margin-bottom:8px">Estimated unique reach</div>
+                    <div style="font-size:9px;color:var(--t3)">Audience overlap: <span style="color:var(--t1)">9%</span></div>
+                    <div style="font-size:9px;color:var(--t3)">Avg trust score: <span style="color:var(--t1)">85</span></div>
+                  </div>
+                </div>
+                <div style="background:var(--amber);color:#000;border-radius:7px;padding:9px;font-size:10px;font-weight:700;text-align:center;cursor:pointer">Send proposals to all</div>
+              </div>
+            </div>
+          </div><!-- /view-sponsor-shortlist -->
+
+          <!-- ── SPONSOR: ACTIVE DEALS ── -->
+          <div class="pw-view" id="view-sponsor-deals">
+            <div class="deals-layout">
+              <div class="deals-main">
+                <div style="display:flex;align-items:center;justify-content:space-between;padding:0 2px;flex-shrink:0">
+                  <div style="font-size:11px;color:var(--t2)"><strong style="color:var(--t1)">3 active deals</strong> &middot; &#163;5,160 total monthly</div>
+                  <div style="font-size:9px;color:var(--t3)">Q2&ndash;Q4 2026</div>
+                </div>
+                <div class="deal-card">
+                  <div class="deal-card-head"><div class="deal-card-brand">Jordan Kuznets &mdash; GearX Q4</div><div class="deal-status-pill live">Live</div></div>
+                  <div class="deal-creator-row">YouTube + Twitch &middot; Gaming &middot; 2 deliverables remaining</div>
+                  <div class="deal-progress-label">Deliverable 2 of 4</div>
+                  <div class="deal-progress-bar"><div class="deal-progress-fill bar-animate" style="--w:50%;background:linear-gradient(90deg,var(--violet2),var(--amber))"></div></div>
+                  <div class="deal-meta-row"><span>Value: <span class="deal-meta-val">&#163;960/mo</span></span><span>Renewal: <span class="deal-meta-val">Aug 1</span></span><span>Next pmt: <span class="deal-meta-val">Jul 1</span></span></div>
+                </div>
+                <div class="deal-card">
+                  <div class="deal-card-head"><div class="deal-card-brand">Aria Sato &mdash; TechBrand Q3</div><div class="deal-status-pill review">In Review</div></div>
+                  <div class="deal-creator-row">YouTube &middot; Tech &middot; Final deliverable submitted</div>
+                  <div class="deal-progress-label">Deliverable 4 of 4 &mdash; awaiting approval</div>
+                  <div class="deal-progress-bar"><div class="deal-progress-fill bar-animate" style="--w:90%;background:linear-gradient(90deg,#10B981,var(--amber))"></div></div>
+                  <div class="deal-meta-row"><span>Value: <span class="deal-meta-val">&#163;1,800/mo</span></span><span>Review by: <span class="deal-meta-val">Jul 2</span></span><span>Final pmt: <span class="deal-meta-val">Jul 5</span></span></div>
+                </div>
+                <div class="deal-card">
+                  <div class="deal-card-head"><div class="deal-card-brand">Maya Liu &mdash; FitFuel Gaming</div><div class="deal-status-pill pending">Pending start</div></div>
+                  <div class="deal-creator-row">TikTok + Instagram &middot; Lifestyle &middot; Awaiting first deliverable</div>
+                  <div class="deal-progress-label">Starting Jul 1</div>
+                  <div class="deal-progress-bar"><div class="deal-progress-fill" style="width:5%;background:var(--violet2)"></div></div>
+                  <div class="deal-meta-row"><span>Value: <span class="deal-meta-val">&#163;2,400/mo</span></span><span>Start: <span class="deal-meta-val">Jul 1</span></span><span>Contract: <span class="deal-meta-val" style="color:#10B981">Signed &#10003;</span></span></div>
+                </div>
+              </div>
+              <div class="deals-side">
+                <div class="ds">
+                  <div class="ds-hdr"><span class="ds-title">SPEND SUMMARY</span></div>
+                  <div style="padding:8px 13px 10px">
+                    <div style="font-size:22px;font-weight:700;color:var(--t1);font-family:var(--mono)">&#163;12,400</div>
+                    <div style="font-size:9px;color:var(--t3);margin-bottom:8px">Budget allocated (Q3)</div>
+                    <div style="height:4px;background:rgba(255,255,255,.05);border-radius:2px;overflow:hidden;margin-bottom:5px"><div style="height:100%;width:42%;background:linear-gradient(90deg,var(--violet),var(--amber));border-radius:2px"></div></div>
+                    <div style="display:flex;justify-content:space-between;font-size:9px;color:var(--t3)"><span>Spent: &#163;5,160</span><span>Remaining: &#163;7,240</span></div>
+                  </div>
+                </div>
+                <div class="ds">
+                  <div class="ds-hdr"><span class="ds-title">UPCOMING</span></div>
+                  <div style="padding:8px 13px 10px;display:flex;flex-direction:column;gap:7px;font-size:9px">
+                    <div style="color:var(--t2)">Jul 1 &mdash; FitFuel launch</div>
+                    <div style="color:var(--amber)">Jul 2 &mdash; TechBrand approval due</div>
+                    <div style="color:var(--t2)">Jul 5 &mdash; TechBrand final payment</div>
+                    <div style="color:var(--t2)">Aug 1 &mdash; GearX renewal window</div>
+                  </div>
+                </div>
+                <div class="ds">
+                  <div class="ds-hdr"><span class="ds-title">DELIVERABLES</span></div>
+                  <div style="padding:8px 13px 10px;display:flex;flex-direction:column;gap:5px;font-size:9px">
+                    <div style="display:flex;justify-content:space-between"><span style="color:var(--t3)">Completed</span><span style="color:#10B981;font-weight:600">7 &#10003;</span></div>
+                    <div style="display:flex;justify-content:space-between"><span style="color:var(--t3)">Pending review</span><span style="color:var(--amber);font-weight:600">1</span></div>
+                    <div style="display:flex;justify-content:space-between"><span style="color:var(--t3)">Upcoming</span><span style="color:var(--t1)">4</span></div>
+                    <div style="display:flex;justify-content:space-between"><span style="color:var(--t3)">Disputes</span><span style="color:#10B981">0 &#10003;</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div><!-- /view-sponsor-deals -->
+
         </div><!-- /panel-sponsor -->
 
       </div><!-- /pw-main -->
@@ -2727,6 +3510,33 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
 
 
 // ── PRODUCT WINDOW TABS ──
+var VIEW_CRUMBS = {
+  creator: { dashboard:'Dashboard', passport:'My Passport', opportunities:'Opportunities', platforms:'Platform Connections' },
+  manager: { roster:'Roster', pipeline:'Deals & Pipeline', pitchpacks:'Pitch Packs', economics:'Economics' },
+  sponsor: { discover:'Creator Discovery', shortlist:'Shortlist', deals:'Active Deals' }
+};
+var PANEL_DEFAULTS = { creator:'dashboard', manager:'roster', sponsor:'discover' };
+
+function _setView(panelId, viewId) {
+  var panel = document.getElementById('panel-' + panelId);
+  if (!panel) return;
+  panel.querySelectorAll('.pw-view').forEach(function(v) { v.classList.remove('active'); });
+  var view = document.getElementById('view-' + panelId + '-' + viewId);
+  if (view) { view.classList.add('active'); triggerBarsIn(view); }
+  var crumb = document.getElementById('crumb-' + panelId);
+  if (crumb && VIEW_CRUMBS[panelId]) crumb.textContent = VIEW_CRUMBS[panelId][viewId] || viewId;
+  var sb = document.getElementById('sb-' + panelId);
+  if (sb) {
+    sb.querySelectorAll('.pw-nav-item[data-subview]').forEach(function(el) { el.classList.remove('active'); });
+    var active = sb.querySelector('.pw-nav-item[data-subview="' + viewId + '"]');
+    if (active) active.classList.add('active');
+  }
+}
+
+function switchView(panelId, viewId, btn) {
+  _setView(panelId, viewId);
+}
+
 function switchMainTab(id, btn) {
   document.querySelectorAll('.pw-panel').forEach(function(el) { el.classList.remove('active'); });
   document.querySelectorAll('.pw-tab, .pw-nav-item[data-view]').forEach(function(el) { el.classList.remove('active'); });
@@ -2736,7 +3546,7 @@ function switchMainTab(id, btn) {
   var sb = document.getElementById('sb-' + id);
   if (sb) sb.classList.add('active');
   btn.classList.add('active');
-  triggerBarsIn(document.getElementById('panel-' + id));
+  _setView(id, PANEL_DEFAULTS[id] || 'dashboard');
 }
 
 function switchMgrTab(id, btn) {
