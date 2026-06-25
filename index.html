@@ -1168,6 +1168,38 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
 .verif-item-label { font-size: 10px; font-weight: 600; color: var(--t1); margin-bottom: 1px; }
 .verif-item-detail { font-size: 9px; color: var(--t3); line-height: 1.5; }
 
+
+/* ── MOBILE SUB-NAV (shown ≤620px, hidden on desktop) ── */
+.mob-subnav { display: none; overflow-x: auto; scrollbar-width: none; border-bottom: 1px solid var(--border2); background: rgba(0,0,0,.3); flex-shrink: 0; white-space: nowrap; }
+.mob-subnav::-webkit-scrollbar { display: none; }
+.mob-subnav-btn { flex-shrink: 0; padding: 8px 13px; font-size: 11px; color: var(--t3); border: none; background: none; cursor: pointer; border-bottom: 2px solid transparent; transition: color .15s, border-color .15s; font-family: inherit; white-space: nowrap; }
+.mob-subnav-btn.active { color: var(--amber); border-bottom-color: var(--amber); }
+
+/* ── MOBILE PLATFORM PREVIEW OVERRIDES ── */
+@media (max-width: 620px) {
+  .mob-subnav { display: flex; }
+  .pw-view.active { overflow-y: auto; }
+  .passport-layout, .opp-layout, .pitch-layout, .econ-layout,
+  .shortlist-layout, .deals-layout, .rep-wrap, .profile-layout { grid-template-columns: 1fr !important; }
+  .passport-side, .opp-side, .pitch-preview, .econ-side,
+  .shortlist-side, .deals-side, .rep-side, .profile-side { display: none !important; }
+  .passport-main, .opp-list, .pitch-builder, .econ-main,
+  .shortlist-main, .deals-main, .rep-timeline, .profile-main,
+  .camp-list, .plat-grid { overflow-y: visible; min-height: 0; }
+  .passport-verif-grid { grid-template-columns: 1fr; }
+  .profile-stat-strip { grid-template-columns: repeat(2,1fr); }
+  .plat-mini-grid { grid-template-columns: 1fr; }
+  .app-search-hint { display: none; }
+  .kanban-col { flex: 0 0 155px; }
+  .econ-kpi-row { flex-wrap: wrap; }
+  .econ-kpi { min-width: calc(50% - 4px); }
+  .mgr-stats-bar { grid-template-columns: repeat(2,1fr); }
+  .res-actions { display: none; }
+  .opp-deadline { display: none; }
+  .verif-wrap { overflow-y: visible; }
+  .camp-list { min-height: auto; }
+}
+
 /* ── QUICK HOW IT WORKS STRIP ── */
 .qhiw { padding: 26px 0; border-top: 1px solid var(--border2); border-bottom: 1px solid var(--border2); background: rgba(245,158,11,0.014); }
 .qhiw-steps { display: flex; align-items: flex-start; gap: 6px; }
@@ -1950,6 +1982,14 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
             </div>
           </div>
 
+          <div class="mob-subnav" id="mob-subnav-creator">
+            <button class="mob-subnav-btn active" data-subview="dashboard" onclick="switchView('creator','dashboard',this)">Dashboard</button>
+            <button class="mob-subnav-btn" data-subview="passport" onclick="switchView('creator','passport',this)">Passport</button>
+            <button class="mob-subnav-btn" data-subview="history" onclick="switchView('creator','history',this)">History</button>
+            <button class="mob-subnav-btn" data-subview="opportunities" onclick="switchView('creator','opportunities',this)">Opps</button>
+            <button class="mob-subnav-btn" data-subview="reputation" onclick="switchView('creator','reputation',this)">Reputation</button>
+            <button class="mob-subnav-btn" data-subview="platforms" onclick="switchView('creator','platforms',this)">Platforms</button>
+          </div>
           <div class="pw-view active" id="view-creator-dashboard">
           <div class="dash-body">
             <div class="dash-main">
@@ -2713,6 +2753,12 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
             </div>
           </div>
 
+          <div class="mob-subnav" id="mob-subnav-manager">
+            <button class="mob-subnav-btn active" data-subview="roster" onclick="switchView('manager','roster',this)">Roster</button>
+            <button class="mob-subnav-btn" data-subview="pipeline" onclick="switchView('manager','pipeline',this)">Pipeline</button>
+            <button class="mob-subnav-btn" data-subview="pitchpacks" onclick="switchView('manager','pitchpacks',this)">Pitch Packs</button>
+            <button class="mob-subnav-btn" data-subview="economics" onclick="switchView('manager','economics',this)">Economics</button>
+          </div>
           <div class="pw-view active" id="view-manager-roster">
           <div class="dash-body wide">
             <div class="dash-main">
@@ -3064,6 +3110,13 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
             </div>
           </div>
 
+          <div class="mob-subnav" id="mob-subnav-sponsor">
+            <button class="mob-subnav-btn active" data-subview="discover" onclick="switchView('sponsor','discover',this)">Discover</button>
+            <button class="mob-subnav-btn" data-subview="profile" onclick="switchView('sponsor','profile',this)">Profiles</button>
+            <button class="mob-subnav-btn" data-subview="shortlist" onclick="switchView('sponsor','shortlist',this)">Shortlist</button>
+            <button class="mob-subnav-btn" data-subview="deals" onclick="switchView('sponsor','deals',this)">Deals</button>
+            <button class="mob-subnav-btn" data-subview="verification" onclick="switchView('sponsor','verification',this)">Verify</button>
+          </div>
           <div class="pw-view active" id="view-sponsor-discover">
           <div class="sp-search-wrap">
             <div class="sp-search">
@@ -4100,6 +4153,12 @@ function _setView(panelId, viewId) {
     var active = sb.querySelector('.pw-nav-item[data-subview="' + viewId + '"]');
     if (active) active.classList.add('active');
   }
+  var mobNav = document.getElementById('mob-subnav-' + panelId);
+  if (mobNav) {
+    mobNav.querySelectorAll('.mob-subnav-btn').forEach(function(el) { el.classList.remove('active'); });
+    var mobActive = mobNav.querySelector('[data-subview="' + viewId + '"]');
+    if (mobActive) mobActive.classList.add('active');
+  }
 }
 
 function switchView(panelId, viewId, btn) {
@@ -4115,6 +4174,8 @@ function switchMainTab(id, btn) {
   var sb = document.getElementById('sb-' + id);
   if (sb) sb.classList.add('active');
   btn.classList.add('active');
+  // Reset all mob-subnavs; _setView will re-activate the correct one
+  document.querySelectorAll('.mob-subnav-btn').forEach(function(el) { el.classList.remove('active'); });
   _setView(id, PANEL_DEFAULTS[id] || 'dashboard');
 }
 
