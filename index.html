@@ -151,7 +151,7 @@ nav {
 @keyframes tickerScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
 /* ─── PRODUCT WINDOW ─── */
-.pw { position: relative; z-index: 1; width: 100%; max-width: 1000px; margin: 0 auto 64px; padding: 0 16px; }
+.pw { position: relative; z-index: 1; width: 100%; max-width: 1120px; margin: 0 auto 64px; padding: 0 16px; }
 .pw-frame {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -616,6 +616,200 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
 .pipeline-footer { display: flex; align-items: center; justify-content: space-between; background: rgba(16,185,129,0.05); border: 1px solid rgba(16,185,129,0.15); border-radius: var(--r2); padding: 9px 12px; margin-top: 10px; }
 .pipeline-footer-lbl { font-size: 10px; color: var(--t3); }
 .pipeline-footer-val { font-family: var(--mono); font-size: 14px; color: var(--green); font-weight: 500; }
+
+/* ── SIDEBAR STATES ── */
+.pw-sb-state { display: none; flex-direction: column; flex: 1; min-height: 0; }
+.pw-sb-state.active { display: flex; }
+
+/* ── PANEL LAYOUT (main + aside) ── */
+.panel-layout { display: grid; grid-template-columns: 1fr 264px; }
+.panel-main { padding: 18px; overflow-y: auto; max-height: 560px; border-right: 1px solid var(--border2); }
+.panel-aside { padding: 13px 12px; overflow-y: auto; max-height: 560px; }
+.panel-full { padding: 18px; overflow-y: auto; max-height: 560px; }
+@media (max-width: 860px) { .panel-layout { grid-template-columns: 1fr; } .panel-aside { display: none; } }
+@media (max-width: 620px) { .panel-main, .panel-full { max-height: none; } }
+
+/* ── CREATOR HERO BANNER ── */
+.c-hero { background: linear-gradient(135deg,rgba(245,158,11,.08),rgba(245,158,11,.02)); border: 1px solid rgba(245,158,11,.2); border-radius: var(--r2); padding: 14px 16px; margin-bottom: 14px; display: flex; gap: 12px; }
+.c-hero-title { font-size: 17px; font-weight: 700; color: var(--t1); margin-bottom: 5px; line-height: 1.25; }
+.c-hero-sub { font-size: 11px; color: var(--t2); line-height: 1.55; margin-bottom: 10px; }
+.c-hero-chip { display: inline-flex; align-items: center; gap: 7px; background: rgba(245,158,11,.1); border: 1px solid rgba(245,158,11,.26); border-radius: 5px; padding: 4px 10px; font-size: 10px; font-weight: 600; color: var(--amber); }
+
+/* ── LEVEL SECTION ── */
+.c-level-section { display: grid; grid-template-columns: auto 1fr auto; gap: 16px; align-items: start; background: var(--surface2); border: 1px solid var(--border2); border-radius: var(--r2); padding: 16px; margin-bottom: 12px; }
+.c-level-num { font-family: var(--display); font-size: 52px; font-weight: 400; color: var(--amber); line-height: 1; }
+.c-level-eyebrow { font-size: 10px; font-weight: 700; color: var(--t3); letter-spacing: .08em; text-transform: uppercase; margin-bottom: 5px; }
+.c-level-badge { display: inline-block; background: rgba(16,185,129,.1); border: 1px solid rgba(16,185,129,.24); color: var(--green); font-size: 9px; font-weight: 700; padding: 2px 7px; border-radius: 4px; letter-spacing: .04em; margin-bottom: 8px; }
+.c-level-desc { font-size: 11px; color: var(--t2); line-height: 1.55; }
+.c-level-unlock { font-size: 10px; color: var(--t3); margin-top: 8px; }
+.c-level-pct { font-family: var(--mono); font-size: 26px; font-weight: 600; color: var(--amber); text-align: right; }
+.c-level-pct-lbl { font-size: 9px; color: var(--t3); text-align: right; }
+
+/* ── PROGRESS ROAD ── */
+.prog-road { display: flex; align-items: center; background: var(--surface2); border: 1px solid var(--border2); border-radius: var(--r2); padding: 10px 14px; margin-bottom: 14px; overflow-x: auto; scrollbar-width: none; }
+.prog-road::-webkit-scrollbar { display: none; }
+.prog-step { display: flex; flex-direction: column; align-items: center; flex: 1; min-width: 52px; position: relative; }
+.prog-step + .prog-step::before { content:''; position:absolute; top:14px; left:-50%; right:50%; height:2px; background:var(--border2); z-index:0; }
+.prog-step.done + .prog-step::before { background: var(--green); }
+.prog-step.curr + .prog-step::before { background: linear-gradient(90deg,var(--amber),var(--border2)); }
+.prog-node { width:28px; height:28px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; z-index:1; position:relative; margin-bottom:5px; }
+.prog-step.done .prog-node { background: var(--green); color: #000; }
+.prog-step.curr .prog-node { background: var(--amber); color: #000; box-shadow: 0 0 14px rgba(245,158,11,.45); }
+.prog-step:not(.done):not(.curr) .prog-node { background: var(--surface); border: 2px solid var(--border2); color: var(--t3); }
+.prog-label { font-size: 9px; color: var(--t3); text-align: center; }
+.prog-step.done .prog-label { color: var(--green); }
+.prog-step.curr .prog-label { color: var(--amber); font-weight: 600; }
+
+/* ── THIS WEEK STATS ── */
+.this-week { display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; margin-bottom: 12px; }
+.tw-stat { background: var(--surface); border: 1px solid var(--border2); border-radius: var(--r2); padding: 11px 10px; text-align: center; transition: border-color .18s; }
+.tw-stat:hover { border-color: var(--border); }
+.tw-icon { font-size: 14px; margin-bottom: 3px; }
+.tw-val { font-family: var(--mono); font-size: 18px; font-weight: 600; color: var(--t1); }
+.tw-lbl { font-size: 9px; color: var(--t3); margin-top: 2px; text-transform: uppercase; letter-spacing: .04em; }
+@media (max-width: 600px) { .this-week { grid-template-columns: 1fr 1fr; } }
+
+/* ── XP STRIP ── */
+.xp-strip { display: flex; align-items: center; justify-content: space-between; background: rgba(124,58,237,.08); border: 1px solid rgba(124,58,237,.2); border-radius: var(--r2); padding: 9px 13px; margin-bottom: 12px; }
+.xp-strip-val { font-family: var(--mono); font-size: 15px; font-weight: 600; color: var(--violet2); }
+.xp-strip-delta { font-size: 10px; color: var(--green); }
+
+/* ── TODAY'S ACTIONS ── */
+.today-actions-hdr { font-size: 10px; font-weight: 700; color: var(--t3); text-transform: uppercase; letter-spacing: .07em; margin-bottom: 10px; }
+.action-item { display: flex; align-items: flex-start; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--border2); }
+.action-item:last-child { border-bottom: none; padding-bottom: 0; }
+.action-check { width: 16px; height: 16px; border-radius: 4px; border: 1.5px solid var(--border2); flex-shrink: 0; margin-top: 1px; }
+.action-title { font-size: 12px; font-weight: 500; color: var(--t1); margin-bottom: 3px; }
+.action-why { font-size: 10px; color: var(--t3); line-height: 1.4; margin-bottom: 5px; }
+.action-tag { font-size: 9px; padding: 2px 6px; border-radius: 4px; font-weight: 600; }
+.action-tag.easy { background: rgba(16,185,129,.1); border: 1px solid rgba(16,185,129,.2); color: var(--green); }
+.action-tag.med { background: rgba(245,158,11,.1); border: 1px solid rgba(245,158,11,.2); color: var(--amber); }
+.action-xp { font-size: 10px; color: var(--violet2); font-family: var(--mono); font-weight: 600; flex-shrink: 0; background: rgba(124,58,237,.1); border: 1px solid rgba(124,58,237,.2); padding: 3px 7px; border-radius: 4px; white-space: nowrap; }
+
+/* ── ASIDE: REP RATING ── */
+.aside-rep-box { background: linear-gradient(135deg,rgba(245,158,11,.07),rgba(124,58,237,.04)); border: 1px solid rgba(245,158,11,.18); border-radius: var(--r2); padding: 13px; margin-bottom: 9px; }
+.aside-rep-num { font-family: var(--mono); font-size: 34px; font-weight: 500; color: var(--amber); line-height: 1; }
+.aside-rep-label { font-size: 9px; font-weight: 700; color: var(--t3); text-transform: uppercase; letter-spacing: .07em; margin-bottom: 2px; }
+.rep-comp { display: flex; align-items: center; gap: 7px; margin-bottom: 5px; }
+.rep-comp-name { font-size: 9px; color: var(--t3); width: 90px; flex-shrink: 0; }
+.rep-comp-bg { flex: 1; height: 3px; background: rgba(255,255,255,.05); border-radius: 2px; overflow: hidden; }
+.rep-comp-fill { height: 100%; border-radius: 2px; }
+.rep-comp-val { font-size: 9px; font-family: var(--mono); color: var(--t2); width: 22px; text-align: right; flex-shrink: 0; }
+
+/* ── TRUST BADGES ── */
+.trust-badges { display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 9px; }
+.tb { font-size: 9px; font-weight: 700; padding: 3px 8px; border-radius: 4px; }
+.tb.v { background: rgba(16,185,129,.1); border: 1px solid rgba(16,185,129,.22); color: var(--green); }
+.tb.c { background: rgba(245,158,11,.1); border: 1px solid rgba(245,158,11,.2); color: var(--amber); }
+.tb.t { background: rgba(124,58,237,.1); border: 1px solid rgba(124,58,237,.2); color: var(--violet2); }
+
+/* ── ASIDE LABELS + OPPS ── */
+.aside-lbl { font-size: 9px; font-weight: 700; color: var(--t3); text-transform: uppercase; letter-spacing: .07em; margin-bottom: 7px; }
+.aside-opp-row { display: flex; align-items: center; gap: 8px; padding: 7px 0; border-bottom: 1px solid var(--border2); }
+.aside-opp-row:last-child { border-bottom: none; }
+.aside-opp-logo { width: 24px; height: 24px; border-radius: 5px; display: flex; align-items: center; justify-content: center; font-size: 8px; font-weight: 700; flex-shrink: 0; }
+.aside-opp-name { flex: 1; font-size: 11px; color: var(--t2); }
+.aside-opp-match { font-size: 11px; font-family: var(--mono); color: var(--green); font-weight: 600; }
+
+/* ── MANAGER: KPI GRID ── */
+.kpi-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; margin-bottom: 14px; }
+@media (max-width: 680px) { .kpi-grid { grid-template-columns: repeat(2,1fr); } }
+.kpi-card { background: var(--surface2); border: 1px solid var(--border2); border-radius: var(--r2); padding: 14px 12px; }
+.kpi-val { font-family: var(--mono); font-size: 22px; font-weight: 600; margin-bottom: 4px; }
+.kpi-lbl { font-size: 9px; color: var(--t3); text-transform: uppercase; letter-spacing: .05em; }
+
+/* ── MANAGER: INNER TABS ── */
+.mgr-inner-tabs { display: flex; gap: 4px; margin-bottom: 14px; background: rgba(0,0,0,.3); border: 1px solid var(--border2); border-radius: var(--r2); padding: 4px; width: fit-content; overflow-x: auto; scrollbar-width: none; }
+.mgr-inner-tabs::-webkit-scrollbar { display: none; }
+.mgr-tab { padding: 6px 12px; border-radius: 6px; font-size: 11px; font-weight: 500; color: var(--t3); cursor: pointer; border: 1px solid transparent; background: transparent; white-space: nowrap; transition: all .15s; }
+.mgr-tab.active { background: rgba(245,158,11,.1); color: var(--amber); border-color: rgba(245,158,11,.22); }
+.mgr-tab:hover:not(.active) { color: var(--t2); }
+.mgr-screen { display: none; }
+.mgr-screen.active { display: block; }
+
+/* ── MANAGER: ROSTER TABLE ── */
+.mgr-roster-card { background: var(--surface2); border: 1px solid var(--border2); border-radius: var(--r2); overflow: hidden; }
+.mgr-roster-hdr { display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; border-bottom: 1px solid var(--border2); }
+.mgr-roster-title { font-size: 10px; font-weight: 700; color: var(--t3); text-transform: uppercase; letter-spacing: .08em; }
+.mgr-creator-row { display: flex; align-items: center; gap: 10px; padding: 11px 14px; border-bottom: 1px solid var(--border2); transition: background .15s; }
+.mgr-creator-row:last-child { border-bottom: none; }
+.mgr-creator-row:hover { background: rgba(255,255,255,.02); }
+.mgr-av { width: 32px; height: 32px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; background: var(--surface); }
+.mgr-cr-name { font-size: 12px; font-weight: 600; color: var(--t1); display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.mgr-cr-meta { font-size: 10px; color: var(--t3); margin-top: 1px; }
+.mgr-level-badge { font-size: 9px; font-weight: 700; padding: 2px 6px; border-radius: 3px; }
+.mgr-level-badge.l4 { background: rgba(16,185,129,.1); border: 1px solid rgba(16,185,129,.22); color: var(--green); }
+.mgr-level-badge.l3 { background: rgba(245,158,11,.1); border: 1px solid rgba(245,158,11,.2); color: var(--amber); }
+.mgr-level-badge.l2 { background: rgba(245,243,238,.05); border: 1px solid var(--border2); color: var(--t3); }
+.mgr-leveled { font-size: 8px; background: rgba(16,185,129,.08); border: 1px solid rgba(16,185,129,.18); color: var(--green); padding: 1px 5px; border-radius: 3px; }
+.mgr-score { font-family: var(--mono); font-size: 13px; font-weight: 600; text-align: right; flex-shrink: 0; min-width: 40px; }
+.mgr-streak { font-size: 10px; color: var(--t3); text-align: right; margin-top: 1px; }
+.mgr-active-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+.mgr-more { padding: 9px 14px; font-size: 10px; color: var(--t3); }
+
+/* ── MANAGER: ASIDE ── */
+.aside-health-row { display: flex; align-items: center; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid var(--border2); }
+.aside-health-row:last-child { border-bottom: none; }
+.aside-health-lbl { font-size: 10px; color: var(--t3); }
+.aside-health-val { font-size: 11px; font-family: var(--mono); font-weight: 500; color: var(--t1); }
+.aside-health-val.g { color: var(--green); }
+.aside-earn-val { font-family: var(--mono); font-size: 24px; font-weight: 600; color: var(--green); }
+.aside-earn-sub { font-size: 10px; color: var(--t3); line-height: 1.4; margin-top: 3px; }
+.aside-alert { display: flex; align-items: flex-start; gap: 7px; padding: 7px 0; border-bottom: 1px solid var(--border2); }
+.aside-alert:last-child { border-bottom: none; padding-bottom: 0; }
+.aside-alert-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--amber); flex-shrink: 0; margin-top: 4px; }
+.aside-alert-text { font-size: 10px; color: var(--t2); line-height: 1.4; }
+
+/* ── SPONSOR: NETWORK BANNER ── */
+.sp-network-banner { background: linear-gradient(135deg,rgba(124,58,237,.08),rgba(124,58,237,.02)); border: 1px solid rgba(124,58,237,.22); border-radius: var(--r2); padding: 14px 16px; margin-bottom: 14px; }
+.sp-network-eyebrow { font-size: 9px; font-weight: 700; color: var(--violet2); text-transform: uppercase; letter-spacing: .07em; margin-bottom: 5px; }
+.sp-network-title { font-size: 14px; font-weight: 700; color: var(--violet2); margin-bottom: 6px; }
+.sp-network-sub { font-size: 11px; color: var(--t2); line-height: 1.55; margin-bottom: 10px; }
+.sp-pillars { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.sp-pillar { display: flex; gap: 8px; }
+.sp-pillar-icon { font-size: 13px; flex-shrink: 0; margin-top: 1px; }
+.sp-pillar-title { font-size: 11px; font-weight: 600; color: var(--t1); margin-bottom: 2px; }
+.sp-pillar-desc { font-size: 10px; color: var(--t3); line-height: 1.4; }
+
+/* ── SPONSOR: KPI STRIP ── */
+.sp-kpi-strip { display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; margin-bottom: 14px; }
+@media (max-width: 620px) { .sp-kpi-strip { grid-template-columns: repeat(2,1fr); } }
+.sp-kpi { background: var(--surface2); border: 1px solid var(--border2); border-radius: var(--r2); padding: 12px; }
+.sp-kpi-val { font-family: var(--mono); font-size: 20px; font-weight: 600; color: var(--t1); }
+.sp-kpi-lbl { font-size: 9px; color: var(--t3); text-transform: uppercase; letter-spacing: .04em; margin-top: 2px; }
+.sp-kpi-d { font-size: 9px; margin-top: 2px; }
+
+/* ── SPONSOR: CREATOR CARDS ── */
+.cr-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+@media (max-width: 600px) { .cr-grid { grid-template-columns: 1fr; } }
+.cr-card { background: var(--surface2); border: 1px solid var(--border2); border-radius: var(--r2); padding: 14px; transition: border-color .18s; }
+.cr-card:hover { border-color: rgba(245,158,11,.2); }
+.cr-top { display: flex; align-items: center; gap: 10px; margin-bottom: 9px; }
+.cr-av { width: 36px; height: 36px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; }
+.cr-name { font-size: 13px; font-weight: 700; color: var(--t1); }
+.cr-meta { font-size: 10px; color: var(--t3); }
+.cr-role-badge { font-size: 9px; font-weight: 700; padding: 3px 7px; border-radius: 4px; flex-shrink: 0; }
+.cr-role-badge.creator { background: rgba(245,158,11,.12); border: 1px solid rgba(245,158,11,.26); color: var(--amber); }
+.cr-role-badge.elite { background: rgba(16,185,129,.12); border: 1px solid rgba(16,185,129,.26); color: var(--green); }
+.cr-role-badge.partner { background: rgba(124,58,237,.12); border: 1px solid rgba(124,58,237,.26); color: var(--violet2); }
+.cr-role-badge.builder { background: rgba(245,243,238,.05); border: 1px solid var(--border2); color: var(--t3); }
+.cr-score-row { display: flex; align-items: center; justify-content: space-between; font-size: 10px; color: var(--t3); margin-bottom: 4px; }
+.cr-sbar { height: 3px; background: rgba(255,255,255,.05); border-radius: 2px; overflow: hidden; margin-bottom: 8px; }
+.cr-sfill { height: 100%; border-radius: 2px; }
+.cr-stat-row { display: flex; align-items: center; justify-content: space-between; font-size: 10px; color: var(--t3); margin-bottom: 3px; }
+.cr-tags { display: flex; gap: 4px; flex-wrap: wrap; margin: 7px 0; }
+.cr-tag { font-size: 9px; padding: 2px 6px; border-radius: 3px; font-weight: 600; }
+.cr-tag.v { background: rgba(16,185,129,.1); border: 1px solid rgba(16,185,129,.2); color: var(--green); }
+.cr-tag.c { background: rgba(245,158,11,.1); border: 1px solid rgba(245,158,11,.2); color: var(--amber); }
+.cr-tag.t { background: rgba(124,58,237,.1); border: 1px solid rgba(124,58,237,.2); color: var(--violet2); }
+.cr-tag.sr { background: rgba(99,102,241,.1); border: 1px solid rgba(99,102,241,.2); color: #818CF8; }
+.cr-tag.hp { background: rgba(245,243,238,.05); border: 1px solid var(--border2); color: var(--t3); }
+.cr-ready { display: flex; align-items: flex-start; gap: 6px; font-size: 10px; line-height: 1.4; padding: 7px 9px; border-radius: 5px; margin-bottom: 10px; }
+.cr-ready.h { background: rgba(16,185,129,.05); border: 1px solid rgba(16,185,129,.15); color: var(--t2); }
+.cr-ready.b { background: rgba(245,243,238,.03); border: 1px solid var(--border2); color: var(--t3); }
+.cr-btns { display: flex; gap: 7px; }
+.cr-btn-p { flex: 1; background: var(--amber); color: #000; font-size: 11px; font-weight: 700; padding: 7px; border-radius: 5px; border: none; cursor: pointer; }
+.cr-btn-g { flex: 1; background: transparent; border: 1px solid var(--border2); color: var(--t2); font-size: 11px; font-weight: 500; padding: 7px; border-radius: 5px; cursor: pointer; }
 
 @media (max-width: 500px) {
   .network-sec { padding: 52px 0; }
@@ -1246,46 +1440,115 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
 
       <!-- ── LEFT SIDEBAR ── -->
       <div class="pw-sidebar">
-        <div class="pw-sb-user">
-          <div class="pw-sb-av">J</div>
-          <div>
-            <div class="pw-sb-name">Jordan K.</div>
-            <div class="pw-sb-role">Creator · L3</div>
+
+        <!-- Creator sidebar state -->
+        <div class="pw-sb-state active" id="sb-creator">
+          <div class="pw-sb-user">
+            <div class="pw-sb-av">J</div>
+            <div>
+              <div class="pw-sb-name">Jordan K.</div>
+              <div class="pw-sb-role">Creator &middot; L3</div>
+            </div>
+          </div>
+          <div class="pw-sb-section-label">Workspace</div>
+          <div class="pw-nav-item active" data-view="creator" onclick="switchMainTab('creator',this)">
+            <svg class="pw-nav-icon" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="5.5" height="5.5" rx="1.5" stroke="currentColor" stroke-width="1.3"/><rect x="8.5" y="2" width="5.5" height="5.5" rx="1.5" stroke="currentColor" stroke-width="1.3"/><rect x="2" y="8.5" width="5.5" height="5.5" rx="1.5" stroke="currentColor" stroke-width="1.3"/><rect x="8.5" y="8.5" width="5.5" height="5.5" rx="1.5" stroke="currentColor" stroke-width="1.3"/></svg>
+            Dashboard
+          </div>
+          <div class="pw-nav-item" style="opacity:.42;cursor:default">
+            <svg class="pw-nav-icon" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="6" r="2.8" stroke="currentColor" stroke-width="1.3"/><path d="M3 14c0-2.76 2.24-5 5-5s5 2.24 5 5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+            My Passport
+          </div>
+          <div class="pw-nav-item" style="opacity:.42;cursor:default">
+            <svg class="pw-nav-icon" viewBox="0 0 16 16" fill="none"><path d="M8 2l1.4 3.2 3.6.5-2.6 2.5.6 3.5L8 10.2 4.9 11.7l.6-3.5L3 5.7l3.6-.5L8 2z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
+            Opportunities
+          </div>
+          <div class="pw-sb-divider"></div>
+          <div class="pw-sb-section-label">Switch view</div>
+          <div class="pw-nav-item" data-view="manager" onclick="switchMainTab('manager',this)">
+            <svg class="pw-nav-icon" viewBox="0 0 16 16" fill="none"><circle cx="5.5" cy="5" r="2.2" stroke="currentColor" stroke-width="1.3"/><path d="M2 13c0-1.9 1.6-3.5 3.5-3.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><circle cx="11" cy="5" r="2.2" stroke="currentColor" stroke-width="1.3"/><path d="M8 13c0-1.9 1.6-3.5 3.5-3.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+            Manager view
+          </div>
+          <div class="pw-nav-item" data-view="sponsor" onclick="switchMainTab('sponsor',this)">
+            <svg class="pw-nav-icon" viewBox="0 0 16 16" fill="none"><path d="M8 2l1.4 3.2 3.6.5-2.6 2.5.6 3.5L8 10.2 4.9 11.7l.6-3.5L3 5.7l3.6-.5L8 2z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
+            Sponsor view
           </div>
         </div>
 
-        <div class="pw-sb-section-label">Workspace</div>
+        <!-- Manager sidebar state -->
+        <div class="pw-sb-state" id="sb-manager">
+          <div class="pw-sb-user">
+            <div class="pw-sb-av" style="background:linear-gradient(135deg,#10B981,#7C3AED)">S</div>
+            <div>
+              <div class="pw-sb-name">Sam Rivera</div>
+              <div class="pw-sb-role">Manager &middot; 9 creators</div>
+            </div>
+          </div>
+          <div class="pw-sb-section-label">Workspace</div>
+          <div class="pw-nav-item active" data-view="manager" onclick="switchMainTab('manager',this)">
+            <svg class="pw-nav-icon" viewBox="0 0 16 16" fill="none"><circle cx="5.5" cy="5" r="2.2" stroke="currentColor" stroke-width="1.3"/><path d="M2 13c0-1.9 1.6-3.5 3.5-3.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><circle cx="11" cy="5" r="2.2" stroke="currentColor" stroke-width="1.3"/><path d="M8 13c0-1.9 1.6-3.5 3.5-3.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+            Roster
+          </div>
+          <div class="pw-nav-item" style="opacity:.42;cursor:default">
+            <svg class="pw-nav-icon" viewBox="0 0 16 16" fill="none"><path d="M2 12V4a2 2 0 012-2h8a2 2 0 012 2v8l-3-2-3 2-3-2-3 2z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
+            Deals &amp; Pipeline
+          </div>
+          <div class="pw-nav-item" style="opacity:.42;cursor:default">
+            <svg class="pw-nav-icon" viewBox="0 0 16 16" fill="none"><rect x="2" y="3" width="12" height="10" rx="2" stroke="currentColor" stroke-width="1.3"/><path d="M5 7h6M5 10h4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+            Pitch Packs
+          </div>
+          <div class="pw-sb-divider"></div>
+          <div class="pw-sb-section-label">Switch view</div>
+          <div class="pw-nav-item" data-view="creator" onclick="switchMainTab('creator',this)">
+            <svg class="pw-nav-icon" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="12" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M5 8h6M5 5.5h4M5 10.5h3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            Creator view
+          </div>
+          <div class="pw-nav-item" data-view="sponsor" onclick="switchMainTab('sponsor',this)">
+            <svg class="pw-nav-icon" viewBox="0 0 16 16" fill="none"><path d="M8 2l1.4 3.2 3.6.5-2.6 2.5.6 3.5L8 10.2 4.9 11.7l.6-3.5L3 5.7l3.6-.5L8 2z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
+            Sponsor view
+          </div>
+        </div>
 
-        <div class="pw-nav-item active" data-view="creator" onclick="switchMainTab('creator',this)">
-          <svg class="pw-nav-icon" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="12" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M5 8h6M5 5.5h4M5 10.5h3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
-          Creator OS
-        </div>
-        <div class="pw-nav-item" data-view="manager" onclick="switchMainTab('manager',this)">
-          <svg class="pw-nav-icon" viewBox="0 0 16 16" fill="none"><circle cx="5.5" cy="5" r="2.2" stroke="currentColor" stroke-width="1.3"/><path d="M2 13c0-1.9 1.6-3.5 3.5-3.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><circle cx="11" cy="5" r="2.2" stroke="currentColor" stroke-width="1.3"/><path d="M8 13c0-1.9 1.6-3.5 3.5-3.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
-          Manager
-        </div>
-        <div class="pw-nav-item" data-view="sponsor" onclick="switchMainTab('sponsor',this)">
-          <svg class="pw-nav-icon" viewBox="0 0 16 16" fill="none"><path d="M8 2l1.4 3.2 3.6.5-2.6 2.5.6 3.5L8 10.2 4.9 11.7l.6-3.5L3 5.7l3.6-.5L8 2z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
-          Sponsor
+        <!-- Sponsor sidebar state -->
+        <div class="pw-sb-state" id="sb-sponsor">
+          <div class="pw-sb-user">
+            <div class="pw-sb-av" style="background:linear-gradient(135deg,#7C3AED,#F59E0B);font-size:9px">TB</div>
+            <div>
+              <div class="pw-sb-name">TechBrand Ltd</div>
+              <div class="pw-sb-role">Pro Sponsor &middot; UK</div>
+            </div>
+          </div>
+          <div class="pw-sb-section-label">Workspace</div>
+          <div class="pw-nav-item active" data-view="sponsor" onclick="switchMainTab('sponsor',this)">
+            <svg class="pw-nav-icon" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.5"/><path d="M10.5 10.5l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            Discover Creators
+          </div>
+          <div class="pw-nav-item" style="opacity:.42;cursor:default">
+            <svg class="pw-nav-icon" viewBox="0 0 16 16" fill="none"><path d="M8 2l1.4 3.2 3.6.5-2.6 2.5.6 3.5L8 10.2 4.9 11.7l.6-3.5L3 5.7l3.6-.5L8 2z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
+            Shortlist
+          </div>
+          <div class="pw-nav-item" style="opacity:.42;cursor:default">
+            <svg class="pw-nav-icon" viewBox="0 0 16 16" fill="none"><path d="M2 12V4a2 2 0 012-2h8a2 2 0 012 2v8l-3-2-3 2-3-2-3 2z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
+            Active Deals
+          </div>
+          <div class="pw-sb-divider"></div>
+          <div class="pw-sb-section-label">Switch view</div>
+          <div class="pw-nav-item" data-view="creator" onclick="switchMainTab('creator',this)">
+            <svg class="pw-nav-icon" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="12" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M5 8h6M5 5.5h4M5 10.5h3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            Creator view
+          </div>
+          <div class="pw-nav-item" data-view="manager" onclick="switchMainTab('manager',this)">
+            <svg class="pw-nav-icon" viewBox="0 0 16 16" fill="none"><circle cx="5.5" cy="5" r="2.2" stroke="currentColor" stroke-width="1.3"/><path d="M2 13c0-1.9 1.6-3.5 3.5-3.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><circle cx="11" cy="5" r="2.2" stroke="currentColor" stroke-width="1.3"/><path d="M8 13c0-1.9 1.6-3.5 3.5-3.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+            Manager view
+          </div>
         </div>
 
-        <div class="pw-sb-divider"></div>
-        <div class="pw-sb-section-label">More</div>
-
-        <div class="pw-nav-item" style="opacity:.42;cursor:default">
-          <svg class="pw-nav-icon" viewBox="0 0 16 16" fill="none"><path d="M8 2v12M2 8h12" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
-          Opportunities
-        </div>
-        <div class="pw-nav-item" style="opacity:.42;cursor:default">
-          <svg class="pw-nav-icon" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="5.5" stroke="currentColor" stroke-width="1.3"/><path d="M8 5.5V8.5l2 1.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
-          History
-        </div>
-      </div>
+      </div><!-- /pw-sidebar -->
 
       <!-- ── MAIN AREA ── -->
       <div class="pw-main">
 
-        <!-- Mobile tabs (hidden on desktop via pw-sidebar-mode) -->
+        <!-- Mobile tabs (shown only on small screens) -->
         <div class="pw-tabs" id="mainTabs">
           <button class="pw-tab active" data-view="creator" onclick="switchMainTab('creator',this)">Creator</button>
           <button class="pw-tab" data-view="manager" onclick="switchMainTab('manager',this)">Manager</button>
@@ -1294,421 +1557,679 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
 
         <!-- ═══ CREATOR ═══ -->
         <div class="pw-panel active" id="panel-creator">
-          <div class="pw-subtabs">
-            <button class="pw-stab active" onclick="switchSubTab('creator','passport',this)">Passport</button>
-            <button class="pw-stab" onclick="switchSubTab('creator','signals',this)">Signals</button>
-            <button class="pw-stab" onclick="switchSubTab('creator','opportunities',this)">Opportunities</button>
-            <button class="pw-stab" onclick="switchSubTab('creator','referrals',this)">LEVL Network</button>
-          </div>
-          <div class="pw-content">
+          <div class="panel-layout">
 
-            <!-- Passport -->
-            <div class="pw-sub active" id="creator-passport">
-              <div class="profile-card">
-                <div class="avatar">J<div class="avatar-badge"><svg viewBox="0 0 10 8" fill="none"><path d="M1 4l2.5 2.5L9 1" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg></div></div>
-                <div class="profile-info">
-                  <div class="profile-name">Jordan Kuznets <span class="verified-badge">✓ VERIFIED</span></div>
-                  <div class="profile-handle">@jordank · Gaming &amp; Tech · UK · levl.gg/c/jordank</div>
-                  <div class="profile-bio">4 years consistent. Honest reviews, real benchmarks. UK-based gaming &amp; tech creator. GearX renewed ×3.</div>
-                  <div class="platform-badges">
-                    <div class="plat-badge"><div class="plat-icon" style="background:#f00"></div>YouTube</div>
-                    <div class="plat-badge"><div class="plat-icon" style="background:#6441a5"></div>Twitch</div>
-                    <div class="plat-badge"><div class="plat-icon" style="background:#5865F2"></div>Discord</div>
+            <!-- CREATOR MAIN -->
+            <div class="panel-main">
+
+              <!-- Hero banner -->
+              <div class="c-hero">
+                <div style="width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#F59E0B,#7C3AED);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;flex-shrink:0">J</div>
+                <div style="flex:1;min-width:0">
+                  <div class="c-hero-title">Jordan Kuznets <span style="font-size:10px;font-weight:400;color:var(--green);background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.2);border-radius:4px;padding:2px 7px;margin-left:4px">&#10003; Verified</span></div>
+                  <div class="c-hero-sub">@jordank &middot; Gaming &amp; Tech &middot; UK &middot; levl.gg/c/jordank &middot; 4 yrs on LEVL &middot; <span style="color:var(--amber)">&#128293; 6-week streak</span></div>
+                  <div style="display:flex;gap:7px;margin-top:8px;flex-wrap:wrap">
+                    <div class="c-hero-chip">L3 Established</div>
+                    <div style="font-size:10px;color:var(--t3);display:flex;align-items:center;gap:5px"><span style="background:rgba(244,63,94,.12);border-radius:4px;padding:2px 5px;color:#f87171">YT</span> <span style="background:rgba(100,65,165,.15);border-radius:4px;padding:2px 5px;color:#a78bfa">Twitch</span> <span style="background:rgba(88,101,242,.15);border-radius:4px;padding:2px 5px;color:#818cf8">Discord</span></div>
                   </div>
                 </div>
               </div>
 
-              <!-- Reputation Score — hero widget -->
-              <div class="rep-hero">
-                <div class="rep-hero-top">
-                  <div>
-                    <div class="rep-hero-label">Reputation Score</div>
-                    <div class="rep-hero-num">620</div>
-                    <div class="rep-hero-denom">/ 1,000</div>
-                  </div>
-                  <div style="flex:1;min-width:0">
-                    <div style="font-size:9px;color:var(--t3);margin-bottom:6px;line-height:1.4">Activity-weighted composite · not self-reported</div>
-                    <div class="rep-hero-delta">↑ +18 this month</div>
-                    <div style="margin-top:10px;display:flex;gap:7px;flex-wrap:wrap">
-                      <div style="background:var(--amber);color:#000;font-size:10px;font-weight:700;padding:3px 9px;border-radius:4px">L3 Established</div>
-                      <div style="background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.22);color:var(--green);font-size:10px;padding:3px 8px;border-radius:4px">Next: L4 Partner →</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="rep-hero-bar-bg"><div class="rep-hero-bar bar-animate" style="--w:62%"></div></div>
-              </div>
-
-              <!-- 6-level progression strip -->
-              <div class="level-strip" style="margin-bottom:10px">
-                <div class="lvl-step lv-passed"><div class="lvl-num">L1</div><div class="lvl-name">Rising</div></div>
-                <div class="lvl-step lv-passed"><div class="lvl-num">L2</div><div class="lvl-name">Emerging</div></div>
-                <div class="lvl-step lv-active"><div class="lvl-num">L3</div><div class="lvl-name">Established</div></div>
-                <div class="lvl-step"><div class="lvl-num">L4</div><div class="lvl-name">Partner</div></div>
-                <div class="lvl-step"><div class="lvl-num">L5</div><div class="lvl-name">Elite</div></div>
-                <div class="lvl-step"><div class="lvl-num">L6</div><div class="lvl-name">Legendary</div></div>
-              </div>
-
-              <!-- Key metrics -->
-              <div class="metrics-row">
-                <div class="metric-box"><div class="metric-val">48.2K</div><div class="metric-lbl">Subscribers</div></div>
-                <div class="metric-box"><div class="metric-val">4.8%</div><div class="metric-lbl">Engagement</div></div>
-                <div class="metric-box"><div class="metric-val" style="color:var(--green)">74%</div><div class="metric-lbl">Profile Strength</div></div>
-              </div>
-            </div>
-
-            <!-- Signals -->
-            <div class="pw-sub" id="creator-signals">
-              <div class="signals-list">
-                <div class="signal-row">
-                  <div class="signal-icon green">◉</div>
-                  <div class="signal-body"><div class="signal-name">Longevity</div><div class="signal-desc">4 years active · YouTube, Twitch, Discord</div></div>
-                  <div class="signal-bar-wrap"><div class="signal-bar-bg"><div class="signal-bar-fill green bar-animate" style="--w:91%"></div></div></div>
-                  <div class="signal-score">91%</div>
-                </div>
-                <div class="signal-row">
-                  <div class="signal-icon green">✓</div>
-                  <div class="signal-body"><div class="signal-name">Audience</div><div class="signal-desc">48.2K verified · 82% UK/US · API-sourced</div></div>
-                  <div class="signal-bar-wrap"><div class="signal-bar-bg"><div class="signal-bar-fill green bar-animate" style="--w:84%;animation-delay:.1s"></div></div></div>
-                  <div class="signal-score">84%</div>
-                </div>
-                <div class="signal-row">
-                  <div class="signal-icon amber">🔥</div>
-                  <div class="signal-body"><div class="signal-name">Consistency</div><div class="signal-desc">6w consistent publishing · platform-verified</div></div>
-                  <div class="signal-bar-wrap"><div class="signal-bar-bg"><div class="signal-bar-fill amber bar-animate" style="--w:78%;animation-delay:.2s"></div></div></div>
-                  <div class="signal-score" style="color:var(--amber)">78%</div>
-                </div>
-                <div class="signal-row">
-                  <div class="signal-icon green">✓</div>
-                  <div class="signal-body"><div class="signal-name">Verification</div><div class="signal-desc">YouTube + Twitch + Discord API-connected</div></div>
-                  <div class="signal-bar-wrap"><div class="signal-bar-bg"><div class="signal-bar-fill green bar-animate" style="--w:95%;animation-delay:.3s"></div></div></div>
-                  <div class="signal-score">95%</div>
-                </div>
-                <div class="signal-row">
-                  <div class="signal-icon violet">◈</div>
-                  <div class="signal-body"><div class="signal-name">Sponsorship History</div><div class="signal-desc">GearX ×3 renewed · 3 deals on public record</div></div>
-                  <div class="signal-bar-wrap"><div class="signal-bar-bg"><div class="signal-bar-fill violet bar-animate" style="--w:72%;animation-delay:.4s"></div></div></div>
-                  <div class="signal-score" style="color:var(--violet2)">72%</div>
-                </div>
-                <div class="signal-row">
-                  <div class="signal-icon green">◉</div>
-                  <div class="signal-body"><div class="signal-name">Community</div><div class="signal-desc">Discord server · 2,840 members · active</div></div>
-                  <div class="signal-bar-wrap"><div class="signal-bar-bg"><div class="signal-bar-fill green bar-animate" style="--w:68%;animation-delay:.5s"></div></div></div>
-                  <div class="signal-score">68%</div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Opportunities -->
-            <div class="pw-sub" id="creator-opportunities">
-              <div style="font-size:9px;color:var(--t3);margin-bottom:10px;letter-spacing:.04em;text-transform:uppercase;font-weight:600">Matched to your reputation tier · Established</div>
-              <div style="font-size:10px;color:var(--t3);margin-bottom:10px">Matched by verified signals, reputation tier &amp; niche</div>
-              <div class="opp-list">
-                <div class="opp-card">
-                  <div class="opp-logo" style="background:rgba(16,185,129,0.13);color:var(--green);font-size:11px;font-weight:700">KC</div>
-                  <div class="opp-body">
-                    <div class="opp-brand">Kick Creator Program</div>
-                    <div class="opp-title">Platform revenue share · Verified creators eligible</div>
-                    <div class="opp-tags"><span class="opp-tag fit">91% match</span><span class="opp-tag cat">Rev share</span><span class="opp-tag cat">No minimum</span></div>
-                  </div>
-                  <div style="text-align:right;flex-shrink:0"><div class="opp-fit-val">91%</div><div class="opp-fit-lbl"><span class="status-dot green"></span>Unlocked</div></div>
-                </div>
-                <div class="opp-card">
-                  <div class="opp-logo" style="background:rgba(124,58,237,0.12);color:var(--violet2);font-size:11px;font-weight:700">DB</div>
-                  <div class="opp-body">
-                    <div class="opp-brand">Duelbits Partner</div>
-                    <div class="opp-title">UK eligible · Monthly retainer + commission</div>
-                    <div class="opp-tags"><span class="opp-tag fit">82% match</span><span class="opp-tag cat">£600–1.2K/mo</span></div>
-                  </div>
-                  <div style="text-align:right;flex-shrink:0"><div class="opp-fit-val">82%</div><div class="opp-fit-lbl"><span class="status-dot green"></span>Unlocked</div></div>
-                </div>
-                <div class="opp-card" style="opacity:0.72">
-                  <div class="opp-logo" style="background:rgba(245,158,11,0.1);color:var(--amber);font-size:11px;font-weight:700">PD</div>
-                  <div class="opp-body">
-                    <div class="opp-brand">Packdraw Affiliate</div>
-                    <div class="opp-title">Case packs · 1 requirement gap remaining</div>
-                    <div class="opp-tags"><span class="opp-tag fit">78% match</span><span class="opp-tag cat">1 gap remaining</span></div>
-                  </div>
-                  <div style="text-align:right;flex-shrink:0"><div class="opp-fit-val">78%</div><div class="opp-fit-lbl"><span class="status-dot amber"></span>1 gap</div></div>
-                </div>
-              </div>
-            </div>
-
-            <!-- LEVL Network -->
-            <div class="pw-sub" id="creator-referrals">
-              <div class="metrics-row" style="margin-bottom:11px">
-                <div class="metric-box"><div class="metric-val">12</div><div class="metric-lbl">Network members</div></div>
-                <div class="metric-box"><div class="metric-val" style="color:var(--green)">£57</div><div class="metric-lbl">Per month</div></div>
-                <div class="metric-box"><div class="metric-val" style="font-size:14px">9 + 5</div><div class="metric-lbl">Network depth</div></div>
-              </div>
-              <div style="font-size:9px;font-weight:600;color:var(--amber);text-transform:uppercase;letter-spacing:.07em;margin-bottom:7px">Direct connections — LEVL shares 20% platform revenue</div>
-              <div class="ref-section" style="gap:6px;margin-bottom:11px">
-                <div class="ref-card">
-                  <div class="ref-avatar" style="background:linear-gradient(135deg,#10B981,#F59E0B)">N</div>
-                  <div class="ref-body"><div class="ref-name">NeonFrost900</div><div class="ref-role">Established · Active · 5 connected creators</div></div>
-                  <span style="font-size:10px;color:var(--green);font-family:var(--mono);flex-shrink:0">£3.00/mo</span>
-                </div>
-                <div class="ref-card">
-                  <div class="ref-avatar" style="background:linear-gradient(135deg,#7C3AED,#F59E0B)">D</div>
-                  <div class="ref-body"><div class="ref-name">DrittKing_97</div><div class="ref-role">Emerging · Active</div></div>
-                  <span style="font-size:10px;color:var(--green);font-family:var(--mono);flex-shrink:0">£3.00/mo</span>
-                </div>
-                <div class="ref-card">
-                  <div class="ref-avatar" style="background:linear-gradient(135deg,#F43F5E,#F59E0B)">S</div>
-                  <div class="ref-body"><div class="ref-name">StreamQueen_K</div><div class="ref-role">Emerging · Building</div></div>
-                  <span style="font-size:10px;color:var(--amber);font-family:var(--mono);flex-shrink:0">£3.00/mo</span>
-                </div>
-                <div style="background:var(--surface2);border:1px solid var(--border2);border-radius:var(--r2);padding:7px 10px;font-size:10px;color:var(--t3)">+ 6 more active · earning <span style="color:var(--green)">£2.50/mo</span> each</div>
-              </div>
-              <div style="font-size:9px;font-weight:600;color:var(--t3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:7px">Extended network — 5% revenue participation</div>
-              <div class="ref-card" style="margin-bottom:10px">
-                <div class="ref-avatar" style="background:linear-gradient(135deg,#10B981,#7C3AED);font-size:10px">×5</div>
-                <div class="ref-body"><div class="ref-name">5 creators via NeonFrost900</div><div class="ref-role">Extended network · growing independently</div></div>
-                <span style="font-size:10px;color:var(--t2);font-family:var(--mono);flex-shrink:0">£3.12/mo</span>
-              </div>
-              <div style="background:rgba(245,158,11,0.06);border:1px solid rgba(245,158,11,0.18);border-radius:var(--r2);padding:9px 12px;display:flex;align-items:center;justify-content:space-between;gap:8px">
+              <!-- Level section -->
+              <div class="c-level-section">
                 <div>
-                  <div style="font-size:9px;color:var(--t3);margin-bottom:2px">Your Network Link</div>
-                  <div style="font-size:11px;color:var(--amber);font-family:var(--mono)">levl.gg/n/jordank</div>
+                  <div class="c-level-eyebrow">Level</div>
+                  <div class="c-level-num">3</div>
                 </div>
-                <div style="font-size:10px;font-weight:500;color:var(--t2);background:var(--surface2);border:1px solid var(--border2);padding:4px 9px;border-radius:5px;cursor:pointer;white-space:nowrap">Copy link</div>
+                <div>
+                  <div class="c-level-badge">Next: L4 Partner &#8594;</div>
+                  <div class="c-level-desc">Established creator with verified audience, active sponsor history, and consistent 6-week publishing record.</div>
+                  <div class="c-level-unlock">Unlock at 800 XP &middot; 68 XP to go</div>
+                </div>
+                <div>
+                  <div class="c-level-pct">Top<br>31%</div>
+                  <div class="c-level-pct-lbl">of creators</div>
+                </div>
               </div>
-            </div>
 
-          </div>
-        </div>
+              <!-- Progress road -->
+              <div class="prog-road">
+                <div class="prog-step done">
+                  <div class="prog-node">&#10003;</div>
+                  <div class="prog-label">Explorer</div>
+                </div>
+                <div class="prog-step done">
+                  <div class="prog-node">&#10003;</div>
+                  <div class="prog-label">Builder</div>
+                </div>
+                <div class="prog-step curr">
+                  <div class="prog-node">3</div>
+                  <div class="prog-label">Creator</div>
+                </div>
+                <div class="prog-step">
+                  <div class="prog-node">4</div>
+                  <div class="prog-label">Partner</div>
+                </div>
+                <div class="prog-step">
+                  <div class="prog-node">5</div>
+                  <div class="prog-label">Pro</div>
+                </div>
+                <div class="prog-step">
+                  <div class="prog-node">6</div>
+                  <div class="prog-label">Elite</div>
+                </div>
+              </div>
+
+              <!-- This week stats -->
+              <div class="this-week">
+                <div class="tw-stat">
+                  <div class="tw-icon" style="color:var(--amber)">&#128293;</div>
+                  <div class="tw-val">6</div>
+                  <div class="tw-lbl">week streak</div>
+                </div>
+                <div class="tw-stat">
+                  <div class="tw-icon" style="color:var(--green)">&#8593;</div>
+                  <div class="tw-val">+18</div>
+                  <div class="tw-lbl">XP this month</div>
+                </div>
+                <div class="tw-stat">
+                  <div class="tw-icon" style="color:var(--violet2)">&#9672;</div>
+                  <div class="tw-val">3</div>
+                  <div class="tw-lbl">active deals</div>
+                </div>
+                <div class="tw-stat">
+                  <div class="tw-icon" style="color:var(--green)">&#10003;</div>
+                  <div class="tw-val">GearX</div>
+                  <div class="tw-lbl">renewed &times;3</div>
+                </div>
+              </div>
+
+              <!-- XP strip -->
+              <div class="xp-strip">
+                <span class="xp-strip-val">732 XP</span>
+                <div style="flex:1;height:6px;background:rgba(245,243,238,.07);border-radius:4px;overflow:hidden;margin:0 10px">
+                  <div class="bar-animate" style="height:100%;background:linear-gradient(90deg,var(--violet),var(--amber));border-radius:4px;--w:91.5%"></div>
+                </div>
+                <span class="xp-strip-val">800 XP</span>
+                <span class="xp-strip-delta">+68 to L4</span>
+              </div>
+
+              <!-- Today actions -->
+              <div class="today-actions-hdr">Today&apos;s recommended actions</div>
+              <div class="action-item">
+                <div class="action-check"></div>
+                <div style="flex:1;min-width:0">
+                  <div class="action-title">Add Friday evening stream schedule</div>
+                  <div class="action-why">Consistency signal &mdash; boosts your Longevity score</div>
+                </div>
+                <div style="display:flex;align-items:center;gap:6px;flex-shrink:0">
+                  <span class="action-tag easy">Easy</span>
+                  <span class="action-xp">+20 XP</span>
+                </div>
+              </div>
+              <div class="action-item">
+                <div class="action-check"></div>
+                <div style="flex:1;min-width:0">
+                  <div class="action-title">Create sponsor-safe highlight reel</div>
+                  <div class="action-why">Sponsorship History signal &mdash; deal-ready proof</div>
+                </div>
+                <div style="display:flex;align-items:center;gap:6px;flex-shrink:0">
+                  <span class="action-tag med">Medium</span>
+                  <span class="action-xp">+20 XP</span>
+                </div>
+              </div>
+              <div class="action-item">
+                <div class="action-check"></div>
+                <div style="flex:1;min-width:0">
+                  <div class="action-title">Pin LEVL profile link in Discord bio</div>
+                  <div class="action-why">Verification signal &mdash; community presence</div>
+                </div>
+                <div style="display:flex;align-items:center;gap:6px;flex-shrink:0">
+                  <span class="action-tag easy">Easy</span>
+                  <span class="action-xp">+20 XP</span>
+                </div>
+              </div>
+
+            </div><!-- /panel-main -->
+
+            <!-- CREATOR ASIDE -->
+            <div class="panel-aside">
+
+              <div class="aside-lbl">Reputation Score</div>
+              <div class="aside-rep-box">
+                <div class="aside-rep-num">742</div>
+                <div style="font-size:10px;color:var(--t3);margin-top:3px">/ 1,000 &middot; &#8593; +18 this month</div>
+              </div>
+
+              <div style="margin-bottom:14px">
+                <div class="rep-comp">
+                  <div class="rep-comp-name">Longevity</div>
+                  <div class="rep-comp-bg"><div class="rep-comp-fill bar-animate" style="--w:89%;background:var(--green)"></div></div>
+                  <div class="rep-comp-val">178</div>
+                </div>
+                <div class="rep-comp">
+                  <div class="rep-comp-name">Audience</div>
+                  <div class="rep-comp-bg"><div class="rep-comp-fill bar-animate" style="--w:84%;background:var(--green);animation-delay:.1s"></div></div>
+                  <div class="rep-comp-val">168</div>
+                </div>
+                <div class="rep-comp">
+                  <div class="rep-comp-name">Consistency</div>
+                  <div class="rep-comp-bg"><div class="rep-comp-fill bar-animate" style="--w:79%;background:var(--amber);animation-delay:.2s"></div></div>
+                  <div class="rep-comp-val">158</div>
+                </div>
+                <div class="rep-comp">
+                  <div class="rep-comp-name">Verification</div>
+                  <div class="rep-comp-bg"><div class="rep-comp-fill bar-animate" style="--w:59%;background:var(--green);animation-delay:.3s"></div></div>
+                  <div class="rep-comp-val">118</div>
+                </div>
+                <div class="rep-comp">
+                  <div class="rep-comp-name">Sponsor Hist.</div>
+                  <div class="rep-comp-bg"><div class="rep-comp-fill bar-animate" style="--w:39%;background:var(--violet2);animation-delay:.4s"></div></div>
+                  <div class="rep-comp-val">78</div>
+                </div>
+                <div class="rep-comp">
+                  <div class="rep-comp-name">Community</div>
+                  <div class="rep-comp-bg"><div class="rep-comp-fill bar-animate" style="--w:22%;background:var(--green);animation-delay:.5s"></div></div>
+                  <div class="rep-comp-val">42</div>
+                </div>
+              </div>
+
+              <div class="aside-lbl">Trust Badges</div>
+              <div class="trust-badges">
+                <div class="tb v">&#10003; Verified</div>
+                <div class="tb c">&#128293; Consistent</div>
+                <div class="tb t">&#11088; Trusted</div>
+              </div>
+
+              <div class="aside-lbl">Top Opportunities</div>
+              <div class="aside-opp-row">
+                <div class="aside-opp-logo" style="background:rgba(16,185,129,.12);color:var(--green)">KC</div>
+                <div class="aside-opp-name">Kick Creator Program</div>
+                <div class="aside-opp-match">91%</div>
+              </div>
+              <div class="aside-opp-row">
+                <div class="aside-opp-logo" style="background:rgba(124,58,237,.12);color:var(--violet2)">DB</div>
+                <div class="aside-opp-name">Duelbits Partner</div>
+                <div class="aside-opp-match">82%</div>
+              </div>
+              <div class="aside-opp-row">
+                <div class="aside-opp-logo" style="background:rgba(245,158,11,.1);color:var(--amber)">PD</div>
+                <div class="aside-opp-name">Packdraw Affiliate</div>
+                <div class="aside-opp-match" style="color:var(--amber)">78%</div>
+              </div>
+
+              <div class="aside-lbl" style="margin-top:12px">LEVL Network</div>
+              <div style="font-size:11px;color:var(--t2);margin-bottom:2px">12 members &middot; <span style="color:var(--green);font-family:var(--mono)">&#163;57/mo</span></div>
+              <div style="font-size:10px;color:var(--t3);font-family:var(--mono)">levl.gg/n/jordank</div>
+
+            </div><!-- /panel-aside -->
+
+          </div><!-- /panel-layout -->
+        </div><!-- /panel-creator -->
 
         <!-- ═══ MANAGER ═══ -->
         <div class="pw-panel" id="panel-manager">
-          <div class="pw-subtabs">
-            <button class="pw-stab active" onclick="switchSubTab('manager','roster',this)">Roster</button>
-            <button class="pw-stab" onclick="switchSubTab('manager','pipeline',this)">Pipeline</button>
-            <button class="pw-stab" onclick="switchSubTab('manager','pitchpack',this)">Pitch Pack</button>
-          </div>
-          <div class="pw-content">
-            <!-- Always-visible stats bar -->
-            <div class="mgr-stats-bar">
-              <div class="mgr-stat"><div class="mgr-stat-val">9</div><div class="mgr-stat-lbl">Creators</div></div>
-              <div class="mgr-stat"><div class="mgr-stat-val">£4,840</div><div class="mgr-stat-lbl">Pipeline / mo</div></div>
-              <div class="mgr-stat"><div class="mgr-stat-val">L3+</div><div class="mgr-stat-lbl">Avg Level</div></div>
-            </div>
+          <div class="panel-layout">
 
-            <!-- Roster -->
-            <div class="pw-sub active" id="manager-roster">
-              <div class="roster-grid">
-                <div class="roster-card">
-                  <div class="roster-avatar" style="background:linear-gradient(135deg,#F59E0B,#7C3AED)">J</div>
-                  <div class="roster-name">Jordan K.</div>
-                  <div class="roster-cat">Gaming · 48.2K</div>
-                  <div class="roster-score">L3 Established</div>
-                  <span class="roster-tag v">L3 · Verified</span>
+            <!-- MANAGER MAIN -->
+            <div class="panel-main">
+
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+                <div style="font-size:13px;font-weight:700;color:var(--t1)">Sam Rivera <span style="font-size:10px;font-weight:400;color:var(--t3)">&mdash; Creator Manager</span></div>
+                <div style="font-size:9px;color:var(--green);font-weight:600;background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.2);border-radius:4px;padding:3px 8px">&#9679; 9 on roster</div>
+              </div>
+
+              <!-- KPI grid -->
+              <div class="kpi-grid">
+                <div class="kpi-card">
+                  <div class="kpi-val" style="color:var(--t1)">9</div>
+                  <div class="kpi-lbl">Creators on roster</div>
                 </div>
-                <div class="roster-card">
-                  <div class="roster-avatar" style="background:linear-gradient(135deg,#10B981,#F59E0B)">M</div>
-                  <div class="roster-name">Maya Liu</div>
-                  <div class="roster-cat">Fitness · 210K</div>
-                  <div class="roster-score">L4 Partner</div>
-                  <span class="roster-tag v">L4 · Partner</span>
+                <div class="kpi-card">
+                  <div class="kpi-val" style="color:var(--amber)">4</div>
+                  <div class="kpi-lbl">Active campaigns</div>
                 </div>
-                <div class="roster-card">
-                  <div class="roster-avatar" style="background:linear-gradient(135deg,#7C3AED,#F43F5E)">T</div>
-                  <div class="roster-name">Tom Keane</div>
-                  <div class="roster-cat">Tech · 52K</div>
-                  <div class="roster-score">L3 Established</div>
-                  <span class="roster-tag v">L3 · Verified</span>
+                <div class="kpi-card">
+                  <div class="kpi-val" style="color:var(--green)">&#163;18.4K</div>
+                  <div class="kpi-lbl">Pipeline value</div>
                 </div>
-                <div class="roster-card">
-                  <div class="roster-avatar" style="background:linear-gradient(135deg,#F43F5E,#F59E0B)">Z</div>
-                  <div class="roster-name">Zara Patel</div>
-                  <div class="roster-cat">Beauty · 28K</div>
-                  <div class="roster-score">L2 Emerging</div>
-                  <span class="roster-tag a">L2 · Growing</span>
+                <div class="kpi-card">
+                  <div class="kpi-val" style="color:var(--violet2)">91</div>
+                  <div class="kpi-lbl">Avg trust score</div>
                 </div>
               </div>
-            </div>
 
-            <!-- Pipeline -->
-            <div class="pw-sub" id="manager-pipeline">
-              <div class="pipeline">
-                <div class="pipeline-col">
-                  <div class="pipeline-hdr">Prospecting <span class="pipeline-count">2</span></div>
-                  <div class="deal-card"><div class="deal-brand">TechNest</div><div class="deal-val">£700</div><div class="deal-creator">Jordan K.</div></div>
-                  <div class="deal-card"><div class="deal-brand">FitFuel</div><div class="deal-val">£2,800</div><div class="deal-creator">Maya Liu</div></div>
-                </div>
-                <div class="pipeline-col">
-                  <div class="pipeline-hdr">Active <span class="pipeline-count">2</span></div>
-                  <div class="deal-card"><div class="deal-brand">GearX</div><div class="deal-val">£960</div><div class="deal-creator">Jordan K.</div></div>
-                  <div class="deal-card"><div class="deal-brand">FitFuel</div><div class="deal-val">£2,400</div><div class="deal-creator">Maya Liu</div></div>
-                </div>
-                <div class="pipeline-col">
-                  <div class="pipeline-hdr">Closed <span class="pipeline-count">1</span></div>
-                  <div class="deal-card" style="border-color:rgba(16,185,129,0.2)"><div class="deal-brand" style="color:var(--green)">NordVPN ✓</div><div class="deal-val">£750</div><div class="deal-creator">Tom Keane</div></div>
-                </div>
+              <!-- Inner tabs -->
+              <div class="mgr-inner-tabs">
+                <div class="mgr-tab active" onclick="switchMgrTab('roster',this)">Roster Overview</div>
+                <div class="mgr-tab" onclick="switchMgrTab('pipeline',this)">Pipeline</div>
+                <div class="mgr-tab" onclick="switchMgrTab('campaigns',this)">Campaigns</div>
+                <div class="mgr-tab" onclick="switchMgrTab('economics',this)">Economics</div>
               </div>
-              <div class="pipeline-footer">
-                <span class="pipeline-footer-lbl">Total pipeline value</span>
-                <span class="pipeline-footer-val">£6,810 / month</span>
-              </div>
-            </div>
 
-            <!-- Pitch Pack -->
-            <div class="pw-sub" id="manager-pitchpack">
-              <div class="pitch-frame">
-                <div class="pitch-header">
-                  <div><div class="pitch-title">Gaming &amp; Tech Roster</div><div class="pitch-sub">Auto-generated · Updated 2h ago · Manager Passport</div></div>
-                  <div class="pitch-badge">↓ Export PDF</div>
-                </div>
-                <div class="pitch-stats">
-                  <div class="pitch-stat"><div class="pitch-stat-val">4</div><div class="pitch-stat-lbl">Creators</div></div>
-                  <div class="pitch-stat"><div class="pitch-stat-val">328K</div><div class="pitch-stat-lbl">Verified Audience</div></div>
-                  <div class="pitch-stat"><div class="pitch-stat-val">L3+</div><div class="pitch-stat-lbl">Avg Level</div></div>
-                  <div class="pitch-stat"><div class="pitch-stat-val">5</div><div class="pitch-stat-lbl">Deals live</div></div>
-                </div>
-                <div class="pitch-creator-row">
-                  <div class="pitch-creator-av" style="background:linear-gradient(135deg,#F59E0B,#7C3AED)">J</div>
-                  <div class="pitch-creator-info" style="flex:1;min-width:0">
-                    <div class="pitch-creator-name">Jordan Kuznets · L3</div>
-                    <div class="pitch-creator-meta">Gaming · 48.2K · GearX ×3 renewed</div>
+              <!-- Roster screen -->
+              <div class="mgr-screen active" id="mgr-roster">
+                <div class="mgr-creator-row">
+                  <div class="mgr-av" style="background:linear-gradient(135deg,#F59E0B,#7C3AED)">J</div>
+                  <div style="flex:1;min-width:0">
+                    <div class="mgr-cr-name">Jordan Kuznets <span class="mgr-active-dot" style="background:var(--green)"></span></div>
+                    <div class="mgr-cr-meta">Gaming &middot; YouTube &middot; Twitch &middot; 84K reach</div>
                   </div>
-                  <div class="pitch-creator-score" style="color:var(--green)">L3 Verified</div>
-                </div>
-                <div class="pitch-creator-row">
-                  <div class="pitch-creator-av" style="background:linear-gradient(135deg,#10B981,#F59E0B)">M</div>
-                  <div class="pitch-creator-info" style="flex:1;min-width:0">
-                    <div class="pitch-creator-name">Maya Liu · L4</div>
-                    <div class="pitch-creator-meta">Fitness · 210K · 14-week publishing record</div>
+                  <div style="text-align:right;flex-shrink:0">
+                    <div><span class="mgr-level-badge l3">L3</span></div>
+                    <div class="mgr-score" style="color:var(--t1)">Trust 82</div>
+                    <div class="mgr-streak">&#128293; 6w</div>
                   </div>
-                  <div class="pitch-creator-score" style="color:var(--green)">L4 Verified</div>
+                </div>
+                <div class="mgr-creator-row">
+                  <div class="mgr-av" style="background:linear-gradient(135deg,#10B981,#F59E0B)">M</div>
+                  <div style="flex:1;min-width:0">
+                    <div class="mgr-cr-name">Maya Liu <span class="mgr-active-dot" style="background:var(--green)"></span> <span class="mgr-leveled">&#8593; Levelled up</span></div>
+                    <div class="mgr-cr-meta">Fitness &middot; Lifestyle &middot; Instagram &middot; TikTok &middot; 210K</div>
+                  </div>
+                  <div style="text-align:right;flex-shrink:0">
+                    <div><span class="mgr-level-badge l4">L4</span></div>
+                    <div class="mgr-score" style="color:var(--green)">Trust 91</div>
+                    <div class="mgr-streak">&#128293; 14w</div>
+                  </div>
+                </div>
+                <div class="mgr-creator-row">
+                  <div class="mgr-av" style="background:linear-gradient(135deg,#7C3AED,#F43F5E)">T</div>
+                  <div style="flex:1;min-width:0">
+                    <div class="mgr-cr-name">Tom Keane</div>
+                    <div class="mgr-cr-meta">Tech &middot; Reviews &middot; YouTube &middot; 52K reach</div>
+                  </div>
+                  <div style="text-align:right;flex-shrink:0">
+                    <div><span class="mgr-level-badge l3">L3</span></div>
+                    <div class="mgr-score" style="color:var(--t1)">Trust 74</div>
+                    <div class="mgr-streak">4w</div>
+                  </div>
+                </div>
+                <div class="mgr-creator-row">
+                  <div class="mgr-av" style="background:linear-gradient(135deg,#F43F5E,#F59E0B)">Z</div>
+                  <div style="flex:1;min-width:0">
+                    <div class="mgr-cr-name">Zara Patel</div>
+                    <div class="mgr-cr-meta">Beauty &middot; Fashion &middot; Instagram &middot; 28K reach</div>
+                  </div>
+                  <div style="text-align:right;flex-shrink:0">
+                    <div><span class="mgr-level-badge l2">L2</span></div>
+                    <div class="mgr-score" style="color:var(--t3)">Trust 68</div>
+                    <div class="mgr-streak">9w</div>
+                  </div>
+                </div>
+                <div class="mgr-more">+ 5 more creators on roster</div>
+              </div>
+
+              <!-- Pipeline screen -->
+              <div class="mgr-screen" id="mgr-pipeline">
+                <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:10px">
+                  <div style="background:var(--surface2);border:1px solid var(--border2);border-radius:var(--r2);padding:10px">
+                    <div style="font-size:9px;font-weight:600;color:var(--t3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px">Prospecting <span style="color:var(--amber)">2</span></div>
+                    <div style="background:var(--surface);border:1px solid var(--border2);border-radius:6px;padding:8px;margin-bottom:6px"><div style="font-size:11px;font-weight:600;color:var(--t1)">TechNest</div><div style="font-size:10px;color:var(--t3)">Jordan K. &middot; &#163;700</div></div>
+                    <div style="background:var(--surface);border:1px solid var(--border2);border-radius:6px;padding:8px"><div style="font-size:11px;font-weight:600;color:var(--t1)">FitFuel</div><div style="font-size:10px;color:var(--t3)">Maya Liu &middot; &#163;2,800</div></div>
+                  </div>
+                  <div style="background:var(--surface2);border:1px solid var(--border2);border-radius:var(--r2);padding:10px">
+                    <div style="font-size:9px;font-weight:600;color:var(--t3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px">Active <span style="color:var(--green)">2</span></div>
+                    <div style="background:var(--surface);border:1px solid var(--border2);border-radius:6px;padding:8px;margin-bottom:6px"><div style="font-size:11px;font-weight:600;color:var(--t1)">GearX</div><div style="font-size:10px;color:var(--t3)">Jordan K. &middot; &#163;960</div></div>
+                    <div style="background:var(--surface);border:1px solid var(--border2);border-radius:6px;padding:8px"><div style="font-size:11px;font-weight:600;color:var(--t1)">FitFuel</div><div style="font-size:10px;color:var(--t3)">Maya Liu &middot; &#163;2,400</div></div>
+                  </div>
+                  <div style="background:var(--surface2);border:1px solid var(--border2);border-radius:var(--r2);padding:10px">
+                    <div style="font-size:9px;font-weight:600;color:var(--t3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px">Closed <span style="color:var(--green)">1</span></div>
+                    <div style="background:var(--surface);border:1px solid rgba(16,185,129,.2);border-radius:6px;padding:8px"><div style="font-size:11px;font-weight:600;color:var(--green)">NordVPN &#10003;</div><div style="font-size:10px;color:var(--t3)">Tom Keane &middot; &#163;750</div></div>
+                  </div>
+                </div>
+                <div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:var(--t3);border-top:1px solid var(--border2);padding-top:8px">
+                  <span>Total pipeline value</span>
+                  <span style="color:var(--green);font-weight:600;font-family:var(--mono)">&#163;18,400 / month</span>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
+
+              <!-- Campaigns screen -->
+              <div class="mgr-screen" id="mgr-campaigns">
+                <div style="font-size:11px;color:var(--t2);margin-bottom:10px">4 active campaigns across roster</div>
+                <div class="mgr-creator-row">
+                  <div class="mgr-av" style="background:rgba(245,158,11,.15);color:var(--amber);font-size:11px;font-weight:700">GX</div>
+                  <div style="flex:1;min-width:0">
+                    <div class="mgr-cr-name">GearX &mdash; Q4 Gaming</div>
+                    <div class="mgr-cr-meta">Jordan K. &middot; Integration &middot; Live now</div>
+                  </div>
+                  <div style="font-size:12px;font-weight:600;color:var(--green);font-family:var(--mono)">&#163;960/mo</div>
+                </div>
+                <div class="mgr-creator-row">
+                  <div class="mgr-av" style="background:rgba(16,185,129,.12);color:var(--green);font-size:11px;font-weight:700">FF</div>
+                  <div style="flex:1;min-width:0">
+                    <div class="mgr-cr-name">FitFuel &mdash; Supplement Series</div>
+                    <div class="mgr-cr-meta">Maya Liu &middot; Video &times;4 &middot; Live now</div>
+                  </div>
+                  <div style="font-size:12px;font-weight:600;color:var(--green);font-family:var(--mono)">&#163;2,400/mo</div>
+                </div>
+                <div class="mgr-creator-row">
+                  <div class="mgr-av" style="background:rgba(124,58,237,.12);color:var(--violet2);font-size:11px;font-weight:700">NV</div>
+                  <div style="flex:1;min-width:0">
+                    <div class="mgr-cr-name">NordVPN &mdash; Tech Review</div>
+                    <div class="mgr-cr-meta">Tom Keane &middot; 1 video &middot; Completed &#10003;</div>
+                  </div>
+                  <div style="font-size:12px;font-weight:600;color:var(--t3);font-family:var(--mono)">&#163;750</div>
+                </div>
+                <div class="mgr-creator-row">
+                  <div class="mgr-av" style="background:rgba(244,63,94,.1);color:#F43F5E;font-size:11px;font-weight:700">FF</div>
+                  <div style="flex:1;min-width:0">
+                    <div class="mgr-cr-name">FitFuel &mdash; Prospect</div>
+                    <div class="mgr-cr-meta">Maya Liu &middot; Negotiation &middot; &#163;2,800</div>
+                  </div>
+                  <div style="font-size:12px;font-weight:600;color:var(--amber)">Pending</div>
+                </div>
+              </div>
+
+              <!-- Economics screen -->
+              <div class="mgr-screen" id="mgr-economics">
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px">
+                  <div style="background:var(--surface2);border:1px solid var(--border2);border-radius:var(--r2);padding:12px">
+                    <div style="font-size:9px;color:var(--t3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:6px">Monthly earnings</div>
+                    <div style="font-size:22px;font-weight:700;color:var(--green);font-family:var(--mono)">&#163;4,840</div>
+                    <div style="font-size:10px;color:var(--t3);margin-top:3px">&#8593; +&#163;220 vs last month</div>
+                  </div>
+                  <div style="background:var(--surface2);border:1px solid var(--border2);border-radius:var(--r2);padding:12px">
+                    <div style="font-size:9px;color:var(--t3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:6px">Avg deal size</div>
+                    <div style="font-size:22px;font-weight:700;color:var(--amber);font-family:var(--mono)">&#163;1,210</div>
+                    <div style="font-size:10px;color:var(--t3);margin-top:3px">4 active deals</div>
+                  </div>
+                </div>
+                <div style="font-size:10px;color:var(--t3);margin-bottom:8px;text-transform:uppercase;letter-spacing:.07em;font-weight:600">Revenue by creator</div>
+                <div class="mgr-creator-row">
+                  <div class="mgr-av" style="background:linear-gradient(135deg,#10B981,#F59E0B)">M</div>
+                  <div style="flex:1;min-width:0"><div class="mgr-cr-name">Maya Liu</div><div class="mgr-cr-meta">2 deals active</div></div>
+                  <div style="font-size:12px;font-weight:600;color:var(--green);font-family:var(--mono)">&#163;2,400/mo</div>
+                </div>
+                <div class="mgr-creator-row">
+                  <div class="mgr-av" style="background:linear-gradient(135deg,#F59E0B,#7C3AED)">J</div>
+                  <div style="flex:1;min-width:0"><div class="mgr-cr-name">Jordan Kuznets</div><div class="mgr-cr-meta">1 deal active</div></div>
+                  <div style="font-size:12px;font-weight:600;color:var(--green);font-family:var(--mono)">&#163;960/mo</div>
+                </div>
+                <div class="mgr-creator-row">
+                  <div class="mgr-av" style="background:linear-gradient(135deg,#7C3AED,#F43F5E)">T</div>
+                  <div style="flex:1;min-width:0"><div class="mgr-cr-name">Tom Keane</div><div class="mgr-cr-meta">1 deal completed</div></div>
+                  <div style="font-size:12px;font-weight:600;color:var(--t2);font-family:var(--mono)">&#163;750</div>
+                </div>
+              </div>
+
+            </div><!-- /panel-main -->
+
+            <!-- MANAGER ASIDE -->
+            <div class="panel-aside">
+
+              <div class="aside-lbl">Roster Health</div>
+              <div class="aside-health-row">
+                <div class="aside-health-lbl">Avg trust score</div>
+                <div class="aside-health-val g">79.4</div>
+              </div>
+              <div class="aside-health-row">
+                <div class="aside-health-lbl">Active streaks</div>
+                <div class="aside-health-val g">8 / 9</div>
+              </div>
+              <div class="aside-health-row">
+                <div class="aside-health-lbl">Active campaigns</div>
+                <div class="aside-health-val g">3</div>
+              </div>
+              <div class="aside-health-row">
+                <div class="aside-health-lbl">L3+ creators</div>
+                <div class="aside-health-val g">6 / 9</div>
+              </div>
+              <div class="aside-health-row">
+                <div class="aside-health-lbl">Combined reach</div>
+                <div class="aside-health-val g">847K</div>
+              </div>
+
+              <div class="aside-lbl" style="margin-top:14px">Monthly Earnings</div>
+              <div class="aside-earn-val">&#163;4,840</div>
+              <div class="aside-earn-sub">&#8593; +&#163;220 vs last month</div>
+
+              <div class="aside-lbl" style="margin-top:14px">Alerts</div>
+              <div class="aside-alert">
+                <div class="aside-alert-dot" style="background:var(--green)"></div>
+                <div class="aside-alert-text">Maya Liu reached <strong style="color:var(--green)">Level 4</strong></div>
+              </div>
+              <div class="aside-alert">
+                <div class="aside-alert-dot" style="background:var(--amber)"></div>
+                <div class="aside-alert-text">Tom Keane &mdash; NordVPN deal expiring soon</div>
+              </div>
+              <div class="aside-alert">
+                <div class="aside-alert-dot" style="background:var(--amber)"></div>
+                <div class="aside-alert-text">Zara Patel &mdash; 9-week streak milestone</div>
+              </div>
+
+            </div><!-- /panel-aside -->
+
+          </div><!-- /panel-layout -->
+        </div><!-- /panel-manager -->
 
         <!-- ═══ SPONSOR ═══ -->
         <div class="pw-panel" id="panel-sponsor">
-          <div class="pw-subtabs">
-            <button class="pw-stab active" onclick="switchSubTab('sponsor','discovery',this)">Discovery</button>
-            <button class="pw-stab" onclick="switchSubTab('sponsor','fit',this)">Fit Analysis</button>
-            <button class="pw-stab" onclick="switchSubTab('sponsor','shortlist',this)">Shortlist</button>
-          </div>
-          <div class="pw-content">
+          <div class="panel-full" style="padding:0">
 
-            <!-- Discovery -->
-            <div class="pw-sub active" id="sponsor-discovery">
+            <!-- Header -->
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 18px 10px">
+              <div>
+                <div style="font-size:13px;font-weight:700;color:var(--t1)">TechBrand Ltd <span style="font-size:10px;font-weight:400;color:var(--violet2);background:rgba(124,58,237,.1);border:1px solid rgba(124,58,237,.22);border-radius:4px;padding:2px 7px;margin-left:5px">Pro Sponsor &middot; UK</span></div>
+                <div style="font-size:10px;color:var(--t3);margin-top:3px">Private access &middot; Active Budget: <span style="color:var(--green);font-family:var(--mono)">&#163;12,400</span></div>
+              </div>
+            </div>
+
+            <!-- Search + filters -->
+            <div style="padding:0 18px 10px">
               <div class="disc-search">
                 <svg width="13" height="13" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;color:var(--t3)"><circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.5"/><path d="M10.5 10.5l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-                <span class="disc-search-placeholder">Search by niche, tier, platform…</span>
-                <span class="disc-result-count">3 results</span>
+                <span class="disc-search-placeholder">Search verified creators by niche, tier, platform&hellip;</span>
+                <span class="disc-result-count">1,284 matching</span>
               </div>
               <div class="discovery-filters">
                 <div class="filter-chip active">Gaming</div>
-                <div class="filter-chip">UK</div>
-                <div class="filter-chip">10K–100K</div>
+                <div class="filter-chip active">UK</div>
+                <div class="filter-chip">10K&ndash;100K</div>
                 <div class="filter-chip">L3+</div>
-                <div class="filter-chip">✓ Verified</div>
-              </div>
-              <div class="disc-grid">
-                <div class="disc-card">
-                  <div class="disc-card-top">
-                    <div class="disc-av" style="background:linear-gradient(135deg,#F59E0B,#7C3AED)">J</div>
-                    <div><div class="disc-name">Jordan K.</div><div class="disc-handle">@jordank · L3 · 🔥 6w</div></div>
-                  </div>
-                  <div class="disc-metrics"><div class="disc-metric"><span>48.2K</span> subs</div><div class="disc-metric"><span>L3</span> Verified</div></div>
-                  <div style="font-size:9px;color:var(--green);margin-top:4px">GearX renewed ×3</div>
-                  <div class="disc-fit"><div class="disc-fit-bar"><div class="disc-fit-fill bar-animate" style="--w:91%"></div></div><div class="disc-fit-val">91% fit</div></div>
-                </div>
-                <div class="disc-card">
-                  <div class="disc-card-top">
-                    <div class="disc-av" style="background:linear-gradient(135deg,#7C3AED,#10B981)">A</div>
-                    <div><div class="disc-name">Aria S.</div><div class="disc-handle">@arias · L4 · Partner</div></div>
-                  </div>
-                  <div class="disc-metrics"><div class="disc-metric"><span>82.4K</span> subs</div><div class="disc-metric"><span>L4</span> Verified</div></div>
-                  <div style="font-size:9px;color:var(--green);margin-top:4px">6 deals · 83% renewed</div>
-                  <div class="disc-fit"><div class="disc-fit-bar"><div class="disc-fit-fill bar-animate" style="--w:88%;animation-delay:.1s"></div></div><div class="disc-fit-val">88% fit</div></div>
-                </div>
-                <div class="disc-card">
-                  <div class="disc-card-top">
-                    <div class="disc-av" style="background:linear-gradient(135deg,#F43F5E,#F59E0B)">M</div>
-                    <div><div class="disc-name">Marcus R.</div><div class="disc-handle">@marcusr · L2 · Building</div></div>
-                  </div>
-                  <div class="disc-metrics"><div class="disc-metric"><span>22.1K</span> subs</div><div class="disc-metric"><span>L2</span> Building</div></div>
-                  <div style="font-size:9px;color:var(--t3);margin-top:4px">Building record · platform verified</div>
-                  <div class="disc-fit"><div class="disc-fit-bar"><div class="disc-fit-fill bar-animate" style="--w:76%;animation-delay:.2s"></div></div><div class="disc-fit-val">76% fit</div></div>
-                </div>
+                <div class="filter-chip">&#10003; Verified</div>
+                <div class="filter-chip">Sponsor Ready</div>
               </div>
             </div>
 
-            <!-- Fit Analysis -->
-            <div class="pw-sub" id="sponsor-fit">
-              <div class="fit-header">
-                <div><div class="fit-brief-label">Brief</div><div class="fit-brief-val">Gaming Peripheral Review Q4</div></div>
-                <div class="fit-brief-sep"></div>
-                <div><div class="fit-brief-label">Category</div><div class="fit-brief-val">Gaming · Tech</div></div>
-                <div class="fit-brief-sep"></div>
-                <div><div class="fit-brief-label">Budget</div><div class="fit-brief-val">£500–1,500</div></div>
-              </div>
-              <div class="fit-list">
-                <div class="fit-row">
-                  <div class="fit-row-av" style="background:linear-gradient(135deg,#F59E0B,#7C3AED)">J</div>
-                  <div style="flex:1;min-width:0">
-                    <div class="fit-row-name">Jordan Kuznets</div>
-                    <div class="fit-row-meta">48.2K · Gaming · L3 Established · Verified</div>
-                    <div class="fit-reasons"><span class="fit-reason">GearX ×3 renewed</span><span class="fit-reason">82% UK/US audience</span><span class="fit-reason">Budget fit</span></div>
+            <!-- Network banner -->
+            <div style="padding:0 18px 10px">
+              <div class="sp-network-banner">
+                <div class="sp-network-eyebrow">LEVL Private Network</div>
+                <div class="sp-network-title">1,284 verified creators matching your brief</div>
+                <div class="sp-network-sub">Every creator is API-verified, scored, and deal-ready. No self-reported data, no guesswork.</div>
+                <div class="sp-pillars">
+                  <div class="sp-pillar">
+                    <div class="sp-pillar-icon">&#10003;</div>
+                    <div>
+                      <div class="sp-pillar-title">Platform Verified</div>
+                      <div class="sp-pillar-desc">API-connected, no self-reported claims</div>
+                    </div>
                   </div>
-                  <div style="text-align:right;flex-shrink:0"><div class="fit-score-val">91%</div><div class="fit-score-lbl">Campaign Fit</div></div>
-                </div>
-                <div class="fit-row">
-                  <div class="fit-row-av" style="background:linear-gradient(135deg,#7C3AED,#10B981)">A</div>
-                  <div style="flex:1;min-width:0">
-                    <div class="fit-row-name">Aria S.</div>
-                    <div class="fit-row-meta">82.4K · Tech · L4 Partner · Verified</div>
-                    <div class="fit-reasons"><span class="fit-reason">83% renewal rate</span><span class="fit-reason">Tech niche</span></div>
+                  <div class="sp-pillar">
+                    <div class="sp-pillar-icon">&#9672;</div>
+                    <div>
+                      <div class="sp-pillar-title">Deal History</div>
+                      <div class="sp-pillar-desc">Public sponsorship records &amp; renewal rates</div>
+                    </div>
                   </div>
-                  <div style="text-align:right;flex-shrink:0"><div class="fit-score-val">88%</div><div class="fit-score-lbl">Campaign Fit</div></div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Shortlist -->
-            <div class="pw-sub" id="sponsor-shortlist">
-              <div class="shortlist">
-                <div class="sl-card">
-                  <div class="sl-av" style="background:linear-gradient(135deg,#F59E0B,#7C3AED)">J</div>
-                  <div class="sl-info">
-                    <div class="sl-name">Jordan Kuznets <span class="verified-badge">L3</span></div>
-                    <div class="sl-meta">Gaming · 48.2K · GearX ×3 renewed</div>
-                  </div>
-                  <div style="flex-shrink:0;text-align:right"><div class="sl-score-val" style="color:var(--green)">L3</div><div class="sl-score-lbl">Established</div></div>
-                  <div class="sl-actions"><button class="sl-btn primary">Propose</button><button class="sl-btn ghost">Brief</button></div>
-                </div>
-                <div class="sl-card">
-                  <div class="sl-av" style="background:linear-gradient(135deg,#7C3AED,#10B981)">A</div>
-                  <div class="sl-info">
-                    <div class="sl-name">Aria S. <span class="verified-badge">L4</span></div>
-                    <div class="sl-meta">Tech · 82.4K · 83% renewal rate</div>
-                  </div>
-                  <div style="flex-shrink:0;text-align:right"><div class="sl-score-val" style="color:var(--green)">L4</div><div class="sl-score-lbl">Partner</div></div>
-                  <div class="sl-actions"><button class="sl-btn primary">Propose</button><button class="sl-btn ghost">Brief</button></div>
-                </div>
-                <div style="background:var(--surface2);border:1px solid var(--border2);border-radius:var(--r2);padding:12px;margin-top:2px">
-                  <div style="font-size:10px;color:var(--t3);margin-bottom:9px">Comparison</div>
-                  <div class="sl-comparison">
-                    <div class="sl-comp-metric"><div class="sl-comp-val">L3 vs L4</div><div class="sl-comp-lbl">LEVL Level</div></div>
-                    <div class="sl-comp-metric"><div class="sl-comp-val">4.8% vs 6.1%</div><div class="sl-comp-lbl">Engagement</div></div>
-                    <div class="sl-comp-metric"><div class="sl-comp-val">3 vs 6</div><div class="sl-comp-lbl">Deals done</div></div>
+                  <div class="sp-pillar">
+                    <div class="sp-pillar-icon">&#128293;</div>
+                    <div>
+                      <div class="sp-pillar-title">Activity Signals</div>
+                      <div class="sp-pillar-desc">Live streak, engagement &amp; consistency scoring</div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
 
-          </div>
-        </div>
+            <!-- KPI strip -->
+            <div style="padding:0 18px 10px">
+              <div class="sp-kpi-strip">
+                <div class="sp-kpi">
+                  <div class="sp-kpi-val">1,284</div>
+                  <div class="sp-kpi-lbl">Matching creators</div>
+                  <div class="sp-kpi-d" style="color:var(--green)">&#8593; 48 this week</div>
+                </div>
+                <div class="sp-kpi">
+                  <div class="sp-kpi-val" style="color:var(--green)">94%</div>
+                  <div class="sp-kpi-lbl">Platform-verified</div>
+                  <div class="sp-kpi-d">&nbsp;</div>
+                </div>
+                <div class="sp-kpi">
+                  <div class="sp-kpi-val" style="color:var(--amber)">72</div>
+                  <div class="sp-kpi-lbl">Sponsor Ready badge</div>
+                  <div class="sp-kpi-d">&nbsp;</div>
+                </div>
+                <div class="sp-kpi">
+                  <div class="sp-kpi-val" style="color:var(--violet2)">&#163;380</div>
+                  <div class="sp-kpi-lbl">Avg deal size</div>
+                  <div class="sp-kpi-d">&nbsp;</div>
+                </div>
+              </div>
+            </div>
 
-      </div>
-    </div>
+            <!-- Creator cards grid -->
+            <div style="padding:0 18px 18px">
+              <div class="cr-grid">
 
-  </div>
-</div>
+                <!-- Jordan Kuznets -->
+                <div class="cr-card">
+                  <div class="cr-top">
+                    <div class="cr-av" style="background:linear-gradient(135deg,#F59E0B,#7C3AED)">J</div>
+                    <div style="flex:1;min-width:0">
+                      <div class="cr-name">Jordan Kuznets</div>
+                      <div class="cr-meta">@jordank &middot; Gaming &middot; UK &middot; &#128293; 6w</div>
+                    </div>
+                    <span class="cr-role-badge creator">Creator</span>
+                  </div>
+                  <div class="cr-score-row">
+                    <span>Trust score</span>
+                    <span style="color:var(--green);font-weight:700;font-family:var(--mono)">82</span>
+                  </div>
+                  <div class="cr-sbar"><div class="cr-sfill bar-animate" style="--w:82%;background:var(--green)"></div></div>
+                  <div class="cr-stat-row">
+                    <span>48.2K subs</span>
+                    <span>4.8% eng</span>
+                    <span style="color:var(--violet2)">3 deals</span>
+                  </div>
+                  <div class="cr-tags">
+                    <span class="cr-tag v">&#10003; Verified</span>
+                    <span class="cr-tag c">&#128293; Consistent</span>
+                    <span class="cr-tag t">&#11088; Trusted</span>
+                  </div>
+                  <div class="cr-ready h">Deal-ready &middot; 3 completed &middot; GearX renewed &times;3</div>
+                  <div class="cr-btns">
+                    <button class="cr-btn-p">Propose deal</button>
+                    <button class="cr-btn-g">View profile</button>
+                  </div>
+                </div>
+
+                <!-- Priya L. -->
+                <div class="cr-card">
+                  <div class="cr-top">
+                    <div class="cr-av" style="background:linear-gradient(135deg,#10B981,#7C3AED)">P</div>
+                    <div style="flex:1;min-width:0">
+                      <div class="cr-name">Priya L.</div>
+                      <div class="cr-meta">@priyal &middot; Fitness &middot; UK &middot; &#128293; 52w</div>
+                    </div>
+                    <span class="cr-role-badge elite">Elite</span>
+                  </div>
+                  <div class="cr-score-row">
+                    <span>Trust score</span>
+                    <span style="color:var(--green);font-weight:700;font-family:var(--mono)">97</span>
+                  </div>
+                  <div class="cr-sbar"><div class="cr-sfill bar-animate" style="--w:97%;background:var(--green);animation-delay:.1s"></div></div>
+                  <div class="cr-stat-row">
+                    <span>210K subs</span>
+                    <span>5.4% eng</span>
+                    <span style="color:var(--violet2)">14 deals</span>
+                  </div>
+                  <div class="cr-tags">
+                    <span class="cr-tag sr">&#127885; 52-Wk Streak</span>
+                    <span class="cr-tag hp">&#128142; Elite</span>
+                  </div>
+                  <div class="cr-ready b">91% renewal rate &middot; Premium tier creator</div>
+                  <div class="cr-btns">
+                    <button class="cr-btn-p">Propose deal</button>
+                    <button class="cr-btn-g">View profile</button>
+                  </div>
+                </div>
+
+                <!-- Marcus R. -->
+                <div class="cr-card">
+                  <div class="cr-top">
+                    <div class="cr-av" style="background:linear-gradient(135deg,#F43F5E,#F59E0B)">M</div>
+                    <div style="flex:1;min-width:0">
+                      <div class="cr-name">Marcus R.</div>
+                      <div class="cr-meta">@marcusr &middot; Gaming &middot; UK &middot; 4w</div>
+                    </div>
+                    <span class="cr-role-badge builder">Builder</span>
+                  </div>
+                  <div class="cr-score-row">
+                    <span>Trust score</span>
+                    <span style="color:var(--amber);font-weight:700;font-family:var(--mono)">64</span>
+                  </div>
+                  <div class="cr-sbar"><div class="cr-sfill bar-animate" style="--w:64%;background:var(--amber);animation-delay:.2s"></div></div>
+                  <div class="cr-stat-row">
+                    <span>22.1K subs</span>
+                    <span>7.2%&#8593; eng</span>
+                    <span style="color:var(--t3)">0 deals</span>
+                  </div>
+                  <div class="cr-tags">
+                    <span class="cr-tag v">&#10003; Verified</span>
+                    <span class="cr-tag c">&#128293; Consistent</span>
+                  </div>
+                  <div class="cr-ready b">Building &mdash; high engagement, no deal history yet</div>
+                  <div class="cr-btns">
+                    <button class="cr-btn-p" style="opacity:.5;cursor:default">No history yet</button>
+                    <button class="cr-btn-g">View profile</button>
+                  </div>
+                </div>
+
+                <!-- Aria S. -->
+                <div class="cr-card">
+                  <div class="cr-top">
+                    <div class="cr-av" style="background:linear-gradient(135deg,#7C3AED,#10B981)">A</div>
+                    <div style="flex:1;min-width:0">
+                      <div class="cr-name">Aria S.</div>
+                      <div class="cr-meta">@arias &middot; Tech &middot; UK &middot; &#128293; 12w</div>
+                    </div>
+                    <span class="cr-role-badge partner">Partner</span>
+                  </div>
+                  <div class="cr-score-row">
+                    <span>Trust score</span>
+                    <span style="color:var(--green);font-weight:700;font-family:var(--mono)">91</span>
+                  </div>
+                  <div class="cr-sbar"><div class="cr-sfill bar-animate" style="--w:91%;background:var(--green);animation-delay:.3s"></div></div>
+                  <div class="cr-stat-row">
+                    <span>82.4K subs</span>
+                    <span>6.1% eng</span>
+                    <span style="color:var(--violet2)">6 deals</span>
+                  </div>
+                  <div class="cr-tags">
+                    <span class="cr-tag v">&#10003; Verified</span>
+                    <span class="cr-tag sr">&#127885; Sponsor Ready</span>
+                    <span class="cr-tag hp">&#128142; High Performing</span>
+                  </div>
+                  <div class="cr-ready h">83% renewal rate &middot; 6 deals completed</div>
+                  <div class="cr-btns">
+                    <button class="cr-btn-p">Propose deal</button>
+                    <button class="cr-btn-g">View profile</button>
+                  </div>
+                </div>
+
+              </div><!-- /cr-grid -->
+            </div>
+
+          </div><!-- /panel-full -->
+        </div><!-- /panel-sponsor -->
+
+      </div><!-- /pw-main -->
+    </div><!-- /pw-body -->
+  </div><!-- /pw-frame -->
+</div><!-- /pw -->
 
 <!-- INFRASTRUCTURE PRECEDENT -->
 <section class="infra-sec" id="trust">
@@ -2221,12 +2742,20 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
 function switchMainTab(id, btn) {
   document.querySelectorAll('.pw-panel').forEach(function(el) { el.classList.remove('active'); });
   document.querySelectorAll('.pw-tab, .pw-nav-item[data-view]').forEach(function(el) { el.classList.remove('active'); });
+  document.querySelectorAll('.pw-sb-state').forEach(function(el) { el.classList.remove('active'); });
   document.getElementById('panel-' + id).classList.add('active');
-  // Activate all elements (sidebar items + mobile tabs) that target this view
   document.querySelectorAll('[data-view="' + id + '"]').forEach(function(el) { el.classList.add('active'); });
+  var sb = document.getElementById('sb-' + id);
+  if (sb) sb.classList.add('active');
   btn.classList.add('active');
-  // Re-trigger bar animations in active sub
   triggerBarsIn(document.getElementById('panel-' + id));
+}
+
+function switchMgrTab(id, btn) {
+  document.querySelectorAll('.mgr-screen').forEach(function(el) { el.classList.remove('active'); });
+  document.querySelectorAll('.mgr-tab').forEach(function(el) { el.classList.remove('active'); });
+  document.getElementById('mgr-' + id).classList.add('active');
+  btn.classList.add('active');
 }
 
 function switchSubTab(panel, id, btn) {
