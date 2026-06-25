@@ -1755,7 +1755,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
     <div class="problem-grid">
       <div class="problem-card r d1">
         <div class="problem-who">Creators</div>
-        <div class="problem-text">Pitch with screenshots and self-reported numbers. No portable record of their campaign history, brand deals, or who they've worked with.</div>
+        <div class="problem-text">Pitch with screenshots and self-reported numbers. There's no public, verified record — only what they've built and maintained themselves.</div>
       </div>
       <div class="problem-card r d2">
         <div class="problem-who">Managers</div>
@@ -1866,7 +1866,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
             </div>
           </div>
           <div class="pw-sb-section-label">Workspace</div>
-          <div class="pw-nav-item active" data-view="creator" data-subview="dashboard" onclick="switchMainTab('creator',this)">
+          <div class="pw-nav-item" data-view="creator" data-subview="dashboard" onclick="switchView('creator','dashboard',this)">
             <svg class="pw-nav-icon" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="5.5" height="5.5" rx="1.5" stroke="currentColor" stroke-width="1.3"/><rect x="8.5" y="2" width="5.5" height="5.5" rx="1.5" stroke="currentColor" stroke-width="1.3"/><rect x="2" y="8.5" width="5.5" height="5.5" rx="1.5" stroke="currentColor" stroke-width="1.3"/><rect x="8.5" y="8.5" width="5.5" height="5.5" rx="1.5" stroke="currentColor" stroke-width="1.3"/></svg>
             Dashboard
           </div>
@@ -1882,7 +1882,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
             <svg class="pw-nav-icon" viewBox="0 0 16 16" fill="none"><path d="M8 2l1.4 3.2 3.6.5-2.6 2.5.6 3.5L8 10.2 4.9 11.7l.6-3.5L3 5.7l3.6-.5L8 2z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
             Opportunities
           </div>
-          <div class="pw-nav-item" data-subview="reputation" onclick="switchView('creator','reputation',this)">
+          <div class="pw-nav-item active" data-subview="reputation" onclick="switchView('creator','reputation',this)">
             <svg class="pw-nav-icon" viewBox="0 0 16 16" fill="none"><path d="M2 14V6l4-4h8v12H2z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M5 9h6M5 12h4M6 2v4H2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
             Reputation Timeline
           </div>
@@ -1912,7 +1912,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
             </div>
           </div>
           <div class="pw-sb-section-label">Workspace</div>
-          <div class="pw-nav-item active" data-view="manager" data-subview="roster" onclick="switchMainTab('manager',this)">
+          <div class="pw-nav-item active" data-view="manager" data-subview="roster" onclick="switchView('manager','roster',this)">
             <svg class="pw-nav-icon" viewBox="0 0 16 16" fill="none"><circle cx="5.5" cy="5" r="2.2" stroke="currentColor" stroke-width="1.3"/><path d="M2 13c0-1.9 1.6-3.5 3.5-3.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><circle cx="11" cy="5" r="2.2" stroke="currentColor" stroke-width="1.3"/><path d="M8 13c0-1.9 1.6-3.5 3.5-3.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
             Roster
           </div>
@@ -1950,7 +1950,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
             </div>
           </div>
           <div class="pw-sb-section-label">Workspace</div>
-          <div class="pw-nav-item active" data-view="sponsor" data-subview="discover" onclick="switchMainTab('sponsor',this)">
+          <div class="pw-nav-item active" data-view="sponsor" data-subview="discover" onclick="switchView('sponsor','discover',this)">
             <svg class="pw-nav-icon" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.5"/><path d="M10.5 10.5l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
             Discover Creators
           </div>
@@ -2015,14 +2015,14 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
           </div>
 
           <div class="mob-subnav" id="mob-subnav-creator">
-            <button class="mob-subnav-btn active" data-subview="dashboard" onclick="switchView('creator','dashboard',this)">Dashboard</button>
+            <button class="mob-subnav-btn" data-subview="dashboard" onclick="switchView('creator','dashboard',this)">Dashboard</button>
             <button class="mob-subnav-btn" data-subview="passport" onclick="switchView('creator','passport',this)">Passport</button>
             <button class="mob-subnav-btn" data-subview="history" onclick="switchView('creator','history',this)">History</button>
             <button class="mob-subnav-btn" data-subview="opportunities" onclick="switchView('creator','opportunities',this)">Opps</button>
-            <button class="mob-subnav-btn" data-subview="reputation" onclick="switchView('creator','reputation',this)">Reputation</button>
+            <button class="mob-subnav-btn active" data-subview="reputation" onclick="switchView('creator','reputation',this)">Reputation</button>
             <button class="mob-subnav-btn" data-subview="platforms" onclick="switchView('creator','platforms',this)">Platforms</button>
           </div>
-          <div class="pw-view active" id="view-creator-dashboard">
+          <div class="pw-view" id="view-creator-dashboard">
           <div class="dash-body">
             <div class="dash-main">
 
@@ -2632,7 +2632,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
           </div><!-- /view-creator-history -->
 
           <!-- ── CREATOR: REPUTATION TIMELINE ── -->
-          <div class="pw-view" id="view-creator-reputation">
+          <div class="pw-view active" id="view-creator-reputation">
             <div class="rep-wrap">
               <div class="rep-timeline">
                 <div style="font-size:10px;color:var(--t3);margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border2)">Showing all reputation events &middot; Most recent first &middot; <span style="color:var(--amber)">Trust Score: 82</span></div>
