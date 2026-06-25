@@ -65,15 +65,17 @@ nav {
 /* ─── HERO ─── */
 .hero {
   position: relative; z-index: 1;
-  padding: 110px 0 64px;
+  padding: 96px 0 48px;
 }
 .hero-inner {
-  max-width: 1100px;
+  max-width: 900px;
   margin: 0 auto;
   padding: 0 40px;
+  text-align: center;
+  display: flex; flex-direction: column; align-items: center;
 }
 @media (max-width: 620px) {
-  .hero { padding: 80px 0 44px; }
+  .hero { padding: 76px 0 36px; }
   .hero-inner { padding: 0 20px; }
 }
 .hero-eyebrow {
@@ -1211,7 +1213,8 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
 
 
 /* ── WORKSPACE SELECTOR ── */
-.ws-selector-wrap { max-width: 1120px; margin: 0 auto; padding: 16px 16px 0; }
+.ws-context { font-size: 14px; color: var(--t2); line-height: 1.75; max-width: 620px; margin: 0 auto 24px; text-align: center; padding: 0 20px; }
+.ws-selector-wrap { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
 .ws-intro { text-align: center; margin-bottom: 28px; }
 .ws-selector { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
 .ws-card { background: var(--surface2); border: 1px solid var(--border2); border-radius: 12px; overflow: hidden; cursor: pointer; transition: border-color .22s, box-shadow .22s, transform .2s; }
@@ -1697,9 +1700,16 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
 .explore-card-cta { display: inline-block; font-size: 11px; font-weight: 600; color: var(--amber); text-decoration: none; letter-spacing: .04em; margin-top: 4px; transition: opacity .2s; }
 .explore-card-cta:hover { opacity: .7; }
 
-/* ─── INVESTOR SECTION ─── */
-.investor-sec { padding: 64px 0; border-top: 1px solid var(--border2); }
-.investor-inner { max-width: 600px; margin: 0 auto; padding: 0 20px; text-align: center; }
+/* ─── RESOURCE CARDS ─── */
+.resources-sec { padding: 48px 0 56px; border-top: 1px solid var(--border2); }
+.resources-inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+.resource-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media (max-width: 620px) { .resource-cards { grid-template-columns: 1fr; } }
+.resource-card { background: var(--surface2); border: 1px solid var(--border2); border-radius: 12px; padding: 28px 28px 24px; display: flex; flex-direction: column; }
+.resource-card-label { font-family: var(--mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--t3); margin-bottom: 14px; }
+.resource-card-q { font-size: 16px; font-weight: 400; color: var(--t1); line-height: 1.4; margin-bottom: auto; padding-bottom: 20px; }
+.resource-card-cta { font-size: 13px; color: var(--amber); text-decoration: none; letter-spacing: .01em; transition: color .2s; display: inline-block; }
+.resource-card-cta:hover { color: var(--amber2); }
 
 </style>
 </head>
@@ -1754,6 +1764,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
 
 <!-- WORKSPACE SELECTOR -->
 <div class="ws-selector-wrap" id="demo">
+  <p class="ws-context">LEVL is reputation infrastructure for the creator economy — built for Creators, Managers and Sponsors. It replaces self-reported metrics with verified, portable career records that travel with you across platforms and deals. Each workspace below is a separate view into the same reputation layer.</p>
   <div class="ws-selector">
 
     <!-- Creator OS -->
@@ -3743,8 +3754,6 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
     <div class="infra-closing r" style="animation-delay:.3s">
       <div class="infra-closing-setup">The creator economy built an audience graph.</div>
       <div class="infra-closing-punchline">LEVL is building<br><em>the reputation graph.</em></div>
-      <p style="font-size:13px;color:var(--t3);margin-top:24px;margin-bottom:6px">Want to understand how reputation is verified and protected?</p>
-      <a href="trust-framework.html" style="display:inline-block;font-size:13px;color:var(--t2);text-decoration:none;letter-spacing:.02em;transition:color .2s" onmouseover="this.style.color='var(--t1)'" onmouseout="this.style.color='var(--t2)'">Explore the Trust Framework →</a>
     </div>
 
   </div>
@@ -3860,13 +3869,21 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
   </div>
 </section>
 
-<!-- INVESTOR -->
-<section class="investor-sec">
-  <div class="investor-inner">
-    <div class="r"><div class="section-eyebrow">For Investors &amp; Strategic Partners</div></div>
-    <div class="r d1"><h2 class="section-title" style="font-size:clamp(20px,3vw,30px)">LEVL is currently in the<br>validation stage.</h2></div>
-    <div class="r d2"><p style="font-size:14px;color:var(--t2);line-height:1.7;margin-bottom:28px">For those interested in the commercial model, validation roadmap, economics and investment opportunity, the full investor brief is available below.</p></div>
-    <div class="r d3"><a href="levl-investor-brief.html" class="btn-primary">View Investor Brief</a></div>
+<!-- RESOURCES -->
+<section class="resources-sec">
+  <div class="resources-inner">
+    <div class="resource-cards">
+      <div class="resource-card r d1">
+        <div class="resource-card-label">Trust Framework</div>
+        <p class="resource-card-q">Want to understand how reputation is verified and protected?</p>
+        <a href="trust-framework.html" class="resource-card-cta">Explore the Trust Framework &rarr;</a>
+      </div>
+      <div class="resource-card r d2">
+        <div class="resource-card-label">Investor Brief</div>
+        <p class="resource-card-q">Want to understand the commercial opportunity?</p>
+        <a href="levl-investor-brief.html" class="resource-card-cta">View Investor Brief &rarr;</a>
+      </div>
+    </div>
   </div>
 </section>
 
