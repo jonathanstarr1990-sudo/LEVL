@@ -1177,15 +1177,19 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
 
 /* ── MOBILE PLATFORM PREVIEW OVERRIDES ── */
 @media (max-width: 620px) {
+  /* Unlock frame + body so content expands and the page scrolls */
+  .pw-frame { overflow: visible; }
+  .pw-body { height: auto; overflow: visible; }
+  .pw-panel.active { display: block; height: auto; overflow: visible; }
+  .pw-view.active { overflow-y: visible; height: auto; }
   .mob-subnav { display: flex; }
-  .pw-view.active { overflow-y: auto; }
   .passport-layout, .opp-layout, .pitch-layout, .econ-layout,
   .shortlist-layout, .deals-layout, .rep-wrap, .profile-layout { grid-template-columns: 1fr !important; }
   .passport-side, .opp-side, .pitch-preview, .econ-side,
   .shortlist-side, .deals-side, .rep-side, .profile-side { display: none !important; }
   .passport-main, .opp-list, .pitch-builder, .econ-main,
   .shortlist-main, .deals-main, .rep-timeline, .profile-main,
-  .camp-list, .plat-grid { overflow-y: visible; min-height: 0; }
+  .camp-list, .plat-grid, .kanban-wrap, .verif-wrap { overflow: visible; height: auto; min-height: 0; }
   .passport-verif-grid { grid-template-columns: 1fr; }
   .profile-stat-strip { grid-template-columns: repeat(2,1fr); }
   .plat-mini-grid { grid-template-columns: 1fr; }
@@ -1196,8 +1200,6 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
   .mgr-stats-bar { grid-template-columns: repeat(2,1fr); }
   .res-actions { display: none; }
   .opp-deadline { display: none; }
-  .verif-wrap { overflow-y: visible; }
-  .camp-list { min-height: auto; }
 }
 
 /* ── QUICK HOW IT WORKS STRIP ── */
