@@ -162,7 +162,7 @@ nav {
 @keyframes tickerScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
 /* ─── PRODUCT WINDOW ─── */
-.pw { position: relative; z-index: 1; width: 100%; max-width: 1120px; margin: 0 auto 64px; padding: 0 16px; }
+.pw { position: relative; z-index: 1; width: 100%; max-width: 1120px; margin: 0 auto 40px; padding: 0 16px; }
 .pw-frame {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -464,7 +464,7 @@ section { position: relative; z-index: 1; }
 .role-row:last-child { border-bottom: none; }
 
 /* ─── WAITLIST ─── */
-.waitlist-sec { padding: 88px 0; }
+.waitlist-sec { padding: 64px 0; }
 .waitlist-inner { max-width: 540px; margin: 0 auto; text-align: center; padding: 0 20px; }
 .form-box { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); padding: 28px; margin-top: 32px; text-align: left; }
 @media (max-width: 480px) { .form-box { padding: 18px; } }
@@ -526,7 +526,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
 }
 
 /* ── LEVL NETWORK SECTION ── */
-.network-sec { padding: 80px 0 72px; border-top: 1px solid var(--border2); }
+.network-sec { padding: 64px 0 56px; border-top: 1px solid var(--border2); }
 .network-layout { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 56px; align-items: center; }
 @media (max-width: 860px) { .network-layout { grid-template-columns: 1fr; gap: 32px; } }
 .network-visual { border: 1px solid var(--border2); border-radius: 16px; overflow: hidden; background: linear-gradient(160deg,rgba(245,158,11,.025) 0%,transparent 70%); }
@@ -1280,7 +1280,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
 }
 
 /* ── INFRASTRUCTURE PRECEDENT SECTION ── */
-.infra-sec { position: relative; z-index: 1; padding: 72px 0; }
+.infra-sec { position: relative; z-index: 1; padding: 56px 0; }
 .infra-inner { max-width: 860px; margin: 0 auto; padding: 0 20px; }
 
 /* comparison table */
@@ -1688,7 +1688,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
 .explore-card-cta:hover { opacity: .7; }
 
 /* ─── RESOURCE CARDS ─── */
-.resources-sec { padding: 60px 0 72px; border-top: 1px solid var(--border2); }
+.resources-sec { padding: 48px 0 56px; border-top: 1px solid var(--border2); }
 .resources-inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
 .resource-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 @media (max-width: 620px) { .resource-cards { grid-template-columns: 1fr; } }
@@ -4201,7 +4201,7 @@ var revealObs = new IntersectionObserver(function(entries) {
   entries.forEach(function(e) {
     if (e.isIntersecting) { e.target.classList.add('in'); revealObs.unobserve(e.target); }
   });
-}, { threshold: 0, rootMargin: '0px 0px -20px 0px' });
+}, { threshold: 0, rootMargin: '0px 0px 120px 0px' });
 document.querySelectorAll('.r').forEach(function(el) {
   // Immediately reveal elements already in the viewport (above the fold)
   if (el.getBoundingClientRect().top < window.innerHeight) {
