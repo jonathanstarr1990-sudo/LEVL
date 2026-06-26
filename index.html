@@ -65,7 +65,7 @@ nav {
 /* ─── HERO ─── */
 .hero {
   position: relative; z-index: 1;
-  padding: 96px 0 48px;
+  padding: 96px 0 64px;
 }
 .hero-inner {
   max-width: 900px;
@@ -464,7 +464,7 @@ section { position: relative; z-index: 1; }
 .role-row:last-child { border-bottom: none; }
 
 /* ─── WAITLIST ─── */
-.waitlist-sec { padding: 72px 0; }
+.waitlist-sec { padding: 88px 0; }
 .waitlist-inner { max-width: 540px; margin: 0 auto; text-align: center; padding: 0 20px; }
 .form-box { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); padding: 28px; margin-top: 32px; text-align: left; }
 @media (max-width: 480px) { .form-box { padding: 18px; } }
@@ -1376,7 +1376,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
 
 /* ── PROBLEM FRAMING STRIP ── */
 .problem-strip {
-  padding: 40px 0;
+  padding: 52px 0;
   border-top: 1px solid var(--border2);
   border-bottom: 1px solid var(--border2);
 }
@@ -1688,7 +1688,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
 .explore-card-cta:hover { opacity: .7; }
 
 /* ─── RESOURCE CARDS ─── */
-.resources-sec { padding: 48px 0 56px; border-top: 1px solid var(--border2); }
+.resources-sec { padding: 60px 0 72px; border-top: 1px solid var(--border2); }
 .resources-inner { max-width: 900px; margin: 0 auto; padding: 0 20px; }
 .resource-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 @media (max-width: 620px) { .resource-cards { grid-template-columns: 1fr; } }
@@ -2729,6 +2729,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
                 <div class="ds">
                   <div class="ds-hdr"><span class="ds-title">TRUST SCORE</span></div>
                   <div style="padding:10px 13px">
+                    <div style="font-size:9px;color:var(--t3);margin-bottom:10px;line-height:1.5">Verified activity, deal history and endorsements — not follower count.</div>
                     <div style="font-size:36px;font-weight:700;color:var(--t1);font-family:var(--mono)">82</div>
                     <div style="font-size:9px;color:var(--t3);margin-bottom:8px">Top 31% of LEVL network</div>
                     <div class="lvl-journey-bar"><div class="lvl-journey-fill bar-animate" style="--w:82%"></div></div>
@@ -3712,7 +3713,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
     <!-- Punchline — the focal point of this section -->
     <div class="infra-closing r" style="animation-delay:.3s">
       <div class="infra-closing-setup">The creator economy built an audience graph.</div>
-      <div class="infra-closing-punchline">LEVL is building<br><em>the reputation graph.</em></div>
+      <div class="infra-closing-punchline">LEVL is building<br><em>the reputation layer.</em></div>
     </div>
 
   </div>
@@ -3733,7 +3734,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
       </div>
       <div class="resource-card r d2">
         <div class="resource-card-label">Investor Brief</div>
-        <p class="resource-card-q">Want to understand the commercial opportunity?</p>
+        <p class="resource-card-q">Market opportunity and commercial model — ahead of a future pre-seed raise.</p>
         <a href="levl-investor-brief.html" class="resource-card-cta">View Investor Brief &rarr;</a>
       </div>
     </div>
@@ -3785,7 +3786,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
   <div class="waitlist-inner">
     <div class="r"><div class="section-eyebrow">Private Beta</div></div>
     <div class="r d1"><h2 class="section-title" style="text-align:center">Join the waitlist</h2></div>
-    <div class="r d2"><p style="font-size:15px;color:var(--t2);line-height:1.65">LEVL is in private beta. Join the founding cohort — build your verified Creator Passport and start growing your LEVL Network from day one.</p></div>
+    <div class="r d2"><p style="font-size:15px;color:var(--t2);line-height:1.65">LEVL is in private beta. Founding Members receive permanent platform recognition, priority access to every new feature, early influence over product direction, and locked-in founder pricing when we launch publicly.</p></div>
     <form id="waitlist-form" name="waitlist" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="form-box r d3">
       <input type="hidden" name="form-name" value="waitlist">
       <div style="display:none"><input name="bot-field"></div>
@@ -3808,6 +3809,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--border2); p
       </div>
       <button type="button" class="form-submit" onclick="doSub()">Request early access →</button>
       <div class="form-note">No spam. No sharing. Early access only.</div>
+      <p style="font-size:11px;color:var(--t3);text-align:center;margin-top:8px">By requesting early access you agree to our <a href="privacy.html" style="color:var(--t2);text-decoration:underline">Privacy Policy</a>.</p>
     </form>
     <p style="font-size:12px;color:var(--t3);text-align:center;margin-top:16px;line-height:1.6">The first 100 creators accepted into beta will receive permanent Founding Member status.</p>
   </div>
